@@ -1,0 +1,17 @@
+# Working on Gero's Legacy
+
+Read `HANDOFF.md` first, then `RE_NOTES.md` as needed. HANDOFF.md is the source of truth for state and decisions.
+
+## The user's standing rules
+- Keep going without asking, unless the error can't be solved or there is an urgent design decision.
+- Deliver `.bps` patches. Also send a personal-use `.gba` with `PERSONAL_USE_ONLY` in its name. Never commit either here.
+- Never redistribute ROMs or extracted assets. This repo holds code and the mod's own data only. Game text is stored
+  as edits in `log4/text_edits.json`, and `tools/text_edits.py apply bf.gba` rebuilds `log4/text/`.
+- The user doesn't draw Dragon Ball characters themselves.
+- Label uncertain IDs as "likely".
+- Every entrance and exit must be clearly visible. No hidden exits unless the player has a way to know they're there.
+- Before calling a map change done, run `tools/reachaudit.py`. Release builds already run `tools/clipcheck.py`.
+
+## Build
+`python3 log4/build.py bf.gba --log2 log12.gba --proto protoD.gba --skip-art [--debug]`.
+Needs your own ROMs in the repo root and the art images (not stored here). See README.md.
