@@ -1,0 +1,44 @@
+# Dragon Ball Z: Gero's Legacy (LoG4) - build tools and mod sources
+
+A personal, non-commercial GBA ROM hack of **Dragon Ball Z: Buu's Fury (USA)** with maps, sprites and music from
+**Legacy of Goku II** and the Buu's Fury **Prototype D**. This repo holds the code and the mod's own data. The output is a `.bps` patch.
+
+**Not in this repo, and never to be added:** ROMs, or anything extracted from them. That covers the game text, sprite and portrait images, map dumps and fonts.
+You supply the ROMs yourself, and the build reads everything it needs from them.
+
+## Read first
+- `HANDOFF.md`: project state, decisions, verified engine facts, per-chapter notes, and gotchas. This is the source of truth.
+- `RE_NOTES.md`: reverse-engineering notes with ROM offsets (script VM, natives, areas, maps, sprites, palettes, text).
+
+## Layout
+| Path | What |
+|---|---|
+| `log4/build.py` | The build: `python3 log4/build.py bf.gba --log2 log12.gba --proto protoD.gba --skip-art [--debug \| --shoot]` |
+| `log4/gen_ch*.py`, `gen_world.py`, `gen_secret.py`, `gen_debug.py` | Area generators (write `areas.json`, scenes, the debug room) |
+| `log4/scenes/*.scene` | Story and side-content scripts (dialogue, flags, natives) compiled by `tools/scenes.py` |
+| `log4/*.json` | Areas, actors, stats, music plan, world map, palettes, forms, goals |
+| `log4/text_edits.json` | LoG4's text, stored only as changes to Buu's Fury's own text (see below) |
+| `log4/debug/` | Debug-ROM content (debug room, chapter launchers, level/moves options) |
+| `log4/asm/` | Thumb hooks (palette fade, outfit swap, ki regen, party tab names) |
+| `tools/` | Engine and asset tools. See below. |
+
+## Setup
+1. Put your own ROMs in the repo root: `bf.gba` (Buu's Fury USA), `log12.gba` (LoG I & II combo cart) and `protoD.gba`. The build checks their SHA-1s (see `HANDOFF.md`).
+2. Rebuild the text folder from your ROM: `python3 tools/text_edits.py apply bf.gba`. This creates `log4/text/`.
+3. Art: the cleaned sprite and portrait sheets (`log4/art/clean/*.png`, `portraits64/`) are not stored here. Copy them from the local project.
+4. Install the emulator test harness: `gcc -O2 tools/harness.c -o tools/harness -lmgba -lpng`. Every release build runs `tools/clipcheck.py`.
+5. Build. The output goes to `log4/out/` (`LoG4.bps`, `LoG4.gba`; with `--debug`, `LoG4_debug.bps`).
+
+After you edit text in `log4/text/`, run `python3 tools/text_edits.py make bf.gba` to refresh `log4/text_edits.json`.
+
+## Key tools
+- **Engine data:** `areas.py` (area entries, exits, NPCs), `scenes.py` (scene compiler and bytecode assembler), `text_tool.py`, `stats.py`, `levelup.py`, `worldmap.py`, `saga.py`, `tabname.py`, `outfit.py`, `worldpal.py`, `music.py`.
+- **Cross-game imports:** `mapimport.py` (LoG2 maps into BF), `mapedit.py`, `doors.py`, `sprites.py`, `portraits.py`, `artclean.py`, `wfz.py` (BF's compression).
+- **Testing (mGBA harness):**
+  - `clipcheck.py`: placement and door check that gates every build.
+  - `listtest.py`: run any named list.
+  - `reachaudit.py`: walk up to every examine spot and NPC and press A.
+  - `examtest.py`, `dbgtest.py`, `fightbot.py`, `talktest.py`.
+- **Research:** `unpack4.py` (packed scripts via unicorn), `watchrd.c`, `tracer.c`, `scriptlog.c`, `maprender.py`, `find_refs.py`.
+
+Decompilations used for reference: `smh4004/buusfury-decomp`, `smh4004/log2-decomp`, `smh4004/log1-decomp`.

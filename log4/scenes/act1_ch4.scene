@@ -1,0 +1,152 @@
+# Act 1, chapter 4 "The First Androids" (flags 320 opening seen, 321-323 relays, 324 power restored, 325 Android 16
+# shelved, 326 Gero is Android 20, 327 Prototype 12 destroyed). Bunker rooms: 1:72 main lab, 1:74 tank room, 1:76 incubator, 1:78 split pod.
+list ch4_start
+set_flag 320
+do call 183 516 1456 1457
+do call 115 0 2 0 0 0; call 121 1; call 165 0 20
+do call 120 1; call 119 1 72 1 112 200; call 121 60
+narrate Years later. The bunker in the northern mountains.
+say young_gero.0 Prototypes one through twelve. Failures, every one of them.
+say young_gero.3 Sixteen will be different... if this bunker stays powered long enough to wake him. Three relays, dead again.
+say young_gero.0 One relay is here. The other two are out in the old mine workings, and the mountain is full of my failures.
+narrate Gero powers up the one drone he salvaged from headquarters. It still has the army's colours.
+# the salvaged drone: Energy Blast and Energy Punch only (see act1_ch1.scene lab_terminal)
+do call 151 2; call 149 2; call 152 0
+do call 165 2 20; call 165 2 16
+journal Restore power: three {c07}relays{c02}, one in the bunker and two outside
+do call 47; call 51 0
+list relay_1
+unless_flag 320 relay_idle1
+if_flag 321 relay_done1
+set_flag 321
+narrate The corroded relay snaps closed. Sparks, then a steady hum. One relay online.
+run ch4_power
+stop
+label relay_idle1
+narrate An old Red Ribbon terminal, thick with dust.
+stop
+label relay_done1
+narrate The relay hums steadily.
+list relay_2
+unless_flag 320 relay_idle2
+if_flag 322 relay_done2
+set_flag 322
+narrate A relay node is wired into the cave wall. Its breaker snaps back into place. One relay online.
+run ch4_power
+stop
+label relay_idle2
+narrate A Red Ribbon relay node, dark and silent. Gero hasn't asked for power yet.
+stop
+label relay_done2
+narrate The relay hums steadily.
+list relay_3
+unless_flag 320 relay_idle3
+if_flag 323 relay_done3
+unless_flag 290 relay_guard3
+set_flag 323
+narrate The mine's relay node sparks back to life as the drone splices the frayed cables. One relay online.
+run ch4_power
+stop
+label relay_idle3
+narrate A Red Ribbon relay node, dark and silent. Gero hasn't asked for power yet.
+stop
+label relay_done3
+narrate The relay hums steadily.
+stop
+label relay_guard3
+narrate The relay node is wedged under Prototype 9's bulk. The drone can't reach the cables while that thing is still moving.
+# all three relays (and not announced before) -> power restored
+list ch4_power
+unless_flag 321 power_no
+unless_flag 322 power_no
+unless_flag 323 power_no
+if_flag 324 power_no
+set_flag 324
+narrate Deep below, the generators roar back to life. Every light in the bunker comes on at once.
+narrate Then, from the incubator: the shriek of tearing metal.
+# Prototype 12 (enemy row 34, spawns in the incubator 1:76 while 324 is set and 327 clear): Gero sends the drone in. Its death script
+# sets 327.
+do call 151 2; call 149 2
+do call 120 30
+do call 120 1; call 119 1 76 1 120 264; call 121 40
+narrate Prototype 12 has torn itself out of the conversion pod!
+say young_gero.1 Twelve?! I scrapped you years ago... Drone! Destroy it before it wrecks everything!
+journal Destroy {c07}Prototype 12{c02}
+do call 47; call 51 0
+label power_no
+list a16_talk
+if_flag 325 a16_shelved
+unless_flag 324 a16_dark
+unless_flag 327 a16_wait
+do call 149 0
+set_flag 325
+narrate Prototype 12 is scrap metal on the incubator floor. Gero turns to the last pod.
+say young_gero.3 Now. Let us wake him.
+narrate Android 16's eyes flicker open.
+say android16 ...Where am I?
+say young_gero.0 In my laboratory. You are Android 16. Run your combat routine. Destroy the drone.
+say android16 I do not want to destroy it. It has done nothing wrong.
+say young_gero.1 It is a machine! You are a machine! Obey me!
+say android16 I would rather watch the birds outside. Are there birds here?
+say young_gero.2 That face. That voice. I gave you my son's face... and you took his heart as well.
+say young_gero.0 Too gentle. Like him. You will never kill Goku.
+narrate Gero powered Android 16 down and sealed him away. He would not wake again for many years.
+say young_gero.1 If no machine can carry my hatred, then I will carry it myself.
+journal Enter the conversion pod in the {c07}incubator{c02}
+stop
+label a16_wait
+narrate Android 16 stands motionless. Prototype 12 first!
+stop
+label a16_dark
+narrate Android 16 stands motionless. Without power, its eyes are dark.
+stop
+label a16_shelved
+narrate Android 16, powered down. Gevo's face, sleeping.
+list ch4_pod
+unless_flag 325 pod_wait
+set_flag 326
+narrate Gero lies down in the conversion pod and starts the procedure on himself.
+say young_gero.0 Flesh fails. Flesh grows old. Flesh mourns.
+do call 120 60
+do call 120 1; call 119 1 78 1 184 260; call 121 60
+narrate Nine hours later, the pod split open.
+say gero Android 20. I feel nothing at all. Good.
+say gero Now I have all the time in the world. Goku... I will build the soldiers that finish you.
+# Androids 13-15 (BF's leftover scouter text: "An evil Android created by Dr. Gero's computer."): Gero hands the designs
+# to the lab's supercomputer, as in the film. They return in Act 3.
+say gero Computer. Begin construction on designs thirteen, fourteen and fifteen.
+narrate The bunker's great computer wakes. On its screens, three new androids begin to take shape.
+say gero Whatever becomes of me, finish them. Their only purpose: Goku's death.
+narrate End of Act One.
+do call 120 60
+# Act 2: West City; chapter 5's opening fires on arrival (flag 300 clear) and plays its own card and fade-in
+do call 120 1; call 119 4 1 1 268 296
+stop
+label pod_wait
+narrate The conversion pod. Gero has not dared to use it yet.
+# ---------- outside the bunker (areas from log4/gen_ch4.py; flags 289-292)
+list ch4_pass
+set_flag 289
+narrate The mountain pass. Somewhere in these hills, Gero dumped every prototype he couldn't fix.
+say young_gero.1 Some of them still have power. I never did like waste... and they never did learn to obey.
+do call 47; call 51 0
+list cache_gen
+if_flag 291 gen_empty
+set_flag 291
+narrate An old Red Ribbon locker, rusted shut. The drone pries it open: two sodas and a Senzu Bean.
+do call 129 2 2; call 129 11 1
+stop
+label gen_empty
+narrate The locker is empty.
+list cache_mine
+if_flag 292 mine_empty
+set_flag 292
+narrate A mining cart full of junk. Under it all: a bottle of tea and a carton of milk.
+do call 129 1 1; call 129 0 1
+stop
+label mine_empty
+narrate Nothing but rocks.
+# ---------- the Old Mine's barred gate (1:110 and 17:39, examine facing up): tells the player the shaft is no exit
+list mine_gate
+narrate An iron gate bars the old shaft. Beyond it the tunnel has fallen in: rock and rotten beams, all the way down.
+stop

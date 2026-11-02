@@ -1,0 +1,21 @@
+# Credits (run at the end of Act 3's "The End" and at the end of the secret chapter). Each card sits over a backdrop
+# loaded with native 115 (camera only): the views are chosen far from both places the player can be standing when the
+# credits start (17:24's 424,440 and 17:31's 128,~160), so the player stays off screen.
+list credits
+do call 120 60; call 115 17 32 1 640 120; call 121 60
+narrate DRAGON BALL Z: GERO'S LEGACY. A fan-made Legacy of Goku story.
+narrate Story, design and direction: SMH
+narrate New character art: SMH's image-generator sheets, cleaned up and fitted to the Game Boy Advance by the project's art tools.
+do call 120 40; call 115 17 20 1 500 300; call 121 40
+narrate Reverse engineering, tools, maps, scripting and testing: SMH, with Claude (Anthropic).
+narrate Thanks to the Buu's Fury, Legacy of Goku and Legacy of Goku II decompilation projects.
+do call 120 40; call 115 17 32 1 760 640; call 121 40
+narrate Built on Dragon Ball Z: Buu's Fury and Dragon Ball Z: The Legacy of Goku II by Webfoot Technologies, published by Atari. Super Android 13 comes from a Buu's Fury prototype.
+narrate Dragon Ball by Akira Toriyama. Dragon Ball Z: Bird Studio / Shueisha, Toei Animation.
+narrate This is an unofficial, non-commercial fan project for personal use. It is not affiliated with or endorsed by any of the rights holders.
+do call 120 40; call 115 17 32 1 40 600; call 121 40
+narrate Starring Dr. Gero, Lapis, Lazuli, Android 16, Seventeen, Eighteen, Future Gohan, Trunks... and Cell.
+narrate Special thanks: everyone who remembers Lapis and Lazuli.
+narrate Thank you for playing.
+do call 120 120
+stop

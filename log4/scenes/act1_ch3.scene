@@ -1,0 +1,96 @@
+# Act 1, chapter 3 "The Boy Called Goku" (flags 315 opening seen, 316 blueprints taken, 317 self-destruct set,
+# 318 chapter over, 319 escape-map arrival seen). Goku never appears on screen: he is "the boy" tearing the base apart.
+list ch3_start
+set_flag 315
+do call 183 516 1454 1455
+do call 115 0 2 0 0 0; call 121 1; call 165 0 20
+do call 120 1; call 119 1 69 1 216 272; call 121 60
+narrate Red Ribbon Army Headquarters. The same night.
+narrate Alarms howl through the lower levels. Far above, the command tower is coming apart.
+narrate Lab technician: Doctor! The boy is inside the base! The soldiers are throwing down their guns and looting everything they can carry!
+say young_gero.1 Let them run. The army is finished... but my work is not.
+say young_gero.0 The android blueprints are in the tank room's core. I will not leave them for that boy.
+journal Recover the android blueprints from the {c07}tank room{c02}
+do call 47; call 51 0
+list ch3_tech_talk
+narrate Lab technician: The terminal still links to your drone, Doctor. The looters won't stand up to it!
+list ch3_pod
+unless_flag 315 pod_idle
+if_flag 316 pod_done
+do call 149 0
+narrate Gero pulls the memory core from the pod. Years of android research, in the palm of one hand.
+say young_gero.3 Everything else can burn. But not before I've wiped the army's archive.
+say young_gero.0 Every design I ever gave Commander Red is copied in that vault. I won't leave a single page for that boy... or for anyone.
+narrate Lab technician (radio): The archive is past the munitions lines, Doctor. South corridor. The looters got there first.
+set_flag 316
+journal Wipe the army's archive: south corridor, through the {c07}munitions lines{c02}
+do call 47; call 51 0
+stop
+label pod_idle
+narrate The pod's memory core hums quietly.
+stop
+label pod_done
+narrate The pod is empty. The core is safe in Gero's coat.
+list ch3_corridor
+narrate The south corridor. The blueprint core comes first.
+# ---------- the munitions lines and the archive (areas from log4/gen_ch3.py; flags 283-288)
+list ch3_factory
+set_flag 283
+narrate The munitions lines. Half-built tanks hang from the cranes, and the alarms won't stop.
+narrate Looters are stripping the belts for anything they can carry. Their captain has the archive vault's keycard.
+say young_gero.1 Thieves. The army isn't even dead yet and they're already picking its bones.
+journal Take the vault keycard from the {c07}looters' captain{c02}
+do call 47; call 51 0
+list ch3_vault
+set_flag 287
+narrate The archive vault. A keycard slot glows beside the blast door.
+list vault_locked
+narrate The blast door won't move. KEYCARD REQUIRED.
+list cache_line
+if_flag 288 line_empty
+set_flag 288
+narrate A crate of field rations at the end of the line. Inside: a tea and two cartons of milk.
+do call 129 1 1; call 129 0 2
+stop
+label line_empty
+narrate The crate is empty.
+list cache_belt
+if_flag 286 belt_empty
+set_flag 286
+narrate A parts bin under the press. Someone hid a Senzu Bean in it, wrapped in an oily rag.
+do call 129 11 1
+stop
+label belt_empty
+narrate Nothing but bolts.
+list ch3_archive
+if_flag 285 arch_done
+set_flag 285
+do call 149 0
+narrate The archive console. Thousands of files: tanks, airships, drones... and Gero's androids.
+say young_gero.0 Delete. All of it.
+narrate The progress bar crawls across the screen. Somewhere above, the command tower groans.
+say young_gero.2 Twenty years of work for this army. Gone in a minute.
+narrate Then he keys in the self-destruct sequence. Ten minutes.
+set_flag 317
+narrate Archive console: EMERGENCY HATCH OPEN. EXIT TO THE NORTHERN WASTELANDS.
+do call 120 30
+do call 120 1; call 119 1 71 1 232 440; call 121 30
+stop
+label arch_done
+narrate The screen is blank. There is nothing left to find.
+list ch3_escape
+set_flag 319
+narrate Behind him, the first explosions shake the mountain.
+journal Get clear of the base
+do call 47; call 51 0
+list ch3_end
+set_flag 318
+do call 149 0
+narrate At the old bridge, Gero looks back. The Red Ribbon Army's headquarters burned until morning.
+say young_gero.2 Gevo... my army... all of it, gone. Because of one boy.
+say young_gero.1 Goku. I will build a soldier that never tires, never doubts and never disobeys. And it will be your end.
+do call 120 60
+do call 120 1; call 119 1 72 1 112 200; call 121 60
+narrate Deep in the northern mountains, Gero found an abandoned Red Ribbon bunker. He would not leave it for years.
+journal Rebuild.
+do call 47; call 51 0

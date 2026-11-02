@@ -1,0 +1,6611 @@
+{
+ "_note": "Area edits. 'map_log2' = LoG2 map record (slice offset of M) imported with tools/mapimport.py and attached to the BF area. 'spawn_ids' = word index in the area struct -> new actor name (the word holds actor id + 9). Test setup: the new game's first area (Snake Way, 1:1) becomes Dr. Gero's Lab room 61 with Gevo and Android 16. 'doors' add rect objects (fn 0x08007387/0x080071A7, the same as Goku's House doors) whose action is script code. 'new_areas' are added to the relocated AreaEntry table (cloned from 'template'). Doors: 'warp': [world, area, x, y] = engine door (arrive at x, y); 'dir' = the way the player walks into it, 'face' = the way they face/walk on arrival (default = dir). Area ids 1:60-65 mirror LoG2's lab ids; LoG2 61 is BF 1:1. Every placement and door is checked in the emulator by tools/clipcheck.py.",
+ "areas": [
+  {
+   "world": 1,
+   "area": 1,
+   "map_log2": "0x540fd4",
+   "spawn_ids": {
+    "7": "gevo",
+    "16": "drone_l2",
+    "25": "scientist_l2"
+   },
+   "palette_act": "act1",
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      1,
+      62,
+      240,
+      184
+     ],
+     "_note": "lab door -> tank room, arrive at its exit 0 (the door back)",
+     "dir": "up",
+     "face": "down"
+    },
+    {
+     "rect": [
+      168,
+      208,
+      200,
+      268
+     ],
+     "examine": "right",
+     "event": "lab_terminal",
+     "_note": "drone terminal: sends the drone to the proving ground (chapter 1)"
+    },
+    {
+     "rect": [
+      192,
+      240,
+      248,
+      280
+     ],
+     "examine": "up",
+     "event": "lab_terminal",
+     "_note": "drone terminal: sends the drone to the proving ground (chapter 1)"
+    }
+   ],
+   "name": 531,
+   "keep_objects": 3,
+   "spawn_pos": {
+    "25": [
+     112,
+     180
+    ],
+    "7": [
+     136,
+     200
+    ],
+    "16": [
+     232,
+     184
+    ]
+   },
+   "_objects_note": "keep_objects 3 = only the three lab NPCs (Snake Way leftovers dropped). 1:1 is the opening's version of the main lab (with Gevo); after the opening every door into the main lab leads to 1:61 (same map, no Gevo). Android 16 was a test spawn: he isn't built until chapter 4, so a powered-down spare drone stands there instead. Talk scripts come from log4/scenes/lab_talk.scene.",
+   "spawn_talk": {
+    "7": "gevo_talk",
+    "16": "drone_npc_talk",
+    "25": "scientist_talk"
+   }
+  },
+  {
+   "world": 4,
+   "area": 1,
+   "palette_act": "act2",
+   "_note": "West City (BF map): Act 2 hub, chapter 5 \"Siblings\". Objects (BF list): 0 Vegeta, 1 actor 27, 3 actor 252 (Buu-era, dropped); 2/4/5 townsfolk, 6 old man, 7-9 police get Act 2 lines. Exits: BF 0 = chapter-card trigger and 2 = flag-197 scene dropped; 1 = the Capsule pad save point (Save / Switch Characters) kept.",
+   "doors_append": [
+    {
+     "rect": [
+      248,
+      296,
+      304,
+      340
+     ],
+     "event": "ch5_start",
+     "fn2": "0x080077DF",
+     "when": "call 28 300",
+     "_note": "chapter 5 opening: walk-in trigger at the arrival point, only while flag 300 is clear"
+    },
+    {
+     "rect": [
+      40,
+      420,
+      200,
+      540
+     ],
+     "event": "park_hide",
+     "fn2": "0x080077DF",
+     "when": "call 28 308",
+     "_note": "park hiding spot: ends the police chase (the list checks flag 307 itself: exit conditions are only read at area load)"
+    },
+    {
+     "rect": [
+      0,
+      312,
+      30,
+      424
+     ],
+     "warp": [
+      4,
+      40,
+      424,
+      140
+     ],
+     "dir": "left",
+     "face": "left",
+     "_note": "West City -> Circus Lot",
+     "_gen5": 1
+    },
+    {
+     "rect": [
+      368,
+      684,
+      472,
+      912
+     ],
+     "warp": [
+      4,
+      41,
+      248,
+      64
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "West City -> Riverside",
+     "_gen5": 1
+    },
+    {
+     "rect": [
+      260,
+      268,
+      292,
+      312
+     ],
+     "warp": [
+      4,
+      44,
+      188,
+      276
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "West City -> Z-Mart",
+     "_gen5": 1
+    },
+    {
+     "rect": [
+      400,
+      112,
+      448,
+      140
+     ],
+     "warp": [
+      4,
+      45,
+      400,
+      232
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "West City -> museum (city hall doors)",
+     "cover_ok": true,
+     "_gen5": 1
+    }
+   ],
+   "drop_objects": [
+    0,
+    1,
+    3
+   ],
+   "object_talk": {
+    "2": "wc_woman_pink",
+    "4": "wc_woman_blue",
+    "5": "wc_man_green",
+    "6": "wc_old_man",
+    "7": "wc_police_1",
+    "8": "wc_police_2",
+    "9": "wc_police_3"
+   },
+   "drop_exits": [
+    0,
+    2
+   ],
+   "spawns_append": [
+    {
+     "actor_id": 129,
+     "x": 360,
+     "y": 330,
+     "talk": "wc_hercule",
+     "_note": "young Hercule (BF actor 129), chapter 5 cameo"
+    },
+    {
+     "actor": "patrol_cop",
+     "x": 540,
+     "y": 400,
+     "face": "left",
+     "talk": "wc_cop_chase",
+     "_note": "chapter 5 side job 'Ditch the Patrol' (flags 307 running, 308 done)"
+    },
+    {
+     "actor": "player_gero_106",
+     "x": 600,
+     "y": 320,
+     "face": "down",
+     "talk": "wc_coat_man",
+     "_note": "the man in the long coat (Gero watching the twins), across the street from Z-Mart"
+    }
+   ]
+  }
+ ],
+ "new_areas": [
+  {
+   "world": 1,
+   "area": 61,
+   "map_from": [
+    1,
+    1
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Main lab after the opening (LoG2 room 61): same map as 1:1, without Gevo. The opening ends here; the drone terminal ends chapter 1 (ch1_end) and starts chapter 2 (1:67).",
+   "spawns": [
+    {
+     "actor": "scientist_l2",
+     "x": 112,
+     "y": 180,
+     "talk": "scientist_talk"
+    },
+    {
+     "actor": "drone_l2",
+     "x": 232,
+     "y": 184,
+     "talk": "drone_npc_talk"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      1,
+      62,
+      240,
+      184
+     ],
+     "_note": "lab door -> tank room, arrive at its exit 0 (the door back)",
+     "dir": "up",
+     "face": "down"
+    },
+    {
+     "rect": [
+      168,
+      208,
+      200,
+      268
+     ],
+     "examine": "right",
+     "event": "lab_terminal",
+     "_note": "drone terminal: sends the drone to the proving ground (chapter 1)"
+    },
+    {
+     "rect": [
+      192,
+      240,
+      248,
+      280
+     ],
+     "examine": "up",
+     "event": "lab_terminal",
+     "_note": "drone terminal: sends the drone to the proving ground (chapter 1)"
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "examine": "down",
+     "event": "lift_talk",
+     "_note": "south corridor: the lift up to the command tower (no exit; chapter 2 now starts at the drone terminal)"
+    },
+    {
+     "rect": [
+      132,
+      212,
+      166,
+      252
+     ],
+     "event": "ch1_report",
+     "fn2": "0x080077DF",
+     "when": "hex 01 85 48 02 1b 01 84 6a 02 1c 04 11",
+     "_note": "chapter 1 report: the tank death script loads the lab here (356 set, 309 clear)"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 62,
+   "map_log2": "0x53fff8",
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "doors": [
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      1,
+      61,
+      88,
+      184
+     ],
+     "_note": "door -> main lab (arrive at its exit 0) (to the after-opening main lab)",
+     "dir": "up",
+     "face": "down",
+     "when": "call 28 310"
+    },
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      1,
+      67,
+      88,
+      184
+     ],
+     "_note": "door -> Gero's lab at night (chapter 2, flag 310 set)",
+     "dir": "up",
+     "face": "down",
+     "when": "call 27 310"
+    },
+    {
+     "rect": [
+      120,
+      304,
+      152,
+      340
+     ],
+     "warp": [
+      1,
+      63,
+      208,
+      312
+     ],
+     "_note": "south corridor -> incubator room",
+     "dir": "down",
+     "face": "up"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 63,
+   "map_log2": "0x53eda4",
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "doors": [
+    {
+     "rect": [
+      176,
+      300,
+      232,
+      368
+     ],
+     "warp": [
+      1,
+      62,
+      128,
+      296
+     ],
+     "_note": "south corridor -> tank room",
+     "dir": "down",
+     "face": "up"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 64,
+   "map_log2": "0x53d41c",
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "tank room after the androids leave (no doors yet)"
+  },
+  {
+   "world": 1,
+   "area": 65,
+   "map_log2": "0x53c418",
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "incubator after Cell hatches (no doors yet)"
+  },
+  {
+   "world": 16,
+   "area": 1,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "palette_act": "act2",
+   "night": true,
+   "_note": "West City at night (chapter 6 'Taken'): BF's West City map in unused world 16, moonlit BG palette (worldpal.night_bg). Exit 0 = the Capsule pad save point copied from 4:1.",
+   "exits_from": [
+    [
+     4,
+     1,
+     0
+    ]
+   ],
+   "spawns": [
+    {
+     "actor_id": 60,
+     "x": 720,
+     "y": 380,
+     "face": "left",
+     "talk": "night_police",
+     "_note": "police officer on curfew duty"
+    },
+    {
+     "actor": "drone_night_a",
+     "x": 424,
+     "y": 150,
+     "talk": "night_drone"
+    },
+    {
+     "actor": "drone_night_b",
+     "x": 640,
+     "y": 372,
+     "talk": "night_drone"
+    },
+    {
+     "actor": "drone_night_c",
+     "x": 200,
+     "y": 372,
+     "talk": "night_drone"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      368,
+      684,
+      472,
+      912
+     ],
+     "warp": [
+      16,
+      41,
+      248,
+      64
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "West City (night) -> Riverside (night)",
+     "_gen6": 1
+    },
+    {
+     "rect": [
+      392,
+      336,
+      456,
+      470
+     ],
+     "event": "night_crossroads",
+     "_note": "a drone sweeps the crossroads (337)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 85 22 02 1c 11",
+     "_gen6": 1
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 66,
+   "map_from": [
+    1,
+    62
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Tank room for the chapter 6 conversion scene: Gero and Lazuli placed, same doors as 1:62.",
+   "spawns": [
+    {
+     "actor": "player_gero_106",
+     "x": 232,
+     "y": 186,
+     "face": "down",
+     "talk": "gero_lab_talk"
+    },
+    {
+     "actor": "player_lazuli_260",
+     "x": 186,
+     "y": 228,
+     "face": "up",
+     "talk": "lazuli_lab_talk"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      1,
+      61,
+      88,
+      184
+     ],
+     "_note": "door -> main lab (arrive at its exit 0) (to the after-opening main lab)",
+     "dir": "up",
+     "face": "down"
+    },
+    {
+     "rect": [
+      120,
+      304,
+      152,
+      340
+     ],
+     "warp": [
+      1,
+      63,
+      208,
+      312
+     ],
+     "_note": "south corridor -> incubator room",
+     "dir": "down",
+     "face": "up"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 79,
+   "map_from": [
+    1,
+    62
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Tank room after the conversion (chapter 6 end): Gero and Eighteen (actor player_18) placed, same doors as 1:66.",
+   "spawns": [
+    {
+     "actor": "player_gero_106",
+     "x": 232,
+     "y": 186,
+     "face": "down",
+     "talk": "gero_lab_talk"
+    },
+    {
+     "actor": "player_18",
+     "x": 186,
+     "y": 228,
+     "face": "up",
+     "talk": "lazuli_lab_talk"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      1,
+      61,
+      88,
+      184
+     ],
+     "_note": "door -> main lab (arrive at its exit 0) (to the after-opening main lab)",
+     "dir": "up",
+     "face": "down"
+    },
+    {
+     "rect": [
+      120,
+      304,
+      152,
+      340
+     ],
+     "warp": [
+      1,
+      63,
+      208,
+      312
+     ],
+     "_note": "south corridor -> incubator room",
+     "dir": "down",
+     "face": "up"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 67,
+   "map_from": [
+    1,
+    1
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Gero's lab, an hour before dawn (chapter 2 'An Enemy Bullet'; same map as 1:1, was BF's Dr. Brief's Lab map). The radio technician; the drone terminal = the console that sends the drone to the battlefield 1:68. Tank-room door -> 1:62 (whose door leads back here once flag 310 is set).",
+   "spawns": [
+    {
+     "actor": "scientist_l2",
+     "x": 112,
+     "y": 180,
+     "talk": "radio_tech_talk"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      1,
+      62,
+      240,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "lab door -> tank room"
+    },
+    {
+     "rect": [
+      192,
+      240,
+      248,
+      280
+     ],
+     "examine": "up",
+     "action": "hex 01 84 6c 02 1b 13 00 26 01 84 6e 02 1c 13 00 1e 00 02 02 97 00 02 02 95 00 32 02 78 1d 05 02 81 08 02 82 40 86 48 02 77 00 32 02 79 11",
+     "_note": "main console (A facing up): if flag 310 is set and 311 clear, the drone joins and becomes the player and the battlefield 1:68 loads. A plain bytecode exit (class 0x08007387), as BF's own A-press doors: a step-list event that loads an area this way leaves the player locked."
+    },
+    {
+     "rect": [
+      168,
+      208,
+      200,
+      268
+     ],
+     "examine": "right",
+     "action": "hex 01 84 6c 02 1b 13 00 26 01 84 6e 02 1c 13 00 1e 00 02 02 97 00 02 02 95 00 32 02 78 1d 05 02 81 08 02 82 40 86 48 02 77 00 32 02 79 11",
+     "_note": "main console (A facing up): if flag 310 is set and 311 clear, the drone joins and becomes the player and the battlefield 1:68 loads. A plain bytecode exit (class 0x08007387), as BF's own A-press doors: a step-list event that loads an area this way leaves the player locked."
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "examine": "down",
+     "event": "lift_talk",
+     "_note": "south corridor: the lift up to the command tower (no exit; chapter 2 now starts at the drone terminal)"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 73,
+   "map_from": [
+    1,
+    1
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Gero's lab after Gevo's death (chapter 2's ending; chapter 3's card follows straight on). The door is only there so the door panels are drawn.",
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      1,
+      70,
+      240,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "lab door (not reachable: no free control here)"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 69,
+   "map_from": [
+    1,
+    1
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Main lab under attack (chapter 3): technician, two looting soldiers, the drone terminals; tank-room door -> 1:70; chapter 3 starts here from chapter 2's ending.",
+   "spawns": [
+    {
+     "actor": "scientist_l2",
+     "x": 112,
+     "y": 180,
+     "talk": "ch3_tech_talk"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 8,
+     "x": 230,
+     "y": 290
+    },
+    {
+     "type": 8,
+     "x": 260,
+     "y": 200
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      1,
+      70,
+      240,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "lab door -> tank room under attack"
+    },
+    {
+     "rect": [
+      168,
+      208,
+      200,
+      268
+     ],
+     "examine": "right",
+     "event": "drone_toggle",
+     "_note": "drone terminal: swap control between Gero and the drone"
+    },
+    {
+     "rect": [
+      192,
+      240,
+      248,
+      280
+     ],
+     "examine": "up",
+     "event": "drone_toggle",
+     "_note": "drone terminal: swap control between Gero and the drone"
+    },
+    {
+     "rect": [
+      192,
+      264,
+      240,
+      300
+     ],
+     "event": "ch3_start",
+     "fn2": "0x080077DF",
+     "when": "call 28 315",
+     "_note": "chapter 3 opening on arrival from the command room (flag 315 clear)"
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "examine": "down",
+     "event": "ch3_corridor",
+     "when": "hex 01 84 78 02 1c 11",
+     "_note": "south corridor before the core is taken"
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "examine": "down",
+     "event": "ch3_corridor",
+     "when": "hex 01 84 78 02 1c 11",
+     "_note": "south corridor before the core is taken"
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "examine": "down",
+     "event": "ch3_corridor",
+     "when": "hex 01 84 78 02 1c 11",
+     "_note": "south corridor before the core is taken"
+    },
+    {
+     "rect": [
+      200,
+      300,
+      232,
+      336
+     ],
+     "warp": [
+      1,
+      103,
+      24,
+      112
+     ],
+     "dir": "down",
+     "face": "right",
+     "when": "hex 01 84 78 02 1b 11",
+     "_note": "lab south corridor -> Munitions Line A (after the core, 316)"
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "examine": "down",
+     "event": "ch3_corridor",
+     "when": "hex 01 84 78 02 1c 11",
+     "_note": "south corridor before the core is taken"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 70,
+   "map_from": [
+    1,
+    62
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Tank room under attack (chapter 3): two looters; the pod holds the android blueprints (A facing up). Once flag 317 is set (the pod event reloads this room) the south corridor is the way out to the Northern Wastelands 1:71.",
+   "enemies": [
+    {
+     "type": 8,
+     "x": 60,
+     "y": 290
+    },
+    {
+     "type": 8,
+     "x": 190,
+     "y": 296
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      1,
+      69,
+      88,
+      184
+     ],
+     "_note": "door -> main lab (arrive at its exit 0) (to the after-opening main lab)",
+     "dir": "up",
+     "face": "down"
+    },
+    {
+     "rect": [
+      112,
+      176,
+      168,
+      212
+     ],
+     "event": "ch3_pod",
+     "examine": "up",
+     "_note": "incubator pod: android blueprints + self-destruct"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 71,
+   "map_log2": "0x66dff8",
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Escape through the Northern Wastelands (LoG2 3:7, chapter 3): looters on the climb from the arrival (232,440); the chapter ends at the foot of the bridge (176,320).",
+   "enemies": [
+    {
+     "type": 8,
+     "x": 200,
+     "y": 380
+    },
+    {
+     "type": 8,
+     "x": 176,
+     "y": 352
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      192,
+      416,
+      272,
+      472
+     ],
+     "event": "ch3_escape",
+     "fn2": "0x080077DF",
+     "when": "call 28 319",
+     "_note": "arrival (flag 319 clear)"
+    },
+    {
+     "rect": [
+      144,
+      300,
+      224,
+      340
+     ],
+     "event": "ch3_end",
+     "fn2": "0x080077DF",
+     "when": "call 28 318",
+     "_note": "the foot of the old bridge: end of chapter 3 (flag 318 clear). The bridge itself is not walkable in the imported collision."
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 72,
+   "map_from": [
+    1,
+    1
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "The abandoned bunker in the northern mountains (chapter 3's end, chapter 4's hub; same LoG2 lab map). Tank-room door -> 1:74. Relay 1 at the old drone-terminal spot.",
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      1,
+      74,
+      240,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "lab door -> bunker tank room"
+    },
+    {
+     "rect": [
+      192,
+      240,
+      248,
+      280
+     ],
+     "event": "relay_1",
+     "examine": "up",
+     "_note": "power relay 1 (chapter 4)"
+    },
+    {
+     "rect": [
+      96,
+      184,
+      128,
+      216
+     ],
+     "event": "ch4_start",
+     "fn2": "0x080077DF",
+     "when": "call 28 320",
+     "_note": "chapter 4 opening when chapter 3's ending puts Gero here (flag 320 clear)"
+    },
+    {
+     "rect": [
+      200,
+      300,
+      232,
+      336
+     ],
+     "warp": [
+      1,
+      108,
+      24,
+      296
+     ],
+     "dir": "down",
+     "face": "right",
+     "_note": "bunker south corridor -> Mountain Pass"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 74,
+   "map_from": [
+    1,
+    62
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Bunker tank room (chapter 4): Android 16 stands by the pod; power relay 2 at the bottom-right machines; south corridor -> incubator 1:76.",
+   "spawns": [
+    {
+     "actor": "android16",
+     "x": 150,
+     "y": 236,
+     "face": "down",
+     "talk": "a16_talk"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      1,
+      72,
+      88,
+      184
+     ],
+     "_note": "door -> bunker main lab",
+     "dir": "up",
+     "face": "down"
+    },
+    {
+     "rect": [
+      120,
+      304,
+      152,
+      340
+     ],
+     "warp": [
+      1,
+      76,
+      208,
+      312
+     ],
+     "_note": "south corridor -> bunker incubator",
+     "dir": "down",
+     "face": "up"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 76,
+   "map_from": [
+    1,
+    63
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Bunker incubator (chapter 4): power relay 3 on the right wall; the conversion pod (A facing up below it) ends Act 1.",
+   "doors": [
+    {
+     "rect": [
+      176,
+      300,
+      232,
+      368
+     ],
+     "warp": [
+      1,
+      74,
+      128,
+      296
+     ],
+     "_note": "door -> bunker tank room",
+     "dir": "down",
+     "face": "up"
+    },
+    {
+     "rect": [
+      160,
+      228,
+      208,
+      256
+     ],
+     "event": "ch4_pod",
+     "examine": "up",
+     "_note": "the conversion pod (chapter 4 finale)"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 30,
+     "x": 232,
+     "y": 272,
+     "character": 76,
+     "condition": "hex 01 85 08 02 1b 01 85 0e 02 1c 04 11",
+     "_note": "Prototype 12 (stats row 30, BF Death Machine sprite = character 76): only once power is back (324) and until destroyed (327). Fought here, not in the tank room: the tank room's door panels + Android 16 + this big sprite overflow OBJ VRAM (ki blasts corrupted tiles)."
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 78,
+   "map_from": [
+    1,
+    65
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Bunker incubator after the conversion (LoG2 room 65: the split pod): only seen in the Act 1 finale, which then loads West City."
+  },
+  {
+   "world": 1,
+   "area": 80,
+   "map_log2": "0x54261c",
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Gero's hidden laboratory, Age 767 (LoG2 8:60, the pod room): chapter 7 wake-up. Gero and Eighteen placed; the scene in ch7_start moves on to 1:81.",
+   "spawns": [
+    {
+     "actor": "player_gero_106",
+     "x": 144,
+     "y": 236,
+     "face": "right"
+    },
+    {
+     "actor": "player_18",
+     "x": 256,
+     "y": 220,
+     "face": "left"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 81,
+   "map_log2": "0x54261c",
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "The pod room after Gero's death: Eighteen only; the south passage leads to the cave.",
+   "spawns": [
+    {
+     "actor": "player_18",
+     "x": 256,
+     "y": 220,
+     "face": "left",
+     "talk": "eighteen_lab_talk"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      256,
+      296,
+      312,
+      326
+     ],
+     "warp": [
+      1,
+      111,
+      32,
+      344
+     ],
+     "dir": "down",
+     "face": "right",
+     "_note": "pod room south passage -> Security Wing (chapter 7)"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 82,
+   "map_log2": "0x55ea78",
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "The cave in front of the hidden lab (LoG2 8:37, the switch cave). One way: the opening on the left is a wall in the imported collision; the cave mouth at the bottom leads to the mountains.",
+   "doors": [
+    {
+     "rect": [
+      228,
+      300,
+      260,
+      332
+     ],
+     "warp": [
+      1,
+      83,
+      232,
+      176
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "cave mouth -> Northern Wilderness"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 83,
+   "map_log2": "0x5613d4",
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Northern Wilderness (LoG2 8:35, the mountains by Vinnie's house): chapter 7 ends on arrival.",
+   "doors": [
+    {
+     "rect": [
+      200,
+      144,
+      264,
+      208
+     ],
+     "event": "ch7_end",
+     "fn2": "0x080077DF",
+     "when": "call 28 332",
+     "_note": "arrival (flag 332 clear): end of chapter 7"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 1,
+   "template": [
+    4,
+    1
+   ],
+   "_note": "West City, Age 767 (chapter 8 'The Massacre'): the twins' old city by day, act3 palette (world 17). Stall at Hercule's old spot.",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "exits_from": [
+    [
+     4,
+     1,
+     0
+    ]
+   ],
+   "spawns": [
+    {
+     "actor_id": 196,
+     "x": 360,
+     "y": 330,
+     "face": "down",
+     "talk": "ch8_stall"
+    },
+    {
+     "actor_id": 176,
+     "x": 382,
+     "y": 336,
+     "face": "left",
+     "talk": "ch8_stall"
+    },
+    {
+     "actor_id": 171,
+     "x": 540,
+     "y": 400,
+     "face": "left",
+     "talk": "ch8_man"
+    },
+    {
+     "actor_id": 172,
+     "x": 600,
+     "y": 320,
+     "face": "down",
+     "talk": "ch8_woman"
+    },
+    {
+     "actor_id": 60,
+     "x": 720,
+     "y": 380,
+     "face": "left",
+     "talk": "ch8_police"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      248,
+      296,
+      304,
+      340
+     ],
+     "event": "ch8_start",
+     "fn2": "0x080077DF",
+     "when": "call 28 340",
+     "_note": "chapter 8 opening (arrival, flag 340 clear)"
+    },
+    {
+     "rect": [
+      392,
+      336,
+      456,
+      470
+     ],
+     "event": "ch8_landing",
+     "fn2": "0x080077DF",
+     "when": "call 28 342",
+     "_note": "the crossroads: the Z Fighters land (the list needs flag 341 itself)"
+    },
+    {
+     "rect": [
+      368,
+      684,
+      472,
+      912
+     ],
+     "warp": [
+      17,
+      34,
+      248,
+      64
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "West City (767) -> Riverside (767)",
+     "_gen8": 1
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 2,
+   "template": [
+    4,
+    1
+   ],
+   "_note": "The Z Fighters land at the crossroads (chapter 8).",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "spawns": [
+    {
+     "actor_id": 270,
+     "x": 424,
+     "y": 412,
+     "face": "down"
+    },
+    {
+     "actor_id": 213,
+     "x": 396,
+     "y": 404,
+     "face": "down"
+    },
+    {
+     "actor_id": 157,
+     "x": 452,
+     "y": 404,
+     "face": "down"
+    },
+    {
+     "actor_id": 255,
+     "x": 376,
+     "y": 392,
+     "face": "down"
+    },
+    {
+     "actor_id": 293,
+     "x": 472,
+     "y": 392,
+     "face": "down"
+    },
+    {
+     "actor": "gohan_bf",
+     "x": 440,
+     "y": 382,
+     "face": "down"
+    },
+    {
+     "actor": "player_18",
+     "x": 400,
+     "y": 476,
+     "face": "up"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 3,
+   "template": [
+    15,
+    10
+   ],
+   "_note": "Arena: Vegeta (enemy row 70, character 279).",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "enemies": [
+    {
+     "type": 70,
+     "character": 279,
+     "x": 420,
+     "y": 350,
+     "condition": 131415
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 4,
+   "template": [
+    4,
+    1
+   ],
+   "_note": "After Vegeta: Piccolo, Krillin, Tien, Yamcha, Gohan; a mother and son on the street (mercy beat, flag 344); Tien waits at the crossroads.",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "spawns": [
+    {
+     "actor_id": 213,
+     "x": 396,
+     "y": 404,
+     "face": "down"
+    },
+    {
+     "actor_id": 157,
+     "x": 452,
+     "y": 404,
+     "face": "down"
+    },
+    {
+     "actor_id": 255,
+     "x": 376,
+     "y": 392,
+     "face": "down"
+    },
+    {
+     "actor_id": 293,
+     "x": 472,
+     "y": 392,
+     "face": "down"
+    },
+    {
+     "actor": "gohan_bf",
+     "x": 440,
+     "y": 382,
+     "face": "down"
+    },
+    {
+     "actor": "player_18",
+     "x": 400,
+     "y": 476,
+     "face": "up"
+    },
+    {
+     "actor_id": 285,
+     "x": 300,
+     "y": 350,
+     "face": "right",
+     "talk": "ch8_civilians"
+    },
+    {
+     "actor_id": 252,
+     "x": 284,
+     "y": 356,
+     "face": "right",
+     "talk": "ch8_civilians"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch8_after_vegeta",
+     "fn2": "0x080077DF",
+     "_note": "arrival: Vegeta's last words (the list checks flag 350 itself)"
+    },
+    {
+     "rect": [
+      344,
+      372,
+      408,
+      420
+     ],
+     "event": "ch8_tien",
+     "fn2": "0x080077DF",
+     "when": "call 28 345",
+     "_note": "walk up to Tien: his last stand (flag 345 clear)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 6,
+   "template": [
+    4,
+    1
+   ],
+   "_note": "Yamcha's stand (scene): Yamcha, Krillin, Piccolo, Gohan, Eighteen.",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch8_yamcha",
+     "fn2": "0x080077DF",
+     "when": "call 28 346",
+     "_note": "arrival"
+    }
+   ],
+   "spawns": [
+    {
+     "actor_id": 293,
+     "x": 424,
+     "y": 404,
+     "face": "down"
+    },
+    {
+     "actor_id": 157,
+     "x": 452,
+     "y": 380,
+     "face": "down"
+    },
+    {
+     "actor_id": 213,
+     "x": 396,
+     "y": 380,
+     "face": "down"
+    },
+    {
+     "actor": "gohan_bf",
+     "x": 440,
+     "y": 368,
+     "face": "down"
+    },
+    {
+     "actor": "player_18",
+     "x": 400,
+     "y": 476,
+     "face": "up"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 7,
+   "template": [
+    15,
+    10
+   ],
+   "_note": "Arena: Krillin (enemy row 18, character 166), fought as Eighteen. No twin NPC: Piccolo's big frames plus another character overflowed OBJ VRAM (he never appeared).",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "enemies": [
+    {
+     "type": 18,
+     "character": 166,
+     "x": 420,
+     "y": 350,
+     "condition": 131419
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch8_krillin",
+     "fn2": "0x080077DF",
+     "when": "call 28 347",
+     "_note": "arrival"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 8,
+   "template": [
+    4,
+    1
+   ],
+   "_note": "After Krillin: Piccolo and Gohan; Seventeen beside Eighteen.",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "spawns": [
+    {
+     "actor_id": 213,
+     "x": 396,
+     "y": 404,
+     "face": "down"
+    },
+    {
+     "actor": "gohan_bf",
+     "x": 440,
+     "y": 382,
+     "face": "down"
+    },
+    {
+     "actor": "player_17",
+     "x": 400,
+     "y": 476,
+     "face": "up"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch8_after_krillin",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 351 itself)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 9,
+   "template": [
+    15,
+    10
+   ],
+   "_note": "Arena: Piccolo (enemy row 26, character 222), fought as Seventeen. No twin NPC: Piccolo's big frames plus another character overflowed OBJ VRAM (he never appeared).",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "enemies": [
+    {
+     "type": 136,
+     "character": 222,
+     "x": 420,
+     "y": 350,
+     "condition": 131420
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch8_piccolo",
+     "fn2": "0x080077DF",
+     "when": "call 28 348",
+     "_note": "arrival"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 10,
+   "template": [
+    4,
+    1
+   ],
+   "_note": "After Piccolo: Gohan runs.",
+   "map_from": [
+    4,
+    1
+   ],
+   "palette_act": "act3",
+   "name": 595,
+   "spawns": [
+    {
+     "actor": "gohan_bf",
+     "x": 440,
+     "y": 382,
+     "face": "down"
+    },
+    {
+     "actor": "player_18",
+     "x": 400,
+     "y": 476,
+     "face": "up"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch8_run",
+     "fn2": "0x080077DF",
+     "when": "call 28 349",
+     "_note": "arrival"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 11,
+   "map_from": [
+    4,
+    20
+   ],
+   "template": [
+    4,
+    20
+   ],
+   "name": 532,
+   "_note": "Capsule Corporation, Age 768 (chapter 9): Bulma and baby Trunks hide in the dome house.",
+   "spawns": [
+    {
+     "actor_id": 32,
+     "x": 360,
+     "y": 236,
+     "face": "down",
+     "talk": "ch9_bulma"
+    },
+    {
+     "actor": "player_18",
+     "x": 264,
+     "y": 336,
+     "face": "up"
+    }
+   ],
+   "palette_act": "act3"
+  },
+  {
+   "world": 17,
+   "area": 12,
+   "map_from": [
+    1,
+    72
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "_note": "Gero's Act 1 bunker, Age 768: the computer calls the twins home.",
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      17,
+      13,
+      240,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "lab door -> tank room"
+    },
+    {
+     "rect": [
+      80,
+      176,
+      144,
+      232
+     ],
+     "event": "ch9_bunker",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 362 itself)"
+    },
+    {
+     "rect": [
+      200,
+      300,
+      232,
+      336
+     ],
+     "warp": [
+      17,
+      37,
+      24,
+      296
+     ],
+     "dir": "down",
+     "face": "right",
+     "_note": "bunker south corridor -> Mountain Pass (chapter 9)"
+    },
+    {
+     "rect": [
+      192,
+      232,
+      248,
+      296
+     ],
+     "event": "ch9_bunker",
+     "fn2": "0x080077DF",
+     "when": "hex 01 85 54 02 1c 11",
+     "_note": "the computer greets them at the south corridor too (the list checks 362)"
+    }
+   ],
+   "palette_act": "act3"
+  },
+  {
+   "world": 17,
+   "area": 13,
+   "map_from": [
+    1,
+    74
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "_note": "Bunker tank room: Android 16's empty pod.",
+   "doors": [
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      17,
+      12,
+      88,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "door -> bunker main lab"
+    },
+    {
+     "rect": [
+      120,
+      304,
+      152,
+      340
+     ],
+     "warp": [
+      17,
+      14,
+      208,
+      312
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "south corridor -> incubator (Super 13)"
+    },
+    {
+     "rect": [
+      128,
+      220,
+      176,
+      256
+     ],
+     "event": "ch9_pod16",
+     "examine": "up",
+     "_note": "Android 16's empty pod"
+    }
+   ],
+   "palette_act": "act3"
+  },
+  {
+   "world": 17,
+   "area": 14,
+   "map_from": [
+    1,
+    76
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "_note": "Bunker incubator: Super 13 (stats row 21, character 316). Nothing else in the room (big sprite, OBJ VRAM).",
+   "enemies": [
+    {
+     "type": 21,
+     "actor": "super13",
+     "x": 232,
+     "y": 256,
+     "condition": "hex 01 85 5e 02 1b 01 85 56 02 1c 04 11",
+     "_note": "Super 13: only after his speech (367 set: the arrival scene sets it and reloads the room) and until destroyed (363)"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      176,
+      280,
+      240,
+      330
+     ],
+     "event": "ch9_thirteen",
+     "fn2": "0x080077DF",
+     "when": "call 28 367",
+     "_note": "arrival: Super 13 speaks"
+    }
+   ],
+   "palette_act": "act3"
+  },
+  {
+   "world": 17,
+   "area": 15,
+   "map_from": [
+    1,
+    76
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "_note": "Incubator after Super 13: the computer is switched off, then years pass.",
+   "doors": [
+    {
+     "rect": [
+      176,
+      280,
+      240,
+      330
+     ],
+     "event": "ch9_after13",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 365 itself)"
+    }
+   ],
+   "palette_act": "act3"
+  },
+  {
+   "world": 17,
+   "area": 16,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    15,
+    10
+   ],
+   "name": 595,
+   "_note": "West City ruins, Age 774: Future Gohan with both arms (actor gohan_774 = LoG2 record 153, row 22).",
+   "enemies": [
+    {
+     "type": 22,
+     "actor": "gohan_774",
+     "x": 420,
+     "y": 350,
+     "condition": 131436
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch9_gohan",
+     "fn2": "0x080077DF",
+     "when": "call 28 364",
+     "_note": "arrival"
+    }
+   ],
+   "palette_act": "act3"
+  },
+  {
+   "world": 17,
+   "area": 17,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "name": 595,
+   "_note": "After Gohan: end of chapter 9.",
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch9_end",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 366 itself)"
+    }
+   ],
+   "palette_act": "act3"
+  },
+  {
+   "world": 17,
+   "area": 18,
+   "map_from": [
+    4,
+    20
+   ],
+   "template": [
+    4,
+    20
+   ],
+   "name": 532,
+   "palette_act": "act3",
+   "_note": "Capsule Corporation, Age 772: the twins' base (chapter 9 hub). Airship -> Mt. Paozu, hangar door -> Roshi's island, gate -> West City (Gohan).",
+   "spawns": [
+    {
+     "actor": "player_18",
+     "x": 256,
+     "y": 204,
+     "face": "left",
+     "talk": "ch9_hub18"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      208,
+      128,
+      272,
+      176
+     ],
+     "event": "ch9_hub",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 368 itself)"
+    },
+    {
+     "rect": [
+      192,
+      176,
+      236,
+      264
+     ],
+     "event": "fly_hub",
+     "examine": "left",
+     "_note": "Bulma's airship -> world map"
+    },
+    {
+     "rect": [
+      208,
+      92,
+      256,
+      124
+     ],
+     "event": "fly_hub_jet",
+     "examine": "up",
+     "_note": "the hangar jets -> world map"
+    },
+    {
+     "rect": [
+      208,
+      296,
+      272,
+      328
+     ],
+     "event": "ch9_to_gohan",
+     "fn2": "0x080077DF",
+     "when": "call 28 364",
+     "_note": "the gate: on to West City and Gohan"
+    },
+    {
+     "rect": [
+      0,
+      368,
+      16,
+      432
+     ],
+     "event": "fly_hub",
+     "fn2": "0x080077DF",
+     "_world": 1,
+     "_note": "Bulma's airship -> world map"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 19,
+   "map_from": [
+    2,
+    3
+   ],
+   "template": [
+    2,
+    3
+   ],
+   "name": 549,
+   "palette_act": "act3",
+   "_note": "Goku's house on Mt. Paozu: Chi-Chi (BF actor 57), optional.",
+   "spawns": [
+    {
+     "actor_id": 57,
+     "x": 176,
+     "y": 112,
+     "face": "down"
+    },
+    {
+     "x": 208,
+     "y": 104,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_paozu",
+     "_world": 1
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      96,
+      100,
+      128,
+      140
+     ],
+     "event": "ch9_paozu",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 370 itself)"
+    },
+    {
+     "rect": [
+      32,
+      88,
+      72,
+      120
+     ],
+     "event": "paozu_ball",
+     "examine": "up",
+     "_world": 1,
+     "_note": "the little shrine by the window: Grandpa Gohan's four-star ball (427)"
+    },
+    {
+     "rect": [
+      96,
+      140,
+      128,
+      160
+     ],
+     "event": "fly_paozu",
+     "fn2": "0x080077DF",
+     "_world": 1,
+     "_note": "the front door: out and up (take-off; the doorway is the only way out)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 20,
+   "map_log2": "0x510e70",
+   "template": [
+    15,
+    10
+   ],
+   "name": 581,
+   "palette_act": "act3",
+   "_note": "Roshi's island (LoG2 11:4): Kame House in ruins, Roshi (BF actor 177) on the sand, optional.",
+   "spawns": [
+    {
+     "actor_id": 177,
+     "x": 380,
+     "y": 240,
+     "face": "down"
+    },
+    {
+     "x": 420,
+     "y": 300,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_kame",
+     "_world": 1
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      352,
+      280,
+      408,
+      320
+     ],
+     "event": "ch9_kame",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 371 itself)"
+    },
+    {
+     "rect": [
+      300,
+      180,
+      356,
+      212
+     ],
+     "event": "kame_ball",
+     "examine": "up",
+     "_world": 1,
+     "_note": "the wreck of Kame House (428)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 21,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "West City ruins in the rain, Age 780 (chapter 10): Gohan's speech (arrival).",
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch10_rain",
+     "fn2": "0x080077DF",
+     "when": "call 28 381",
+     "_note": "arrival"
+    },
+    {
+     "rect": [
+      0,
+      312,
+      30,
+      424
+     ],
+     "warp": [
+      17,
+      40,
+      424,
+      140
+     ],
+     "dir": "left",
+     "face": "left",
+     "_note": "West City ruins (780) -> Circus Lot ruins (780)",
+     "_gen10": 1
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "future_gohan",
+     "x": 424,
+     "y": 400,
+     "face": "down"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 22,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    15,
+    10
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "Arena: one-armed Future Gohan (row 23, actor future_gohan).",
+   "enemies": [
+    {
+     "type": 23,
+     "actor": "future_gohan",
+     "x": 420,
+     "y": 350,
+     "condition": 131455
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 23,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "After Gohan: the rain; five years pass.",
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch10_after",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 384 itself)"
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "gohan_fallen",
+     "x": 376,
+     "y": 420,
+     "face": "down"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 24,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "Age 785: Future Trunks returns. The end of Act 3.",
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "ch10_finale",
+     "fn2": "0x080077DF",
+     "_note": "arrival (the list checks flag 385 itself)"
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "trunks_future",
+     "x": 424,
+     "y": 400,
+     "face": "down"
+    }
+   ]
+  },
+  {
+   "world": 16,
+   "area": 2,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "palette_act": "act2",
+   "night": true,
+   "name": 595,
+   "_note": "West City that night (chapter 8 ending), the twins on the Z-Mart roof (scene only)."
+  },
+  {
+   "world": 17,
+   "area": 25,
+   "map_from": [
+    1,
+    63
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act3",
+   "_note": "Secret chapter: the incubator room under Gero's bunker, Age 788. Cell wakes (arrival, flag 391).",
+   "doors": [
+    {
+     "rect": [
+      176,
+      300,
+      232,
+      368
+     ],
+     "warp": [
+      17,
+      26,
+      128,
+      296
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "door -> tank room"
+    },
+    {
+     "rect": [
+      176,
+      280,
+      240,
+      330
+     ],
+     "event": "fs_wake",
+     "fn2": "0x080077DF",
+     "when": "call 28 391",
+     "_note": "arrival: Cell wakes"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 26,
+   "map_from": [
+    1,
+    62
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act3",
+   "_note": "Secret chapter: bunker tank room. Android 16's empty pod.",
+   "doors": [
+    {
+     "rect": [
+      217,
+      129,
+      264,
+      176
+     ],
+     "warp": [
+      17,
+      27,
+      88,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "door -> main lab"
+    },
+    {
+     "rect": [
+      120,
+      304,
+      152,
+      340
+     ],
+     "warp": [
+      17,
+      25,
+      208,
+      312
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "south corridor -> incubator"
+    },
+    {
+     "rect": [
+      128,
+      220,
+      176,
+      256
+     ],
+     "event": "fs_pod16",
+     "examine": "up",
+     "_note": "Android 16's empty pod"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 27,
+   "map_from": [
+    1,
+    1
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act3",
+   "_note": "Secret chapter: bunker main lab. Gero's recording on the computer (flag 392); the south corridor leads out.",
+   "doors": [
+    {
+     "rect": [
+      57,
+      121,
+      104,
+      176
+     ],
+     "warp": [
+      17,
+      26,
+      240,
+      184
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "lab door -> tank room"
+    },
+    {
+     "rect": [
+      192,
+      240,
+      248,
+      280
+     ],
+     "event": "fs_computer",
+     "examine": "up",
+     "_note": "the computer"
+    },
+    {
+     "rect": [
+      196,
+      286,
+      236,
+      336
+     ],
+     "event": "fs_leave",
+     "fn2": "0x080077DF",
+     "_note": "south corridor: out (needs 392)"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 17,
+     "character": 72,
+     "x": 250,
+     "y": 190,
+     "_note": "Cyborg (BF row 17): the bunker's last guard"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 28,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "Secret chapter: West City ruins, Age 788. Trunks by his time machine (arrival scene, flag 395).",
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "fs_trunks",
+     "fn2": "0x080077DF",
+     "when": "call 28 395",
+     "_note": "arrival"
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "trunks_future",
+     "x": 424,
+     "y": 400,
+     "face": "down"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 29,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    15,
+    10
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "Secret chapter arena: Super Saiyan Trunks (row 24, actor trunks_788).",
+   "enemies": [
+    {
+     "type": 24,
+     "actor": "trunks_788",
+     "x": 420,
+     "y": 350,
+     "condition": 131465
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 30,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "Secret chapter: after Trunks. Cell takes the time machine (arrival, flag 394).",
+   "doors": [
+    {
+     "rect": [
+      392,
+      420,
+      456,
+      470
+     ],
+     "event": "fs_after",
+     "fn2": "0x080077DF",
+     "when": "call 28 394",
+     "_note": "arrival"
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "trunks_fallen",
+     "x": 376,
+     "y": 420,
+     "face": "down"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 31,
+   "map_log2": "0x52064c",
+   "template": [
+    1,
+    1
+   ],
+   "name": 596,
+   "palette_act": "act3",
+   "_note": "Secret chapter: a clearing outside Gingertown, Age 763 (LoG2 10:16, the dug-up patch in the middle). The larva arrives (flag 396) and burrows (walk onto the patch).",
+   "doors": [
+    {
+     "rect": [
+      104,
+      196,
+      152,
+      244
+     ],
+     "event": "fs_763",
+     "fn2": "0x080077DF",
+     "when": "call 28 396",
+     "_note": "arrival"
+    },
+    {
+     "rect": [
+      104,
+      104,
+      152,
+      160
+     ],
+     "event": "fs_burrow",
+     "fn2": "0x080077DF",
+     "_note": "the dug-up patch (solid: the larva stops at its lower edge, so the rect reaches below it)"
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "time_machine_fx",
+     "x": 80,
+     "y": 200,
+     "face": "down",
+     "no_check": true
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 32,
+   "map_from": [
+    4,
+    1
+   ],
+   "template": [
+    4,
+    1
+   ],
+   "name": 595,
+   "palette_act": "act3",
+   "_note": "Epilogue backdrop: West City, Age 788. Trunks in front of the Z-Mart; loaded with native 115 so the camera looks at him and the player (still at the 17:24 arrival point) stays off screen.",
+   "spawns": [
+    {
+     "actor": "trunks_future",
+     "x": 300,
+     "y": 312,
+     "face": "down"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 33,
+   "map_log2": "0x523f10",
+   "template": [
+    1,
+    1
+   ],
+   "name": 596,
+   "palette_act": "act3",
+   "_note": "Secret chapter backdrop: outside Gingertown (LoG2 10:10), loaded with native 115 for the closing narration (the larva stays off screen at its 17:31 position)."
+  },
+  {
+   "world": 1,
+   "area": 90,
+   "template": [
+    20,
+    7
+   ],
+   "name": 526,
+   "palette_act": "act1",
+   "_note": "Chapter 1 proving ground: Range Gate (generated by log4/gen_ch1.py)",
+   "doors": [
+    {
+     "rect": [
+      96,
+      0,
+      128,
+      48
+     ],
+     "warp": [
+      1,
+      91,
+      96,
+      380
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "Range Gate -> Canyon Road"
+    },
+    {
+     "rect": [
+      372,
+      152,
+      400,
+      192
+     ],
+     "warp": [
+      1,
+      94,
+      24,
+      296
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "Range Gate -> The Pit"
+    },
+    {
+     "rect": [
+      80,
+      196,
+      176,
+      240
+     ],
+     "warp": [
+      1,
+      85,
+      144,
+      190
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "Range Gate -> Fuel Depot"
+    },
+    {
+     "rect": [
+      142,
+      100,
+      206,
+      164
+     ],
+     "event": "ch1_brief",
+     "_note": "briefing on the first arrival (flag 352 clear)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 85 40 02 1c 11"
+    }
+   ],
+   "map_from": [
+    20,
+    6
+   ],
+   "spawns": [
+    {
+     "actor_id": 25,
+     "x": 210,
+     "y": 120,
+     "face": "down",
+     "talk": "range_sergeant",
+     "_note": "range sergeant (BF Bomber actor 25 = green-helmet soldier)"
+    }
+   ],
+   "exits_from": [
+    [
+     20,
+     6,
+     1
+    ]
+   ],
+   "solid": [
+    [
+     96,
+     0,
+     128,
+     32
+    ],
+    [
+     80,
+     216,
+     176,
+     240
+    ]
+   ]
+  },
+  {
+   "world": 1,
+   "area": 91,
+   "template": [
+    20,
+    7
+   ],
+   "name": 526,
+   "palette_act": "act1",
+   "_note": "Chapter 1 proving ground: Canyon Road (generated by log4/gen_ch1.py)",
+   "doors": [
+    {
+     "rect": [
+      56,
+      452,
+      96,
+      480
+     ],
+     "warp": [
+      1,
+      90,
+      104,
+      64
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "Canyon Road -> Range Gate"
+    },
+    {
+     "rect": [
+      48,
+      0,
+      256,
+      48
+     ],
+     "warp": [
+      1,
+      92,
+      180,
+      408
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "Canyon Road -> Target Field"
+    }
+   ],
+   "map_from": [
+    20,
+    2
+   ],
+   "enemies": [
+    {
+     "type": 44,
+     "x": 130,
+     "y": 300
+    },
+    {
+     "type": 44,
+     "x": 170,
+     "y": 200
+    }
+   ],
+   "solid": [
+    [
+     48,
+     0,
+     256,
+     32
+    ]
+   ]
+  },
+  {
+   "world": 1,
+   "area": 92,
+   "template": [
+    20,
+    7
+   ],
+   "name": 526,
+   "palette_act": "act1",
+   "_note": "Chapter 1 proving ground: Target Field (generated by log4/gen_ch1.py)",
+   "doors": [
+    {
+     "rect": [
+      168,
+      452,
+      208,
+      480
+     ],
+     "warp": [
+      1,
+      91,
+      128,
+      64
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "Target Field -> Canyon Road"
+    }
+   ],
+   "map_from": [
+    20,
+    7
+   ],
+   "enemies": [
+    {
+     "type": 64,
+     "x": 396,
+     "y": 124
+    },
+    {
+     "type": 64,
+     "x": 142,
+     "y": 108
+    },
+    {
+     "type": 75,
+     "x": 242,
+     "y": 198
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "drone_l2",
+     "x": 252,
+     "y": 250,
+     "face": "down",
+     "talk": "site_a",
+     "_note": "target site sensor drone"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 93,
+   "template": [
+    20,
+    7
+   ],
+   "name": 526,
+   "palette_act": "act1",
+   "_note": "Chapter 1 proving ground: Bone Flats (generated by log4/gen_ch1.py)",
+   "doors": [
+    {
+     "rect": [
+      176,
+      452,
+      248,
+      480
+     ],
+     "warp": [
+      1,
+      94,
+      376,
+      64
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "Bone Flats -> The Pit"
+    },
+    {
+     "rect": [
+      0,
+      216,
+      12,
+      248
+     ],
+     "warp": [
+      1,
+      84,
+      248,
+      316
+     ],
+     "dir": "left",
+     "face": "left",
+     "_note": "Bone Flats -> Live-Fire Arena (all three target sites recorded)",
+     "when": "hex 01 85 42 02 1b 01 85 44 02 1b 04 01 85 46 02 1b 04 11"
+    },
+    {
+     "rect": [
+      0,
+      208,
+      28,
+      256
+     ],
+     "examine": "left",
+     "event": "arena_locked",
+     "when": "hex 01 85 42 02 1b 01 85 44 02 1b 04 01 85 46 02 1b 04 00 00 0b 11",
+     "_note": "the arena gate before all three sites report"
+    }
+   ],
+   "map_from": [
+    20,
+    5
+   ],
+   "enemies": [
+    {
+     "type": 8,
+     "x": 88,
+     "y": 332
+    },
+    {
+     "type": 44,
+     "x": 292,
+     "y": 128
+    },
+    {
+     "type": 44,
+     "x": 150,
+     "y": 150
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "drone_l2",
+     "x": 236,
+     "y": 170,
+     "face": "down",
+     "talk": "site_c",
+     "_note": "target site sensor drone"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 94,
+   "template": [
+    20,
+    7
+   ],
+   "name": 526,
+   "palette_act": "act1",
+   "_note": "Chapter 1 proving ground: The Pit (generated by log4/gen_ch1.py)",
+   "doors": [
+    {
+     "rect": [
+      0,
+      288,
+      12,
+      320
+     ],
+     "warp": [
+      1,
+      90,
+      344,
+      164
+     ],
+     "dir": "left",
+     "face": "left",
+     "_note": "The Pit -> Range Gate"
+    },
+    {
+     "rect": [
+      352,
+      0,
+      424,
+      48
+     ],
+     "warp": [
+      1,
+      93,
+      204,
+      408
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "The Pit -> Bone Flats"
+    },
+    {
+     "rect": [
+      40,
+      280,
+      80,
+      330
+     ],
+     "event": "crate_pit",
+     "_note": "a dented supply drum (items, flag 373)",
+     "examine": "left"
+    }
+   ],
+   "map_from": [
+    20,
+    4
+   ],
+   "enemies": [
+    {
+     "type": 8,
+     "x": 214,
+     "y": 276
+    },
+    {
+     "type": 44,
+     "x": 232,
+     "y": 288
+    }
+   ],
+   "keep_regions": [],
+   "solid": [
+    [
+     352,
+     0,
+     424,
+     24
+    ]
+   ]
+  },
+  {
+   "world": 1,
+   "area": 84,
+   "template": [
+    20,
+    7
+   ],
+   "name": 526,
+   "palette_act": "act1",
+   "_note": "Chapter 1 proving ground: Live-Fire Arena (generated by log4/gen_ch1.py)",
+   "doors": [
+    {
+     "rect": [
+      276,
+      272,
+      304,
+      376
+     ],
+     "warp": [
+      1,
+      93,
+      24,
+      224
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "Live-Fire Arena -> Bone Flats"
+    },
+    {
+     "rect": [
+      218,
+      286,
+      288,
+      356
+     ],
+     "event": "ch1_arena",
+     "_note": "arena arrival (flag 357 clear)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 85 4a 02 1c 11"
+    }
+   ],
+   "map_log2": "0x66750c",
+   "enemies": [
+    {
+     "type": 127,
+     "x": 120,
+     "y": 324,
+     "character": 259,
+     "condition": 131428,
+     "_note": "the heavy tank (row 127): until destroyed (356)"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 85,
+   "template": [
+    20,
+    7
+   ],
+   "name": 526,
+   "palette_act": "act1",
+   "_note": "Chapter 1 proving ground: Fuel Depot (generated by log4/gen_ch1.py)",
+   "doors": [
+    {
+     "rect": [
+      112,
+      202,
+      176,
+      230
+     ],
+     "warp": [
+      1,
+      90,
+      176,
+      140
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "Fuel Depot -> Range Gate"
+    },
+    {
+     "rect": [
+      60,
+      168,
+      100,
+      198
+     ],
+     "event": "crate_depot",
+     "_note": "fuel drums with a supply box (items, flag 372)",
+     "examine": "up"
+    }
+   ],
+   "map_log2": "0x66ac9c",
+   "enemies": [
+    {
+     "type": 64,
+     "x": 236,
+     "y": 132
+    },
+    {
+     "type": 75,
+     "x": 86,
+     "y": 190
+    }
+   ],
+   "spawns": [
+    {
+     "actor": "drone_l2",
+     "x": 196,
+     "y": 182,
+     "face": "down",
+     "talk": "site_b",
+     "_note": "target site sensor drone"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 111,
+   "map_from": [
+    4,
+    31
+   ],
+   "template": [
+    15,
+    10
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Chapter 7: Security Wing (generated by log4/gen_ch7.py)",
+   "doors": [
+    {
+     "rect": [
+      420,
+      96,
+      448,
+      120
+     ],
+     "warp": [
+      1,
+      112,
+      172,
+      96
+     ],
+     "dir": "right",
+     "face": "left",
+     "_note": "Security Wing -> Control Room",
+     "cover_ok": true
+    },
+    {
+     "rect": [
+      0,
+      336,
+      30,
+      352
+     ],
+     "warp": [
+      1,
+      81,
+      264,
+      264
+     ],
+     "dir": "left",
+     "face": "up",
+     "cover_ok": true,
+     "_note": "Security Wing -> pod room"
+    },
+    {
+     "rect": [
+      24,
+      312,
+      80,
+      376
+     ],
+     "event": "ch7_alarm",
+     "_note": "the lockdown alarm (338)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 85 24 02 1c 11"
+    },
+    {
+     "rect": [
+      64,
+      96,
+      96,
+      120
+     ],
+     "event": "ch7_locker",
+     "_note": "Gero's workbench (329)",
+     "examine": "up"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 48,
+     "x": 120,
+     "y": 180
+    },
+    {
+     "type": 48,
+     "x": 300,
+     "y": 200
+    },
+    {
+     "type": 48,
+     "x": 200,
+     "y": 330
+    },
+    {
+     "type": 64,
+     "x": 380,
+     "y": 110
+    },
+    {
+     "type": 64,
+     "x": 380,
+     "y": 400
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 112,
+   "map_from": [
+    4,
+    22
+   ],
+   "template": [
+    15,
+    10
+   ],
+   "name": 531,
+   "palette_act": "act1",
+   "_note": "Chapter 7: Control Room (generated by log4/gen_ch7.py)",
+   "doors": [
+    {
+     "rect": [
+      196,
+      96,
+      224,
+      112
+     ],
+     "warp": [
+      1,
+      111,
+      392,
+      100
+     ],
+     "dir": "right",
+     "face": "left",
+     "_note": "Control Room -> Security Wing"
+    },
+    {
+     "rect": [
+      96,
+      112,
+      140,
+      132
+     ],
+     "event": "ch7_console",
+     "_note": "the security console (needs 339)",
+     "examine": "up"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 20,
+     "x": 120,
+     "y": 160,
+     "character": 78,
+     "condition": 131411,
+     "_note": "Security Unit (row 20, BF Destroyer): until destroyed (339)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 40,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1701,
+   "palette_act": "act3",
+   "map_from": [
+    3,
+    14
+   ],
+   "_note": "Chapter 10: Circus Lot ruins (780) (generated by log4/gen_ch10.py)",
+   "doors": [
+    {
+     "rect": [
+      452,
+      112,
+      480,
+      184
+     ],
+     "warp": [
+      17,
+      21,
+      40,
+      360
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "Circus Lot ruins (780) -> West City ruins (780)"
+    },
+    {
+     "rect": [
+      40,
+      40,
+      72,
+      72
+     ],
+     "event": "ch10_cache",
+     "_note": "a wrecked food stall (403)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      16,
+      0,
+      128,
+      16
+     ],
+     "event": "fly_west",
+     "fn2": "0x080077DF",
+     "_world": 1,
+     "_note": "map edge: take off"
+    },
+    {
+     "rect": [
+      352,
+      0,
+      464,
+      16
+     ],
+     "event": "fly_west",
+     "fn2": "0x080077DF",
+     "_world": 1,
+     "_note": "map edge: take off"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 62,
+     "x": 120,
+     "y": 40
+    },
+    {
+     "type": 64,
+     "x": 250,
+     "y": 140
+    },
+    {
+     "type": 94,
+     "x": 330,
+     "y": 60
+    },
+    {
+     "type": 62,
+     "x": 420,
+     "y": 60
+    },
+    {
+     "type": 64,
+     "x": 60,
+     "y": 60
+    }
+   ],
+   "spawns": [
+    {
+     "x": 272,
+     "y": 140,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_west",
+     "_world": 1
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 41,
+   "template": [
+    15,
+    10
+   ],
+   "name": 531,
+   "palette_act": "act3",
+   "map_from": [
+    4,
+    31
+   ],
+   "_note": "Secret chapter: Security Wing, Age 788 (generated by log4/gen_secret.py)",
+   "doors": [
+    {
+     "rect": [
+      420,
+      96,
+      448,
+      120
+     ],
+     "event": "fs_out",
+     "_note": "the hangar door: out into the world (17:28)",
+     "fn2": "0x080077DF"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 17,
+     "x": 120,
+     "y": 180
+    },
+    {
+     "type": 17,
+     "x": 300,
+     "y": 200
+    },
+    {
+     "type": 17,
+     "x": 200,
+     "y": 330
+    },
+    {
+     "type": 17,
+     "x": 368,
+     "y": 148
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 103,
+   "map_from": [
+    12,
+    5
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 1700,
+   "palette_act": "act1",
+   "_note": "Chapter 3: Munitions Line A (generated by log4/gen_ch3.py)",
+   "doors": [
+    {
+     "rect": [
+      372,
+      104,
+      496,
+      136
+     ],
+     "warp": [
+      1,
+      104,
+      24,
+      112
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "Munitions Line A -> Munitions Line B"
+    },
+    {
+     "rect": [
+      0,
+      104,
+      14,
+      136
+     ],
+     "warp": [
+      1,
+      69,
+      216,
+      280
+     ],
+     "dir": "left",
+     "face": "up",
+     "_note": "Line A -> lab"
+    },
+    {
+     "rect": [
+      16,
+      96,
+      64,
+      140
+     ],
+     "event": "ch3_factory",
+     "_note": "first arrival (283)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 84 36 02 1c 11"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 15,
+     "x": 180,
+     "y": 112
+    },
+    {
+     "type": 44,
+     "x": 300,
+     "y": 112
+    }
+   ],
+   "clipcheck_periodic": true
+  },
+  {
+   "world": 1,
+   "area": 104,
+   "map_from": [
+    12,
+    9
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 1700,
+   "palette_act": "act1",
+   "_note": "Chapter 3: Munitions Line B (generated by log4/gen_ch3.py)",
+   "doors": [
+    {
+     "rect": [
+      0,
+      104,
+      14,
+      136
+     ],
+     "warp": [
+      1,
+      103,
+      344,
+      112
+     ],
+     "dir": "left",
+     "face": "left",
+     "_note": "Munitions Line B -> Munitions Line A"
+    },
+    {
+     "rect": [
+      372,
+      104,
+      496,
+      136
+     ],
+     "warp": [
+      1,
+      105,
+      32,
+      112
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "Munitions Line B -> Munitions Line C"
+    },
+    {
+     "rect": [
+      190,
+      96,
+      230,
+      108
+     ],
+     "event": "cache_belt",
+     "_note": "a parts bin by the press (286)",
+     "examine": "up"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 15,
+     "x": 120,
+     "y": 112
+    },
+    {
+     "type": 75,
+     "x": 240,
+     "y": 112
+    },
+    {
+     "type": 15,
+     "x": 340,
+     "y": 112
+    }
+   ],
+   "clipcheck_periodic": true
+  },
+  {
+   "world": 1,
+   "area": 105,
+   "map_from": [
+    12,
+    15
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 1700,
+   "palette_act": "act1",
+   "_note": "Chapter 3: Munitions Line C (generated by log4/gen_ch3.py)",
+   "doors": [
+    {
+     "rect": [
+      0,
+      104,
+      22,
+      136
+     ],
+     "warp": [
+      1,
+      104,
+      344,
+      112
+     ],
+     "dir": "left",
+     "face": "left",
+     "_note": "Munitions Line C -> Munitions Line B"
+    },
+    {
+     "rect": [
+      24,
+      132,
+      56,
+      160
+     ],
+     "warp": [
+      1,
+      106,
+      196,
+      128
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "Munitions Line C -> Archive Vault"
+    },
+    {
+     "rect": [
+      370,
+      96,
+      400,
+      140
+     ],
+     "event": "cache_line",
+     "_note": "a crate of field rations at the end of Line C (288)",
+     "examine": "right"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 44,
+     "x": 160,
+     "y": 112
+    },
+    {
+     "type": 47,
+     "x": 280,
+     "y": 112,
+     "character": 141,
+     "condition": 131356,
+     "_note": "looters' captain (row 47 Hooligan): drops the vault keycard (284)"
+    }
+   ],
+   "clipcheck_periodic": true
+  },
+  {
+   "world": 1,
+   "area": 106,
+   "map_from": [
+    12,
+    12
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 1700,
+   "palette_act": "act1",
+   "_note": "Chapter 3: Archive Vault (generated by log4/gen_ch3.py)",
+   "doors": [
+    {
+     "rect": [
+      192,
+      132,
+      216,
+      168
+     ],
+     "warp": [
+      1,
+      105,
+      16,
+      124
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "Archive Vault -> Munitions Line C"
+    },
+    {
+     "rect": [
+      104,
+      92,
+      136,
+      112
+     ],
+     "warp": [
+      1,
+      107,
+      164,
+      104
+     ],
+     "dir": "up",
+     "face": "up",
+     "when": "hex 01 84 38 02 1b 11",
+     "_note": "vault door -> archive (keycard: flag 284)"
+    },
+    {
+     "rect": [
+      82,
+      100,
+      142,
+      150
+     ],
+     "event": "ch3_vault",
+     "_note": "vault first arrival (287)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 84 3e 02 1c 11"
+    },
+    {
+     "rect": [
+      104,
+      92,
+      136,
+      116
+     ],
+     "event": "vault_locked",
+     "_note": "locked vault door",
+     "examine": "up",
+     "when": "hex 01 84 38 02 1c 11"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 107,
+   "map_from": [
+    4,
+    22
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 1700,
+   "palette_act": "act1",
+   "_note": "Chapter 3: Army Archive (generated by log4/gen_ch3.py)",
+   "doors": [
+    {
+     "rect": [
+      196,
+      96,
+      224,
+      112
+     ],
+     "warp": [
+      1,
+      106,
+      112,
+      120
+     ],
+     "dir": "right",
+     "face": "down",
+     "cover_ok": true,
+     "_note": "archive panel door (east wall, as 1:112) -> vault. Was the bottom wall: no visible door (user 2026-11-02: no hidden exits)"
+    },
+    {
+     "rect": [
+      96,
+      112,
+      140,
+      132
+     ],
+     "event": "ch3_archive",
+     "_note": "the archive console",
+     "examine": "up"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 44,
+     "x": 160,
+     "y": 140
+    }
+   ]
+  },
+  {
+   "world": 4,
+   "area": 40,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1701,
+   "palette_act": "act2",
+   "_note": "Chapter 5: Circus Lot (generated by log4/gen_ch5.py)",
+   "doors": [
+    {
+     "rect": [
+      452,
+      112,
+      480,
+      184
+     ],
+     "warp": [
+      4,
+      1,
+      48,
+      320
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "Circus Lot -> West City"
+    }
+   ],
+   "map_from": [
+    3,
+    14
+   ],
+   "spawns": [
+    {
+     "x": 360,
+     "y": 40,
+     "actor_id": 172,
+     "face": "down",
+     "talk": "ch5_vendor",
+     "_note": "street vendor"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 97,
+     "x": 120,
+     "y": 40
+    },
+    {
+     "type": 97,
+     "x": 250,
+     "y": 140
+    },
+    {
+     "type": 36,
+     "x": 420,
+     "y": 60
+    }
+   ]
+  },
+  {
+   "world": 4,
+   "area": 41,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1702,
+   "palette_act": "act2",
+   "_note": "Chapter 5: Riverside (generated by log4/gen_ch5.py)",
+   "doors": [
+    {
+     "rect": [
+      224,
+      0,
+      288,
+      48
+     ],
+     "warp": [
+      4,
+      1,
+      412,
+      640
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "Riverside -> West City"
+    },
+    {
+     "rect": [
+      452,
+      176,
+      480,
+      272
+     ],
+     "warp": [
+      4,
+      42,
+      248,
+      408
+     ],
+     "dir": "right",
+     "face": "up",
+     "_note": "Riverside -> Docks"
+    },
+    {
+     "rect": [
+      40,
+      120,
+      72,
+      152
+     ],
+     "event": "cache_river",
+     "_note": "a boat under the trees (297)",
+     "examine": "left"
+    }
+   ],
+   "map_from": [
+    2,
+    9
+   ],
+   "enemies": [
+    {
+     "type": 97,
+     "x": 200,
+     "y": 160
+    },
+    {
+     "type": 97,
+     "x": 320,
+     "y": 220
+    },
+    {
+     "type": 36,
+     "x": 120,
+     "y": 220
+    }
+   ],
+   "solid": [
+    [
+     224,
+     0,
+     288,
+     32
+    ]
+   ]
+  },
+  {
+   "world": 4,
+   "area": 42,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1703,
+   "palette_act": "act2",
+   "_note": "Chapter 5: Docks (generated by log4/gen_ch5.py)",
+   "doors": [
+    {
+     "rect": [
+      232,
+      452,
+      280,
+      480
+     ],
+     "warp": [
+      4,
+      41,
+      424,
+      216
+     ],
+     "dir": "down",
+     "face": "left",
+     "_note": "Docks -> Riverside"
+    },
+    {
+     "rect": [
+      120,
+      186,
+      168,
+      208
+     ],
+     "warp": [
+      4,
+      43,
+      140,
+      104
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "Docks -> Old Warehouse (barn door)"
+    },
+    {
+     "rect": [
+      256,
+      186,
+      288,
+      208
+     ],
+     "event": "docks_dome",
+     "_note": "dome house door: locked; the lookout cache (299)"
+    }
+   ],
+   "map_from": [
+    2,
+    8
+   ],
+   "enemies": [
+    {
+     "type": 97,
+     "x": 100,
+     "y": 320
+    },
+    {
+     "type": 97,
+     "x": 300,
+     "y": 260
+    },
+    {
+     "type": 36,
+     "x": 348,
+     "y": 348
+    },
+    {
+     "type": 97,
+     "x": 216,
+     "y": 116
+    }
+   ],
+   "solid": [
+    [
+     120,
+     0,
+     168,
+     160
+    ]
+   ]
+  },
+  {
+   "world": 4,
+   "area": 43,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1704,
+   "palette_act": "act2",
+   "_note": "Chapter 5: Old Warehouse (generated by log4/gen_ch5.py)",
+   "doors": [
+    {
+     "rect": [
+      120,
+      64,
+      192,
+      92
+     ],
+     "warp": [
+      4,
+      42,
+      136,
+      214
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "Old Warehouse -> Docks",
+     "cover_ok": true
+    },
+    {
+     "rect": [
+      116,
+      112,
+      196,
+      144
+     ],
+     "event": "ch5_den",
+     "_note": "first steps into the den: Big Ox (389)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 0a 02 1c 11"
+    },
+    {
+     "rect": [
+      304,
+      224,
+      360,
+      252
+     ],
+     "event": "ch5_stash",
+     "_note": "the twins' stash behind the crates (295)",
+     "examine": "down"
+    }
+   ],
+   "map_log2": "0x677374",
+   "enemies": [
+    {
+     "type": 97,
+     "x": 60,
+     "y": 200
+    },
+    {
+     "type": 36,
+     "x": 230,
+     "y": 170
+    },
+    {
+     "type": 12,
+     "x": 180,
+     "y": 250,
+     "character": 39,
+     "condition": 131366,
+     "_note": "Big Ox (row 12): until beaten (294)"
+    }
+   ]
+  },
+  {
+   "world": 4,
+   "area": 44,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1705,
+   "palette_act": "act2",
+   "_note": "Chapter 5: Z-Mart (generated by log4/gen_ch5.py)",
+   "doors": [
+    {
+     "rect": [
+      176,
+      300,
+      224,
+      320
+     ],
+     "warp": [
+      4,
+      1,
+      264,
+      320
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "Z-Mart -> West City"
+    }
+   ],
+   "map_log2": "0x63ed74",
+   "spawns": [
+    {
+     "x": 292,
+     "y": 112,
+     "actor_id": 171,
+     "face": "down",
+     "talk": "zmart_clerk",
+     "_note": "Z-Mart clerk"
+    }
+   ]
+  },
+  {
+   "world": 4,
+   "area": 45,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1706,
+   "palette_act": "act2",
+   "_note": "Chapter 5: West City Museum (generated by log4/gen_ch5.py)",
+   "doors": [
+    {
+     "rect": [
+      392,
+      272,
+      440,
+      288
+     ],
+     "warp": [
+      4,
+      1,
+      416,
+      140
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "museum -> West City"
+    },
+    {
+     "rect": [
+      448,
+      112,
+      512,
+      140
+     ],
+     "event": "museum_exhibit",
+     "_note": "the Red Ribbon exhibit case",
+     "examine": "up"
+    }
+   ],
+   "map_log2": "0x63d5b0",
+   "spawns": [
+    {
+     "x": 300,
+     "y": 220,
+     "actor_id": 195,
+     "face": "down",
+     "talk": "museum_curator",
+     "_note": "curator"
+    }
+   ],
+   "shade_ok": [
+    [
+     360,
+     200,
+     460,
+     280
+    ]
+   ]
+  },
+  {
+   "world": 16,
+   "area": 41,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1702,
+   "palette_act": "act2",
+   "night": true,
+   "_note": "Chapter 6: Riverside (night) (generated by log4/gen_ch6.py)",
+   "doors": [
+    {
+     "rect": [
+      224,
+      0,
+      288,
+      48
+     ],
+     "warp": [
+      16,
+      1,
+      412,
+      640
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "Riverside (night) -> West City (night)"
+    },
+    {
+     "rect": [
+      452,
+      176,
+      480,
+      272
+     ],
+     "warp": [
+      16,
+      42,
+      248,
+      408
+     ],
+     "dir": "right",
+     "face": "up",
+     "_note": "Riverside (night) -> Docks (night)"
+    },
+    {
+     "rect": [
+      40,
+      120,
+      72,
+      152
+     ],
+     "event": "night_cache_river",
+     "_note": "the rowboat (335)",
+     "examine": "left"
+    }
+   ],
+   "map_from": [
+    2,
+    9
+   ],
+   "enemies": [
+    {
+     "type": 94,
+     "x": 200,
+     "y": 170
+    },
+    {
+     "type": 94,
+     "x": 360,
+     "y": 220
+    }
+   ],
+   "solid": [
+    [
+     224,
+     0,
+     288,
+     32
+    ]
+   ]
+  },
+  {
+   "world": 16,
+   "area": 42,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1703,
+   "palette_act": "act2",
+   "night": true,
+   "_note": "Chapter 6: Docks (night) (generated by log4/gen_ch6.py)",
+   "doors": [
+    {
+     "rect": [
+      232,
+      452,
+      280,
+      480
+     ],
+     "warp": [
+      16,
+      41,
+      424,
+      216
+     ],
+     "dir": "down",
+     "face": "left",
+     "_note": "Docks (night) -> Riverside (night)"
+    },
+    {
+     "rect": [
+      120,
+      186,
+      168,
+      208
+     ],
+     "warp": [
+      16,
+      43,
+      140,
+      104
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "Docks -> Old Warehouse (barn door)"
+    },
+    {
+     "rect": [
+      256,
+      186,
+      288,
+      208
+     ],
+     "event": "night_cache_docks",
+     "_note": "the dome house (336)"
+    }
+   ],
+   "map_from": [
+    2,
+    8
+   ],
+   "enemies": [
+    {
+     "type": 94,
+     "x": 100,
+     "y": 320
+    },
+    {
+     "type": 94,
+     "x": 320,
+     "y": 260
+    },
+    {
+     "type": 94,
+     "x": 230,
+     "y": 110
+    }
+   ],
+   "solid": [
+    [
+     120,
+     0,
+     168,
+     160
+    ]
+   ]
+  },
+  {
+   "world": 16,
+   "area": 43,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1704,
+   "palette_act": "act2",
+   "night": true,
+   "_note": "Chapter 6: Old Warehouse (night) (generated by log4/gen_ch6.py)",
+   "doors": [
+    {
+     "rect": [
+      120,
+      64,
+      192,
+      92
+     ],
+     "warp": [
+      16,
+      42,
+      136,
+      214
+     ],
+     "dir": "up",
+     "face": "down",
+     "cover_ok": true,
+     "_note": "Old Warehouse -> Docks"
+    },
+    {
+     "rect": [
+      116,
+      112,
+      196,
+      144
+     ],
+     "event": "ch6_home",
+     "_note": "home at last: the Collector (333)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 85 1a 02 1c 11"
+    }
+   ],
+   "map_from": [
+    4,
+    43
+   ],
+   "enemies": [
+    {
+     "type": 76,
+     "x": 200,
+     "y": 220,
+     "character": 191,
+     "condition": 131406,
+     "_note": "the Collector (row 76): until destroyed (334)"
+    }
+   ]
+  },
+  {
+   "world": 16,
+   "area": 44,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1704,
+   "palette_act": "act2",
+   "night": true,
+   "_note": "Chapter 6: Old Warehouse (ambush) (generated by log4/gen_ch6.py)",
+   "doors": [
+    {
+     "rect": [
+      126,
+      152,
+      190,
+      216
+     ],
+     "event": "ch6_ambush",
+     "_note": "the drones close in (305)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 84 62 02 1c 11"
+    }
+   ],
+   "map_from": [
+    4,
+    43
+   ],
+   "spawns": [
+    {
+     "x": 150,
+     "y": 104,
+     "actor": "drone_night_a",
+     "face": "down",
+     "no_check": true,
+     "_note": "ambush drone A (moves in)"
+    },
+    {
+     "x": 300,
+     "y": 176,
+     "actor": "drone_night_b",
+     "face": "left",
+     "no_check": true,
+     "_note": "ambush drone B"
+    },
+    {
+     "x": 60,
+     "y": 176,
+     "actor": "drone_night_c",
+     "face": "right",
+     "no_check": true,
+     "_note": "ambush drone C"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 34,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1702,
+   "palette_act": "act3",
+   "_note": "Chapter 8: Riverside (767) (generated by log4/gen_ch8.py)",
+   "doors": [
+    {
+     "rect": [
+      224,
+      0,
+      288,
+      48
+     ],
+     "warp": [
+      17,
+      1,
+      412,
+      640
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "Riverside (767) -> West City (767)"
+    },
+    {
+     "rect": [
+      452,
+      176,
+      480,
+      272
+     ],
+     "warp": [
+      17,
+      35,
+      248,
+      408
+     ],
+     "dir": "right",
+     "face": "up",
+     "_note": "Riverside (767) -> Docks (767)"
+    },
+    {
+     "rect": [
+      40,
+      120,
+      72,
+      152
+     ],
+     "event": "ch8_cache_river",
+     "_note": "the rowboat, rotted (382)",
+     "examine": "left"
+    }
+   ],
+   "map_from": [
+    2,
+    9
+   ],
+   "enemies": [
+    {
+     "type": 94,
+     "x": 200,
+     "y": 170
+    },
+    {
+     "type": 94,
+     "x": 360,
+     "y": 220
+    },
+    {
+     "type": 62,
+     "x": 120,
+     "y": 230
+    }
+   ],
+   "solid": [
+    [
+     224,
+     0,
+     288,
+     32
+    ]
+   ]
+  },
+  {
+   "world": 17,
+   "area": 35,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1703,
+   "palette_act": "act3",
+   "_note": "Chapter 8: Docks (767) (generated by log4/gen_ch8.py)",
+   "doors": [
+    {
+     "rect": [
+      232,
+      452,
+      280,
+      480
+     ],
+     "warp": [
+      17,
+      34,
+      424,
+      216
+     ],
+     "dir": "down",
+     "face": "left",
+     "_note": "Docks (767) -> Riverside (767)"
+    },
+    {
+     "rect": [
+      120,
+      186,
+      168,
+      208
+     ],
+     "warp": [
+      17,
+      36,
+      140,
+      104
+     ],
+     "dir": "up",
+     "face": "down",
+     "_note": "Docks -> Old Warehouse (barn door)"
+    },
+    {
+     "rect": [
+      256,
+      186,
+      288,
+      208
+     ],
+     "event": "ch8_cache_docks",
+     "_note": "the dome house (369)"
+    }
+   ],
+   "map_from": [
+    2,
+    8
+   ],
+   "enemies": [
+    {
+     "type": 94,
+     "x": 100,
+     "y": 320
+    },
+    {
+     "type": 62,
+     "x": 320,
+     "y": 260
+    },
+    {
+     "type": 94,
+     "x": 230,
+     "y": 110
+    },
+    {
+     "type": 94,
+     "x": 380,
+     "y": 120
+    }
+   ],
+   "solid": [
+    [
+     120,
+     0,
+     168,
+     160
+    ]
+   ]
+  },
+  {
+   "world": 17,
+   "area": 36,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1704,
+   "palette_act": "act3",
+   "_note": "Chapter 8: Old Warehouse (767) (generated by log4/gen_ch8.py)",
+   "doors": [
+    {
+     "rect": [
+      120,
+      64,
+      192,
+      92
+     ],
+     "warp": [
+      17,
+      35,
+      136,
+      214
+     ],
+     "dir": "up",
+     "face": "down",
+     "cover_ok": true,
+     "_note": "Old Warehouse -> Docks"
+    },
+    {
+     "rect": [
+      304,
+      224,
+      360,
+      252
+     ],
+     "event": "ch8_hideout",
+     "_note": "the loose board: the tin box (359)",
+     "examine": "down"
+    }
+   ],
+   "map_from": [
+    4,
+    43
+   ],
+   "enemies": [
+    {
+     "type": 62,
+     "x": 220,
+     "y": 200
+    },
+    {
+     "type": 94,
+     "x": 80,
+     "y": 180
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 108,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 4: Mountain Pass (generated by log4/gen_ch4.py)",
+   "doors": [
+    {
+     "rect": [
+      340,
+      184,
+      368,
+      296
+     ],
+     "warp": [
+      1,
+      109,
+      88,
+      166
+     ],
+     "dir": "right",
+     "face": "up",
+     "_note": "Mountain Pass -> Generator Cave"
+    },
+    {
+     "rect": [
+      0,
+      248,
+      14,
+      360
+     ],
+     "warp": [
+      1,
+      72,
+      216,
+      280
+     ],
+     "dir": "left",
+     "face": "up",
+     "_note": "Mountain Pass -> bunker"
+    },
+    {
+     "rect": [
+      16,
+      266,
+      64,
+      326
+     ],
+     "event": "ch4_pass",
+     "_note": "first arrival (289)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 84 42 02 1c 11"
+    }
+   ],
+   "map_log2": "0x559d90",
+   "enemies": [
+    {
+     "type": 15,
+     "x": 120,
+     "y": 270
+    },
+    {
+     "type": 44,
+     "x": 220,
+     "y": 260
+    },
+    {
+     "type": 48,
+     "x": 300,
+     "y": 230
+    },
+    {
+     "type": 15,
+     "x": 60,
+     "y": 320
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 109,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 4: Generator Cave (generated by log4/gen_ch4.py)",
+   "doors": [
+    {
+     "rect": [
+      72,
+      202,
+      112,
+      230
+     ],
+     "warp": [
+      1,
+      108,
+      312,
+      232
+     ],
+     "dir": "down",
+     "face": "left",
+     "_note": "Generator Cave -> Mountain Pass"
+    },
+    {
+     "rect": [
+      228,
+      72,
+      269,
+      112
+     ],
+     "warp": [
+      1,
+      110,
+      112,
+      230
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "Generator Cave hole -> Old Mine"
+    },
+    {
+     "rect": [
+      40,
+      196,
+      72,
+      224
+     ],
+     "event": "cache_gen",
+     "_note": "an old Red Ribbon locker (291)",
+     "examine": "left"
+    }
+   ],
+   "map_log2": "0x55f728",
+   "spawns": [
+    {
+     "x": 180,
+     "y": 150,
+     "actor": "drone_l2",
+     "face": "down",
+     "talk": "relay_2",
+     "_note": "relay node 2"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 48,
+     "x": 150,
+     "y": 190
+    },
+    {
+     "type": 48,
+     "x": 240,
+     "y": 200
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 110,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 4: Old Mine (generated by log4/gen_ch4.py)",
+   "doors": [
+    {
+     "rect": [
+      104,
+      274,
+      136,
+      302
+     ],
+     "warp": [
+      1,
+      109,
+      236,
+      128
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "Old Mine mouth -> Generator Cave"
+    },
+    {
+     "rect": [
+      76,
+      96,
+      172,
+      176
+     ],
+     "event": "mine_gate",
+     "_note": "the barred shaft gate (no way down)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      24,
+      150,
+      56,
+      176
+     ],
+     "event": "cache_mine",
+     "_note": "a mining cart (292)",
+     "examine": "left"
+    }
+   ],
+   "map_from": [
+    1,
+    16
+   ],
+   "spawns": [
+    {
+     "x": 112,
+     "y": 150,
+     "actor": "drone_l2",
+     "face": "down",
+     "talk": "relay_3",
+     "_note": "relay node 3"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 48,
+     "x": 60,
+     "y": 230
+    },
+    {
+     "type": 41,
+     "x": 160,
+     "y": 176,
+     "character": 133,
+     "condition": 131362,
+     "_note": "Prototype 9 (row 41, BF Grand Mechanoid): until destroyed (290)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 37,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act3",
+   "_note": "Chapter 9: Mountain Pass (768) (generated by log4/gen_ch9.py)",
+   "doors": [
+    {
+     "rect": [
+      340,
+      184,
+      368,
+      296
+     ],
+     "warp": [
+      17,
+      38,
+      88,
+      166
+     ],
+     "dir": "right",
+     "face": "up",
+     "_note": "Mountain Pass (768) -> Generator Cave (768)"
+    },
+    {
+     "rect": [
+      0,
+      248,
+      14,
+      360
+     ],
+     "warp": [
+      17,
+      12,
+      216,
+      280
+     ],
+     "dir": "left",
+     "face": "up",
+     "when": "hex 01 86 22 02 1b 11",
+     "_note": "pass -> bunker, once the Sentinel is down (401)"
+    },
+    {
+     "rect": [
+      0,
+      248,
+      14,
+      360
+     ],
+     "event": "ch9_sealed",
+     "_note": "the sealed bunker door (401 clear)",
+     "examine": "left",
+     "when": "hex 01 86 22 02 1c 11"
+    },
+    {
+     "rect": [
+      16,
+      266,
+      64,
+      326
+     ],
+     "event": "ch9_pass",
+     "_note": "landing in the mountains (400)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 20 02 1c 11"
+    }
+   ],
+   "map_from": [
+    1,
+    108
+   ],
+   "enemies": [
+    {
+     "type": 48,
+     "x": 120,
+     "y": 270
+    },
+    {
+     "type": 62,
+     "x": 220,
+     "y": 260
+    },
+    {
+     "type": 48,
+     "x": 300,
+     "y": 230
+    },
+    {
+     "type": 48,
+     "x": 60,
+     "y": 320
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 38,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act3",
+   "_note": "Chapter 9: Generator Cave (768) (generated by log4/gen_ch9.py)",
+   "doors": [
+    {
+     "rect": [
+      72,
+      202,
+      112,
+      230
+     ],
+     "warp": [
+      17,
+      37,
+      312,
+      232
+     ],
+     "dir": "down",
+     "face": "left",
+     "_note": "Generator Cave (768) -> Mountain Pass (768)"
+    },
+    {
+     "rect": [
+      228,
+      72,
+      269,
+      112
+     ],
+     "warp": [
+      17,
+      39,
+      112,
+      230
+     ],
+     "dir": "up",
+     "face": "up",
+     "_note": "Generator Cave hole -> Old Mine"
+    }
+   ],
+   "map_from": [
+    1,
+    109
+   ],
+   "enemies": [
+    {
+     "type": 48,
+     "x": 150,
+     "y": 190
+    },
+    {
+     "type": 100,
+     "x": 200,
+     "y": 160,
+     "character": 240,
+     "condition": 131473,
+     "_note": "the Sentinel (row 100, BF Shadow Colossus): until destroyed (401)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 39,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act3",
+   "_note": "Chapter 9: Old Mine (768) (generated by log4/gen_ch9.py)",
+   "doors": [
+    {
+     "rect": [
+      104,
+      274,
+      136,
+      302
+     ],
+     "warp": [
+      17,
+      38,
+      236,
+      128
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "Old Mine mouth -> Generator Cave"
+    },
+    {
+     "rect": [
+      76,
+      96,
+      172,
+      176
+     ],
+     "event": "mine_gate",
+     "_note": "the barred shaft gate (no way down)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      24,
+      150,
+      56,
+      176
+     ],
+     "event": "ch9_cache_mine",
+     "_note": "the old mining cart (402)",
+     "examine": "left"
+    }
+   ],
+   "map_from": [
+    1,
+    16
+   ],
+   "enemies": [
+    {
+     "type": 62,
+     "x": 60,
+     "y": 230
+    },
+    {
+     "type": 62,
+     "x": 126,
+     "y": 144
+    },
+    {
+     "type": 48,
+     "x": 120,
+     "y": 250
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 68,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 2: Ambush Ridge (generated by log4/gen_ch2.py)",
+   "doors": [
+    {
+     "rect": [
+      104,
+      0,
+      208,
+      48
+     ],
+     "warp": [
+      1,
+      96,
+      576,
+      144
+     ],
+     "dir": "up",
+     "face": "left",
+     "cover_ok": true,
+     "_note": "Ambush Ridge north road -> Scorched Canyon (the west cliff overhangs it)"
+    },
+    {
+     "rect": [
+      128,
+      392,
+      192,
+      448
+     ],
+     "event": "ch2_field",
+     "_note": "drone arrival (160,420): radio + journal",
+     "fn2": "0x080077DF",
+     "when": "hex 01 84 72 02 1c 11"
+    }
+   ],
+   "map_log2": "0x67542c",
+   "enemies": [
+    {
+     "type": 108,
+     "x": 240,
+     "y": 370
+    },
+    {
+     "type": 44,
+     "x": 120,
+     "y": 330
+    },
+    {
+     "type": 15,
+     "x": 128,
+     "y": 232
+    }
+   ],
+   "solid": [
+    [
+     104,
+     0,
+     208,
+     32
+    ]
+   ],
+   "erase_tiles": [
+    {
+     "layer": 1,
+     "tiles": [
+      12,
+      4,
+      28,
+      8
+     ]
+    },
+    {
+     "layer": 2,
+     "tiles": [
+      13,
+      5,
+      13,
+      7
+     ]
+    },
+    {
+     "layer": 2,
+     "tiles": [
+      27,
+      5,
+      27,
+      7
+     ]
+    }
+   ],
+   "walkable": [
+    [
+     104,
+     40,
+     135,
+     63
+    ],
+    [
+     168,
+     40,
+     207,
+     63
+    ]
+   ]
+  },
+  {
+   "world": 1,
+   "area": 96,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 2: Scorched Canyon (generated by log4/gen_ch2.py)",
+   "doors": [
+    {
+     "rect": [
+      612,
+      128,
+      640,
+      160
+     ],
+     "warp": [
+      1,
+      68,
+      106,
+      92
+     ],
+     "dir": "right",
+     "face": "up",
+     "when": "hex 01 85 74 02 1c 11",
+     "_note": "Scorched Canyon east edge -> Ambush Ridge"
+    },
+    {
+     "rect": [
+      612,
+      128,
+      640,
+      160
+     ],
+     "warp": [
+      1,
+      95,
+      106,
+      92
+     ],
+     "dir": "right",
+     "face": "up",
+     "when": "hex 01 85 74 02 1b 11",
+     "_note": "Scorched Canyon -> Ambush Ridge (Gevo)"
+    },
+    {
+     "rect": [
+      0,
+      216,
+      62,
+      240
+     ],
+     "warp": [
+      1,
+      97,
+      408,
+      296
+     ],
+     "dir": "left",
+     "face": "left",
+     "_note": "Scorched Canyon -> Dry Basin"
+    },
+    {
+     "rect": [
+      416,
+      0,
+      480,
+      60
+     ],
+     "warp": [
+      1,
+      101,
+      24,
+      308
+     ],
+     "dir": "up",
+     "face": "right",
+     "_note": "Scorched Canyon -> Supply Yard"
+    },
+    {
+     "rect": [
+      48,
+      212,
+      256,
+      256
+     ],
+     "warp": [
+      1,
+      100,
+      136,
+      192
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "Scorched Canyon -> Fuel Dump"
+    }
+   ],
+   "map_from": [
+    20,
+    3
+   ],
+   "enemies": [
+    {
+     "type": 15,
+     "x": 300,
+     "y": 140
+    },
+    {
+     "type": 15,
+     "x": 180,
+     "y": 150
+    },
+    {
+     "type": 44,
+     "x": 120,
+     "y": 100
+    },
+    {
+     "type": 75,
+     "x": 470,
+     "y": 130
+    },
+    {
+     "type": 108,
+     "x": 360,
+     "y": 70
+    }
+   ],
+   "solid": [
+    [
+     416,
+     0,
+     480,
+     32
+    ]
+   ]
+  },
+  {
+   "world": 1,
+   "area": 97,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 2: Dry Basin (generated by log4/gen_ch2.py)",
+   "doors": [
+    {
+     "rect": [
+      444,
+      264,
+      472,
+      328
+     ],
+     "warp": [
+      1,
+      96,
+      72,
+      220
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "Dry Basin -> Scorched Canyon"
+    },
+    {
+     "rect": [
+      316,
+      120,
+      356,
+      160
+     ],
+     "warp": [
+      1,
+      102,
+      92,
+      174
+     ],
+     "dir": "up",
+     "face": "up",
+     "cover_ok": true,
+     "_note": "Dry Basin cave mouth -> Raider Cave (he walks into the dark mouth)"
+    }
+   ],
+   "map_log2": "0x66dff8",
+   "enemies": [
+    {
+     "type": 75,
+     "x": 300,
+     "y": 230
+    },
+    {
+     "type": 15,
+     "x": 350,
+     "y": 280
+    }
+   ],
+   "solid": [
+    [
+     316,
+     0,
+     356,
+     112
+    ]
+   ]
+  },
+  {
+   "world": 1,
+   "area": 100,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 2: Fuel Dump (generated by log4/gen_ch2.py)",
+   "doors": [
+    {
+     "rect": [
+      112,
+      236,
+      176,
+      264
+     ],
+     "warp": [
+      1,
+      96,
+      144,
+      168
+     ],
+     "dir": "down",
+     "face": "up",
+     "_note": "Fuel Dump -> Scorched Canyon"
+    },
+    {
+     "rect": [
+      56,
+      100,
+      128,
+      132
+     ],
+     "event": "cache_dump",
+     "_note": "crates by the fuel tanks (items, flag 379)",
+     "examine": "up"
+    }
+   ],
+   "map_log2": "0x66684c",
+   "spawns": [
+    {
+     "x": 184,
+     "y": 124,
+     "actor_id": 25,
+     "face": "left",
+     "talk": "surv_a",
+     "_note": "Pvt. Kurz (wounded)"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 108,
+     "x": 100,
+     "y": 180
+    },
+    {
+     "type": 44,
+     "x": 170,
+     "y": 140
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 101,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 2: Supply Yard (generated by log4/gen_ch2.py)",
+   "doors": [
+    {
+     "rect": [
+      0,
+      264,
+      14,
+      368
+     ],
+     "warp": [
+      1,
+      96,
+      448,
+      96
+     ],
+     "dir": "left",
+     "face": "down",
+     "_note": "Supply Yard -> Scorched Canyon"
+    },
+    {
+     "rect": [
+      16,
+      268,
+      64,
+      332
+     ],
+     "event": "ch2_yard",
+     "_note": "raider chief taunt (flag 314)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 84 74 02 1c 11"
+    },
+    {
+     "rect": [
+      92,
+      196,
+      136,
+      262
+     ],
+     "event": "cache_yard",
+     "_note": "a Red Ribbon supply crate (items, flag 328)",
+     "examine": "up"
+    }
+   ],
+   "map_log2": "0x665ed4",
+   "spawns": [
+    {
+     "x": 218,
+     "y": 132,
+     "actor_id": 25,
+     "face": "down",
+     "talk": "surv_c",
+     "_note": "Sgt. Halden, tied up by the raiders"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 44,
+     "x": 120,
+     "y": 300
+    },
+    {
+     "type": 75,
+     "x": 200,
+     "y": 330
+    },
+    {
+     "type": 128,
+     "x": 160,
+     "y": 200,
+     "condition": 131449,
+     "_note": "raider chief (row 128): until defeated (377)"
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 102,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 2: Raider Cave (generated by log4/gen_ch2.py)",
+   "doors": [
+    {
+     "rect": [
+      96,
+      202,
+      136,
+      230
+     ],
+     "warp": [
+      1,
+      97,
+      330,
+      182
+     ],
+     "dir": "down",
+     "face": "down",
+     "_note": "Raider Cave mouth -> Dry Basin"
+    },
+    {
+     "rect": [
+      246,
+      104,
+      274,
+      150
+     ],
+     "warp": [
+      1,
+      97,
+      330,
+      182
+     ],
+     "dir": "right",
+     "face": "down",
+     "_note": "Raider Cave east ramp -> Dry Basin"
+    }
+   ],
+   "map_log2": "0x66c68c",
+   "spawns": [
+    {
+     "x": 176,
+     "y": 150,
+     "actor_id": 25,
+     "face": "down",
+     "talk": "surv_b",
+     "_note": "Cpl. Mori, the radioman"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 15,
+     "x": 200,
+     "y": 144
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 95,
+   "template": [
+    15,
+    10
+   ],
+   "name": 573,
+   "palette_act": "act1",
+   "_note": "Chapter 2: Ambush Ridge (Gevo) (generated by log4/gen_ch2.py)",
+   "doors": [
+    {
+     "rect": [
+      104,
+      0,
+      208,
+      48
+     ],
+     "warp": [
+      1,
+      96,
+      576,
+      144
+     ],
+     "dir": "up",
+     "face": "left",
+     "cover_ok": true,
+     "_note": "Ambush Ridge north road -> Scorched Canyon (the west cliff overhangs it)"
+    },
+    {
+     "rect": [
+      104,
+      96,
+      248,
+      150
+     ],
+     "event": "ch2_gevo",
+     "_note": "reaching Gevo (flag 311 clear)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 84 6e 02 1c 11"
+    }
+   ],
+   "map_from": [
+    1,
+    68
+   ],
+   "spawns": [
+    {
+     "actor": "gevo",
+     "x": 168,
+     "y": 104,
+     "face": "down",
+     "talk": "gevo_field_talk"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 42,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1709,
+   "palette_act": "act3",
+   "map_from": [
+    3,
+    4
+   ],
+   "_note": "Act 3 world-map destination: Orange Star City (generated by log4/gen_world.py)",
+   "doors": [
+    {
+     "rect": [
+      80,
+      276,
+      136,
+      324
+     ],
+     "event": "osc_arrive",
+     "_note": "first landing (410)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 34 02 1c 11"
+    },
+    {
+     "rect": [
+      140,
+      116,
+      188,
+      148
+     ],
+     "event": "osc_school",
+     "_note": "Orange Star High: chained doors",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      0,
+      240,
+      16,
+      384
+     ],
+     "event": "fly_osc",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    }
+   ],
+   "spawns": [
+    {
+     "x": 132,
+     "y": 300,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_osc",
+     "_note": "Eighteen: talk to fly (take-off to the world map)"
+    },
+    {
+     "x": 216,
+     "y": 288,
+     "actor_id": 129,
+     "face": "left",
+     "talk": "osc_hercule",
+     "_note": "Hercule (BF actor 129)"
+    },
+    {
+     "x": 196,
+     "y": 248,
+     "actor_id": 60,
+     "face": "down",
+     "talk": "osc_police",
+     "_note": "a police officer"
+    },
+    {
+     "x": 40,
+     "y": 300,
+     "actor_id": 92,
+     "face": "right",
+     "talk": "osc_girl",
+     "_note": "a schoolgirl (likely BF townsgirl)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 43,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1710,
+   "palette_act": "act3",
+   "map_from": [
+    6,
+    1
+   ],
+   "_note": "Act 3 world-map destination: Kami's Lookout (generated by log4/gen_world.py)",
+   "doors": [
+    {
+     "rect": [
+      304,
+      396,
+      360,
+      444
+     ],
+     "event": "lookout_arrive",
+     "_note": "first landing (412)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 38 02 1c 11"
+    },
+    {
+     "rect": [
+      280,
+      252,
+      360,
+      308
+     ],
+     "event": "lookout_door",
+     "_note": "the palace door: Kami's altar (all seven balls: 413)",
+     "examine": "up"
+    }
+   ],
+   "spawns": [
+    {
+     "x": 344,
+     "y": 412,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_lookout",
+     "_note": "Eighteen: talk to fly (take-off to the world map)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 44,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1711,
+   "palette_act": "act3",
+   "map_from": [
+    7,
+    1
+   ],
+   "_note": "Act 3 world-map destination: Papaya Island (generated by log4/gen_world.py)",
+   "doors": [
+    {
+     "rect": [
+      284,
+      306,
+      340,
+      354
+     ],
+     "event": "papaya_arrive",
+     "_note": "first landing (414)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 3c 02 1c 11"
+    },
+    {
+     "rect": [
+      176,
+      40,
+      264,
+      104
+     ],
+     "event": "papaya_gate",
+     "_note": "the tournament gate",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      140,
+      0,
+      300,
+      16
+     ],
+     "event": "fly_papaya",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    },
+    {
+     "rect": [
+      416,
+      464,
+      448,
+      480
+     ],
+     "event": "fly_papaya",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    }
+   ],
+   "spawns": [
+    {
+     "x": 336,
+     "y": 338,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_papaya",
+     "_note": "Eighteen: talk to fly (take-off to the world map)"
+    },
+    {
+     "x": 304,
+     "y": 108,
+     "actor_id": 9,
+     "face": "left",
+     "talk": "papaya_announcer",
+     "_note": "the tournament announcer (likely BF actor 9: blond, sunglasses, suit)"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 123,
+     "x": 120,
+     "y": 200
+    },
+    {
+     "type": 124,
+     "x": 380,
+     "y": 200
+    },
+    {
+     "type": 125,
+     "x": 250,
+     "y": 380
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 45,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1712,
+   "palette_act": "act3",
+   "map_from": [
+    14,
+    1
+   ],
+   "_note": "Act 3 world-map destination: Diablo Desert (generated by log4/gen_world.py)",
+   "doors": [
+    {
+     "rect": [
+      114,
+      212,
+      170,
+      260
+     ],
+     "event": "diablo_arrive",
+     "_note": "first landing (416)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 40 02 1c 11"
+    },
+    {
+     "rect": [
+      176,
+      84,
+      232,
+      120
+     ],
+     "event": "diablo_ball",
+     "_note": "Prototype 11's post: the stone ball (418, after 417)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      208,
+      0,
+      272,
+      16
+     ],
+     "event": "fly_diablo",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    }
+   ],
+   "spawns": [
+    {
+     "x": 166,
+     "y": 244,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_diablo",
+     "_note": "Eighteen: talk to fly (take-off to the world map)"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 19,
+     "x": 228,
+     "y": 104,
+     "character": 76,
+     "condition": 131489,
+     "_note": "Prototype 11 (row 19, BF Death Machine, char 76): until destroyed (417)"
+    },
+    {
+     "type": 71,
+     "x": 80,
+     "y": 128
+    },
+    {
+     "type": 71,
+     "x": 244,
+     "y": 234
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 46,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1713,
+   "palette_act": "act3",
+   "map_from": [
+    13,
+    1
+   ],
+   "_note": "Act 3 world-map destination: Pilaf's Castle (generated by log4/gen_world.py)",
+   "doors": [
+    {
+     "rect": [
+      134,
+      186,
+      190,
+      234
+     ],
+     "event": "pilaf_arrive",
+     "_note": "first landing (419)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 46 02 1c 11"
+    },
+    {
+     "rect": [
+      128,
+      48,
+      176,
+      104
+     ],
+     "event": "pilaf_safe",
+     "_note": "the rubble of Pilaf's castle: his old safe (421)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      80,
+      0,
+      160,
+      16
+     ],
+     "event": "fly_pilaf",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    },
+    {
+     "rect": [
+      104,
+      304,
+      208,
+      320
+     ],
+     "event": "fly_pilaf",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    }
+   ],
+   "spawns": [
+    {
+     "x": 186,
+     "y": 218,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_pilaf",
+     "_note": "Eighteen: talk to fly (take-off to the world map)"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 78,
+     "x": 100,
+     "y": 150
+    },
+    {
+     "type": 101,
+     "x": 186,
+     "y": 184
+    },
+    {
+     "type": 78,
+     "x": 160,
+     "y": 260
+    },
+    {
+     "type": 82,
+     "x": 134,
+     "y": 116,
+     "character": 202,
+     "condition": 131492,
+     "_note": "the ninja captain (row 82, char 202): until defeated (420)"
+    }
+   ]
+  },
+  {
+   "world": 17,
+   "area": 47,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1714,
+   "palette_act": "act3",
+   "map_from": [
+    15,
+    1
+   ],
+   "_note": "Act 3 world-map destination: Nataday Village (generated by log4/gen_world.py)",
+   "doors": [
+    {
+     "rect": [
+      384,
+      536,
+      440,
+      584
+     ],
+     "event": "nat_arrive",
+     "_note": "first landing (422)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 4c 02 1c 11"
+    },
+    {
+     "rect": [
+      248,
+      0,
+      304,
+      16
+     ],
+     "event": "fly_nataday",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    },
+    {
+     "rect": [
+      288,
+      696,
+      512,
+      712
+     ],
+     "event": "fly_nataday",
+     "_note": "map edge: take off",
+     "fn2": "0x080077DF"
+    }
+   ],
+   "spawns": [
+    {
+     "x": 436,
+     "y": 568,
+     "actor": "player_18",
+     "face": "left",
+     "talk": "fly_nataday",
+     "_note": "Eighteen: talk to fly (take-off to the world map)"
+    },
+    {
+     "x": 360,
+     "y": 440,
+     "actor_id": 183,
+     "face": "down",
+     "talk": "nat_elder",
+     "_note": "the village elder (BF old woman)"
+    },
+    {
+     "x": 504,
+     "y": 486,
+     "actor_id": 151,
+     "face": "left",
+     "talk": "nat_farmer",
+     "_note": "a farmer"
+    }
+   ],
+   "enemies": [
+    {
+     "type": 71,
+     "x": 300,
+     "y": 380
+    },
+    {
+     "type": 71,
+     "x": 592,
+     "y": 412
+    },
+    {
+     "type": 71,
+     "x": 480,
+     "y": 300
+    },
+    {
+     "type": 131,
+     "x": 520,
+     "y": 360,
+     "character": 272,
+     "condition": 131495,
+     "_note": "Butcher, the raider boss (row 131, char 272): until defeated (423)"
+    }
+   ]
+  }
+ ]
+}

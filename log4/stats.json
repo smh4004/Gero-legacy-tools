@@ -1,0 +1,444 @@
+{
+ "_note": "Starting stats per playable character record (table at ROM 0x6FDA4C, 9 x 18 bytes: u16 level, u16 HP, u16 EP, u8 STR, POW, END, SPD, 8 unknown bytes). Record 0 = Goku (the player slot Gero uses in Act 1). Level is the displayed level; the EXP table starts at level 50, so 50 is the lowest safe value.",
+ "0": {
+  "name": "Dr. Gero (Act 1)",
+  "level": 50,
+  "hp": 60,
+  "ep": 40,
+  "str": 10,
+  "pow": 14,
+  "end": 9,
+  "spd": 30
+ },
+ "2": {
+  "name": "Combat drone (Act 1, character slot 2)",
+  "level": 50,
+  "hp": 220,
+  "ep": 50,
+  "str": 19,
+  "pow": 15,
+  "end": 22,
+  "spd": 34
+ },
+ "1": {
+  "name": "Lapis (Act 2, character slot 1)",
+  "level": 50,
+  "hp": 70,
+  "ep": 30,
+  "str": 14,
+  "pow": 8,
+  "end": 10,
+  "spd": 32
+ },
+ "3": {
+  "name": "Lazuli (Act 2, character slot 3)",
+  "level": 50,
+  "hp": 65,
+  "ep": 35,
+  "str": 12,
+  "pow": 10,
+  "end": 9,
+  "spd": 34
+ },
+ "6": {
+  "name": "Imperfect Cell (secret chapter, character slot 6 = BF Vegito). Level 50; his enemies give 0 EXP so he never levels up (a level-up recomputed his stats far lower). A never-used character starts at 0 HP, so fs_wake heals him after the area load.",
+  "level": 50,
+  "hp": 440,
+  "ep": 180,
+  "str": 40,
+  "pow": 36,
+  "end": 30,
+  "spd": 46
+ },
+ "enemies": {
+  "_note": "Enemy stat rows (tools/stats.apply_enemies). Row 30 is unused in BF (no spawns; a plain level-50 enemy row). Row 34 (an odd test row, level byte 1) didn't take damage.",
+  "30": {
+   "name": "Prototype 12 (chapter 4 boss, drawn as BF's Death Machine, character 76)",
+   "exp": 250,
+   "hp": 420,
+   "level": 53,
+   "str": 15,
+   "pow": 10,
+   "end": 15,
+   "on_defeat": "normal",
+   "death": "call 29 327"
+  },
+  "70": {
+   "name": "Vegeta (chapter 8; BF row 70 Majin Vegeta, Buu saga, unused in LoG4)",
+   "exp": 600,
+   "hp": 1000,
+   "level": 54,
+   "str": 17,
+   "pow": 15,
+   "end": 20,
+   "on_defeat": "boss",
+   "death": "call 29 343; heal; call 120 30; call 119 17 4 1 424 440; call 121 30"
+  },
+  "18": {
+   "name": "Krillin (chapter 8; BF row 18 Dabura)",
+   "exp": 480,
+   "hp": 700,
+   "level": 53,
+   "str": 13,
+   "pow": 16,
+   "end": 16,
+   "on_defeat": "boss",
+   "death": "call 29 347; heal; call 120 30; call 119 17 8 1 424 440; call 121 30"
+  },
+  "136": {
+   "name": "Piccolo (chapter 8; BF row 136, the second Majin Vegeta row. Row 26 (Majin Buu) spawns frozen and invisible)",
+   "exp": 800,
+   "hp": 1200,
+   "level": 55,
+   "str": 18,
+   "pow": 16,
+   "end": 22,
+   "on_defeat": "boss",
+   "death": "call 29 348; heal; call 120 30; call 119 17 10 1 424 440; call 121 30"
+  },
+  "21": {
+   "name": "Super Android 13 (chapter 9; BF row 21 Elite Majin Fighter; row 122 Super Janemba never appears)",
+   "exp": 1200,
+   "hp": 1500,
+   "level": 58,
+   "str": 20,
+   "pow": 18,
+   "end": 24,
+   "on_defeat": "boss",
+   "death": "call 29 363; heal; call 120 30; call 119 17 15 1 208 300; call 121 30"
+  },
+  "22": {
+   "name": "Gohan (chapter 9, Age 774; BF row 22 Elite Majin Soldier, given the Elite Majin Fighter behaviour 0x8A)",
+   "exp": 1000,
+   "hp": 1400,
+   "level": 57,
+   "str": 15,
+   "pow": 14,
+   "end": 22,
+   "on_defeat": "boss",
+   "death": "call 29 364; heal; call 120 30; call 119 17 17 1 424 440; call 121 30",
+   "ai": 138
+  },
+  "23": {
+   "name": "One-armed Future Gohan (chapter 10, Age 780; BF row 23, fighter behaviour 0x8A. Row 14 froze the fight: the enemy grabs the player and both lock up)",
+   "exp": 1500,
+   "hp": 1600,
+   "level": 58,
+   "str": 16,
+   "pow": 15,
+   "end": 23,
+   "on_defeat": "boss",
+   "death": "call 29 383; heal; call 120 40; call 119 17 23 1 424 440; call 121 40",
+   "ai": 138
+  },
+  "24": {
+   "name": "Future Trunks, Age 788 (secret chapter; BF row 24 Enzyme, fighter behaviour 0x8A)",
+   "exp": 0,
+   "hp": 1700,
+   "level": 60,
+   "str": 17,
+   "pow": 16,
+   "end": 24,
+   "ai": 138,
+   "on_defeat": "boss",
+   "death": "call 29 393; heal; call 120 40; call 119 17 30 1 424 440; call 121 40"
+  },
+  "17": {
+   "name": "Cyborg (secret chapter's bunker guard; BF row 17). EXP 0: Cell must not level up (BF recomputes a never-used character's stats on level-up from its own growth, and his fell from 40 STR / 440 HP to 20 / 234) Death script: Cell absorbs the kill (+1/6 max HP, +1/4 max ki; the setters clamp at max).",
+   "exp": 0,
+   "hp": 875,
+   "level": 90,
+   "str": 22,
+   "pow": 26,
+   "end": 41,
+   "on_defeat": "normal",
+   "death": "hex 02 0C 02 0D 00 06 0A 07 03 0C 02 0E 02 0F 00 04 0A 07 03 0E"
+  },
+  "64": {
+   "name": "Laser turret (chapter 1 proving ground; BF row 64)",
+   "exp": 90,
+   "hp": 130,
+   "level": 54,
+   "str": 0,
+   "pow": 10,
+   "end": 16
+  },
+  "72": {
+   "name": "Training mechanoid (chapter 1; BF row 72 Mechanoid)",
+   "exp": 170,
+   "hp": 260,
+   "level": 56,
+   "str": 11,
+   "pow": 0,
+   "end": 20
+  },
+  "127": {
+   "name": "Heavy tank (chapter 1 boss; BF row 127 Tank)",
+   "exp": 650,
+   "hp": 500,
+   "level": 58,
+   "str": 9,
+   "pow": 9,
+   "end": 20,
+   "on_defeat": "boss",
+   "death": "call 29 356; heal; call 120 40; call 119 1 61 1 150 230; call 121 40"
+  },
+  "108": {
+   "name": "Raider sniper (chapter 2; BF row 108 Sniper)",
+   "exp": 150,
+   "hp": 200,
+   "level": 56,
+   "str": 10,
+   "pow": 16,
+   "end": 18
+  },
+  "15": {
+   "name": "Raider thug (chapter 2; BF row 15 Criminal)",
+   "exp": 100,
+   "hp": 160,
+   "level": 55,
+   "str": 14,
+   "pow": 0,
+   "end": 16
+  },
+  "44": {
+   "name": "Gunman (chapters 1-2; BF row 44)",
+   "exp": 110,
+   "hp": 140,
+   "level": 55,
+   "str": 9,
+   "pow": 10,
+   "end": 17,
+   "ki_taken": 160
+  },
+  "75": {
+   "name": "Mercenary (chapters 1-2; BF row 75)",
+   "exp": 130,
+   "hp": 170,
+   "level": 56,
+   "str": 0,
+   "pow": 13,
+   "end": 19
+  },
+  "128": {
+   "name": "Raider Chief (chapter 2 boss; BF row 128 Thug)",
+   "exp": 700,
+   "hp": 480,
+   "level": 58,
+   "str": 14,
+   "pow": 0,
+   "end": 22,
+   "on_defeat": "boss",
+   "death": "call 29 377; heal"
+  },
+  "8": {
+   "name": "Bomber (chapter 1 Pit; BF row 8)",
+   "exp": 110,
+   "hp": 130,
+   "level": 55,
+   "str": 7,
+   "pow": 9,
+   "end": 16
+  },
+  "47": {
+   "name": "Looters' captain (chapter 3; BF row 47 Hooligan)",
+   "exp": 500,
+   "hp": 420,
+   "level": 57,
+   "str": 13,
+   "pow": 0,
+   "end": 20,
+   "on_defeat": "boss",
+   "death": "call 29 284"
+  },
+  "48": {
+   "name": "Failed prototype (chapter 4; BF row 48 Hyper Cyborg)",
+   "exp": 230,
+   "hp": 280,
+   "level": 58,
+   "str": 13,
+   "pow": 12,
+   "end": 20
+  },
+  "41": {
+   "name": "Prototype 9 (chapter 4 mini-boss; BF row 41 Grand Mechanoid)",
+   "exp": 600,
+   "hp": 450,
+   "level": 59,
+   "str": 13,
+   "pow": 0,
+   "end": 22,
+   "phys_taken": 128,
+   "ki_taken": 128,
+   "on_defeat": "boss",
+   "death": "call 29 290"
+  },
+  "97": {
+   "name": "Red Fang punk (chapter 5; BF row 97 Criminal, character 235)",
+   "exp": 45,
+   "hp": 70,
+   "level": 52,
+   "str": 6,
+   "pow": 0,
+   "end": 8
+  },
+  "36": {
+   "name": "Red Fang bruiser (chapter 5; BF row 36 Goon, character 122)",
+   "exp": 70,
+   "hp": 120,
+   "level": 53,
+   "str": 8,
+   "pow": 0,
+   "end": 10
+  },
+  "12": {
+   "name": "Big Ox, Red Fang boss (chapter 5; BF row 12 Bruiser, character 39)",
+   "exp": 320,
+   "hp": 420,
+   "level": 55,
+   "str": 10,
+   "pow": 0,
+   "end": 12,
+   "on_defeat": "boss",
+   "death": "call 29 294; heal"
+  },
+  "94": {
+   "name": "Gero's hunter drone (chapter 6; BF row 94 Power Mechandoid, character 230)",
+   "exp": 80,
+   "hp": 110,
+   "level": 54,
+   "str": 8,
+   "pow": 0,
+   "end": 11
+  },
+  "76": {
+   "name": "The Collector (chapter 6 boss; BF row 76 Metal Hulk, character 191)",
+   "exp": 400,
+   "hp": 520,
+   "level": 56,
+   "str": 11,
+   "pow": 0,
+   "end": 13,
+   "on_defeat": "boss",
+   "death": "call 29 334; heal; call 120 30; call 119 16 44 1 150 176; call 121 30"
+  },
+  "20": {
+   "name": "Security Unit (chapter 7 boss; BF row 20 Destroyer, character 78)",
+   "exp": 700,
+   "hp": 3000,
+   "level": 56,
+   "str": 30,
+   "pow": 0,
+   "end": 30,
+   "on_defeat": "boss",
+   "death": "call 29 339; heal"
+  },
+  "62": {
+   "name": "Gero's old heavy unit (chapter 8; BF row 62 Knight Destroyer, character 164)",
+   "exp": 260,
+   "hp": 420,
+   "level": 57,
+   "str": 15,
+   "pow": 0,
+   "end": 20
+  },
+  "100": {
+   "name": "The Sentinel (chapter 9 mini-boss; BF row 100 Shadow Colossus, character 240)",
+   "exp": 1200,
+   "hp": 3200,
+   "level": 58,
+   "str": 30,
+   "pow": 0,
+   "end": 28,
+   "on_defeat": "boss",
+   "death": "call 29 401; heal"
+  },
+  "19": {
+   "name": "Prototype 11 (Act 3 optional boss, Diablo Desert; BF row 19, Death Machine char 76)",
+   "exp": 1800,
+   "hp": 5200,
+   "level": 60,
+   "str": 36,
+   "pow": 0,
+   "end": 32,
+   "on_defeat": "boss",
+   "death": "call 29 417; heal"
+  },
+  "82": {
+   "name": "Ninja captain (Act 3 optional boss, Pilaf's Castle; BF row 82, char 202)",
+   "exp": 1300,
+   "hp": 3000,
+   "level": 59,
+   "str": 30,
+   "pow": 0,
+   "end": 28,
+   "on_defeat": "boss",
+   "death": "call 29 420; heal"
+  },
+  "131": {
+   "name": "Butcher, raider boss (Act 3 optional boss, Nataday Village; BF row 131, char 272)",
+   "exp": 1400,
+   "hp": 3400,
+   "level": 59,
+   "str": 32,
+   "pow": 0,
+   "end": 28,
+   "on_defeat": "boss",
+   "death": "call 29 423; heal"
+  },
+  "71": {
+   "name": "Raider (Act 3, Diablo Desert / Nataday; BF row 71, char 184)",
+   "exp": 220,
+   "hp": 380,
+   "level": 56,
+   "str": 16,
+   "pow": 0,
+   "end": 18
+  },
+  "78": {
+   "name": "Castle ninja (Act 3, Pilaf's Castle; BF row 78, char 199)",
+   "exp": 240,
+   "hp": 450,
+   "level": 56,
+   "str": 17,
+   "pow": 0,
+   "end": 18
+  },
+  "101": {
+   "name": "Castle ninja (Act 3, Pilaf's Castle; BF row 101, char 241)",
+   "exp": 240,
+   "hp": 450,
+   "level": 56,
+   "str": 17,
+   "pow": 0,
+   "end": 18
+  },
+  "123": {
+   "name": "Tournament hopeful (Act 3, Papaya Island; BF row 123, char 255)",
+   "exp": 260,
+   "hp": 520,
+   "level": 57,
+   "str": 18,
+   "pow": 0,
+   "end": 19
+  },
+  "124": {
+   "name": "Tournament hopeful (Act 3, Papaya Island; BF row 124, char 256)",
+   "exp": 260,
+   "hp": 520,
+   "level": 57,
+   "str": 0,
+   "pow": 18,
+   "end": 19
+  },
+  "125": {
+   "name": "Tournament hopeful (Act 3, Papaya Island; BF row 125, char 257)",
+   "exp": 260,
+   "hp": 520,
+   "level": 57,
+   "str": 0,
+   "pow": 18,
+   "end": 19
+  }
+ }
+}

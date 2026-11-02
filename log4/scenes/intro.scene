@@ -1,0 +1,17 @@
+# Intro movie (replaces Buu's Fury's Cell / Goku's death / Buu-ball intro, list 0x77CBF0).
+# Original steps kept: 1 = setup (blank scene 0:2 + intro music), 2 = title line, 18 = (type 4 data, logo), 19 = run opening.
+# Lines starting with "!" use the intro's centred narration style. load_area = call 114 world area room camX camY.
+replace 0x77CBF0
+keep 1
+keep 2
+do call 114 1 62 1 0 16
+narrate !The Red Ribbon Army wanted the world. Its generals put their faith in tanks, guns and numbers.
+narrate !But far below their headquarters, one scientist dreamed of a soldier that could never be beaten.
+do call 114 1 63 1 72 24
+narrate !A soldier that never tires, never doubts and never disobeys... a perfect warrior, built by human hands.
+narrate !His name was Dr. Gero.
+narrate !One day, a boy called Goku would take everything from him... and Dr. Gero would swear to make him pay.
+do call 114 0 2 0 0 0
+narrate !This is the story of the man who built the Androids.
+keep 18
+keep 19

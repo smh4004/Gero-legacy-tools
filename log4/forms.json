@@ -1,0 +1,39 @@
+{
+ "_note": "Form table edits (tools/outfit.py). 14 = Lapis's outfit form (BF Great Saiyaman) -> Android 17 (actor 102); 23 = Lazuli's (BF Trunks form 23) -> Android 18 (actor 262). names = [field name UI, status-screen name UI]; portraits = speaker id(s). 39 = character 6 (BF Vegito) -> Imperfect Cell (actor 275); 27 = character 4's second form (BF Vegeta, actor 271) -> Cell's larva, UI 165/181 'Cell', LoG2 Cell portrait.",
+ "14": {
+  "names": [
+   164,
+   180
+  ],
+  "portraits": [
+   192
+  ]
+ },
+ "23": {
+  "names": [
+   166,
+   182
+  ],
+  "portraits": [
+   193
+  ]
+ },
+ "39": {
+  "names": [
+   165,
+   181
+  ],
+  "portraits": [
+   197
+  ]
+ },
+ "27": {
+  "names": [
+   165,
+   181
+  ],
+  "portraits": [
+   197
+  ]
+ }
+}

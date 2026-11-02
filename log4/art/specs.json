@@ -1,0 +1,1427 @@
+[
+ {
+  "id": "P1_android17_idle",
+  "file": "P1_android17_idle.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P1_android17_dash",
+  "file": "P1_android17_dash.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P1_android17_special",
+  "file": "P1_android17_special.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_idle",
+  "file": "P2_android18_idle.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_special",
+  "file": "P2_android18_special.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P3_lapis_walk",
+  "file": "P3_lapis_walk.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_walk",
+  "file": "P4_lazuli_walk.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P5_gevo_walk",
+  "file": "P5_gevo_walk.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P6_android16_idle",
+  "file": "P6_android16_idle.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P10_cell_tail_strike",
+  "file": "P10_cell_tail_strike.png",
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "target_height": 53,
+  "max_colors": 16,
+  "allow_new_colors": 0,
+  "frames": {
+   "cols": 4,
+   "rows": 1
+  }
+ },
+ {
+  "id": "P11_cell_larva_crawl",
+  "file": "P11_cell_larva_crawl.png",
+  "kind": "sprite",
+  "cell": [
+   16,
+   16
+  ],
+  "target_height": 12,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "R1_lapis_portrait",
+  "file": "R1_lapis_portrait.png",
+  "kind": "portrait",
+  "cell": [
+   56,
+   56
+  ],
+  "target_height": 56,
+  "max_colors": 32,
+  "allow_new_colors": 1,
+  "frames": {
+   "cols": 4,
+   "rows": 1
+  },
+  "backdrop": "cyan"
+ },
+ {
+  "id": "U1_title",
+  "file": "U1_title.png",
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240
+ },
+ {
+  "id": "U4_main_menu",
+  "file": "U4_main_menu.png",
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240
+ },
+ {
+  "id": "P12_gero_briefcase_walk",
+  "file": "P12_gero_briefcase_walk.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P12_gero_interact",
+  "file": "P12_gero_interact.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P12_gero_remote",
+  "file": "P12_gero_remote.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P12_gero_typing",
+  "file": "P12_gero_typing.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P1_android17_block",
+  "file": "P1_android17_block.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P1_android17_charge",
+  "file": "P1_android17_charge.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P1_android17_fly",
+  "file": "P1_android17_fly.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P1_android17_interact",
+  "file": "P1_android17_interact.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P1_android17_victory",
+  "file": "P1_android17_victory.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_block",
+  "file": "P2_android18_block.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_charge",
+  "file": "P2_android18_charge.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_dash",
+  "file": "P2_android18_dash.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_fly",
+  "file": "P2_android18_fly.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_interact",
+  "file": "P2_android18_interact.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P2_android18_victory",
+  "file": "P2_android18_victory.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 0
+ },
+ {
+  "id": "P3_lapis_block",
+  "file": "P3_lapis_block.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_charge",
+  "file": "P3_lapis_charge.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_dash",
+  "file": "P3_lapis_dash.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_fly",
+  "file": "P3_lapis_fly.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_hurt",
+  "file": "P3_lapis_hurt.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_idle",
+  "file": "P3_lapis_idle.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_interact",
+  "file": "P3_lapis_interact.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_ko",
+  "file": "P3_lapis_ko.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_melee",
+  "file": "P3_lapis_melee.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_special",
+  "file": "P3_lapis_special.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_throw",
+  "file": "P3_lapis_throw.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P3_lapis_victory",
+  "file": "P3_lapis_victory.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_block",
+  "file": "P4_lazuli_block.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_charge",
+  "file": "P4_lazuli_charge.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_dash",
+  "file": "P4_lazuli_dash.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_fly",
+  "file": "P4_lazuli_fly.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_hurt",
+  "file": "P4_lazuli_hurt.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_idle",
+  "file": "P4_lazuli_idle.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_interact",
+  "file": "P4_lazuli_interact.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_ko",
+  "file": "P4_lazuli_ko.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2,
+  "scale": 11.71
+ },
+ {
+  "id": "P4_lazuli_melee",
+  "file": "P4_lazuli_melee.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_special",
+  "file": "P4_lazuli_special.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_throw",
+  "file": "P4_lazuli_throw.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P4_lazuli_victory",
+  "file": "P4_lazuli_victory.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 31,
+  "max_colors": 16,
+  "allow_new_colors": 2
+ },
+ {
+  "id": "P5_gevo_aim",
+  "file": "P5_gevo_aim.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P5_gevo_fall",
+  "file": "P5_gevo_fall.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1,
+  "scale": 10.9
+ },
+ {
+  "id": "P5_gevo_idle",
+  "file": "P5_gevo_idle.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P5_gevo_salute",
+  "file": "P5_gevo_salute.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P5_gevo_talk",
+  "file": "P5_gevo_talk.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P6_android16_lookaway",
+  "file": "P6_android16_lookaway.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P6_android16_pod",
+  "file": "P6_android16_pod.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P6_android16_slump",
+  "file": "P6_android16_slump.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "P6_android16_walk",
+  "file": "P6_android16_walk.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 32,
+  "max_colors": 16,
+  "allow_new_colors": 1
+ },
+ {
+  "id": "U4b_menu_cursor",
+  "file": "U4b_menu_cursor.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   16
+  ],
+  "max_colors": 16,
+  "allow_new_colors": 0,
+  "target_height": 12
+ },
+ {
+  "id": "U12_item_icons",
+  "file": "U12_item_icons.png",
+  "kind": "sprite",
+  "cell": [
+   16,
+   16
+  ],
+  "max_colors": 16,
+  "allow_new_colors": 0,
+  "target_height": 14
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "id": "E1_barrier_dome",
+  "file": "E1_barrier_dome.png",
+  "frames": {
+   "cols": 6,
+   "rows": 1
+  },
+  "scale": 5.66
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   32
+  ],
+  "max_colors": 16,
+  "id": "E2_energy_disc",
+  "file": "E2_energy_disc.png",
+  "target_height": 14
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "id": "E3_energy_drain",
+  "file": "E3_energy_drain.png",
+  "target_height": 30
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   16
+  ],
+  "max_colors": 16,
+  "id": "E4_drone_laser",
+  "file": "E4_drone_laser.png",
+  "target_height": 6
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   32
+  ],
+  "max_colors": 16,
+  "id": "E5_lab_sparks",
+  "file": "E5_lab_sparks.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "id": "E6_cell_tail_glow",
+  "file": "E6_cell_tail_glow.png",
+  "target_height": 16
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "id": "E7_time_machine",
+  "file": "E7_time_machine.png",
+  "frames": {
+   "cols": 8,
+   "rows": 1
+  },
+  "scale": 4.9
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "target_height": 53,
+  "id": "P10_cell_charge",
+  "file": "P10_cell_charge.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "target_height": 53,
+  "id": "P10_cell_dash",
+  "file": "P10_cell_dash.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "target_height": 53,
+  "id": "P10_cell_fly",
+  "file": "P10_cell_fly.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "target_height": 53,
+  "id": "P10_cell_interact",
+  "file": "P10_cell_interact.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   64
+  ],
+  "max_colors": 16,
+  "target_height": 53,
+  "id": "P10_cell_victory",
+  "file": "P10_cell_victory.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   16,
+   16
+  ],
+  "max_colors": 16,
+  "target_height": 12,
+  "id": "P11_cell_larva_burrow",
+  "file": "P11_cell_larva_burrow.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   16,
+   16
+  ],
+  "max_colors": 16,
+  "target_height": 12,
+  "id": "P11_cell_larva_emerge",
+  "file": "P11_cell_larva_emerge.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 31,
+  "id": "P7_future_gohan_onearm_attack",
+  "file": "P7_future_gohan_onearm_attack.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 31,
+  "id": "P7_future_gohan_onearm_idle",
+  "file": "P7_future_gohan_onearm_idle.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 31,
+  "id": "P7_future_gohan_onearm_ki_hurt_ko",
+  "file": "P7_future_gohan_onearm_ki_hurt_ko.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 31,
+  "id": "P7_future_gohan_onearm_walk",
+  "file": "P7_future_gohan_onearm_walk.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P8_krillin_disc",
+  "file": "P8_krillin_disc.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P8_krillin_hurt",
+  "file": "P8_krillin_hurt.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P8_krillin_ki",
+  "file": "P8_krillin_ki.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P8_krillin_ko",
+  "file": "P8_krillin_ko.png",
+  "scale": 11.1
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P8_krillin_melee",
+  "file": "P8_krillin_melee.png"
+ },
+ {
+  "kind": "portrait",
+  "cell": [
+   56,
+   56
+  ],
+  "target_height": 56,
+  "max_colors": 32,
+  "allow_new_colors": 1,
+  "id": "R2_lazuli_portrait",
+  "file": "R2_lazuli_portrait.png",
+  "backdrop": "pink"
+ },
+ {
+  "kind": "portrait",
+  "cell": [
+   56,
+   56
+  ],
+  "target_height": 56,
+  "max_colors": 32,
+  "allow_new_colors": 1,
+  "id": "R3_gevo_portrait",
+  "file": "R3_gevo_portrait.png",
+  "backdrop": "blue"
+ },
+ {
+  "kind": "portrait",
+  "cell": [
+   56,
+   56
+  ],
+  "target_height": 70,
+  "max_colors": 32,
+  "allow_new_colors": 1,
+  "id": "R4_future_gohan_portrait",
+  "file": "R4_future_gohan_portrait.png",
+  "backdrop": "yellow"
+ },
+ {
+  "kind": "portrait",
+  "cell": [
+   56,
+   56
+  ],
+  "target_height": 70,
+  "max_colors": 32,
+  "allow_new_colors": 1,
+  "id": "R4b_future_gohan_twoarm_portrait",
+  "file": "R4b_future_gohan_twoarm_portrait.png",
+  "backdrop": "yellow"
+ },
+ {
+  "kind": "portrait",
+  "cell": [
+   56,
+   56
+  ],
+  "target_height": 56,
+  "max_colors": 32,
+  "allow_new_colors": 1,
+  "id": "R5_young_gero_portrait",
+  "file": "R5_young_gero_portrait.png",
+  "backdrop": "purple"
+ },
+ {
+  "kind": "portrait",
+  "cell": [
+   56,
+   56
+  ],
+  "target_height": 56,
+  "max_colors": 32,
+  "allow_new_colors": 1,
+  "id": "R6_android16_portrait",
+  "file": "R6_android16_portrait.png",
+  "backdrop": "green"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U10_dialogue_frames",
+  "file": "U10_dialogue_frames.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U11_hud",
+  "file": "U11_hud.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U13_game_over",
+  "file": "U13_game_over.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U14a_ending",
+  "file": "U14a_ending.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U14b_ending_secret",
+  "file": "U14b_ending_secret.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U3_splash",
+  "file": "U3_splash.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U5_file_select",
+  "file": "U5_file_select.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U6_pause_menu",
+  "file": "U6_pause_menu.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U7_status",
+  "file": "U7_status.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U8_equipment",
+  "file": "U8_equipment.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U9a_chapter_act1",
+  "file": "U9a_chapter_act1.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U9b_chapter_act2",
+  "file": "U9b_chapter_act2.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U9c_chapter_act3",
+  "file": "U9c_chapter_act3.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U9d_chapter_epilogue",
+  "file": "U9d_chapter_epilogue.png"
+ },
+ {
+  "kind": "ui",
+  "size": [
+   240,
+   160
+  ],
+  "max_colors": 240,
+  "id": "U9e_chapter_secret",
+  "file": "U9e_chapter_secret.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   64,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 27,
+  "allow_new_colors": 1,
+  "id": "P13_kid_goku_pole_extend",
+  "file": "P13_kid_goku_pole_extend.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P10s_cell_charge",
+  "file": "P10_cell_charge.png",
+  "_note": "32x32 version of P10_cell_charge for the player actor (characters get 1 KB of OBJ VRAM per frame)",
+  "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P10s_cell_dash",
+  "file": "P10_cell_dash.png",
+  "_note": "32x32 version of P10_cell_dash for the player actor (characters get 1 KB of OBJ VRAM per frame)",
+  "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P10s_cell_fly",
+  "file": "P10_cell_fly.png",
+  "_note": "32x32 version of P10_cell_fly for the player actor (characters get 1 KB of OBJ VRAM per frame)",
+  "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P10s_cell_interact",
+  "file": "P10_cell_interact.png",
+  "_note": "32x32 version of P10_cell_interact for the player actor (characters get 1 KB of OBJ VRAM per frame)",
+  "act": "act3"
+ },
+ {
+  "id": "P10s_cell_tail_strike",
+  "file": "P10_cell_tail_strike.png",
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "target_height": 30,
+  "max_colors": 16,
+  "allow_new_colors": 0,
+  "frames": {
+   "cols": 4,
+   "rows": 1
+  },
+  "_note": "32x32 version of P10_cell_tail_strike for the player actor (characters get 1 KB of OBJ VRAM per frame)",
+  "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "target_height": 30,
+  "id": "P10s_cell_victory",
+  "file": "P10_cell_victory.png",
+  "_note": "32x32 version of P10_cell_victory for the player actor (characters get 1 KB of OBJ VRAM per frame)",
+  "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "id": "E7s_time_machine",
+  "file": "E7_time_machine.png",
+  "frames": {
+   "cols": 8,
+   "rows": 1
+  },
+  "scale": 9.8,
+  "act": "act3",
+  "_note": "32x32 secret-palette version of E7 for world 19 (NPC frames must fit 1 KB)"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   16,
+   16
+  ],
+  "max_colors": 16,
+  "target_height": 12,
+  "id": "P11s_cell_larva_burrow",
+  "file": "P11_cell_larva_burrow.png",
+  "act": "act3"
+ },
+ {
+  "id": "P11s_cell_larva_crawl",
+  "file": "P11_cell_larva_crawl.png",
+  "kind": "sprite",
+  "cell": [
+   16,
+   16
+  ],
+  "target_height": 12,
+  "max_colors": 16,
+  "allow_new_colors": 0,
+  "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   16,
+   16
+  ],
+  "max_colors": 16,
+  "target_height": 12,
+  "id": "P11s_cell_larva_emerge",
+  "file": "P11_cell_larva_emerge.png",
+  "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "id": "E6s_cell_tail_glow",
+  "file": "E6_cell_tail_glow.png",
+  "target_height": 16,
+  "act": "act3"
+ }
+]

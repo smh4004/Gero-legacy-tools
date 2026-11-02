@@ -1,0 +1,184 @@
+# Act 2, chapter 5 "Siblings": Lapis and Lazuli, runaways in West City. Party: Lapis = character slot 1 (Gohan's),
+# Lazuli = slot 3 (Trunks's). Started by a walk-in trigger at West City's arrival point (areas.json 4:1, active while
+# flag 300 is clear); natives: 29 set flag, 151 join, 152 leave, 149 make player, 183 chapter card.
+list ch5_start
+do call 29 300
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+# natives 164/165/166 (0xA4-0xA6) = add / remove / replace a skill in a character's list (record +0x0C). The twins start
+# with Gohan's and Trunks's lists, which include Super Saiyan (skill 20): humans don't get that.
+do call 165 1 20; call 165 3 20
+# and keep them human: Lapis [7, 6, 17] (Energy Blast, Electric Kamehameha, Masenko) and Lazuli [7, 4, 11] (Energy
+# Blast, Burning Attack, Flame Kamehameha) -> Energy Punch only. The procedure (chapter 6) gives the android moves.
+do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
+do call 164 1 8; call 164 3 8
+do call 183 516 1458 1459
+# after its card the Act 1 opening does: blank scene 0:2 (115), 121(1), 165(0, 20), then (in its packed type-4 step)
+# 120(1) and 119(world, area, room, x, y) = load a field area with the player placed at (x, y); 120(n) / 121(n) =
+# fade out / in over n frames
+do call 115 0 2 0 0 0; call 121 1; call 165 0 20
+do call 120 1; call 119 4 1 1 268 304; call 121 60
+narrate Years later. West City.
+say lapis.2 Three wallets, a wristwatch and a capsule case. Not bad for a Tuesday.
+say lazuli.1 Not bad? You nearly tripped over that cop's shoelaces.
+say lapis.2 Nearly. That's the important word.
+say lazuli.0 Keep your voice down. That patrol car's been circling the block all morning.
+say lapis.1 Then let's give them something to chase.
+say lazuli.3 Fine. But if we get caught, I'm telling them it was your idea.
+journal Explore West City
+# end the cutscene and hand control back (the Act 1 opening's last step does the same)
+do call 47; call 51 0
+# West City townsfolk and police (Act 2), set on BF's own NPC objects via areas.json "object_talk"
+list wc_woman_pink
+narrate Townswoman: Hold on to your purse around here. A pair of kids has been picking pockets all week.
+list wc_woman_blue
+narrate Townswoman: Twins, people say. One dark-haired, one blonde... gone before you can blink.
+list wc_man_green
+# chapter 5 quest: the capsule case (flag 301)
+if_flag 301 fence_done
+narrate Fence: Psst. You two look like you've got something to sell.
+say lapis.2 A capsule case. A fancy one. What's it worth to you?
+narrate Fence: Let me see... Whoa. That's the Red Ribbon Army's mark inside the lid. Nobody's touching that.
+narrate Fence: And kids... a man in a long coat was asking around about you two this morning. Very politely.
+say lazuli.1 Great. Now we're famous.
+set_flag 301
+journal Find out who's asking about you
+run ch5_check
+stop
+label fence_done
+narrate Fence: I told you, I'm not touching that case. Get rid of it before it gets rid of you.
+list wc_old_man
+narrate Old man: Not so many years ago, the Red Ribbon Army marched right down this street.
+narrate Old man: Then a single boy brought the whole army down. Or so the story goes.
+list wc_police_1
+narrate Police officer: Move along. We're looking for two runaways. Seen any kids who look like trouble?
+list wc_police_2
+narrate Police officer: The twins again! Third report today. When I catch them, they're spending the night at the station.
+list wc_police_3
+narrate Police officer: The chief wants patrols doubled. Those two keep slipping past every roadblock in town.
+# chapter 5 quest: Hercule (flag 302)
+list wc_hercule
+if_flag 302 herc_done
+narrate Hercule: Out of my way, kids! Future World Martial Arts Champion coming through!
+say lazuli.3 Champion of what, the sidewalk?
+narrate Hercule: Laugh now! One day the whole world will know my name. Hercule! Say it with me!
+say lapis.2 Sure. We'll be waiting.
+set_flag 302
+run ch5_check
+stop
+label herc_done
+narrate Hercule: Hah! Watch and learn, kids. Dynamite kick! ...Ow. My ankle.
+# both quests done (and not run before) -> the end of chapter 5
+list ch5_check
+unless_flag 301 not_yet
+unless_flag 302 not_yet
+unless_flag 308 not_yet
+unless_flag 295 not_yet
+if_flag 303 not_yet
+run ch5_end
+label not_yet
+list ch5_end
+set_flag 303
+say lazuli.0 Lapis. That man in the coat... the fence saw him, Big Ox took his money, I saw him on the bus. He's everywhere we go.
+say lapis.1 Then we lie low. Back to the warehouse tonight. If he wants us that badly, let him come looking.
+say lazuli.0 Fine. And Lapis? Ditch the case.
+journal Hide out until nightfall
+# -> chapter 6 "Taken": card, then West City at night (16:1, moonlit copy of 4:1), the twins in the park
+do call 183 516 1460 1461
+do call 115 0 2 0 0 0; call 121 1; call 165 0 20
+do call 120 1; call 119 16 1 1 112 480; call 121 60
+do call 29 304
+narrate That night.
+say lazuli.0 Every patrol in the city is out. And those flying things... what are they?
+say lapis.1 Don't know. Don't care. Through the crossroads and down to the docks. Stay in the shadows.
+journal Get to the docks unseen
+do call 47; call 51 0
+# chapter 5 side job "Ditch the Patrol" (flag 307 chase running, 308 done): taunt the patrol cop, lose him in the park,
+# and the man in the long coat (Gero) sees how good they are
+list wc_cop_chase
+if_flag 308 cop_done
+if_flag 307 cop_running
+narrate Police officer: Hold it! A wallet, a wristwatch and a capsule case went missing on this street today. Turn out your pockets.
+say lapis.2 Officer, I'm offended. Do we look like thieves?
+narrate Police officer: You look exactly like the two in the report!
+say lazuli.3 Then he'll have to catch us first.
+set_flag 307
+do begin_moves; move patrol_cop 500 400; wait_moves
+narrate Police officer: Stop! In the name of the West City Police!
+say lapis.1 The park. We lose him in the trees.
+journal Lose the cop in the park
+# the script moved an actor: leave cutscene mode (without this the player stays locked)
+do call 47; call 51 0
+stop
+label cop_running
+narrate Police officer: (wheezing) You... two... stop... running...
+stop
+label cop_done
+narrate Police officer: You again. I know it was you. I just can't prove it.
+list park_hide
+unless_flag 307 hide_skip
+if_flag 308 hide_skip
+set_flag 308
+say lazuli.0 Down. Behind the hedge.
+do begin_moves; move patrol_cop 230 380; wait_moves
+narrate Police officer: ...Lost them. Again. The chief is going to have my badge.
+do begin_moves; move patrol_cop 700 400; wait_moves
+do begin_moves; move player_gero_106 600 400; wait_moves
+do begin_moves; move player_gero_106 270 396; wait_moves
+narrate Across the street, a man in a long coat watches the hedge for a long moment. Then he writes something down.
+say lapis.2 Too easy.
+say lazuli.0 Lapis... who's that?
+journal You lost the cop. Somebody else was watching.
+do call 47; call 51 0
+run ch5_check
+stop
+label hide_skip
+list wc_coat_man
+if_flag 308 coat_after
+narrate Man in a long coat: Hm? Run along, children.
+stop
+label coat_after
+narrate Man in a long coat: Quick. Clever. And nobody looking after you at all... Remarkable.
+# ---------- chapter 6 "Taken" (flags 304 opening seen, 305 ambush done, 306 conversion done = outfit swap unlocked)
+list night_police
+narrate Police officer: Curfew's in effect, kids. Nobody on the streets after dark. Not with those machines flying around.
+list night_drone
+narrate The machine hums overhead. A red eye sweeps slowly across the street.
+say lazuli.0 Don't move. Don't even breathe.
+# walk-in trigger at the crossroads (16:1): the drones close in, a voice, a flash -> the lab
+list ch6_ambush
+set_flag 305
+# 16:44 (the warehouse after the Collector, gen_ch6.py): the player arrives at (150,176), the drones close in
+narrate The machine shudders and goes dark. In the silence, a hum. Then another. Then a third.
+say lazuli.0 Wait. Listen.
+do begin_moves; move drone_night_a 150 136; move drone_night_b 196 176; move drone_night_c 104 176; wait_moves
+say lapis.1 Those aren't police drones.
+narrate Voice: Subjects located. Seventeen and Eighteen. Do not damage them.
+say lazuli.0 Seventeen? Who are you calling...
+say lapis.1 Lazuli, run!
+narrate A white flash. Then nothing.
+do call 120 30
+do call 120 1; call 119 1 66 1 150 228; call 121 90
+narrate Dr. Gero's Laboratory.
+say gero Lapis. Lazuli. You were not easy to find.
+say lazuli.0 Let us go, you creep! Who do you think you are?
+say gero The man who will make you perfect. Your old names end tonight. From now on you are Seventeen and Eighteen.
+say lapis.1 Lazuli... whatever he does to us, stay close.
+do call 120 60
+# the outfit swap unlocks (skill 18, BF's Saiyaman, re-pointed by tools/outfit.py) and both wake in the android
+# outfit: 157(c, actor idx) picks the first form whose +0xE = actor idx (actor id + 9): 111 = actor 102 -> form 14
+# (Android 17), 271 = actor 262 -> form 23 (Android 18).
+# 1:79 is the same tank room with Lazuli's NPC as 18.
+# 165 with skill id 240 (0xF0) = android upgrade (tools/outfit.py hook_rm): STR/POW +22, END +18, SPD +12, HP +230, EP +70
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do call 119 1 79 1 150 228; call 121 60
+narrate The procedure took eleven days.
+narrate When the twins opened their eyes, the world looked different. Sharper. Smaller. Easy to break.
+set_flag 306
+journal Lapis and Lazuli are gone
+narrate New skill: Outfit. Select it and press the B Button to switch between the android clothes and the old ones.
+run ch7_start
+list gero_lab_talk
+say gero Rest while you can. Your first tests begin tomorrow.
+list lazuli_lab_talk
+say lazuli.0 Eighteen. He keeps calling me Eighteen. The worst part is how easy it is to answer to it.

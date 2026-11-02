@@ -1,0 +1,262 @@
+# Act 3, chapter 8 "The Massacre" (Age 767, West City, world 17). Flags: 340 opened, 341 the stall memory, 342 the
+# Z Fighters land, 343 Vegeta, 344 the mother and son spared, 345 Tien, 346 Yamcha, 347 Krillin, 348 Piccolo,
+# 349 chapter end (345/346 are set by the Tien/Yamcha scenes), 350 Vegeta's last words seen, 351 Krillin aftermath seen. Boss deaths (log4/stats.json death
+# scripts) set their flag and load the next area; each area's arrival trigger plays the next scene.
+# Speakers: #144/#145 Vegeta, #112 Piccolo, #90 Krillin, #135 Tien, #159 Yamcha (BF portraits), gohan_teen (LoG2).
+list ch8_start
+set_flag 340
+do call 183 516 1464 1465
+do call 115 0 2 0 0 0; call 121 1
+do call 120 1; call 119 17 1 1 268 304; call 121 60
+narrate Age 767. West City, three days later.
+say android18 This is it. This is where we used to live.
+say android17 Huh. It's smaller than I remember.
+say android18 Everything is.
+say android17 Come on. I want a new jacket. Mine smells like Gero's lab.
+narrate Seventeen walks into Z-Mart and back out with a jacket nobody sold him. Nobody stops him. Nobody even looks up.
+say android17 See? Easy. Nobody chases us anymore.
+say android18 We used to run from that store. The man behind the counter had a broom. Do you remember?
+say android17 ...No.
+say android18 Our old hideout was down by the docks. The warehouse. I want to see it.
+say android17 Sentimental. Fine. But if it's boring, we're leaving.
+journal Visit the old hideout at the docks
+do call 47; call 51 0
+# ---------- the fruit stall (Hercule's old spot): the first memory
+list ch8_stall
+if_flag 341 stall_again
+unless_flag 359 stall_early
+set_flag 341
+narrate A woman sells fruit from a cart. Her daughter, maybe eight, sorts the apples by colour and hums to herself.
+narrate Fruit seller: Would you like an apple, miss? On the house. You look tired.
+say android18 I don't get tired.
+narrate The girl holds one out with both hands. She has a little backpack on, the straps let out too long for her.
+narrate Rain on a bus shelter roof. A girl with a backpack too big for her, breaking a stolen apple in half.
+narrate "Half for you, half for me, Lapis. That's the rule."
+say android17 Eighteen? You're making a face.
+say android18 Did we ever split things? Food. When we were small.
+say android17 How should I know? That was somebody else.
+narrate Eighteen takes the apple. She doesn't eat it.
+narrate Then the birds stop singing. All of them, all at once.
+say android17 Feel that? Five... no, six of them. Big power. Coming fast.
+say android18 Coming here.
+say android17 Finally, something interesting. The big crossroads. Let's give them an audience.
+journal Meet them at the crossroads
+do call 47; call 51 0
+stop
+label stall_again
+narrate Fruit seller: Take care of yourself, miss. Whatever it is, it'll look better tomorrow.
+stop
+label stall_early
+narrate Fruit seller: Fresh apples! Pears! ...Oh, are you two just looking? Come back any time.
+say android18 Later. The docks first.
+# ---------- townsfolk
+list ch8_man
+narrate Man: Did you hear? Goku's dead. Not a monster, not a war. A heart virus. The man who saved the world twice, and a sickness got him.
+narrate Man: Makes you think, doesn't it? Nobody's looking out for us now.
+list ch8_woman
+narrate Woman: Lovely morning. Are you two new in town? You look like you could use a hot meal. There's a place by the park.
+say android18 We know the place.
+list ch8_police
+narrate Police officer: Move along, kids. ...Hey. Don't I know you two? There were a pair of runaways, years back. Lapis and...
+narrate Police officer: No. Those kids would be grown up by now. Forget it.
+# ---------- the crossroads: the Z Fighters land (17:1 trigger -> 17:2)
+list ch8_landing
+unless_flag 341 not_yet
+set_flag 342
+do call 149 1
+narrate The wind changes. Six figures drop out of a clear sky and land in the middle of the street.
+do call 120 20; call 119 17 2 1 424 464; call 121 20
+say #112 Red Ribbon markings. So the old rumours were true. Dr. Gero's work.
+say #90 They're... kids. They look like normal kids, Piccolo.
+say #112 They are not. Look at their eyes, Krillin.
+say gohan_teen Mr. Piccolo... Dad was supposed to be here for this. He always knew what to do.
+say #112 Your father isn't here, Gohan. We are.
+say android17 You're the ones who used to follow Goku around. The heroes.
+say #144 Heroes? Don't lump me in with these fools.
+say #144 Kakarot died in his bed, of a disease. He never gave me my rematch. I won't be cheated a second time by a pair of toasters.
+say #112 Vegeta, we fight together or we don't fight at all.
+say #145 I fight ALONE. Stay out of my way. All of you.
+say android17 I like him. Eighteen, mind if I take this one?
+say android18 Be my guest.
+narrate The others pull back to the rooftops. Vegeta doesn't look at them.
+do heal; call 120 20; call 119 17 3 1 424 440; call 121 20
+journal Defeat Vegeta
+do call 47; call 51 0
+stop
+label not_yet
+# ---------- after Vegeta (17:4 arrival)
+list ch8_after_vegeta
+if_flag 350 vegeta_seen
+set_flag 350
+narrate Vegeta goes down on one knee. He tries to stand twice.
+say #145 Kakarot... you coward. You didn't even... let me...
+say android17 Was he your friend? This Goku.
+say #144 ...He was my goal.
+narrate He doesn't try a third time.
+say #90 Vegeta! ...He's gone. Piccolo, he's really gone.
+say #112 Gohan. Stay behind me.
+say #159 Everybody clear the street! Shelters, now! Go, go, GO!
+narrate People run. At the end of the street a bus sits with its doors jammed, faces pressed to the windows.
+say #135 Yamcha, get those people out. I'll keep these two busy.
+say #159 Tien, you can't take them alone!
+say #135 I don't intend to win. I intend to buy you time.
+journal Tien is waiting at the crossroads
+do call 47; call 51 0
+stop
+label vegeta_seen
+list ch8_civilians
+if_flag 344 civ_again
+set_flag 344
+narrate A woman holds her son behind her. He's crying too hard to make a sound.
+narrate Woman: Please. Please, he's only six.
+say android17 Eighteen, they're right there. Don't tell me you're going soft.
+say android18 ...Leave them.
+say android17 Why?
+say android18 Because I said so. They're not worth the energy.
+narrate The woman doesn't wait to be told twice. Eighteen watches until she can't see them any more.
+stop
+label civ_again
+narrate The woman can't move. She just holds on to her son and shakes.
+# ---------- Tien's last stand (17:4 trigger), then Yamcha (17:6 arrival). Their BF sprites have no fighting
+# animations (idle/walk only), so their deaths are scenes, not fights.
+list ch8_tien
+set_flag 345
+say #135 I've fought a demon king. A Saiyan prince. You two don't even look like you're trying.
+say android17 We're not.
+say #135 Then I'll make you try.
+narrate Tien puts his hands together in a triangle.
+do call 120 4; call 121 4; call 120 4; call 121 4
+narrate The street caves in under them. Again. And again.
+do call 120 4; call 121 4; call 120 4; call 121 4
+narrate Every blast takes something out of him. He keeps firing anyway.
+say android17 You're going to kill yourself doing that.
+say #135 Yes.
+narrate Somewhere behind him, the bus engine finally turns over.
+narrate Tien's hands drop. He falls forward, still facing them.
+do call 120 40; call 119 17 6 1 424 440; call 121 40
+list ch8_yamcha
+set_flag 346
+say #159 Tien... you stubborn idiot.
+say #159 The bus got out. Thirty-one people. You hear me, Tien? Thirty-one.
+say android18 You knew you'd lose. Both of you knew.
+say #159 Yeah. Goku would have done the same thing. He'd have done it better, but... same thing.
+say #159 Come on, then! I've been the weakest guy in the room my whole life. I'm used to it!
+narrate Yamcha charges. He's fast, for a human. It isn't enough.
+narrate Seventeen meets him halfway.
+narrate Yamcha is still smiling when he goes down.
+do call 120 30
+do call 149 3; heal; call 119 17 7 1 424 440; call 121 30
+# ---------- Krillin (arena 17:7 arrival), fought as Eighteen
+list ch8_krillin
+say #90 Yamcha... Tien... Vegeta...
+if_flag 344 kri_spared
+say #90 You. You hesitated back there, when that woman and her kid were in the street. I saw your face.
+goto kri_next
+label kri_spared
+say #90 You. You're the one who let that woman and her kid go. I saw.
+label kri_next
+say android18 You saw wrong.
+say #90 Maybe. I have to fight you, I know. But I don't think you want this.
+say android18 Stop talking.
+say #90 Okay. ...Okay.
+journal Defeat Krillin
+do call 47; call 51 0
+# ---------- after Krillin (17:8 arrival)
+list ch8_after_krillin
+if_flag 351 krillin_seen
+set_flag 351
+narrate Krillin hits the ground and doesn't get up.
+narrate Not once did he throw a punch at her face. Eighteen noticed. She can't stop noticing.
+do call 136 150
+say android18 ...Why didn't he hit me?
+say android17 Who cares? He was weak.
+say android18 He wasn't weak. He was holding back.
+say android17 Then he was stupid. Same thing.
+narrate Across the street, someone has watched all of it.
+say #112 Gohan. When I tell you to run, you run. Don't argue with me.
+say gohan_teen I'm not leaving you, Mr. Piccolo!
+say #112 You're the only one who can beat them someday. Not today. Someday.
+say android17 Touching. My turn.
+do call 149 1
+do heal; call 120 20; call 119 17 9 1 424 440; call 121 20
+journal Defeat Piccolo
+do call 47; call 51 0
+stop
+label krillin_seen
+# ---------- Piccolo (arena 17:9 arrival), fought as Seventeen
+list ch8_piccolo
+say #112 Look at you. You think you're free. You're doing exactly what a dead man built you to do.
+say android17 Shut up.
+say #112 Gero wanted the world afraid of his machines. Congratulations. You're his best work.
+say android17 I said SHUT UP!
+do call 47; call 51 0
+# ---------- Gohan runs (17:10 arrival), then the night
+list ch8_run
+set_flag 349
+narrate Piccolo's legs give out. He's still looking at the boy.
+say #112 Gohan... RUN!
+do begin_moves; move gohan_bf 420 160; wait_moves
+say android18 He's getting away.
+say android17 Let him. It's more fun if somebody's left.
+narrate Eighteen watches the small figure until it's gone. She doesn't say anything.
+do call 120 60
+do call 119 16 2 1 268 304; call 121 60
+narrate That night. The roof of the Z-Mart.
+narrate Fires burn in four places across West City. Sirens, far away.
+say android17 The prince. The three-eyed one. The one with the scars. The little bald one. The green one. Five.
+say android18 Lapis.
+say android17 Don't call me that.
+say android18 What was our mother's name?
+narrate A long silence.
+say android17 ...I don't know. Does it matter?
+say android18 I don't know either. I've been trying all night. I can remember the broom in the shop. I can remember the rain. I can't remember her face.
+say android17 Then she wasn't worth remembering.
+say android18 That's not what scares me.
+if_flag 344 night_spared
+goto night_radio
+label night_spared
+say android18 That woman this morning, with the little boy. I let them go, and I don't know why.
+say android17 Because you were bored.
+say android18 ...Yeah. Because I was bored.
+label night_radio
+narrate Below them, a radio in a broken window is still on. The same words, over and over:
+narrate Radio: ...two of them. Teenagers. If you see them, do not approach. Repeat, do not approach...
+journal Seventeen and Eighteen
+narrate End of Chapter 8.
+run ch9_start
+# ---------- the old hideout (areas from log4/gen_ch8.py; flags 359 tin box, 369 / 382 caches)
+list ch8_hideout
+if_flag 359 hideout_done
+set_flag 359
+narrate The old warehouse. The mattresses are long gone. Someone has painted over the red fang on the wall.
+narrate Eighteen kneels by the crates and pries up a loose board without thinking about it. Her hands know where it is.
+narrate A tin box. Inside: a handful of old zeni, a capsule case with a Red Ribbon mark inside the lid...
+narrate ...and a strip of photo-booth pictures. Two kids pulling faces. A boy with black hair. A girl with a backpack too big for her.
+say android17 Who are they?
+say android18 ...Nobody.
+narrate She puts the photo strip in her pocket anyway.
+say android17 Hey. I know that case. I swiped it off some guy at a bus stop... didn't I?
+say android18 You did. And I told you to ditch it, Lapis.
+say android17 What did you just call me?
+say android18 ...Seventeen. I said Seventeen.
+say android18 Let's go back to the city. I want an apple.
+journal Head back into West City
+stop
+label hideout_done
+narrate The loose board. The box is empty now.
+list ch8_cache_river
+if_flag 382 c8river_empty
+set_flag 382
+narrate The rowboat has rotted through. Wedged under the seat: a sealed can of cherry soda, still cold somehow.
+do call 129 4 1
+stop
+label c8river_empty
+narrate A rotted rowboat.
+list ch8_cache_docks
+if_flag 369 c8docks_empty
+set_flag 369
+narrate The dome house is boarded up. Seventeen kicks the door in. A dusty first-aid box: an elixir and a Senzu Bean.
+do call 129 7 1; call 129 11 1
+stop
+label c8docks_empty
+narrate Nothing left in the dome house.

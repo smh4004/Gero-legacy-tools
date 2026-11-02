@@ -1,0 +1,114 @@
+# Act 2, chapter 5 "Siblings": the district around West City (areas from log4/gen_ch5.py, world 4). The Red Fangs, a
+# street gang, have moved into the twins' hideout (the old warehouse at the docks); a man in a long coat paid them to.
+# Flags: 293 vendor, 294 Big Ox beaten (his death script), 295 stash recovered, 296 medal returned, 297 riverside cache,
+# 298 delivery returned, 299 docks cache, 387 curator asked, 388 clerk asked, 389 den intro.
+list ch5_vendor
+if_flag 295 vendor_after
+if_flag 293 vendor_again
+set_flag 293
+narrate Street vendor: You two! Keep walking, before those Red Fang creeps see you talking to me.
+say lapis.1 Red Fangs? Since when does that bunch of losers run the circus lot?
+narrate Street vendor: Since last week. They take a cut of every sale. And last night they moved into the old warehouse down at the docks.
+say lazuli.0 The warehouse. Our warehouse.
+say lapis.2 Everything we own is in there.
+narrate Street vendor: Then you can kiss it goodbye. Their boss is a mountain called Big Ox. Out past the river, on the island by the docks.
+say lazuli.3 Big Ox. Of course he is.
+journal Take back the warehouse from the {c07}Red Fangs{c02}
+stop
+label vendor_again
+narrate Street vendor: The docks are south of the city, over the river. Big Ox doesn't leave the warehouse.
+stop
+label vendor_after
+narrate Street vendor: You ran the Red Fangs out? Ha! First good day I've had all month. The lemonade's on me. Just this once.
+list ch5_den
+set_flag 389
+set_flag 293
+narrate The old warehouse. Their mattresses have been thrown in a heap. Someone has spray-painted a red fang on the wall.
+narrate Big Ox: Well, well. The little pickpockets came home.
+say lapis.1 You're in our place, Ox. Get out.
+narrate Big Ox: Your place? Funny. A man paid me good money to take it off you. Said to wait here and see what you'd do.
+say lazuli.0 What man?
+narrate Big Ox: Doesn't matter. Boys! Teach these two some manners.
+journal Defeat {c07}Big Ox{c02}
+do call 47; call 51 0
+list ch5_stash
+if_flag 295 stash_done
+unless_flag 294 stash_guarded
+set_flag 295
+narrate Behind the crates, under a loose board: the twins' tin box. Still there.
+say lapis.2 Every zeni. They didn't even find it.
+narrate Next to it, a crate the Red Fangs filled with their haul: Z-Mart cartons, and a medal in a glass case.
+say lazuli.0 Somebody's going to want those back.
+narrate Big Ox (from the floor): Old guy... long coat. Paid in cash. Said you two were... special. That's all I know. I swear.
+say lazuli.3 Lapis. The man in the coat again.
+say lapis.1 Then let him watch. We're done hiding from him.
+do call 129 11 1; call 129 2 2
+narrate Got a Senzu Bean and two Sodas. The stolen goods are with the twins now.
+journal Head back to West City
+run ch5_check
+stop
+label stash_guarded
+narrate The stash is back here. But not with Big Ox standing over it.
+stop
+label stash_done
+narrate Nothing left behind the crates.
+list docks_dome
+if_flag 299 dome_done
+set_flag 299
+narrate The dome house is locked. Lazuli picks the lock in four seconds.
+narrate Inside: a Red Fang lookout's stash. A carton of milk and a cherry soda.
+do call 129 0 1; call 129 4 1
+stop
+label dome_done
+narrate The lookout's dome is empty now.
+list cache_river
+if_flag 297 river_empty
+set_flag 297
+narrate A rowboat pulled up under the trees. In the bottom, a forgotten thermos of tea.
+do call 129 1 1
+stop
+label river_empty
+narrate An old rowboat. Nothing else.
+# ---------- Z-Mart (flag 388 asked, 298 done)
+list zmart_clerk
+if_flag 298 clerk_done
+unless_flag 295 clerk_ask
+set_flag 298
+narrate Z-Mart clerk: Our delivery! The Red Fangs took it right off the truck. Where did you find this?
+say lapis.2 Lying around. Some people just leave things anywhere.
+narrate Z-Mart clerk: Well... thank you. Take these, on the house. And hey, if you ever need a job...
+say lazuli.1 We'll pass.
+do call 129 3 2
+narrate Got two Vanilla Sodas.
+stop
+label clerk_ask
+set_flag 388
+narrate Z-Mart clerk: Sorry, we're nearly out of everything. The Red Fangs hijacked our delivery truck yesterday.
+narrate Z-Mart clerk: And someone took three watches off the counter this morning. Kids these days.
+say lapis.2 Shocking.
+stop
+label clerk_done
+narrate Z-Mart clerk: Welcome to Z-Mart! You two again? ...Did you just put something in your pocket?
+# ---------- West City Museum (flag 387 asked, 296 done)
+list museum_curator
+if_flag 296 curator_done
+unless_flag 295 curator_ask
+set_flag 296
+narrate Curator: The medal! The Red Ribbon Army's own service medal, back in its case. I could kiss you both.
+say lazuli.3 Please don't.
+narrate Curator: Then take this. Old army rations... the soldiers swore by them.
+do call 129 11 1
+narrate Got a Senzu Bean.
+stop
+label curator_ask
+set_flag 387
+narrate Curator: Welcome to the West City Museum. I'm afraid our best piece is missing: a Red Ribbon Army service medal.
+narrate Curator: A gang broke in two nights ago. The police say it's "not a priority". Hmph.
+stop
+label curator_done
+narrate Curator: Every school class in West City comes to see that medal. Thanks to you, it's still here.
+list museum_exhibit
+narrate The Red Ribbon Army exhibit. Uniforms, a rusted rifle, a photograph of a burned-out headquarters.
+narrate The plaque reads: "Destroyed in a single day. The army's chief scientist was never found."
+say lazuli.0 Somebody built all this... and one kid knocked it down.
+say lapis.1 Never found, huh? Bet he's somewhere sulking about it.

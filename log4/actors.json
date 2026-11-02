@@ -1,0 +1,798 @@
+{
+ "_note": "New actors appended after Buu's Fury's 298 (ids 298+). template = existing actor whose record (class, hitboxes, slot count) is cloned; slots = animation slot -> cleaned sheet id. NPC template 152 (King Kai): slot 0 idle, slot 1 walk.",
+ "gevo": {
+  "template": 152,
+  "slots": {
+   "0": "P5_gevo_idle",
+   "1": "P5_gevo_walk"
+  }
+ },
+ "android16": {
+  "template": 152,
+  "slots": {
+   "0": "P6_android16_idle",
+   "1": "P6_android16_walk"
+  }
+ },
+ "android17_l2": {
+  "template": 152,
+  "act": "act3",
+  "log2_record": "0x1E680C",
+  "log2_slots": {
+   "0": 0,
+   "1": 1
+  },
+  "_note": "LoG2 Android 17, NPC-style test (idle, walk)"
+ },
+ "player_gero_106": {
+  "replace": 106,
+  "act": "act1",
+  "log2_record": "0x1FA96C",
+  "log2_slots": {
+   "0": 0,
+   "1": 1,
+   "2": 2,
+   "3": 5,
+   "4": 6,
+   "5": 7,
+   "6": 5,
+   "7": 0,
+   "8": 7,
+   "9": 5,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 5,
+   "14": 6,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 6,
+   "21": 7
+  },
+  "_note": "Act 1 player: every one of BF Goku's 22 slots (actor 106) mapped to LoG2 Dr. Gero (hat) so no Goku frame can show. Slots: 0 idle,1 walk,2 run <- LoG2 0/1/2; attacks 4/5/6 <- swipe/beam/palm; beam 8 & special 21 <- hand beam; ki 9, guard 3, power-up 13 <- palm; kick 14/throw 20 <- swipe; hurt/KO/transform/victory/etc <- idle (placeholders until custom frames).",
+  "stretch": true
+ },
+ "player_gero_107": {
+  "replace": 107,
+  "act": "act1",
+  "log2_record": "0x1FA96C",
+  "log2_slots": {
+   "0": 0,
+   "1": 1,
+   "2": 2,
+   "3": 5,
+   "4": 6,
+   "5": 7,
+   "6": 5,
+   "7": 0,
+   "8": 7,
+   "9": 5,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 5,
+   "14": 6,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 6,
+   "21": 7
+  },
+  "_note": "Act 1 player: every one of BF Goku's 22 slots (actor 107) mapped to LoG2 Dr. Gero (hat) so no Goku frame can show. Slots: 0 idle,1 walk,2 run <- LoG2 0/1/2; attacks 4/5/6 <- swipe/beam/palm; beam 8 & special 21 <- hand beam; ki 9, guard 3, power-up 13 <- palm; kick 14/throw 20 <- swipe; hurt/KO/transform/victory/etc <- idle (placeholders until custom frames).",
+  "stretch": true
+ },
+ "player_gero_108": {
+  "replace": 108,
+  "act": "act1",
+  "log2_record": "0x1FA96C",
+  "log2_slots": {
+   "0": 0,
+   "1": 1,
+   "2": 2,
+   "3": 5,
+   "4": 6,
+   "5": 7,
+   "6": 5,
+   "7": 0,
+   "8": 7,
+   "9": 5,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 5,
+   "14": 6,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 6,
+   "21": 7
+  },
+  "_note": "Act 1 player: every one of BF Goku's 22 slots (actor 108) mapped to LoG2 Dr. Gero (hat) so no Goku frame can show. Slots: 0 idle,1 walk,2 run <- LoG2 0/1/2; attacks 4/5/6 <- swipe/beam/palm; beam 8 & special 21 <- hand beam; ki 9, guard 3, power-up 13 <- palm; kick 14/throw 20 <- swipe; hurt/KO/transform/victory/etc <- idle (placeholders until custom frames).",
+  "stretch": true
+ },
+ "scientist_l2": {
+  "template": 152,
+  "act": "act1",
+  "log2_record": "0x32AD84",
+  "log2_slots": {
+   "0": 0,
+   "1": 1
+  },
+  "_note": "LoG2 lab scientist (NPC)"
+ },
+ "drone_l2": {
+  "template": 152,
+  "act": "act1",
+  "log2_record": "0x2EB640",
+  "log2_slots": {
+   "0": 0,
+   "1": 1
+  },
+  "_note": "LoG2 Red Ribbon drone (NPC test)"
+ },
+ "party_drone_114": {
+  "replace": 114,
+  "act": "act1",
+  "log2_record": "0x2EB640",
+  "log2_slots": {
+   "0": 0,
+   "1": 1,
+   "2": 1,
+   "3": 0,
+   "4": 6,
+   "5": 6,
+   "6": 6,
+   "7": 2,
+   "8": 6,
+   "9": 6,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 6,
+   "15": 2,
+   "16": 2,
+   "17": 2,
+   "18": 0,
+   "19": 0,
+   "20": 6,
+   "21": 6
+  },
+  "_note": "Character slot 2 (Goten's forms 19/20 use actors 114/115) drawn as LoG2's Red Ribbon combat drone: hover 0, fly 1, crash 2 (hurt/KO), fire 6 (all attacks). stretch: every slot keeps BF Goten's frame count (BF's attack code steps to fixed frame numbers; a shorter LoG2 animation let it read past the frame list, and the garbage 'frame' copied ~6 KB of RAM into OBJ VRAM: the scrambled sprites when the drone fired).",
+  "stretch": true
+ },
+ "party_drone_115": {
+  "replace": 115,
+  "act": "act1",
+  "log2_record": "0x2EB640",
+  "log2_slots": {
+   "0": 0,
+   "1": 1,
+   "2": 1,
+   "3": 0,
+   "4": 6,
+   "5": 6,
+   "6": 6,
+   "7": 2,
+   "8": 6,
+   "9": 6,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 6,
+   "15": 2,
+   "16": 2,
+   "17": 2,
+   "18": 0,
+   "19": 0,
+   "20": 6,
+   "21": 6
+  },
+  "_note": "Character slot 2 (Goten's forms 19/20 use actors 114/115) drawn as LoG2's Red Ribbon combat drone: hover 0, fly 1, crash 2 (hurt/KO), fire 6 (all attacks). stretch: every slot keeps BF Goten's frame count (BF's attack code steps to fixed frame numbers; a shorter LoG2 animation let it read past the frame list, and the garbage 'frame' copied ~6 KB of RAM into OBJ VRAM: the scrambled sprites when the drone fired).",
+  "stretch": true
+ },
+ "player_lapis_97": {
+  "replace": 97,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lapis_98": {
+  "replace": 98,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lapis_99": {
+  "replace": 99,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lapis_100": {
+  "replace": 100,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lapis_101": {
+  "replace": 101,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lapis_103": {
+  "replace": 103,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lapis_104": {
+  "replace": 104,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lapis_105": {
+  "replace": 105,
+  "act": "act2",
+  "slots": {
+   "0": "P3_lapis_idle",
+   "1": "P3_lapis_walk",
+   "2": "P3_lapis_dash",
+   "3": "P3_lapis_block",
+   "4": "P3_lapis_melee@0:2",
+   "5": "P3_lapis_melee@2:4",
+   "6": "P3_lapis_melee@4:6",
+   "7": "P3_lapis_hurt",
+   "8": "P3_lapis_special!side",
+   "9": "P3_lapis_throw!side",
+   "10": "P3_lapis_charge!front",
+   "11": "P3_lapis_interact",
+   "12": "P3_lapis_victory!front",
+   "13": "P3_lapis_charge!front",
+   "14": "P3_lapis_melee@4:6",
+   "15": "P3_lapis_hurt",
+   "16": "P3_lapis_ko!side",
+   "17": "P3_lapis_ko!side",
+   "18": "P3_lapis_idle",
+   "19": "P3_lapis_interact",
+   "20": "P3_lapis_throw!side",
+   "21": "P3_lapis_special!side"
+  },
+  "_note": "Act 2 player Lapis: character slot 1 (BF Gohan), every actor of its forms (97, 98, 99, 100, 101, 102, 103, 104, 105) drawn from the cleaned P3_lapis sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lazuli_260": {
+  "replace": 260,
+  "act": "act2",
+  "slots": {
+   "0": "P4_lazuli_idle",
+   "1": "P4_lazuli_walk",
+   "2": "P4_lazuli_dash",
+   "3": "P4_lazuli_block",
+   "4": "P4_lazuli_melee@0:2",
+   "5": "P4_lazuli_melee@2:4",
+   "6": "P4_lazuli_melee@4:6",
+   "7": "P4_lazuli_hurt",
+   "8": "P4_lazuli_special!side",
+   "9": "P4_lazuli_throw!side",
+   "10": "P4_lazuli_charge!front",
+   "11": "P4_lazuli_interact",
+   "12": "P4_lazuli_victory!front",
+   "13": "P4_lazuli_charge!front",
+   "14": "P4_lazuli_melee@4:6",
+   "15": "P4_lazuli_hurt",
+   "16": "P4_lazuli_ko!side",
+   "17": "P4_lazuli_ko!side",
+   "18": "P4_lazuli_idle",
+   "19": "P4_lazuli_interact",
+   "20": "P4_lazuli_throw!side",
+   "21": "P4_lazuli_special!side"
+  },
+  "_note": "Act 2 player Lazuli: character slot 3 (BF Trunks), every actor of its forms (260, 261, 262) drawn from the cleaned P4_lazuli sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "player_lazuli_261": {
+  "replace": 261,
+  "act": "act2",
+  "slots": {
+   "0": "P4_lazuli_idle",
+   "1": "P4_lazuli_walk",
+   "2": "P4_lazuli_dash",
+   "3": "P4_lazuli_block",
+   "4": "P4_lazuli_melee@0:2",
+   "5": "P4_lazuli_melee@2:4",
+   "6": "P4_lazuli_melee@4:6",
+   "7": "P4_lazuli_hurt",
+   "8": "P4_lazuli_special!side",
+   "9": "P4_lazuli_throw!side",
+   "10": "P4_lazuli_charge!front",
+   "11": "P4_lazuli_interact",
+   "12": "P4_lazuli_victory!front",
+   "13": "P4_lazuli_charge!front",
+   "14": "P4_lazuli_melee@4:6",
+   "15": "P4_lazuli_hurt",
+   "16": "P4_lazuli_ko!side",
+   "17": "P4_lazuli_ko!side",
+   "18": "P4_lazuli_idle",
+   "19": "P4_lazuli_interact",
+   "20": "P4_lazuli_throw!side",
+   "21": "P4_lazuli_special!side"
+  },
+  "_note": "Act 2 player Lazuli: character slot 3 (BF Trunks), every actor of its forms (260, 261, 262) drawn from the cleaned P4_lazuli sheets. Slots: 0 idle,1 walk,2 run<-dash,3 guard<-block,4/5/6 combo<-melee hits 1/2/3,7 hurt,8 beam & 21 special<-special,9 ki & 20 throw<-throw,10/13 power-up<-charge,11/19 outfit change<-interact,12 victory,14 kick<-melee hit 3,15 stunned<-hurt,16/17 knock-back/down<-ko,18 recover<-idle. Shorter animations are stretched to the slot's own frame count."
+ },
+ "drone_night_a": {
+  "template": 152,
+  "act": "act2",
+  "log2_record": "0x2EB640",
+  "log2_slots": {
+   "0": 0,
+   "1": 1
+  },
+  "_note": "LoG2 Red Ribbon drone, chapter 6 night West City (one actor per drone so scripts can move each)"
+ },
+ "drone_night_b": {
+  "template": 152,
+  "act": "act2",
+  "log2_record": "0x2EB640",
+  "log2_slots": {
+   "0": 0,
+   "1": 1
+  },
+  "_note": "LoG2 Red Ribbon drone, chapter 6 night West City (one actor per drone so scripts can move each)"
+ },
+ "drone_night_c": {
+  "template": 152,
+  "act": "act2",
+  "log2_record": "0x2EB640",
+  "log2_slots": {
+   "0": 0,
+   "1": 1
+  },
+  "_note": "LoG2 Red Ribbon drone, chapter 6 night West City (one actor per drone so scripts can move each)"
+ },
+ "patrol_cop": {
+  "template": 60,
+  "_note": "clone of BF police actor 60 (one actor so ch5 chase scripts can move him)"
+ },
+ "super13": {
+  "proto_actor": 230,
+  "act": "act3",
+  "_note": "Super Android 13, whole actor copied from Buu's Fury Prototype D (actor 230; build needs --proto)"
+ },
+ "player_17": {
+  "replace": 102,
+  "stretch": true,
+  "log2_record": "0x1E680C",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "15": "3",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P1_android17_idle",
+   "2": "P1_android17_dash",
+   "3": "P1_android17_block",
+   "8": "P1_android17_special!side",
+   "10": "P1_android17_charge!front",
+   "11": "P1_android17_interact",
+   "12": "P1_android17_victory!front",
+   "13": "P1_android17_charge!front",
+   "18": "P1_android17_idle",
+   "19": "P1_android17_interact",
+   "21": "P1_android17_special!side"
+  },
+  "_note": "Android 17 outfit (form 14, BF Great Saiyaman's form, actor 102). Drawn sheets (P1: idle, dash, block, special, charge, interact, victory) + LoG2 Android 17 animations for walk (1), melee (6/7), hurt/KO (3), ki (5). Global colours only, so it shows in every act."
+ },
+ "player_18": {
+  "replace": 262,
+  "stretch": true,
+  "log2_record": "0x1EE210",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "15": "3",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P2_android18_idle",
+   "2": "P2_android18_dash",
+   "3": "P2_android18_block",
+   "8": "P2_android18_special!side",
+   "10": "P2_android18_charge!front",
+   "11": "P2_android18_interact",
+   "12": "P2_android18_victory!front",
+   "13": "P2_android18_charge!front",
+   "18": "P2_android18_idle",
+   "19": "P2_android18_interact",
+   "21": "P2_android18_special!side"
+  },
+  "_note": "Android 18 outfit (form 23, actor 262). P2 sheets + LoG2 Android 18 animations (walk 1, melee 6/7, hurt 3, ki 5)."
+ },
+ "gohan_bf": {
+  "template_orig": 97,
+  "_note": "Gohan (Act 3, Age 767): BF's own Gohan actor 97 record, untouched (actor 97 itself is Lapis)."
+ },
+ "gohan_774": {
+  "template_orig": 97,
+  "act": "act3",
+  "stretch": true,
+  "log2_record": "r153",
+  "log2_slots": {
+   "0": 0,
+   "1": 1,
+   "2": 1,
+   "3": 0,
+   "4": "6@0:2",
+   "5": "6@2:4",
+   "6": "7@1:4",
+   "7": 2,
+   "8": 5,
+   "9": 5,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": "7@2:4",
+   "15": 2,
+   "16": 3,
+   "17": 3,
+   "18": "3@3:-5:-1"
+  },
+  "_note": "Future Gohan, Age 774 (chapter 9 boss, row 22): LoG2 actor record 153 (likely LoG2's Future Gohan: orange sleeveless gi, both arms) on BF Gohan's record (actor 97, 19 slots). LoG2 anims: 0 idle, 1 walk, 2 hurt, 3 KO (shared by 3 directions), 4 power-up, 5 ki blast, 6/7 punch combo; slot 18 (getting up) = KO played backwards."
+ },
+ "future_gohan": {
+  "template_orig": 97,
+  "act": "act3",
+  "stretch": true,
+  "log2_record": "r153",
+  "log2_slots": {
+   "0": "r51:0",
+   "1": "r51:1",
+   "2": "r51:1",
+   "3": "r51:0",
+   "4": "6@0:2",
+   "5": "6@2:4",
+   "6": "7@1:4",
+   "7": 2,
+   "8": 5,
+   "9": 5,
+   "10": "r51:0",
+   "11": "r51:0",
+   "12": "r51:0",
+   "13": "r51:0",
+   "14": "7@2:4",
+   "15": 2,
+   "16": "r51:3@0:2",
+   "17": "r51:3@0:2",
+   "18": "r51:3@1:-5:-1"
+  },
+  "log2_edit": {
+   "onearm": [
+    "front",
+    "back",
+    "side",
+    "side"
+   ],
+   "ssj": true,
+   "skip": [
+    3
+   ]
+  },
+  "_note": "One-armed Super Saiyan Future Gohan (chapter 10 boss, Age 780, row 14). Idle, walk, falling and getting up come from LoG2 actor 51 (LoG2's one-armed SSJ Future Gohan, a cutscene actor with no attacks); attacks, hurt and ki come from LoG2 actor 153 (Future Gohan with both arms) with the left arm removed and the hair turned gold by tools/onearm.py. P7 sheets no longer used."
+ },
+ "gohan_fallen": {
+  "template": 152,
+  "act": "act3",
+  "log2_record": "r51",
+  "log2_slots": {
+   "0": "3@3:4",
+   "1": "3@3:4"
+  },
+  "_note": "Chapter 10 aftermath: Gohan lying in the rain, his hair black again (last frame of LoG2 actor 51's fall)."
+ },
+ "trunks_future": {
+  "template": 152,
+  "act": "act3",
+  "log2_record": "r125",
+  "log2_slots": {
+   "0": 0,
+   "1": 1
+  },
+  "_note": "Future Trunks, Age 785 (chapter 10 finale): LoG2 actor 125 (Capsule Corp jacket, sword on his back)."
+ },
+ "player_cell": {
+  "replace": 275,
+  "act": "act3",
+  "stretch": true,
+  "log2_record": "r25",
+  "log2_scale": {
+   "r25": 0.625
+  },
+  "log2_slots": {
+   "4": "r25:6@0:2",
+   "5": "r25:6@2:4",
+   "6": "r25:7@0:4",
+   "7": "r25:3@0:1",
+   "8": "r25:5",
+   "9": "r25:5",
+   "15": "r25:2",
+   "16": "r25:3",
+   "17": "r25:3",
+   "18": "r25:3@3:-5:-1"
+  },
+  "slots": {
+   "0": "P10s_cell_dash@0:1",
+   "1": "P10s_cell_dash",
+   "2": "P10s_cell_fly",
+   "3": "P10s_cell_charge!front",
+   "10": "P10s_cell_charge!front",
+   "11": "P10s_cell_interact",
+   "12": "P10s_cell_victory!front",
+   "13": "P10s_cell_charge!front",
+   "14": "P10s_cell_tail_strike!side",
+   "19": "P10s_cell_interact"
+  },
+  "_note": "Secret chapter player: Imperfect Cell = character slot 6 (BF Vegito, form 39, actor 275; 20 slots). Drawn P10 sheets re-cleaned to 32x32 (P10s_*: walk, fly = run, charge, interact, tail strike, victory) + LoG2 Imperfect Cell (actor 25, 64x64 frames shrunk x0.625 into 32x32) for melee, hurt, ki, knockdown."
+ },
+ "player_larva": {
+  "replace": 271,
+  "act": "act3",
+  "stretch": true,
+  "slots": {
+   "0": "P11s_cell_larva_crawl@0:1",
+   "1": "P11s_cell_larva_crawl",
+   "2": "P11s_cell_larva_crawl",
+   "3": "P11s_cell_larva_crawl@0:1",
+   "4": "P11s_cell_larva_crawl@0:1",
+   "5": "P11s_cell_larva_crawl@0:1",
+   "6": "P11s_cell_larva_crawl@0:1",
+   "7": "P11s_cell_larva_crawl@0:1",
+   "8": "P11s_cell_larva_crawl@0:1",
+   "9": "P11s_cell_larva_crawl@0:1",
+   "10": "P11s_cell_larva_crawl@0:1",
+   "11": "P11s_cell_larva_burrow!front",
+   "12": "P11s_cell_larva_crawl@0:1",
+   "13": "P11s_cell_larva_crawl@0:1",
+   "14": "P11s_cell_larva_crawl@0:1",
+   "15": "P11s_cell_larva_crawl@0:1",
+   "16": "P11s_cell_larva_crawl@0:1",
+   "17": "P11s_cell_larva_crawl@0:1",
+   "18": "P11s_cell_larva_crawl@0:1",
+   "19": "P11s_cell_larva_emerge!front",
+   "20": "P11s_cell_larva_crawl@0:1",
+   "21": "P11s_cell_larva_crawl@0:1"
+  },
+  "_note": "Secret chapter ending: Cell's larva = character 4 (BF Vegeta's slot) in form 27 (actor 271, unused in LoG4; form value 280), P11 sheets. Not Cell's own second form (40, BF's Super Saiyan Vegito): switching to that form left the journal box stuck open."
+ },
+ "trunks_788": {
+  "template_orig": 97,
+  "act": "act3",
+  "stretch": true,
+  "log2_record": "r131",
+  "log2_slots": {
+   "0": 0,
+   "1": 1,
+   "2": 1,
+   "3": 0,
+   "4": "6@0:2",
+   "5": "6@2:4",
+   "6": "7@1:4",
+   "7": 2,
+   "8": 5,
+   "9": 5,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": "7@2:4",
+   "15": 2,
+   "16": 3,
+   "17": 3,
+   "18": "3@3:-5:-1"
+  },
+  "_note": "Secret chapter boss: Super Saiyan Future Trunks, Age 788 (LoG2 actor 131: jacket, sword) on BF Gohan's record 97."
+ },
+ "trunks_fallen": {
+  "template": 152,
+  "act": "act3",
+  "log2_record": "r125",
+  "log2_slots": {
+   "0": "3@3:4",
+   "1": "3@3:4"
+  },
+  "_note": "Secret chapter: Trunks lying in the street (last frame of LoG2 actor 125's fall)."
+ },
+ "time_machine_fx": {
+  "template": 152,
+  "act": "act3",
+  "slots": {
+   "0": "E7s_time_machine!front",
+   "1": "E7s_time_machine!front"
+  },
+  "_note": "The time machine's departure / arrival flash (E7 re-cleaned to 32x32, act3 colours)."
+ }
+}

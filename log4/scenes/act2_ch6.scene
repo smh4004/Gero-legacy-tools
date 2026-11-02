@@ -1,0 +1,38 @@
+# Act 2, chapter 6 "Taken": the walk home at night (areas from log4/gen_ch6.py, world 16). Gero's machines are
+# sweeping the city; the twins head for the warehouse at the docks, where the Collector is waiting, then the drones.
+# Flags: 333 home intro, 334 Collector destroyed (its death script), 335 / 336 caches, 337 crossroads; 305 ambush.
+list night_crossroads
+set_flag 337
+do begin_moves; move drone_night_a 424 300; wait_moves
+narrate A drone drifts low over the crossroads. A red beam sweeps the street, slow and careful.
+say lazuli.0 Don't move.
+narrate The beam slides across the twins' shoes... and moves on.
+say lapis.1 That thing's looking for someone.
+say lazuli.0 For two someones. Down the south road. Now.
+do begin_moves; move drone_night_a 424 150; wait_moves
+do call 47; call 51 0
+list ch6_home
+set_flag 333
+narrate The old warehouse. The Red Fangs are long gone. The door hangs open.
+say lapis.2 Home sweet home.
+say lazuli.0 Lapis... we closed that door this afternoon.
+narrate Something heavy shifts in the dark between the crates. Metal grinds on concrete.
+say lapis.1 The man in the coat sent a bigger dog.
+journal Destroy the {c07}machine{c02} in the warehouse
+do call 47; call 51 0
+list night_cache_river
+if_flag 335 nriver_empty
+set_flag 335
+narrate The rowboat again. Someone stashed a bottle of root beer under the seat since this afternoon.
+do call 129 5 1
+stop
+label nriver_empty
+narrate Just the rowboat.
+list night_cache_docks
+if_flag 336 ndocks_empty
+set_flag 336
+narrate The dome house. Whoever lived here left in a hurry: a half-eaten meal and a Senzu Bean on the table.
+do call 129 11 1
+stop
+label ndocks_empty
+narrate The dome house is dark and empty.

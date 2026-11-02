@@ -1,0 +1,9 @@
+[
+ "do call 120 1; call 119 17 120 1 208 296; call 121 60",
+ "narrate DEBUG ROOM. Talk to someone to start that chapter straight away, with the earlier chapters done.",
+ "narrate Front row, left to right: Gevo = chapters 1-4. Lapis = chapters 5-6. Eighteen = chapters 7-10, then the finale.",
+ "narrate Back row, left: Sixteen = supplies, stone Dragon Balls, credits. Right: Cell = the secret chapter. Seventeen = open world, Age 772 and Age 780.",
+ "narrate Bottom of the plaza: the drone turns All moves on or off. The scientists set a level: 55, 60, 70, 80, 90, 99. Pick options first, then a chapter.",
+ "narrate Examine the palace doors (stand under the arch, face up) to read this again. To come back here, reset and pick New Game.",
+ "do call 47; call 51 0"
+]

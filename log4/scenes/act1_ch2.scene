@@ -1,0 +1,131 @@
+# Act 1, chapter 2 "An Enemy Bullet" (flags 310 opening seen, 311 Gevo scene done, 312 chapter over,
+# 313 battlefield arrival seen).
+# Gero's lab at night (1:67, the main lab map; was the BF Dr. Brief's Lab map) and the Northern Wastelands battlefield
+# (1:68, LoG2 3:1). Chapter 1's report (act1_ch1.scene, flag 309) runs ch2_start.
+list ch2_start
+set_flag 310
+do call 183 516 1452 1453
+do call 115 0 2 0 0 0; call 121 1; call 165 0 20
+do call 120 1; call 119 1 67 1 160 240; call 121 60
+narrate Red Ribbon Army Headquarters. Dr. Gero's lab, an hour before dawn.
+say gevo.0 (Radio) Father, it's Gevo. Squad Seven has reached the Northern Wastelands. All quiet so far.
+say young_gero.0 Good. Two drones are on standby. Keep to the ridge path and keep your heads down.
+say gevo.1 (Radio) Copy that... Wait. Movement on the cliffs. Contact! Contact!
+narrate Gunfire crackles over the speakers.
+say gevo.2 (Radio) Raiders, up on the cliffs! They were waiting for us! Squad, scatter! Scatter!
+narrate The channel fills with static.
+say young_gero.1 Gevo? Gevo! ...Hold on. I'm sending the drone in.
+journal Take control of a drone at the {c07}drone terminal{c02}
+do call 47; call 51 0
+list ch2_gevo
+set_flag 311
+say gevo.0 Father! I knew you'd come.
+say gevo.0 Kurz, Mori, Halden... you found all three? Then drawing the raiders up here was worth it.
+say gevo.2 But there are too many of them on the ridge. Call headquarters. We need reinforcements, now.
+narrate Commander Red (radio): Request denied, Doctor. Every unit is moving north. A boy called Goku is tearing the army apart.
+say young_gero.1 My son is out there! Send them back! I am begging you!
+narrate Commander Red (radio): The boy is the priority. Red out.
+say gevo.3 It's all right, Father. Your drone is here. We'll hold until...
+narrate A single shot rings out from the ridge.
+do call 120 60
+do call 149 0
+# the lab after Gevo's death (1:73); chapter 3 follows straight on
+do call 120 1; call 119 1 73 1 160 240; call 121 60
+narrate Gevo fell without a word. The drone's camera stayed on him until the link went dead.
+say young_gero.2 Gevo... Gevo, answer me.
+narrate Static.
+say young_gero.2 They let my son die for a boy.
+say young_gero.1 Goku... I will remember that name.
+set_flag 312
+journal Goku.
+do call 120 60
+run ch3_start
+# arrival on the battlefield: a walk-in trigger at the arrival point (an A-press event that loads an area leaves the
+# player locked; a walk-in event started in the new area ends the cutscene properly)
+list ch2_field
+if_flag 313 field_seen
+set_flag 313
+narrate The terminal links to the drone in the Northern Wastelands. Remote control: on.
+narrate Ambush Ridge. Spent shell casings, a burning jeep, and no sign of Squad Seven.
+say young_gero.0 Raiders. Wasteland scavengers with stolen rifles. They scattered the squad and they're still hunting it.
+say young_gero.1 Gevo's channel is dead. His men may still be alive out there... and one of them will know where he is.
+journal Find the three missing men of {c07}Squad Seven{c02}
+narrate (The Scorched Canyon lies north, up the ridge road.)
+do call 47; call 51 0
+stop
+label field_seen
+list gevo_field_talk
+say gevo.2 Stay close to the rocks, Father. They're still up on the ridge.
+# ---------- the search (areas from log4/gen_ch2.py). Flags: 314 raider chief taunt, 374-376 survivors found,
+# 377 raider chief defeated, 378 all three found (the canyon's east exit then leads to 1:95, Gevo), 379/328 item caches.
+list surv_a
+if_flag 374 sa_again
+set_flag 374
+narrate A Red Ribbon private lies behind the fuel tanks, a field dressing on his leg.
+narrate Pvt. Kurz: That's the doctor's drone! Thank god. They hit us from the cliffs. I crawled in here when the shooting stopped.
+narrate Pvt. Kurz: Mori had the radio. Last I saw, he ran west through the canyon, toward the caves past the dry basin.
+say young_gero.0 Stay down, Private. A recovery team will come for you.
+run ch2_found
+stop
+label sa_again
+narrate Pvt. Kurz: I'm all right. Go find the others, Doctor.
+list surv_b
+if_flag 375 sb_again
+set_flag 375
+narrate The radioman sits against the cave wall, the squad's radio in pieces in his lap.
+narrate Cpl. Mori: A raider shot the radio right off my back. Lucky it wasn't me.
+narrate Cpl. Mori: The sergeant was taken alive. They dragged him to the old Red Ribbon supply yard, up the north trail out of the canyon. Their chief keeps prisoners there.
+run ch2_found
+stop
+label sb_again
+narrate Cpl. Mori: I'll get this radio working again. Somehow.
+list surv_c
+if_flag 376 sc_again
+unless_flag 377 sc_tied
+set_flag 376
+narrate The drone burns through the ropes. The sergeant gets to his feet slowly.
+narrate Sgt. Halden: Your son is the bravest fool I ever served with, Doctor. When they had us pinned, he ran up the ridge, shooting, so they'd chase him instead.
+narrate Sgt. Halden: He'll be at the old fence at the top of Ambush Ridge. Hurry.
+run ch2_found
+stop
+label sc_tied
+narrate Sgt. Halden: (gagged, tied to a post) Mmph! Mmmph!
+stop
+label sc_again
+narrate Sgt. Halden: Go. Gevo's at the fence. Don't waste time on me.
+list ch2_found
+unless_flag 374 found_wait
+unless_flag 375 found_wait
+unless_flag 376 found_wait
+if_flag 378 found_wait
+set_flag 378
+say young_gero.1 All three accounted for. And Gevo stayed behind alone, to draw them off... of course he did.
+journal Reach Gevo at the fence on {c07}Ambush Ridge{c02}
+stop
+label found_wait
+narrate Survivors of Squad Seven found: keep searching.
+list ch2_yard
+set_flag 314
+narrate A raider in a stolen officer's coat looks up from a crate of Red Ribbon rations.
+narrate Raider Chief: A Red Ribbon toy. You lot built everything, didn't you? Guns, tanks, flying machines... and you still couldn't stop one little boy.
+narrate Raider Chief: Doesn't matter. Your army's finished. Everything it owned is ours now. Starting with you.
+journal Defeat the {c07}Raider Chief{c02}
+do call 47; call 51 0
+list cache_dump
+if_flag 379 dump_empty
+set_flag 379
+narrate A Red Ribbon supply crate the raiders missed. Inside: two sodas and a carton of milk.
+do call 129 2 2; call 129 0 1
+stop
+label dump_empty
+narrate The crate is empty.
+list cache_yard
+if_flag 328 yard_empty
+set_flag 328
+narrate The raiders' loot: a Senzu Bean in a field medic's tin, and a bottle of tea.
+do call 129 11 1; call 129 1 1
+stop
+label yard_empty
+narrate Nothing left worth taking.
+list radio_tech_talk
+narrate Radio technician: Squad Seven is on channel four, Doctor. The drone terminal patches you straight through.

@@ -1,0 +1,265 @@
+# Footage lists for trailers (only in the --shoot ROM): set up a party and drop it into an area. Run with
+# tools/listtest.py (named_lists_shoot.json) and record with the harness "rec" command.
+list sh_noop
+stop
+list sh_twins
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do heal; call 120 1; call 119 4 1 1 268 296; call 121 30
+stop
+list sh_andro_rain
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 21 1 424 470; call 121 30
+stop
+list sh_andro_city
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 1 1 424 440; call 121 30
+stop
+list sh_night
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 16 2 1 268 304; call 121 30
+stop
+list sh_vegeta
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 3 1 424 440; call 121 30
+stop
+list sh_landing
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 2 1 424 440; call 121 30
+stop
+list sh_13
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 14 1 208 312; call 121 30
+stop
+list sh_cell
+do call 151 6; call 149 6; call 152 1; call 152 3; call 157 6 284
+do call 120 1; call 119 17 25 1 208 312; call 121 30
+stop
+list sh_gohan
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 22 1 424 440; call 121 30
+stop
+# ---- teaser 4: camera-only establishing shots (native 115 loads an area as a scene: no player, NPCs present)
+list cam_lab
+do call 120 1; call 115 1 61 1 60 110; call 121 40
+stop
+list cam_incub
+do call 120 1; call 115 1 63 1 40 40; call 121 40
+stop
+list cam_a16
+do call 120 1; call 115 1 74 1 30 130; call 121 40
+stop
+list cam_night
+do call 120 1; call 115 16 1 1 310 60; call 121 40
+stop
+list cam_pods
+do call 120 1; call 115 1 81 1 100 100; call 121 40
+stop
+list cam_cell
+do call 120 1; call 115 17 25 1 40 40; call 121 40
+stop
+list cam_rain
+do call 120 1; call 115 17 21 1 304 290; call 121 40
+stop
+# ---- action: the combat drone
+list sh_drone_field
+do call 151 2; call 149 2
+do heal; call 120 1; call 119 1 68 1 160 420; call 121 30
+stop
+list sh_proto12
+do call 151 2; call 149 2
+do heal; call 120 1; call 119 1 76 1 120 264; call 121 30
+stop
+list cam_land
+do call 120 1; call 115 17 2 1 330 330; call 121 40
+stop
+# ---- teaser 5: Dr. Gero
+list cam_g66
+do call 120 1; call 115 1 66 1 90 130; call 121 40
+stop
+list cam_g80
+do call 120 1; call 115 1 80 1 80 150; call 121 40
+stop
+list cam_coat
+do call 120 1; call 115 4 1 1 480 240; call 121 40
+stop
+list sh_gero_pod
+do call 120 1; call 119 1 76 1 120 264; call 121 30
+stop
+list sh_drone_arena
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 84 1 248 316; call 121 30
+stop
+list sh_lab_return
+do call 151 2; call 149 2; call 152 0
+do call 120 1; call 119 1 61 1 150 230; call 121 30
+stop
+list sh_absorb_test
+do call 151 2; call 149 2; call 152 0
+do call 120 1; call 119 1 90 1 166 124; call 121 30
+code 00 64 03 0C 00 0A 03 0E 02 0C 02 0D 00 06 0A 07 03 0C 02 0E 02 0F 00 04 0A 07 03 0E
+stop
+list sh_twin_regen
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 21 1 424 470; call 121 30
+code 00 05 03 0E
+stop
+list sh_drone_yard
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 101 1 160 300; call 121 30
+stop
+list sh_drone_92
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 92 1 236 230; call 121 30
+stop
+list sh_drone_93
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 93 1 204 408; call 121 30
+stop
+list sh_drone_93m
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 93 1 130 330; call 121 30
+stop
+list cam_c91
+do call 120 1; call 115 1 91 1 40 180; call 121 20
+stop
+list cam_c94
+do call 120 1; call 115 1 94 1 120 180; call 121 20
+stop
+list cam_c93
+do call 120 1; call 115 1 93 1 160 40; call 121 20
+stop
+list cam_c84
+do call 120 1; call 115 1 84 1 20 220; call 121 20
+stop
+list sh_drone_94
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 94 1 200 250; call 121 30
+stop
+list sh_drone_92m
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 92 1 236 226; call 121 30
+stop
+list sh_drone_92ss
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 92 1 236 226; call 121 30
+do call 157 2 124
+stop
+list sh_drone_92t
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 92 1 142 160; call 121 30
+stop
+list cam_f103
+do call 120 1; call 115 1 103 1 0 0; call 121 20
+stop
+list cam_f106
+do call 120 1; call 115 1 106 1 0 0; call 121 20
+stop
+list cam_f107
+do call 120 1; call 115 1 107 1 0 30; call 121 20
+stop
+list sh_drone_105
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 105 1 120 112; call 121 30
+stop
+list sh_drone_110
+do call 151 2; call 149 2; call 152 0
+do heal; call 120 1; call 119 1 110 1 112 230; call 121 30
+stop
+# balance tests (2026-11-02): party + warp into a boss room
+list t_andro_112
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do call 165 1 20; call 165 1 17; call 165 3 20; call 165 3 11; call 164 1 8; call 164 3 8; call 164 1 18; call 164 3 18
+do heal; call 120 1; call 119 1 112 1 172 96; call 121 30
+stop
+list t_lapis_4_43
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do heal; call 120 1; call 119 4 43 1 150 200; call 121 30
+stop
+list t_lapis_16_43
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do heal; call 120 1; call 119 16 43 1 150 200; call 121 30
+stop
+list t_andro_17_36
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 35 1 136 214; call 121 30
+stop
+list t_andro_17_38
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 38 1 88 166; call 121 30
+stop
+# smoke tests (2026-11-02 bug pass): each playable state, with the real game's skill lists, dropped among enemies
+list t_s_gero
+do call 165 0 15; call 165 0 14; call 165 0 20
+do heal; call 120 1; call 119 1 96 1 72 220; call 121 30
+stop
+list t_s_drone
+do call 151 2; call 149 2; call 152 0
+do call 165 2 20; call 165 2 16
+do heal; call 120 1; call 119 1 96 1 72 220; call 121 30
+stop
+list t_s_lapis
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do heal; call 120 1; call 119 4 41 1 248 64; call 121 30
+stop
+list t_s_lazuli
+do call 151 1; call 151 3; call 149 3; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do heal; call 120 1; call 119 4 41 1 248 64; call 121 30
+stop
+list t_s_17
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 34 1 248 64; call 121 30
+stop
+list t_s_18
+do call 151 1; call 151 3; call 149 3; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 34 1 248 64; call 121 30
+stop
+list t_s_cell
+do call 151 6; call 149 6; call 152 1; call 152 3; call 157 6 284
+do call 165 6 20; call 165 6 1; call 165 6 9; call 164 6 15; call 164 6 14
+do call 120 1; call 119 17 41 1 32 344; call 121 30
+do heal
+stop
+# world map probe (BF area 0:50, the Earth map; 6:5's exit uses call 118 0 50 0 656 1100)
+list t_worldmap
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 118 0 50 0 656 1100; call 121 30
+stop
+list t_worldmap87
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 119 17 1 1 424 440; call 121 1
+do call 87 0 50 30
+stop
+# world map at a chosen spot: PRE='w8 3001020 <x lo>|w8 3001021 <x hi>|w8 3001024 <y lo>|w8 3001025 <y hi>' (VM vars 8 / 9)
+list t_wm_var
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1
+code 00 00 00 32 00 00 02 08 02 09 02 76
+do call 121 30
+stop
+# open-world tests: the Age 772 hub with the map open (368), Seventeen as player, Eighteen in the party
+list t_hub772
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 360
+set_flag 361
+set_flag 362
+set_flag 368
+do heal; call 120 1; call 119 17 18 1 236 210; call 121 30
+stop
+list t_wm_land
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 368
+set_flag 409
+do heal; call 120 1
+code 00 00 00 32 00 00 02 08 02 09 02 76
+do call 121 30
+stop

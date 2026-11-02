@@ -1,0 +1,299 @@
+{
+ "_note": "Journal goals (tools/goals.py). A goal shows under Goals while 'active' is true and 'done' is false, under Completed Goals once 'done' is true, and nowhere while 'hide' is true (finished chapters are hidden when the next one starts: the screen's lists hold 40 entries each). Conditions: always / never / set:N & clear:N.",
+ "goals": [
+  {
+   "text": "Check the drone terminal in the lab",
+   "active": "always",
+   "done": "set:352",
+   "hide": "set:310"
+  },
+  {
+   "text": "Record sensor data at three target sites on the range",
+   "active": "set:352",
+   "done": "set:358",
+   "hide": "set:310"
+  },
+  {
+   "text": "Destroy the heavy tank in the live-fire arena",
+   "active": "set:358",
+   "done": "set:356",
+   "hide": "set:310"
+  },
+  {
+   "text": "Take control of a drone at the drone terminal",
+   "active": "set:310",
+   "done": "set:313",
+   "hide": "set:315"
+  },
+  {
+   "text": "Find the three missing men of Squad Seven",
+   "active": "set:313",
+   "done": "set:378",
+   "hide": "set:315"
+  },
+  {
+   "text": "Defeat the Raider Chief at the Supply Yard",
+   "active": "set:314",
+   "done": "set:377",
+   "hide": "set:315"
+  },
+  {
+   "text": "Reach Gevo at the fence on Ambush Ridge",
+   "active": "set:378",
+   "done": "set:311",
+   "hide": "set:315"
+  },
+  {
+   "text": "Recover the android blueprints from the tank room",
+   "active": "set:315",
+   "done": "set:316",
+   "hide": "set:320"
+  },
+  {
+   "text": "Wipe the army's archive past the munitions lines",
+   "active": "set:316",
+   "done": "set:285",
+   "hide": "set:320"
+  },
+  {
+   "text": "Take the vault keycard from the looters' captain",
+   "active": "set:283",
+   "done": "set:284",
+   "hide": "set:320"
+  },
+  {
+   "text": "Get clear of the base",
+   "active": "set:319",
+   "done": "set:318",
+   "hide": "set:320"
+  },
+  {
+   "text": "Restore power: three relays, one in the bunker and two outside",
+   "active": "set:320",
+   "done": "set:324",
+   "hide": "set:300"
+  },
+  {
+   "text": "Destroy Prototype 9 in the old mine",
+   "active": "set:289",
+   "done": "set:290",
+   "hide": "set:300"
+  },
+  {
+   "text": "Destroy Prototype 12",
+   "active": "set:324",
+   "done": "set:327",
+   "hide": "set:300"
+  },
+  {
+   "text": "Activate Android 16",
+   "active": "set:327",
+   "done": "set:325",
+   "hide": "set:300"
+  },
+  {
+   "text": "Enter the conversion pod in the incubator",
+   "active": "set:325",
+   "done": "set:326",
+   "hide": "set:300"
+  },
+  {
+   "text": "Explore West City",
+   "active": "set:300",
+   "done": "set:303",
+   "hide": "set:330"
+  },
+  {
+   "text": "Find out who's asking about you",
+   "active": "set:301",
+   "done": "set:303",
+   "hide": "set:330"
+  },
+  {
+   "text": "Lose the cop in the park",
+   "active": "set:307",
+   "done": "set:308",
+   "hide": "set:330"
+  },
+  {
+   "text": "Take back the warehouse from the Red Fangs",
+   "active": "set:293",
+   "done": "set:295",
+   "hide": "set:330"
+  },
+  {
+   "text": "Defeat Big Ox in the old warehouse",
+   "active": "set:389",
+   "done": "set:294",
+   "hide": "set:330"
+  },
+  {
+   "text": "Optional: return Z-Mart's stolen delivery",
+   "active": "set:388",
+   "done": "set:298",
+   "hide": "set:330"
+  },
+  {
+   "text": "Optional: return the museum's stolen medal",
+   "active": "set:387",
+   "done": "set:296",
+   "hide": "set:330"
+  },
+  {
+   "text": "Hide out until nightfall",
+   "active": "set:303",
+   "done": "set:304",
+   "hide": "set:330"
+  },
+  {
+   "text": "Get to the docks unseen",
+   "active": "set:304",
+   "done": "set:333",
+   "hide": "set:330"
+  },
+  {
+   "text": "Destroy the machine in the warehouse",
+   "active": "set:333",
+   "done": "set:334",
+   "hide": "set:330"
+  },
+  {
+   "text": "Leave Dr. Gero's hidden laboratory",
+   "active": "set:331",
+   "done": "set:332",
+   "hide": "set:340"
+  },
+  {
+   "text": "Get through the lockdown to the control room",
+   "active": "set:338",
+   "done": "set:339",
+   "hide": "set:340"
+  },
+  {
+   "text": "Visit the old hideout at the docks",
+   "active": "set:340",
+   "done": "set:359",
+   "hide": "set:360"
+  },
+  {
+   "text": "Look around West City",
+   "active": "set:359",
+   "done": "set:341",
+   "hide": "set:360"
+  },
+  {
+   "text": "Meet them at the crossroads",
+   "active": "set:341",
+   "done": "set:342",
+   "hide": "set:360"
+  },
+  {
+   "text": "Defeat Vegeta",
+   "active": "set:342",
+   "done": "set:343",
+   "hide": "set:360"
+  },
+  {
+   "text": "Face Tien at the crossroads",
+   "active": "set:350",
+   "done": "set:345",
+   "hide": "set:360"
+  },
+  {
+   "text": "Defeat Krillin",
+   "active": "set:346",
+   "done": "set:347",
+   "hide": "set:360"
+  },
+  {
+   "text": "Defeat Piccolo",
+   "active": "set:351",
+   "done": "set:348",
+   "hide": "set:360"
+  },
+  {
+   "text": "Search Capsule Corporation",
+   "active": "set:360",
+   "done": "set:361",
+   "hide": "set:380"
+  },
+  {
+   "text": "Answer the call from Gero's old bunker",
+   "active": "set:361",
+   "done": "set:362",
+   "hide": "set:380"
+  },
+  {
+   "text": "Destroy the Sentinel in the generator cave",
+   "active": "set:400",
+   "done": "set:401",
+   "hide": "set:380"
+  },
+  {
+   "text": "Find Unit Thirteen",
+   "active": "set:362",
+   "done": "set:367",
+   "hide": "set:380"
+  },
+  {
+   "text": "Destroy Super 13",
+   "active": "set:367",
+   "done": "set:363",
+   "hide": "set:380"
+  },
+  {
+   "text": "Optional: take the airship to Mount Paozu",
+   "active": "set:368",
+   "done": "set:370",
+   "hide": "set:380"
+  },
+  {
+   "text": "Optional: fly a hangar jet out to sea",
+   "active": "set:368",
+   "done": "set:371",
+   "hide": "set:380"
+  },
+  {
+   "text": "Go to West City's crossroads when you're ready",
+   "active": "set:368",
+   "done": "set:364",
+   "hide": "set:380"
+  },
+  {
+   "text": "Get to the crossroads",
+   "active": "set:380",
+   "done": "set:381",
+   "hide": "set:390"
+  },
+  {
+   "text": "Gohan's last stand",
+   "active": "set:381",
+   "done": "set:383",
+   "hide": "set:390"
+  },
+  {
+   "text": "Find out what happened",
+   "active": "set:391",
+   "done": "set:392",
+   "hide": "never"
+  },
+  {
+   "text": "Find Trunks and his time machine",
+   "active": "set:392",
+   "done": "set:395",
+   "hide": "never"
+  },
+  {
+   "text": "Defeat Trunks",
+   "active": "set:395",
+   "done": "set:393",
+   "hide": "never"
+  },
+  {
+   "text": "Find somewhere to hide",
+   "active": "set:396",
+   "done": "set:397",
+   "hide": "never"
+  }
+ ]
+}

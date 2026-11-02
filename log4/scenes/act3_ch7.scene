@@ -1,0 +1,77 @@
+# Act 3, chapter 7 "Activation" (Future Trunks's timeline, Age 767). Flags 330 chapter opened, 331 Gero killed,
+# 332 outside (chapter end). Party: Seventeen = character 1 (form 14, actor 102), Eighteen = character 3 (form 23, actor 262).
+# ch7_start runs straight on from the conversion scene (act2_siblings.scene) in the tank room 1:79.
+list ch7_start
+set_flag 330
+say gero Rest while you can. Your first tests begin tomorrow.
+narrate The tests did not go the way Dr. Gero planned.
+narrate Seventeen ignored his orders. Eighteen laughed at them. Within a month he gave up, shut them both down and sealed them in their pods.
+do call 120 60
+do call 183 516 1462 1463
+do call 115 0 2 0 0 0; call 121 1
+do call 120 1; call 119 1 80 1 216 216; call 121 60
+narrate Age 767. Dr. Gero's hidden laboratory.
+narrate Son Goku is dead. A heart virus took him, not a fight. Gero's revenge was stolen from him.
+say gero Goku is dead, and the two of you are all I have left. Wake up.
+say android17 ...How long were we out?
+say gero Long enough for the world to forget you. This time you will obey me, or I will shut you down for good.
+say android18 That little box in your hand. That's the off switch, isn't it?
+say gero Give me a reason to use it.
+say android17 Here's one.
+narrate Seventeen moved faster than the old man's thumb.
+do call 120 30
+set_flag 331
+do call 119 1 81 1 216 216; call 121 60
+say android18 ...That's it? He's just gone?
+say android17 We're free, Eighteen. Nobody gets to tell us what to do. Not ever again.
+narrate Far to the north, a machine Gero built years ago lost its creator's signal.
+narrate Computer: Creator signal lost. Directive: destroy Son Goku. Target deceased. Contingency: complete Units Thirteen, Fourteen and Fifteen.
+say android18 Did you hear something?
+say android17 Just this place falling apart. Come on. I want to see the sky.
+journal Leave Dr. Gero's hidden laboratory
+do call 47; call 51 0
+list eighteen_lab_talk
+say android18 Don't look at me like that. I'm coming. I just wanted one more look at the pods.
+# walk-in trigger at the arrival point of the Northern Wilderness 1:83 (flag 332 clear)
+list ch7_end
+set_flag 332
+say android18 So this is outside. I'd forgotten how big it is.
+say android17 Big and boring. Let's find a city and see what it's got.
+say android18 Seventeen... do you remember the last city we were in?
+say android17 Not really. Does it matter?
+say android18 ...No. I guess it doesn't.
+narrate End of Chapter 7.
+run ch8_start
+# ---------- the lab's lockdown (areas from log4/gen_ch7.py; flags 338 alarm, 339 Security Unit destroyed, 329 locker)
+list ch7_alarm
+set_flag 338
+narrate Red lights. A siren, then the computer's flat voice from every speaker at once.
+narrate Computer: Creator signal lost. Unregistered units in the laboratory. Lockdown. Security, purge the intruders.
+say android17 Unregistered? He built us.
+say android18 And now his house wants us dead. Charming.
+say android17 There's a control room past this wing. We switch it off, we walk out the front door.
+journal Get through the lockdown to the {c07}control room{c02}
+do call 47; call 51 0
+list ch7_locker
+if_flag 329 locker_empty
+set_flag 329
+narrate Gero's workbench. Notes on Unit 16, a cold cup of tea... and a Senzu Bean in a labelled jar: "FOR EMERGENCIES".
+say android18 He kept one for himself. Of course he did.
+do call 129 11 1; call 129 1 1
+stop
+label locker_empty
+narrate Gero's notes. Nothing worth reading.
+list ch7_console
+unless_flag 339 console_locked
+narrate The security console. Seventeen finds the lockdown switch on the second try.
+narrate Computer: Lockdown released. ...Continuing construction. Unit Thirteen: two percent. Fourteen: one percent. Fifteen: one percent.
+say android18 More of us?
+say android17 Not our problem. Let the old man's computer play with its toys.
+say android18 Seventeen. If it finishes them, they'll come looking for us.
+say android17 Then we'll be somewhere fun when they do. Come on.
+narrate The hangar door grinds open. Cold mountain air pours in.
+do call 120 30
+do call 120 1; call 119 1 82 1 112 200; call 121 40
+stop
+label console_locked
+narrate The console is behind the security machine. It isn't going to let anyone near it.

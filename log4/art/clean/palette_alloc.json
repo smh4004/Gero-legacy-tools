@@ -1,0 +1,84 @@
+{
+ "assigned": {
+  "8": {
+   "rgb": [
+    40,
+    40,
+    16
+   ],
+   "owner": "plan:global"
+  },
+  "9": {
+   "rgb": [
+    240,
+    8,
+    232
+   ],
+   "owner": "plan:global"
+  },
+  "103": {
+   "rgb": [
+    208,
+    176,
+    72
+   ],
+   "owner": "plan:global"
+  },
+  "193": {
+   "rgb": [
+    112,
+    112,
+    56
+   ],
+   "owner": "plan:global"
+  },
+  "217": {
+   "rgb": [
+    56,
+    56,
+    80
+   ],
+   "owner": "plan:global"
+  },
+  "218": {
+   "rgb": [
+    80,
+    112,
+    152
+   ],
+   "owner": "plan:global"
+  },
+  "223": {
+   "rgb": [
+    216,
+    128,
+    72
+   ],
+   "owner": "plan:global"
+  },
+  "224": {
+   "rgb": [
+    72,
+    72,
+    40
+   ],
+   "owner": "plan:global"
+  },
+  "225": {
+   "rgb": [
+    32,
+    8,
+    16
+   ],
+   "owner": "plan:global"
+  },
+  "236": {
+   "rgb": [
+    24,
+    48,
+    104
+   ],
+   "owner": "plan:global"
+  }
+ }
+}

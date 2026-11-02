@@ -1,0 +1,33 @@
+# Act 1, chapter 1 "Red Ribbon Science" - opening in Gero's lab (replaces Buu's Fury's Snake Way opening).
+# Original steps kept: 1 = scene setup, 3 = (type 4 data), 5 = camera, 15 = journal flag, 17 = hand control back.
+# 'do' lines are script code: begin_moves / move <actor> x y / wait_moves / face <actor> dir (0 down, 1 up, 2 side).
+replace 0x780550
+keep 1
+narrate Red Ribbon Army Headquarters. Deep beneath the command tower, the army's chief scientist was still at work.
+# step 3 (BF's packed Snake Way setup) walked the player in from the map edge through the wall; load the lab with
+# Gero already at his bench instead (the field-return idiom: step 1 has done 115/121/165)
+do call 120 1; call 119 1 1 1 112 200; call 121 60
+say young_gero.0 The drone's targeting array is drifting again...
+say young_gero.0 Three degrees off true. Three degrees is the difference between a hit and a wasted shell.
+keep 5
+say gevo.0 Father! You haven't left this lab in three days. Commander Red wants the drone report by morning.
+do begin_moves; move gevo 96 176; wait_moves; face gevo 2
+say young_gero.0 Then Commander Red will have it by morning, Gevo. Perfection takes time. The army can wait one more night.
+say gevo.0 The army can't wait. My squad ships out to the Northern Wastelands at dawn.{p}They say some kid with a staff has been tearing through our outposts.
+say young_gero.1 A child? The Red Ribbon Army is afraid of a child?{p}Take two of my drones with you. I'll guide them from right here in the lab.
+say gevo.2 You and your machines...
+say gevo.0 All right. But promise me you'll get some sleep.
+say young_gero.0 I'll sleep when my work is finished. Now go, Gevo. And come back in one piece.
+say gevo.0 I always do. And don't forget the {c07}drone terminal{c02}. Commander Red wants that report.
+# Gevo leaves through the tank-room door: walk to it, open the door panels (tools/doors.py states: a sideways nudge =
+# half open, up = open), walk into the doorway, then fade and swap to 1:61 (the same lab without Gevo)
+do begin_moves; move gevo 81 182; wait_moves
+do begin_moves; move door_540fd4_0_0 80 126; move door_540fd4_0_1 80 128; wait_moves; call 136 5; begin_moves; move door_540fd4_0_0 80 125; move door_540fd4_0_1 80 127; wait_moves
+do begin_moves; move gevo 81 146; wait_moves
+do call 120 30
+do call 119 1 61 1 112 200; call 121 30
+say young_gero.0 Hmph. Always telling me what to do... just like his mother.
+keep 15
+journal Check the {c07}drone terminal{c02}
+keep 17
+do call 165 0 15; call 165 0 14

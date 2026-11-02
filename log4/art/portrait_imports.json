@@ -1,0 +1,8 @@
+{
+ "_note": "LoG2 portraits to import (index in LoG2's table at slice 0x3ECB6C). Converted to BF colours (CIE94 nearest) and re-framed in BF's gold frame at build time from your own LoG I&II cart.",
+ "L2_android16": 18, "L2_android17": 20, "L2_android18": 21, "L2_android19": 22,
+ "L2_gero": 23, "L2_gero_b": 24,
+ "L2_cell_imperfect": 30, "L2_cell_semiperfect": 31, "L2_cell_perfect": 32,
+ "L2_tien": 87, "L2_krillin": 65, "L2_yamcha": 105, "L2_gohan_teen": 48,
+ "L2_trunks_a": 90, "L2_trunks_b": 91, "L2_trunks_c": 92, "L2_trunks_d": 95
+}

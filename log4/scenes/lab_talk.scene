@@ -1,0 +1,17 @@
+# Talk scripts for the Gero's Lab NPCs (Act 1). Each "list <name>" is a named step list that areas.json hands to a
+# spawn ("spawn_talk" for edited areas, "talk" for new ones).
+list scientist_talk
+narrate Lab technician: Doctor! The drone's targeting array is drifting again... three degrees, just as you said.
+narrate Lab technician: If you'd like to test it yourself, the {c07}drone terminal{c02} is by the monitor wall.
+list drone_npc_talk
+narrate A spare Red Ribbon combat drone, powered down for repairs. Its targeting array has been taken apart.
+list gevo_talk
+say gevo.0 Get some sleep, Father. I'll radio in once the squad reaches the Northern Wastelands.
+# drone terminal: one event per terminal spot. It runs the two-way toggle (drone is the player -> Gero, else the drone
+# joins and takes over), then one line that fits both directions. Separate lines per direction would need conditional
+# exits, but the engine only checks exit conditions when an area loads, and reloading in place (load_area) loses the player.
+list drone_toggle
+code 02 15 00 02 0b 13 00 09 00 00 02 95 12 00 0a 00 02 02 97 00 02 02 95
+narrate The drone terminal chirps. Remote control link transferred.
+list lift_talk
+narrate The lift up to the command tower. Commander Red can wait for his report.

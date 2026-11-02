@@ -1,0 +1,6 @@
+{
+ "_note": "Prototype D portraits to import (index in its table at 0x6E39C4; build needs --proto). Android 13/14/15 were cut from retail; ids are likely by eye.",
+ "proto_android13": 1,
+ "proto_android14": 2,
+ "proto_android15": 3
+}

@@ -1,0 +1,226 @@
+# Act 3, chapter 9 "Years of Terror" (Age 768-774). Flags: 360 opened, 361 Bulma, 362 bunker arrival, 363 Super 13
+# destroyed, 364 Gohan fought, 365 after Super 13 seen, 366 chapter end, 367 Super 13 awake
+# (his speech sets it and reloads the incubator: enemy conditions are only read at load). Areas (world 17, act3 palette): 17:11 Capsule
+# Corporation, 17:12-17:15 Gero's Act 1 bunker (Super 13 = stats row 21, actor super13), 17:16/17:17 West City (Gohan,
+# BF's own Gohan sprite, row 22). Speakers: #17 Bulma, #209/#210/#211 Androids 13/14/15 (Prototype D portraits),
+# future_gohan_twoarm.N (R4b).
+list ch9_start
+set_flag 360
+do call 149 1
+do call 183 516 1466 1467
+do call 115 0 2 0 0 0; call 121 1
+do call 120 1; call 119 17 11 1 240 330; call 121 60
+narrate Age 768. A year after West City, half the world's cities are rubble.
+narrate Nobody fights back any more. People just run, and hide, and listen to the radio for the two numbers.
+say android17 Capsule Corporation. Richest family on the planet. Let's see what rich people keep.
+say android18 It's empty. They're all gone.
+say android17 Not all of them. Somebody left a light on.
+journal Search Capsule Corporation
+do call 47; call 51 0
+# ---------- Bulma (by the dome house)
+list ch9_bulma
+if_flag 361 bulma_again
+set_flag 361
+narrate A woman stands in front of the dome house. She is holding a baby wrapped in a lab coat, and she does not move.
+say #17 Stay back. If you're going to do it, just do it. But leave him out of it. He's a baby.
+say android17 Relax, lady. You're not worth the energy.
+narrate The baby grabs at the air and laughs at nothing. Eighteen can't look away from him.
+narrate A woman's voice, singing off key. A small boy asleep with his head in her lap. The song is clear. Her face is not.
+say android18 ...What's his name?
+say #17 Trunks.
+say android18 Weird name.
+say #17 His father thought so too.
+say android17 His father. Let me guess. Spiky hair, bad attitude, wanted a rematch with a dead man?
+narrate The woman doesn't answer. She holds the baby tighter, and her eyes don't leave Seventeen's face.
+say android18 Come on, Seventeen. There's nothing here.
+narrate Every screen in the building flickers on at once. The radio on the porch crackles.
+narrate Voice: Units Seventeen and Eighteen. Return to base. Repeat: Units Seventeen and Eighteen, return to base.
+say android17 Gero's leftovers. That old computer is still running.
+say android18 Then let's go and switch it off.
+narrate They leave without looking back. The woman stands in the doorway for a long time after they're gone.
+do call 120 60
+do call 119 17 37 1 24 296; call 121 60
+stop
+label bulma_again
+say #17 ...Go. Please. Just go.
+# ---------- the bunker (17:12 arrival)
+list ch9_bunker
+if_flag 362 bunker_seen
+set_flag 362
+narrate Gero's old bunker in the northern mountains. Twenty years of dust, and the power is on.
+narrate Computer: Welcome home, Units Seventeen and Eighteen.
+say android18 He built this place before he built us. I can feel it in the walls.
+narrate Computer: Construction log. Unit Fourteen: parts harvested.
+say #210 ...
+narrate Computer: Unit Fifteen: parts harvested.
+say #211 ...
+narrate Computer: Unit Thirteen: complete. Primary directive: destroy Son Goku. Target deceased. Secondary directive: recover or destroy the defective units.
+say android17 Defective? We're the best thing he ever made.
+narrate Computer: Unit Thirteen is waiting for you in the incubator.
+journal Find Unit Thirteen
+do call 47; call 51 0
+stop
+label bunker_seen
+list ch9_pod16
+narrate An empty pod. Scratched into the label: 16. DO NOT ACTIVATE.
+say android18 Whatever was in here, he was scared of it.
+say android17 Or it was too nice to keep. Same thing, to him.
+# ---------- Super 13 (17:14 arrival, fight)
+list ch9_thirteen
+set_flag 367
+do heal
+narrate Something huge steps out of the incubator. Blue skin, a red mane, and the parts of two other androids grown into it.
+say #209 Units Seventeen. Eighteen. Your creator ordered your return. You refused.
+say #209 I was built to obey him. It is the only thing I will ever do.
+say android17 Gero's dead, big guy. Nobody's giving orders any more.
+say #209 Then I will obey a dead man.
+say android18 ...That's what we'd be. If we'd listened.
+do call 120 20; call 119 17 14 1 208 312; call 121 20
+journal Destroy Super 13
+do call 47; call 51 0
+list ch9_after13
+if_flag 365 after13_seen
+set_flag 365
+narrate Super 13 doesn't fall so much as come apart. Fourteen's arm. Fifteen's hat. Thirteen's face, still calm.
+narrate Computer: Unit Thirteen... offline. Directive... directive...
+narrate Seventeen puts a fist through the console. The lights go out for the last time.
+say android18 He obeyed right up to the end. That's the saddest thing I've ever seen.
+say android17 You're getting weird, Eighteen.
+say android18 Maybe.
+narrate Years pass.
+do call 120 60
+do call 119 17 18 1 240 150; call 121 60
+stop
+label after13_seen
+# ---------- the hub years (Age 772): Capsule Corporation is the twins' base. Optional: Mt. Paozu (airship), Roshi's
+# island (hangar). The gate leads on to Gohan. Flags 368 hub opened, 370 Chi-Chi, 371 Roshi.
+list ch9_hub
+if_flag 368 hub_seen
+set_flag 368
+narrate Age 772. The twins have taken Capsule Corporation for themselves. Nobody comes to take it back.
+say android18 Her things are still here. Baby clothes in a box. A photo of a man with spiky hair, scowling at the camera.
+say android17 Don't get sentimental. It's just a house with a lot of toys in it.
+journal Fly anywhere you like: the airship pad or the hangar. West City's crossroads when you're ready.
+do call 47; call 51 0
+stop
+label hub_seen
+list ch9_hub18
+if_flag 370 h18_paozu
+if_flag 371 h18_roshi
+say android18 Go wherever you want. I'll catch up.
+stop
+label h18_paozu
+if_flag 371 h18_both
+say android18 That woman on the mountain. She looked at me like she felt sorry for me. Nobody's allowed to feel sorry for me.
+stop
+label h18_roshi
+say android18 The old man knew his name. Krillin. I didn't want to know his name.
+stop
+label h18_both
+say android18 Every one of them had somebody waiting at home. Do you think anybody ever waited for us?
+say android17 If they did, they stopped.
+list ch9_fly_paozu
+if_flag 370 paozu_done
+narrate Seventeen gets Bulma's old airship started on the third try.
+do call 120 40; call 119 17 19 1 112 120; call 121 40
+stop
+label paozu_done
+say android17 We've been to the mountain. Nothing there but a grave and a stubborn woman.
+list ch9_fly_kame
+if_flag 371 kame_done
+narrate The hangar is full of jets nobody will ever fly again. Seventeen takes the fastest one.
+do call 120 40; call 119 17 20 1 380 300; call 121 40
+stop
+label kame_done
+say android17 Nothing out there but an old man and a lot of water.
+# Mt. Paozu, Goku's house (17:19 arrival)
+list ch9_paozu
+if_flag 370 paozu_seen
+set_flag 370
+narrate Mount Paozu. A small round house in the trees, and a grave out front with fresh flowers on it.
+narrate Inside, a woman is setting the table for two.
+say #20 If you're looking for Gohan, he isn't here. He hasn't been home in four months. He's out there looking for you.
+say android17 Then you should have kept him home.
+say #20 I tried. I lost his father to a sickness and I'm losing him to the two of you.
+say #20 Every night I set his plate out anyway.
+say android18 Why? He might not come back.
+say #20 Because if he does, he'll be hungry.
+say #20 Do you have a mother, girl?
+say android18 ...I don't remember.
+say #20 Then somebody, somewhere, set a plate out for you once. And waited.
+narrate Hands that smell of soap, pushing hair out of a little girl's eyes. Eighteen's own hands are shaking.
+say android17 Let's go. This place is depressing.
+narrate Eighteen looks at the empty plate for a long time.
+do call 47; call 51 0
+stop
+label paozu_seen
+# Roshi's island (17:20 arrival)
+list ch9_kame
+if_flag 371 kame_seen
+set_flag 371
+narrate A small island in the middle of the ocean. Kame House is a pile of pink boards.
+narrate An old man sits on the sand in front of it, watching the water.
+say #74 Took you long enough. I've buried every one of my students. Go on, then.
+say android17 Who were they?
+say #74 Goku. Krillin. Yamcha, more or less. Tien, when he'd let me. Good boys, every one of them.
+say android18 Krillin. The short one.
+say #74 That's him. Always wanted a normal life, you know. A little house. A wife. Somebody to come home to. Never got around to it.
+say android18 ...He held back. When we fought. He wouldn't hit me.
+say #74 That sounds like him. He could always see something in people the rest of us missed.
+narrate Eighteen doesn't say anything for a long time.
+say android17 You're not even going to beg?
+say #74 I'm three hundred years old, sonny. I'm done begging.
+say android17 ...Boring.
+narrate They turn their backs on him. He doesn't watch them go.
+do call 47; call 51 0
+stop
+label kame_seen
+# the gate -> Gohan (Age 774)
+list ch9_to_gohan
+narrate Age 774. Seven years after West City.
+do call 120 60; call 119 17 16 1 424 440; call 121 60
+# ---------- Gohan (17:16 arrival, fight)
+list ch9_gohan
+narrate The ruins of West City. Someone has been waiting in the middle of the crossroads.
+say future_gohan_twoarm.0 Seven years. I've trained for seven years for this.
+say android17 Hey, it's Piccolo's kid. You got tall.
+say future_gohan_twoarm.2 Don't you dare say his name.
+say android18 You should have stayed hidden. You'd have lived longer.
+say future_gohan_twoarm.1 Maybe. But somebody has to stand up to you.
+journal Fight Gohan
+do call 47; call 51 0
+list ch9_end
+if_flag 366 end9_seen
+set_flag 366
+narrate Gohan crashes through what's left of a wall. When the dust settles, he is gone.
+narrate On the street: a torn sleeve, and a lot of blood.
+say android18 He'll come back.
+say android17 Good. He's the only one left who's any fun.
+say android18 ...He lost his arm, Lapis.
+say android17 Don't call me that.
+narrate Eighteen looks at the blood on the road for a long time. Then she follows her brother.
+journal Seven years
+narrate End of Chapter 9.
+run ch10_start
+stop
+label end9_seen
+# ---------- the way to the bunker (areas from log4/gen_ch9.py; flags 400 pass, 401 Sentinel, 402 mine cache)
+list ch9_pass
+set_flag 400
+narrate The northern mountains. The bunker door is set into the cliff to the west, and it is shut.
+narrate Computer: Units Seventeen and Eighteen. Before you may enter: evaluation. The creator would have wanted it.
+narrate Computer: Power to the bunker door has been routed through the generator cave. A Sentinel guards it. Prove your worth.
+say android18 Even dead, he's still testing us.
+say android17 Fine. Let's break his toys. East, then. The cave.
+journal Destroy the {c07}Sentinel{c02} in the generator cave
+do call 47; call 51 0
+list ch9_sealed
+narrate The bunker door. Solid steel, and no power to it. Somewhere east, a generator hums behind something big.
+list ch9_cache_mine
+if_flag 402 c9mine_empty
+set_flag 402
+narrate The old mining cart. Under the junk, a crate the drone never found: two Hercule-ades and a Senzu Bean.
+do call 129 6 2; call 129 11 1
+stop
+label c9mine_empty
+narrate Nothing but rocks.

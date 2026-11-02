@@ -1,0 +1,230 @@
+# Act 3 open world (log4/gen_world.py): side content on the world map's destinations, Age 772-780.
+# Flags 409-428 (see gen_world.py). Stone Dragon Balls = BF items 15-21 ("Dragon Ball 1-7", descriptions say stone).
+# Take-off lists (fly_*) are generated into act3_world_fly.scene.
+
+# ---------- Orange Star City (17:42, BF 3:4: Orange Star High)
+list osc_arrive
+if_flag 410 osc_seen
+set_flag 410
+narrate Orange Star City. Half the skyline is gone. The other half has its windows boarded up.
+narrate A school stands at the end of the street. The paint on its sign still says ORANGE STAR HIGH.
+say android17 Somebody's still living here. I can hear a radio.
+do call 47; call 51 0
+stop
+label osc_seen
+list osc_school
+narrate The front doors are chained shut. A notice, sun-bleached: CLOSED UNTIL FURTHER NOTICE. Age 767.
+say android18 Nobody ever made us go to school.
+say android17 Lucky us.
+stop
+list osc_police
+narrate Officer: The station's empty. I just... keep showing up. Somebody has to direct traffic, even if there's no traffic.
+stop
+list osc_girl
+narrate Girl: My dad says the androids are just a story to scare kids. My dad also says Hercule is coming to save us.
+stop
+list osc_hercule
+if_flag 411 herc_after
+narrate Hercule: H-hold it right there! You're looking at the World Martial Arts Champion! Hercule!
+say android17 The champion of what? There haven't been any tournaments in years.
+narrate Hercule: The... the title is still valid! Nobody took it from me!
+say android18 We could take it from you right now.
+narrate Hercule: W-w-wait! Take this instead! A real Dragon Ball! My trophy from the last tournament! It's worth a fortune!
+narrate He drops it in the dirt and runs behind a car. The ball is grey and heavy. Two stars, carved in stone.
+say android17 It's a rock.
+say android18 Keep it. It's funny.
+do call 129 16 1
+set_flag 411
+journal Stone Dragon Balls: some old fool says there were seven of them.
+stop
+label herc_after
+narrate Hercule (from behind the car): I've got a little girl at home! Videl! She's fifteen! Please go away!
+stop
+
+# ---------- Kami's Lookout (17:43, BF 6:1)
+list lookout_arrive
+if_flag 412 lookout_seen
+set_flag 412
+narrate Kami's Lookout. The garden has gone to seed. Weeds push up between the white tiles.
+narrate Nobody tends it any more. The god who lived here died the day the androids killed Piccolo.
+say android18 There's nobody here.
+say android17 Good. Then nobody can tell us to leave.
+do call 47; call 51 0
+stop
+label lookout_seen
+list lookout_door
+if_flag 413 altar_done
+if_flag 411 a1
+goto altar_lore
+label a1
+if_flag 415 a2
+goto altar_lore
+label a2
+if_flag 418 a3
+goto altar_lore
+label a3
+if_flag 421 a4
+goto altar_lore
+label a4
+if_flag 426 a5
+goto altar_lore
+label a5
+if_flag 427 a6
+goto altar_lore
+label a6
+if_flag 428 altar_all
+goto altar_lore
+label altar_lore
+narrate The palace doors stand open. Inside, an empty throne and a carved stone altar with seven hollows in it.
+narrate Seven hollows, each the size of a ball.
+stop
+label altar_all
+narrate Eighteen sets the seven stone balls in the seven hollows, one at a time.
+narrate Nothing happens. No light. No dragon. Just seven grey rocks in a row.
+say android18 ...I thought something would happen.
+say android17 You wanted to make a wish?
+say android18 Maybe.
+say android17 For what?
+say android18 I don't know. Something that isn't this.
+narrate Behind the altar, a cupboard the gods kept stocked: holy water, and a jar of beans.
+do call 129 10 2; call 129 11 3; call 129 9 1
+set_flag 413
+journal The Dragon Balls are stone. There are no wishes left.
+stop
+label altar_done
+narrate Seven grey stones in seven hollows. The wind moves the curtains. Nothing else moves.
+stop
+
+# ---------- Papaya Island (17:44, BF 7:1: the tournament gate)
+list papaya_arrive
+if_flag 414 papaya_seen
+set_flag 414
+narrate Papaya Island. The World Martial Arts Tournament was held here every few years. The banners are rags now.
+narrate A few fighters still train in the plaza, waiting for a tournament that isn't coming.
+do call 47; call 51 0
+stop
+label papaya_seen
+list papaya_gate
+narrate The gate to the tournament grounds is welded shut. A hand-painted sign: NO TOURNAMENT THIS YEAR. Under it, older paint: OR NEXT YEAR.
+stop
+list papaya_announcer
+if_flag 415 ann_after
+narrate Announcer: Well! It's been a long time since anyone famous came to Papaya Island!
+narrate Announcer: I called the last great tournament, you know. Goku against the demon king! What a match!
+say android18 Goku. The one who died before we woke up.
+narrate Announcer: A heart virus, of all things. The strongest man in the world. Life's not fair, is it?
+narrate Announcer: I kept the grand prize for the next champion. It went to stone years ago, but... here. You two are the only fighters left.
+narrate A grey stone ball with seven stars.
+do call 129 21 1
+set_flag 415
+stop
+label ann_after
+narrate Announcer: If anyone ever holds a tournament again, I'll be right here. Somebody has to say the names.
+stop
+
+# ---------- Diablo Desert (17:45, BF 14:1: Prototype 11)
+list diablo_arrive
+if_flag 416 diablo_seen
+set_flag 416
+narrate Diablo Desert. A bandit called Yamcha used to rob travellers here, before he ever met Goku.
+narrate Something big is standing in the dead trees. Red Ribbon paint, twenty years faded.
+say android17 One of the old man's toys. It's still running.
+say android18 It's guarding something.
+do call 47; call 51 0
+stop
+label diablo_seen
+list diablo_ball
+if_flag 418 dball_done
+if_flag 417 dball_take
+narrate Prototype 11 stands over the spot. Its last order came from a general who has been dead for twenty years: GUARD THE DRAGON BALL.
+stop
+label dball_take
+narrate Under the wreck of Prototype 11, a Red Ribbon field case. Inside: a Dragon Ball radar, dead, and a grey stone ball with three stars.
+say android17 The Red Ribbon Army went looking for these when the old man was still working for them.
+say android18 And they found one. And then Goku tore the army apart, and nobody came back for it.
+do call 129 17 1
+set_flag 418
+stop
+label dball_done
+narrate An empty Red Ribbon field case, half buried in sand.
+stop
+
+# ---------- Pilaf's Castle (17:46, BF 13:1)
+list pilaf_arrive
+if_flag 419 pilaf_seen
+set_flag 419
+narrate The ruins of a castle in the jungle. A tattered flag still flies over the rubble: a little blue emperor's crest.
+narrate Ninjas move between the trees. Somebody is still guarding whatever is left.
+do call 47; call 51 0
+stop
+label pilaf_seen
+list pilaf_safe
+if_flag 421 psafe_done
+if_flag 420 psafe_open
+narrate A collapsed treasure room. A heavy safe sits in the rubble. The ninjas keep watching it.
+stop
+label psafe_open
+narrate With their captain beaten, the ninjas are gone. The safe door hangs open: a ledger of schemes, a map of the world, and a grey ball with six stars.
+narrate The ledger's last page: WORLD DOMINATION, STEP 1: COLLECT THE DRAGON BALLS. It's crossed out. Under it: STEP 1: SURVIVE.
+do call 129 20 1
+set_flag 421
+stop
+label psafe_done
+narrate An empty safe and a ledger nobody will finish.
+stop
+
+# ---------- Nataday Village (17:47, BF 15:1)
+list nat_arrive
+if_flag 422 nat_seen
+set_flag 422
+narrate Nataday Village. A few farms that the androids never bothered to burn.
+narrate Someone else has found them instead. Raiders, picking the village clean.
+say android17 Look at that. Little thieves, working our territory.
+say android18 Don't pretend you care about these people.
+say android17 I don't. I care about the principle.
+journal Run the raiders out of Nataday Village
+do call 47; call 51 0
+stop
+label nat_seen
+list nat_elder
+if_flag 426 elder_after
+if_flag 423 elder_give
+narrate Elder: Please. We have nothing left. Take what you want and go.
+narrate Elder: ...You're not with Butcher's gang? Then you'd better hide. He takes everything that isn't nailed down.
+stop
+label elder_give
+narrate Elder: Butcher's gone. His boys are running. I don't know why you did it, and I won't ask.
+narrate Elder: My husband found this in the river when we were young. It was pretty then. It's only stone now. Take it.
+narrate A grey stone ball with five stars.
+do call 129 19 1; call 129 11 1
+set_flag 426
+stop
+label elder_after
+narrate Elder: The children have started playing outside again. Don't take that away from them.
+stop
+list nat_farmer
+narrate Farmer: Butcher and his boys came down from the hills last month. Took the seed corn, the radio, my good boots.
+stop
+
+# ---------- the stone balls in the chapter 9 places
+list paozu_ball
+if_flag 427 pball_done
+narrate On a cushion by the window, a small shrine: a photograph of an old man with a staff, and a grey stone ball with four stars.
+say android18 It's his grandfather's. Gohan's great-grandfather. She keeps it dusted.
+say android17 Take it. She's got the photo.
+narrate Eighteen hesitates. Then she takes it.
+do call 129 18 1
+set_flag 427
+stop
+label pball_done
+narrate The cushion where the stone ball used to sit. The photograph is still there.
+stop
+list kame_ball
+if_flag 428 kball_done
+narrate In the wreck of Kame House, under a pile of magazines nobody will read again: a grey stone ball with one star.
+do call 129 15 1
+set_flag 428
+stop
+label kball_done
+narrate Pink boards and a lot of sand.
+stop

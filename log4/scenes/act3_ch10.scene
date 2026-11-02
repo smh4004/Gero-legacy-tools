@@ -1,0 +1,119 @@
+# Act 3, chapter 10 "The Last Stand" (Age 780-785). Flags: 380 opened, 381 the rain speech, 383 Gohan defeated,
+# 384 after Gohan seen, 385 finale seen, 386 the end. Areas 17:21-17:24 (West City ruins, act3 palette).
+# Gohan = actor future_gohan (LoG2's one-armed Super Saiyan Future Gohan, actor 51, plus edited attack frames from
+# LoG2 actor 153), stats row 23. 17:23 shows him fallen (gohan_fallen); 17:24 has Future Trunks (trunks_future, LoG2 125).
+list ch10_start
+set_flag 380
+do call 149 1
+do call 183 516 1468 1469
+do call 115 0 2 0 0 0; call 121 1
+do call 120 1; call 119 17 40 1 424 140; call 121 60
+narrate Age 780. It has rained for three days.
+narrate Thirteen years since West City. The twins look exactly the same. Everyone else has grown older, or stopped.
+narrate The old circus lot on the west side is full of wrecked machines. Capsule Corporation colours. Turrets on the walls.
+say android17 The resistance has been busy. Somebody wants us to come in the slow way.
+say android18 Somebody's waiting for us. At the crossroads. I can feel him from here.
+journal Get to the {c07}crossroads{c02}
+do call 47; call 51 0
+list ch10_rain
+set_flag 381
+narrate Someone is standing at the crossroads in the rain, his hair burning gold. His left arm ends at the shoulder.
+say future_gohan.0 I left Trunks behind. Knocked him out. He's going to be so angry with me when he wakes up.
+say android18 Why would you do that?
+say future_gohan.1 Because somebody has to survive you two. And it isn't going to be me.
+say android17 Thirteen years, and you're still the only one who fights back. I'll almost miss you.
+if_flag 370 rain_paozu
+goto rain_fight
+label rain_paozu
+say android18 ...Your mother still sets your plate out. Every night.
+say future_gohan.2 You've been to my house.
+say android18 She was kind to me. I don't know why.
+say future_gohan.0 She's kind to everybody. That's why I can't let you near her again.
+label rain_fight
+say future_gohan.3 Come on. Both of you. Let's finish this.
+do heal; call 120 20; call 119 17 22 1 424 440; call 121 20
+journal Gohan's last stand
+do call 47; call 51 0
+list ch10_after
+if_flag 384 after_seen
+set_flag 384
+narrate Gohan goes down in the middle of the crossroads, face up. The gold goes out of his hair, and the rain fills his eyes.
+say future_gohan.1 Trunks... I'm sorry... I won't be there to...
+narrate He doesn't finish.
+say android17 Six.
+say android18 Stop counting.
+say android17 What?
+say android18 Stop counting them. Please.
+narrate Seventeen looks at her for a long moment. Then he walks off into the rain without a word.
+narrate Eighteen stays. She doesn't know why. She takes off her vest and lays it over his face.
+narrate An hour later, a boy with lavender hair found him there. Nobody heard what he screamed except the sky, and the sky turned gold.
+do call 120 90
+do call 119 17 24 1 424 440; call 121 60
+stop
+label after_seen
+list ch10_finale
+if_flag 385 finale_seen
+set_flag 385
+narrate Age 785. There is nothing left in the world worth breaking.
+say android17 Remember when this was fun?
+say android18 ...Was it ever?
+narrate A light in the sky that isn't the sun. A machine settles in the street. The young man who steps out of it has a sword on his back.
+say trunks_a My name is Trunks. Gohan was my teacher.
+say android17 The kid from the rain. You got tall.
+say trunks_b I've been to the past. I trained with my father. I've seen a world where you two never hurt anyone.
+say trunks_a In that world, Eighteen... Krillin had the chance to destroy you, and he couldn't. He wished the bomb out of you instead.
+say android18 ...Krillin.
+narrate The short one. The one who wouldn't hit her face.
+say trunks_c And you, Seventeen. The dragon brought you back, and you just walked away. No fighting. You went home.
+say android17 Ha! That's the stupidest thing I've ever heard.
+say trunks_d Maybe. But nobody died.
+narrate Trunks draws the sword. His hair turns gold.
+say trunks_c I'm sorry. In this world, it ends here.
+say android18 Lapis.
+say android17 Don't call me...
+say android18 I remember. Her name. Our mother's name. I finally remember it.
+say android17 ...Tell me later.
+narrate There was no later. The light was gold, and very fast, and it didn't hurt.
+set_flag 386
+# narration needs a picture behind it (text over a faded-out screen doesn't show): West City's north-east blocks, the
+# camera away from the player (native 115 only moves the camera)
+do call 120 120; call 115 17 32 1 640 120; call 121 120
+narrate Age 785. The androids are gone. For the first time in eighteen years, the sun comes up over a quiet world.
+narrate Somewhere in a bunker nobody remembers, an incubator is still humming. Something inside it is waiting.
+narrate End of Act Three.
+# ---------- Epilogue "Another Timeline" (Age 788): 17:32 loaded with native 115, the camera on Trunks, the player
+# left off screen at the 17:24 arrival point. Then the secret chapter if 18 found all three memories (341, 370, 371)
+# and spared the mother and son (344); otherwise the end.
+do call 120 60
+do call 183 516 1470 1471
+do call 115 0 2 0 0 0; call 121 1
+do call 120 1; call 115 17 32 1 120 232; call 121 60
+narrate Age 788. Three years after the androids fell, the world has started, carefully, to grow back.
+say trunks_a I'm going back one more time. Just to tell them it's over. Mom says I've earned a happy ending.
+narrate He leaves the time machine packed and ready in the street, and goes home to sleep.
+narrate In the morning, the machine is gone. Trunks is lying where it stood, and he doesn't wake up.
+narrate Nobody ever learns what took it.
+narrate Far below a ruined bunker, in a room that was never on any map, an empty incubator stands open.
+unless_flag 341 epi_end
+unless_flag 344 epi_end
+unless_flag 370 epi_end
+unless_flag 371 epi_end
+narrate Eighteen remembered everything Gero took from her. So you are allowed to see the last thing he made.
+run fs_start
+stop
+label epi_end
+narrate The End.
+narrate Some of Eighteen's memories were never found, and one choice could have gone another way. Remember everything, and something else may wake up.
+run credits
+stop
+label finale_seen
+# ---------- the ruined circus lot (log4/gen_ch10.py; flag 403)
+list ch10_cache
+if_flag 403 c10_empty
+set_flag 403
+narrate A wrecked food stall. Under the counter, somebody's emergency box: a Senzu Bean and an elixir.
+say android18 Somebody was going to need these.
+do call 129 11 1; call 129 7 1
+stop
+label c10_empty
+narrate The stall is empty.

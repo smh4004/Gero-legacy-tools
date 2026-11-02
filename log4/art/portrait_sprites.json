@@ -1,0 +1,11 @@
+{
+ "_note": "Portraits generated from a LoG2 sprite frame (characters with no drawn portrait). record = LoG2 actor record (slice offset); rows = crop height (drops the ground shadow).",
+ "drone_portrait": {
+  "record": "0x2EB640",
+  "anim": 0,
+  "dir": 0,
+  "frame": 0,
+  "rows": 22,
+  "backdrop": "blue"
+ }
+}

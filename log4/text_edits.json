@@ -1,0 +1,547 @@
+{
+"_note": "LoG4 text edits vs Buu's Fury (USA): [key, header line, \"= text\"]; tools/text_edits.py",
+"ui.txt": [
+[
+"ui:3",
+"[ui:3]",
+"= Story"
+],
+[
+"ui:4",
+"[ui:4]",
+"= Versus"
+],
+[
+"ui:116",
+"[ui:116]",
+"= Dr. Gero"
+],
+[
+"ui:119",
+"[ui:119]",
+"= Lapis"
+],
+[
+"ui:120",
+"[ui:120]",
+"= Lapis"
+],
+[
+"ui:121",
+"[ui:121]",
+"= Lapis"
+],
+[
+"ui:122",
+"[ui:122]",
+"= Lapis"
+],
+[
+"ui:123",
+"[ui:123]",
+"= Lapis"
+],
+[
+"ui:124",
+"[ui:124]",
+"= Lapis"
+],
+[
+"ui:125",
+"[ui:125]",
+"= Lazuli"
+],
+[
+"ui:126",
+"[ui:126]",
+"= Lazuli"
+],
+[
+"ui:129",
+"[ui:129]",
+"= Combat Drone"
+],
+[
+"ui:130",
+"[ui:130]",
+"= Combat Drone"
+],
+[
+"ui:158",
+"[ui:158]",
+"= Gero"
+],
+[
+"ui:159",
+"[ui:159]",
+"= Lapis"
+],
+[
+"ui:160",
+"[ui:160]",
+"= Drone"
+],
+[
+"ui:161",
+"[ui:161]",
+"= Lazuli"
+],
+[
+"ui:164",
+"[ui:164]",
+"= Android 17"
+],
+[
+"ui:165",
+"[ui:165]",
+"= Cell"
+],
+[
+"ui:174",
+"[ui:174]",
+"= DR. GERO"
+],
+[
+"ui:175",
+"[ui:175]",
+"= LAPIS"
+],
+[
+"ui:176",
+"[ui:176]",
+"= RR DRONE"
+],
+[
+"ui:177",
+"[ui:177]",
+"= LAZULI"
+],
+[
+"ui:180",
+"[ui:180]",
+"= ANDROID 17"
+],
+[
+"ui:181",
+"[ui:181]",
+"= CELL"
+],
+[
+"ui:526",
+"[ui:526]",
+"= Red Ribbon Proving Ground"
+],
+[
+"ui:531",
+"[ui:531]",
+"= Dr. Gero's Lab"
+],
+[
+"ui:602",
+"[ui:602]",
+"= Red Ribbon Science"
+],
+[
+"ui:603",
+"[ui:603]",
+"= An Enemy Bullet"
+],
+[
+"ui:604",
+"[ui:604]",
+"= The Boy Called Goku"
+],
+[
+"ui:605",
+"[ui:605]",
+"= The First Androids"
+],
+[
+"ui:606",
+"[ui:606]",
+"= Siblings"
+],
+[
+"ui:607",
+"[ui:607]",
+"= Taken"
+],
+[
+"ui:608",
+"[ui:608]",
+"= Activation"
+],
+[
+"ui:609",
+"[ui:609]",
+"= The Massacre"
+],
+[
+"ui:610",
+"[ui:610]",
+"= Years of Terror"
+],
+[
+"ui:611",
+"[ui:611]",
+"= The Last Stand"
+],
+[
+"ui:612",
+"[ui:612]",
+"= First Steps"
+],
+[
+"ui:613",
+"[ui:613]",
+"= Another Timeline"
+],
+[
+"ui:757",
+"[ui:757]",
+"= The one-star Dragon Ball, gone to grey stone. Kami is dead."
+],
+[
+"ui:761",
+"[ui:761]",
+"= The two-star Dragon Ball, gone to grey stone. Kami is dead."
+],
+[
+"ui:765",
+"[ui:765]",
+"= The three-star Dragon Ball, gone to grey stone. Kami is dead."
+],
+[
+"ui:769",
+"[ui:769]",
+"= The four-star Dragon Ball, gone to grey stone. Kami is dead."
+],
+[
+"ui:773",
+"[ui:773]",
+"= The five-star Dragon Ball, gone to grey stone. Kami is dead."
+],
+[
+"ui:777",
+"[ui:777]",
+"= The six-star Dragon Ball, gone to grey stone. Kami is dead."
+],
+[
+"ui:781",
+"[ui:781]",
+"= The seven-star Dragon Ball, gone to grey stone. Kami is dead."
+],
+[
+"ui:1186",
+"[ui:1186]",
+"= Lapis"
+],
+[
+"ui:1187",
+"[ui:1187]",
+"= A runaway who grew up on the streets of West City. Quick hands, a quicker mouth, and always one step ahead of the police."
+],
+[
+"ui:1188",
+"[ui:1188]",
+"= Dr. Gero"
+],
+[
+"ui:1189",
+"[ui:1189]",
+"= Dr. Gero is the Red Ribbon Army's chief scientist. A genius with machines, he builds the drones and robots that keep the army's war going."
+],
+[
+"ui:1190",
+"[ui:1190]",
+"= Combat Drone"
+],
+[
+"ui:1191",
+"[ui:1191]",
+"= A Red Ribbon combat drone, flown by remote from Dr. Gero's lab. Fast, tough and armed with a pulse cannon, it fights the battles its maker can't."
+],
+[
+"ui:1192",
+"[ui:1192]",
+"= Lazuli"
+],
+[
+"ui:1193",
+"[ui:1193]",
+"= Lapis's twin sister. Sharp-eyed and fearless, she plans every job and keeps her brother out of trouble. Mostly."
+],
+[
+"ui:1318",
+"[ui:1318]",
+"= Stun Shot"
+],
+[
+"ui:1319",
+"[ui:1319]",
+"= Press the B Button to shoot a spiked ball of energy which stuns enemies on contact.  Hold the B Button longer to increase stun time."
+],
+[
+"ui:1322",
+"[ui:1322]",
+"= Power Blitz"
+],
+[
+"ui:1346",
+"[ui:1346]",
+"= Outfit"
+],
+[
+"ui:1347",
+"[ui:1347]",
+"= Press the B Button to change into your android clothes.  Press the B Button again to change back into your old clothes."
+],
+[
+"ui:1451",
+"[ui:1451]",
+"= Red Ribbon Science"
+],
+[
+"ui:1453",
+"[ui:1453]",
+"= An Enemy Bullet"
+],
+[
+"ui:1455",
+"[ui:1455]",
+"= The Boy Called Goku"
+],
+[
+"ui:1457",
+"[ui:1457]",
+"= The First Androids"
+],
+[
+"ui:1459",
+"[ui:1459]",
+"= Siblings"
+],
+[
+"ui:1461",
+"[ui:1461]",
+"= Taken"
+],
+[
+"ui:1463",
+"[ui:1463]",
+"= Activation"
+],
+[
+"ui:1465",
+"[ui:1465]",
+"= The Massacre"
+],
+[
+"ui:1467",
+"[ui:1467]",
+"= Years of Terror"
+],
+[
+"ui:1469",
+"[ui:1469]",
+"= The Last Stand"
+],
+[
+"ui:1470",
+"[ui:1470]",
+"= Epilogue"
+],
+[
+"ui:1471",
+"[ui:1471]",
+"= Another Timeline"
+],
+[
+"ui:1472",
+"[ui:1472]",
+"= Secret Chapter"
+],
+[
+"ui:1473",
+"[ui:1473]",
+"= First Steps"
+],
+[
+"ui:1700",
+"[ui:1700]",
+"= Red Ribbon Headquarters"
+],
+[
+"ui:1701",
+"[ui:1701]",
+"= Circus Lot"
+],
+[
+"ui:1702",
+"[ui:1702]",
+"= Riverside"
+],
+[
+"ui:1703",
+"[ui:1703]",
+"= West City Docks"
+],
+[
+"ui:1704",
+"[ui:1704]",
+"= Old Warehouse"
+],
+[
+"ui:1705",
+"[ui:1705]",
+"= Z-Mart"
+],
+[
+"ui:1706",
+"[ui:1706]",
+"= West City Museum"
+],
+[
+"ui:1707",
+"[ui:1707]",
+"= 17"
+],
+[
+"ui:1708",
+"[ui:1708]",
+"= 18"
+],
+[
+"ui:1709",
+"[ui:1709]",
+"= Orange Star City"
+],
+[
+"ui:1710",
+"[ui:1710]",
+"= Kami's Lookout"
+],
+[
+"ui:1711",
+"[ui:1711]",
+"= Papaya Island"
+],
+[
+"ui:1712",
+"[ui:1712]",
+"= Diablo Desert"
+],
+[
+"ui:1713",
+"[ui:1713]",
+"= Pilaf's Castle"
+],
+[
+"ui:1714",
+"[ui:1714]",
+"= Nataday Village"
+],
+[
+"ui:1715",
+"[ui:1715]",
+"= Mount Paozu"
+],
+[
+"ui:1716",
+"[ui:1716]",
+"= Kame House"
+],
+[
+"ui:1717",
+"[ui:1717]",
+"= Debug Room"
+]
+],
+"dialogue.txt": [
+[
+"0:809:49",
+"[0:809:49] speaker=00 step=2 site=77CAE8",
+"= !DRAGON BALL Z: GERO'S LEGACY ... Years ago, deep inside a Red Ribbon Army bunker..."
+],
+[
+"0:858:98",
+"[0:858:98] speaker=00 step=4 site=77CB00",
+"= !Dr. Gero swore that the boy called Goku would pay for everything he had taken from him."
+],
+[
+"0:15183:133",
+"[0:15183:133] speaker=00 step=2 site=780454",
+"= Red Ribbon Army Headquarters. Deep beneath the command tower, the army's chief scientist was still at work."
+],
+[
+"0:15316:32",
+"[0:15316:32] speaker=B7 step=4 site=7804AC",
+"= The drone's targeting array is drifting again..."
+],
+[
+"0:15348:76",
+"[0:15348:76] speaker=AB step=6 site=7804C0",
+"= Father! You haven't left this lab in three days. Commander Red wants the drone report by morning."
+],
+[
+"0:15424:101",
+"[0:15424:101] speaker=B7 step=8 site=7804F4",
+"= Then Commander Red will have it by morning, Gevo. Perfection takes time. The army can wait one more night."
+],
+[
+"0:15525:119",
+"[0:15525:119] speaker=AB step=9 site=7804FC",
+"= The army can't wait. My squad ships out to the Northern Wastelands at dawn.{p}They say some kid with a staff has been tearing through our outposts."
+],
+[
+"0:15644:96",
+"[0:15644:96] speaker=B8 step=10 site=780504",
+"= A child? The Red Ribbon Army is afraid of a child?{p}Take two of my drones with you. I'll guide them from the command room myself."
+],
+[
+"0:15740:302",
+"[0:15740:302] speaker=AC step=11 site=78050C",
+"= You and your machines... All right. But promise me you'll get some sleep."
+],
+[
+"0:16042:168",
+"[0:16042:168] speaker=B7 step=12 site=780514",
+"= I'll sleep when my work is finished. Now go, Gevo. And come back in one piece."
+],
+[
+"0:16210:133",
+"[0:16210:133] speaker=AB step=13 site=78051C",
+"= I always do. Don't forget the {c07}drone terminal{c02} before you head up to the command room."
+],
+[
+"0:16343:83",
+"[0:16343:83] speaker=B7 step=14 site=780524",
+"= Hmph. Always telling me what to do... just like his mother."
+],
+[
+"0:16426:44",
+"[0:16426:44] speaker=00 step=16 site=780534",
+"= Journal Entry: Check the {c07}drone terminal{c02}"
+],
+[
+"0:16470:57",
+"[0:16470:57] speaker=B7 step=1 site=780598",
+"= These old legs... I'd better hurry if I'm going to catch the squad on the monitors."
+],
+[
+"0:16827:54",
+"[0:16827:54] speaker=AB step=1 site=780684",
+"= Go on, Father. The terminal won't check itself."
+],
+[
+"0:16881:28",
+"[0:16881:28] speaker=00 step=1 site=780694",
+"= PROTOTYPE: ...Systems idle. Awaiting instructions."
+],
+[
+"0:16909:53",
+"[0:16909:53] speaker=00 step=1 site=7806A4",
+"= LAB TECHNICIAN: The drones are calibrated, Doctor. Well... almost. The targeting array still drifts three degrees."
+]
+]
+}
