@@ -9,6 +9,8 @@ Lapis and Lazuli's human lives, then the androids' rampage in Future Trunks's ti
 Output ships as a .bps patch.
 
 ## Live documents (source of truth; don't duplicate them here)
+- **Code repo:** https://github.com/smh4004/Gero-legacy-tools (PUBLIC): tools, log4 sources, docs; no ROMs, no extracted
+  assets (text as log4/text_edits.json deltas). Re-sync after each work session (copy script in the 2026-11-02 session).
 - **Design doc:** https://claude.ai/artifact/9H8wAFjMVxj5rfHwpqV1pg (Claude Docs). Covers direction, base-ROM decision, story outline and
   every story decision (table under "Story decisions"), combat/progression, technical plan, engine findings, progress.
 - **Art Needs & Prompt List:** https://claude.ai/artifact/6jcKFYbnE2pEdTFQZKtbWX (Claude Docs). Covers the sprite inventory,
