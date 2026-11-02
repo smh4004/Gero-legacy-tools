@@ -1,6 +1,6 @@
 # Legacy of Goku 4: project handoff
 
-Last updated 2026-10-31. Read this first, then `RE_NOTES.md` (all technical findings with ROM offsets).
+Last updated 2026-11-02. Read this first, then `RE_NOTES.md` (all technical findings with ROM offsets).
 
 ## What this is
 A personal, non-commercial ROM hack that turns **Dragon Ball Z: Buu's Fury (USA)** into a fan-made "Legacy of Goku 4". It merges
@@ -583,7 +583,46 @@ Footage: scratchpad t3/ (*.mkv recorded with harness `rec` from save states; rec
 there). Game font: tools/gamefont.py builds tools/gamefont_atlas.npz (51 glyphs) from fully typed dialogue pages in
 footage + the scene scripts, and renders any text with it.
 
-## Next steps (priority order)
+## STATUS AT END OF 2026-11-02 (read this first)
+Latest deliveries: GerosLegacy_balance.bps (main game: everything below) and GerosLegacy_debug_v4.bps (debug ROM).
+Repo: https://github.com/smh4004/Gero-legacy-tools is in sync (code, mod data, docs, cleaned art). Re-sync with
+`python3 tools/text_edits.py make bf.gba; python3 tools/sync_repo.py . <clone>`, then commit and push.
+
+Done today (details in the sections below): debug ROM (debug room 17:120, chapter launchers, supplies, stone balls,
+credits, open world, all-moves and level options); status-screen portrait colours (menus' RGB555 palette copy);
+Kami's Lookout door reachable; reach audit of every examine and NPC (tools/reachaudit.py, 114/115, the last one
+hand-verified); supply-yard crate fix; Act 3 boss rescale for real player levels (bot-checked); repo plus
+tools/sync_repo.py; length report (tools/length_report.py).
+
+The user's plan, in order. Each step is checked by the user before the next one starts:
+1. Bot-test the bosses not yet tested at their current stats, at the level players reach:
+   - Act 3: Piccolo, Super 13, Gohan 774, Sentinel, ninja captain, Butcher.
+   - Act 1 drone bosses: tank r127, Raider Chief r128, looters' captain r47, Prototype 9 r41, Prototype 12 r30.
+   How: add shoot.scene t_bal_* lists (party, then native-194 level code, then warp), build --shoot, create a state
+   with listtest (place 1:1:112:200, NAMED=named_lists_shoot.json), then fightbot (ANYMARK=1 for some rows).
+   For the captain and Butcher, fightbot needs a fix: it couldn't find the player next to the Eighteen partner NPC.
+   Retune if a boss is a pushover or a wall. Estimate: ~1-1.5 h, about 1/3 of a heavy day's usage.
+2. Fill the length gaps. Waiting for the user to pick from these:
+   (1) ch6 night walk: drone patrols to sneak past or fight, the twins' old apartment (a memory scene), a rooftop chase (~15 min)
+   (2) ch5: 1-2 more West City side jobs, e.g. for the fence, or a museum heist that pays off in ch8 (~10-15 min)
+   (3) ch7: more of Gero's hidden lab: research logs (conversion, Androids 13-15), a locked wing with a power
+       puzzle, a first look at the Cell incubator (~10 min)
+   (4) ch3: a looted Red Ribbon depot; ch4: the Prototype 1-12 graveyard (~8 min each)
+   (5) ch10: resistance encounters in the ruined city before the crossroads (~10 min)
+3. Polish: the teaser with real 17/18 and open-world footage (1-2 h); credits update (~20 min); a full automated story
+   run ch1 -> end plus fixes (2-3 h, the heavy part).
+Usage: the user is near a weekly cap (94% on 2026-11-02, resets 11pm EST). Be economical: batch fixes into few
+builds (each build takes ~10 min). Don't skimp on quality.
+
+Length report (tools/length_report.py; story ~3.6 h confident to ~5.4 h first-time, +0.6-0.9 h open world; target 5-8 h):
+ch1 20m, ch2 19m, ch3 15m, ch4 15m, ch5 18m, ch6 10m, ch7 12m, ch8 38m, ch9 34m, ch10 16m, secret 20m, open world 36m.
+Thin spots: Act 2 (28 min total), ch7, ch3/4/10. Options 1-5 together add ~60-70 min (story ~4.5-6.5 h).
+
+Still unverified by a human: Gero's Kamehameha and Instant Transmission with the debug all-moves option (no drawn
+frames; may show Goku graphics); the debug options' on/off lines (the options themselves work); Act 1 boss feel.
+The user is playtesting the debug ROM on mobile, so expect screenshots of bugs.
+
+## Next steps (priority order) (older list, mostly done; see the status section above)
 - Lab state 2026-10-31: 1:1 = main lab during the opening (with Gevo); every door back into the main lab leads to 1:61 (same
   map, no Gevo, technician + powered-down spare drone, talk scripts in log4/scenes/lab_talk.scene). Drone terminal = one
   step-list exit per spot (toggle code + one line); per-direction lines would need exits re-checked mid-room (see RE_NOTES).
