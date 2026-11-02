@@ -13,7 +13,7 @@ def main(src, dst):
     def cp(p):
         nonlocal n
         d = os.path.join(dst, p); os.makedirs(os.path.dirname(d), exist_ok=True); shutil.copy2(os.path.join(src, p), d); n += 1
-    for f in ('HANDOFF.md', 'RE_NOTES.md', 'PROMPT_buusfury_disassembly.md', 'lz.py'):
+    for f in ('HANDOFF.md', 'RE_NOTES.md', 'PROMPT_buusfury_disassembly.md', 'lz.py', 'GUIDE.md'):
         if os.path.exists(os.path.join(src, f)): cp(f)
     for f in sorted(os.listdir(os.path.join(src, 'tools'))):
         p = 'tools/' + f

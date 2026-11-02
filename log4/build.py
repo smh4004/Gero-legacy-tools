@@ -196,6 +196,10 @@ def main(clean_path):
     patch = bps.make(clean, out, meta=b'Legacy of Goku 4 (personal ROM hack of DBZ: Buu\'s Fury USA)')
     assert bps.apply(clean, patch) == out, 'patch round-trip failed'
     open(os.path.join(HERE, 'out', 'LoG4.bps'), 'wb').write(patch)
+    # the walkthrough (GUIDE.md) is generated from this build: regenerate it and report anything it no longer covers
+    g = subprocess.run([sys.executable, os.path.join(tools, 'guide.py')], capture_output=True, text=True)
+    print(g.stdout.strip() or g.stderr.strip())
+    if g.returncode: print('WARNING: GUIDE.md is out of date with the game - update log4/guide/walkthrough.md')
     print('ROM   %s  sha1 %s' % (rom_path, hashlib.sha1(out).hexdigest()))
     print('patch %d bytes (verified)' % len(patch))
 
