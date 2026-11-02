@@ -25,7 +25,7 @@ You supply the ROMs yourself, and the build reads everything it needs from them.
 ## Setup
 1. Put your own ROMs in the repo root: `bf.gba` (Buu's Fury USA), `log12.gba` (LoG I & II combo cart) and `protoD.gba`. The build checks their SHA-1s (see `HANDOFF.md`).
 2. Rebuild the text folder from your ROM: `python3 tools/text_edits.py apply bf.gba`. This creates `log4/text/`.
-3. Art: the cleaned sprite and portrait sheets (`log4/art/clean/*.png`, `portraits64/`) are not stored here. Copy them from the local project.
+3. Art: the cleaned LoG4 sprite, portrait, effect and UI sheets are in `log4/art/clean/`. They were made for this mod from the generator art listed in `log4/art/specs.json`, not taken from a ROM. The raw generator files (`log4/art/raw/`) aren't stored here; the build only needs the cleaned ones (`--skip-art`).
 4. Install the emulator test harness: `gcc -O2 tools/harness.c -o tools/harness -lmgba -lpng`. Every release build runs `tools/clipcheck.py`.
 5. Build. The output goes to `log4/out/` (`LoG4.bps`, `LoG4.gba`; with `--debug`, `LoG4_debug.bps`).
 

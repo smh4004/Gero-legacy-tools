@@ -10,7 +10,6 @@
 *.pcm
 log4/out/
 log4/text/
-log4/art/clean/*.png
 log4/art/raw/
 log4/art/portraits64/
 log4/art/alternates/
@@ -26,3 +25,8 @@ tools/scriptlog
 tools/tracer
 tools/watchrd
 __pycache__/
+
+# the cleaned LoG4 art (generated for this mod, not taken from a ROM) is tracked
+!log4/art/clean/
+!log4/art/clean/*.png
+log4/art/clean/review_*.png
