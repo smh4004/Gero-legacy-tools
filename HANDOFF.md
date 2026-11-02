@@ -601,7 +601,7 @@ The user's plan, in order. Each step is checked by the user before the next one 
    How: add shoot.scene t_bal_* lists (party, then native-194 level code, then warp), build --shoot, create a state
    with listtest (place 1:1:112:200, NAMED=named_lists_shoot.json), then fightbot (ANYMARK=1 for some rows).
    For the captain and Butcher, fightbot needs a fix: it couldn't find the player next to the Eighteen partner NPC.
-   Retune if a boss is a pushover or a wall. Estimate: ~1-1.5 h, about 1/3 of a heavy day's usage.
+   Retune if a boss is a pushover or a wall. Estimate: ~1-1.5 h.
 2. Fill the length gaps. Waiting for the user to pick from these:
    (1) ch6 night walk: drone patrols to sneak past or fight, the twins' old apartment (a memory scene), a rooftop chase (~15 min)
    (2) ch5: 1-2 more West City side jobs, e.g. for the fence, or a museum heist that pays off in ch8 (~10-15 min)
@@ -611,8 +611,7 @@ The user's plan, in order. Each step is checked by the user before the next one 
    (5) ch10: resistance encounters in the ruined city before the crossroads (~10 min)
 3. Polish: the teaser with real 17/18 and open-world footage (1-2 h); credits update (~20 min); a full automated story
    run ch1 -> end plus fixes (2-3 h, the heavy part).
-Usage: the user is near a weekly cap (94% on 2026-11-02, resets 11pm EST). Be economical: batch fixes into few
-builds (each build takes ~10 min). Don't skimp on quality.
+Batch fixes into few builds (each build takes ~10 min).
 
 Length report (tools/length_report.py; story ~3.6 h confident to ~5.4 h first-time, +0.6-0.9 h open world; target 5-8 h):
 ch1 20m, ch2 19m, ch3 15m, ch4 15m, ch5 18m, ch6 10m, ch7 12m, ch8 38m, ch9 34m, ch10 16m, secret 20m, open world 36m.
