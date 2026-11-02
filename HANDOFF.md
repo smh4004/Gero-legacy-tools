@@ -289,6 +289,21 @@ Not done: inserting any new sprites or maps into the ROM. No gameplay changes ye
   ornament, below the old rect): rect now (280,252,360,308). Also: papaya_gate rect to y 104 + the announcer moved
   off the gate path (304,108); pilaf_safe rect to y 104; mine_gate (1:110 / 17:39) (76,96,172,176) - the drone /
   enemy in front of the gate pushes the player left. Lesson: test examine rects by walking to them, not via listtest.
+- DIFFICULTY PASS (2026-11-02). Facts: a level-up raises HP/EP and gives 3 stat Points per level to spend on the
+  Status screen ("Use Points"); STR/END etc. only change when points are spent. The android upgrade (165 x 240)
+  survives level-ups (17 at level 70 keeps STR 36). Combat damage (decomp Combat_Damage 0x0800E9D8) ~
+  ((a+100)a^2 >> 13 + a) x (221 - END) x move power, a = STR (POW for ki). Expected levels if every enemy is killed
+  once (EXP x1): drone ~59 after ch1 / 62 / 64 by ch4; Lapis ~56 at Big Ox, 58 at the Collector; 17 carries Lapis's
+  EXP into Act 3: ~60 at the Security Unit, 62 Vegeta, 63 Piccolo, 64 Super 13, 65 Gohan, 66 Sentinel, 67 Future
+  Gohan, 68+ for the world-map bosses. Act 3 bosses had been tuned with fresh level-50 androids, so they were
+  rescaled (stats.json "_balance": HP and hit damage each x sqrt(c), c = half the level correction): Security Unit
+  3300/32, Vegeta 1100/19/17, Piccolo 1350/20/17, Super 13 1700/22/20, Gohan 1600/17/15, Sentinel 3700/33, Future
+  Gohan 1850/18/17, Prototype 11 6150/40, ninja captain 3550/34, Butcher 4000/36. Bot-checked at the expected level
+  with no points spent (shoot lists t_bal_su/veg/fg/p11 level 17 with native 194): Vegeta win, lost 50% of HP;
+  Future Gohan win with 48/478 left; Prototype 11 win with 43/526 left; the Security Unit never touched the bot.
+  The full correction (x1.4-1.8) made the bot lose to Future Gohan and Prototype 11, so it was halved. Acts 1-2 kept
+  (Act 2 had fresh-level bot data: Big Ox / Collector get easier with levels but stay fair; Act 1's drone bosses
+  only lack a human check).
 - REACH AUDIT (2026-11-02): tools/reachaudit.py <rom> <outdir> [w:a ...] - every examine exit and every NPC whose talk
   list is a LoG4 named list gets a sentinel list (sets flag 437); the player is dropped nearby (story triggers and field
   enemies off), steps toward it pressing A every 6 frames ("sweep"), pass = flag set. Rect test point = the arrival-frame

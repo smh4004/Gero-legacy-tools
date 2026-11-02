@@ -66,13 +66,14 @@
   "70": {
    "name": "Vegeta (chapter 8; BF row 70 Majin Vegeta, Buu saga, unused in LoG4)",
    "exp": 600,
-   "hp": 1000,
+   "hp": 1100,
    "level": 54,
-   "str": 17,
-   "pow": 15,
+   "str": 19,
+   "pow": 17,
    "end": 20,
    "on_defeat": "boss",
-   "death": "call 29 343; heal; call 120 30; call 119 17 4 1 424 440; call 121 30"
+   "death": "call 29 343; heal; call 120 30; call 119 17 4 1 424 440; call 121 30",
+   "_balance": "x1.26 (HP and hit damage x1.12 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "18": {
    "name": "Krillin (chapter 8; BF row 18 Dabura)",
@@ -88,48 +89,52 @@
   "136": {
    "name": "Piccolo (chapter 8; BF row 136, the second Majin Vegeta row. Row 26 (Majin Buu) spawns frozen and invisible)",
    "exp": 800,
-   "hp": 1200,
+   "hp": 1350,
    "level": 55,
-   "str": 18,
-   "pow": 16,
+   "str": 20,
+   "pow": 17,
    "end": 22,
    "on_defeat": "boss",
-   "death": "call 29 348; heal; call 120 30; call 119 17 10 1 424 440; call 121 30"
+   "death": "call 29 348; heal; call 120 30; call 119 17 10 1 424 440; call 121 30",
+   "_balance": "x1.27 (HP and hit damage x1.13 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "21": {
    "name": "Super Android 13 (chapter 9; BF row 21 Elite Majin Fighter; row 122 Super Janemba never appears)",
    "exp": 1200,
-   "hp": 1500,
+   "hp": 1700,
    "level": 58,
-   "str": 20,
-   "pow": 18,
+   "str": 22,
+   "pow": 20,
    "end": 24,
    "on_defeat": "boss",
-   "death": "call 29 363; heal; call 120 30; call 119 17 15 1 208 300; call 121 30"
+   "death": "call 29 363; heal; call 120 30; call 119 17 15 1 208 300; call 121 30",
+   "_balance": "x1.31 (HP and hit damage x1.15 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "22": {
    "name": "Gohan (chapter 9, Age 774; BF row 22 Elite Majin Soldier, given the Elite Majin Fighter behaviour 0x8A)",
    "exp": 1000,
-   "hp": 1400,
+   "hp": 1600,
    "level": 57,
-   "str": 15,
-   "pow": 14,
+   "str": 17,
+   "pow": 15,
    "end": 22,
    "on_defeat": "boss",
    "death": "call 29 364; heal; call 120 30; call 119 17 17 1 424 440; call 121 30",
-   "ai": 138
+   "ai": 138,
+   "_balance": "x1.33 (HP and hit damage x1.16 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "23": {
    "name": "One-armed Future Gohan (chapter 10, Age 780; BF row 23, fighter behaviour 0x8A. Row 14 froze the fight: the enemy grabs the player and both lock up)",
    "exp": 1500,
-   "hp": 1600,
+   "hp": 1850,
    "level": 58,
-   "str": 16,
-   "pow": 15,
+   "str": 18,
+   "pow": 17,
    "end": 23,
    "on_defeat": "boss",
    "death": "call 29 383; heal; call 120 40; call 119 17 23 1 424 440; call 121 40",
-   "ai": 138
+   "ai": 138,
+   "_balance": "x1.36 (HP and hit damage x1.17 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "24": {
    "name": "Future Trunks, Age 788 (secret chapter; BF row 24 Enzyme, fighter behaviour 0x8A)",
@@ -325,13 +330,14 @@
   "20": {
    "name": "Security Unit (chapter 7 boss; BF row 20 Destroyer, character 78)",
    "exp": 700,
-   "hp": 3000,
+   "hp": 3300,
    "level": 56,
-   "str": 30,
+   "str": 32,
    "pow": 0,
    "end": 30,
    "on_defeat": "boss",
-   "death": "call 29 339; heal"
+   "death": "call 29 339; heal",
+   "_balance": "x1.22 (HP and hit damage x1.10 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "62": {
    "name": "Gero's old heavy unit (chapter 8; BF row 62 Knight Destroyer, character 164)",
@@ -345,46 +351,50 @@
   "100": {
    "name": "The Sentinel (chapter 9 mini-boss; BF row 100 Shadow Colossus, character 240)",
    "exp": 1200,
-   "hp": 3200,
+   "hp": 3700,
    "level": 58,
-   "str": 30,
+   "str": 33,
    "pow": 0,
    "end": 28,
    "on_defeat": "boss",
-   "death": "call 29 401; heal"
+   "death": "call 29 401; heal",
+   "_balance": "x1.33 (HP and hit damage x1.16 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "19": {
    "name": "Prototype 11 (Act 3 optional boss, Diablo Desert; BF row 19, Death Machine char 76)",
    "exp": 1800,
-   "hp": 5200,
+   "hp": 6150,
    "level": 60,
-   "str": 36,
+   "str": 40,
    "pow": 0,
    "end": 32,
    "on_defeat": "boss",
-   "death": "call 29 417; heal"
+   "death": "call 29 417; heal",
+   "_balance": "x1.39 (HP and hit damage x1.18 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "82": {
    "name": "Ninja captain (Act 3 optional boss, Pilaf's Castle; BF row 82, char 202)",
    "exp": 1300,
-   "hp": 3000,
+   "hp": 3550,
    "level": 59,
-   "str": 30,
+   "str": 34,
    "pow": 0,
    "end": 28,
    "on_defeat": "boss",
-   "death": "call 29 420; heal"
+   "death": "call 29 420; heal",
+   "_balance": "x1.39 (HP and hit damage x1.18 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "131": {
    "name": "Butcher, raider boss (Act 3 optional boss, Nataday Village; BF row 131, char 272)",
    "exp": 1400,
-   "hp": 3400,
+   "hp": 4000,
    "level": 59,
-   "str": 32,
+   "str": 36,
    "pow": 0,
    "end": 28,
    "on_defeat": "boss",
-   "death": "call 29 423; heal"
+   "death": "call 29 423; heal",
+   "_balance": "x1.39 (HP and hit damage x1.18 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
   },
   "71": {
    "name": "Raider (Act 3, Diablo Desert / Nataday; BF row 71, char 184)",
