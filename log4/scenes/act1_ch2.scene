@@ -78,7 +78,63 @@ narrate Cpl. Mori: The sergeant was taken alive. They dragged him to the old Red
 run ch2_found
 stop
 label sb_again
-narrate Cpl. Mori: I'll get this radio working again. Somehow.
+if_flag 505 sb_fixed
+if_flag 501 sb_parts
+set_flag 501
+narrate Cpl. Mori: I'll get this radio working again. Somehow. Half of it's still out there.
+narrate Cpl. Mori: The antenna went flying back at the Fuel Dump. The battery pack, the raiders took. It'll be in that supply yard with the rest of their loot.
+narrate Cpl. Mori: And the handset... I left it hanging on a dead stump on Ambush Ridge, when the shooting started. Bring me those three and I'll have us talking to HQ.
+stop
+label sb_parts
+unless_flag 502 sb_wait
+unless_flag 503 sb_wait
+unless_flag 504 sb_wait
+set_flag 505
+narrate Cpl. Mori: Antenna, battery, handset. Hold the light still... there.
+narrate The radio crackles. A voice, cold and far away.
+narrate Radio: ...HQ to all units. Squad Seven is written off. No recovery. Repeat, no recovery. Commander Red wants the Northern Wastelands supply run kept on schedule.
+narrate Cpl. Mori: Written off. We're still breathing, and they've already written us off.
+say young_gero.0 Commander Red never wasted a bullet on a rescue. I should have remembered that.
+narrate The radio crackles again, closer. Another voice, laughing.
+narrate Radio: ...nest on the canyon rim, east side. Anything with a Red Ribbon on it comes through, you drop it...
+narrate Cpl. Mori: That's the one who shot the radio off my back. He's up on the Scorched Canyon's east rim.
+narrate Cpl. Mori: Here. The squad's emergency kit. You've earned it more than HQ has.
+do call 129 11 1; call 129 1 2
+narrate Got a Senzu Bean and 2 Teas.
+stop
+label sb_wait
+narrate Cpl. Mori: Still missing parts. Antenna at the Fuel Dump, battery in the supply yard, handset on the stump on Ambush Ridge.
+stop
+label sb_fixed
+unless_flag 506 sb_sniper
+narrate Cpl. Mori: The rim's gone quiet. Good. Let him be the one who's written off.
+stop
+label sb_sniper
+narrate Cpl. Mori: The sniper's still on the east rim of the Scorched Canyon. Watch your head.
+list radio_antenna
+if_flag 502 part_have
+set_flag 502
+narrate Behind the crate, half buried in the dust: a bent radio antenna, painted Red Ribbon red.
+narrate The drone picks it up. One radio part.
+stop
+label part_have
+narrate Nothing else here.
+list radio_battery
+if_flag 503 part_have_b
+set_flag 503
+narrate Wedged behind the crate, still in its canvas sling: a radio battery pack, stencilled SQUAD 7.
+narrate The drone picks it up. One radio part.
+stop
+label part_have_b
+narrate Nothing else here.
+list radio_handset
+if_flag 504 part_have_c
+set_flag 504
+narrate A radio handset hangs from the dead stump by its cord, swinging in the wind.
+narrate The drone picks it up. One radio part.
+stop
+label part_have_c
+narrate A dead stump. Nothing else.
 list surv_c
 if_flag 376 sc_again
 unless_flag 377 sc_tied

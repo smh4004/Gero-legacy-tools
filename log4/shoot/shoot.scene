@@ -491,3 +491,24 @@ code 02 c8 00 32 0b 13 00 09 01 81 ab 0c 02 c2 11 02 c8 00 33 0b 13 00 09 01 81 
 do call 29 491; call 29 490
 do heal; call 120 1; call 119 17 49 1 140 224; call 121 30
 stop
+# ---------- second length pass checks (2026-11-03): Gero's moves (Full Power Energy Wave, Instant Transmission), new bosses
+list t_gero_moves
+do call 165 0 15; call 165 0 14; call 165 0 20; call 165 0 6; call 165 0 7; call 164 0 7; call 164 0 6; call 164 0 14
+do heal; call 120 1; call 119 1 96 1 72 220; call 121 30
+stop
+list t_bal_rogue
+do call 151 2; call 149 2; call 152 0
+do call 29 496
+do heal; call 120 1; call 119 1 94 1 280 140; call 121 30
+stop
+list t_bal_sniper
+do call 151 2; call 149 2; call 152 0
+do call 29 501; call 29 505
+do heal; call 120 1; call 119 1 96 1 480 160; call 121 30
+stop
+list t_bal_sentry
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+code 02 c8 00 32 0b 13 00 08 01 a2 30 02 c2 11 02 c8 00 33 0b 13 00 08 01 a2 1c 02 c2 11 02 c8 00 34 0b 13 00 08 01 a1 60 02 c2 11 02 c8 00 35 0b 13 00 08 01 a0 68 02 c2 11 02 c8 00 36 0b 13 00 08 01 9f 20 02 c2 11 02 c8 00 37 0b 13 00 08 01 9c 74 02 c2 11 02 c8 00 38 0b 13 00 08 01 99 50 02 c2 11 02 c8 00 39 0b 13 00 08 01 95 20 02 c2 11 02 c8 00 3a 0b 13 00 08 01 8f 50 02 c2 11 02 c8 00 3b 0b 13 00 08 01 88 4c 02 c2 11 11
+do call 29 534; call 29 536
+do heal; call 120 1; call 119 1 117 1 108 76; call 121 30
+stop

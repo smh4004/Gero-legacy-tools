@@ -101,7 +101,7 @@ sys.path.insert(0, os.path.join(G.HERE, '..', 'tools')); import scenes
 _bf = open(os.path.join(G.HERE, '..', 'bf.gba'), 'rb').read()
 EXP = struct.unpack_from('<151I', _bf, 0x6B7084)                 # EXP needed for level 50 + i
 MOVES_FLAG, LEVEL_FLAGS = 430, {431: 55, 432: 60, 433: 70, 434: 80, 435: 90, 436: 99}
-MOVES = {0: [7, 15, 14], 2: [7, 8, 16], 1: [8, 7, 6, 17, 18, 20], 3: [8, 7, 6, 4, 11, 18], 6: [7, 15, 14, 1, 9]}
+MOVES = {0: [7, 6, 14], 2: [7, 8, 16], 1: [8, 7, 6, 17, 18, 20], 3: [8, 7, 6, 4, 11, 18], 6: [7, 15, 14, 1, 9]}
 MOVES_ALSO = [440, 441]    # all moves also unlocks every outfit and Super 17 (skill 20 for character 1)
 
 def level_code(T):

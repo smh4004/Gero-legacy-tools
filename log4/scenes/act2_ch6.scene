@@ -110,3 +110,47 @@ run notes_check
 stop
 label nhouse_read
 narrate The dead television. Lazuli doesn't look at it.
+# ---------- Mrs. Oda (second length pass, log4/gen_more.py ch6_jobs; 531 met, 532 bag found, 533 returned)
+list mrs_oda
+if_flag 533 oda_after
+if_flag 531 oda_waiting
+set_flag 531
+narrate An old woman sits under the bridge on a flattened box, a blanket round her shoulders.
+narrate Old woman: Who's there? ...No. No, it can't be. Lapis? Little Lazuli?
+say lazuli.0 Mrs. Oda? From downstairs?
+narrate Mrs. Oda: The very same. The Red Fangs took the building after you two ran off. Took everyone's rooms, one by one.
+say lapis.1 You're sleeping out here? In this?
+narrate Mrs. Oda: Those flying machines came through tonight. I ran, and I dropped my bag by the docks. Everything I have left is in it.
+if_flag 532 oda_waiting
+narrate Mrs. Oda: The fence by the dome house, I think. I didn't dare go back.
+say lazuli.3 We'll get it. Stay here.
+stop
+label oda_waiting
+unless_flag 532 oda_wait
+set_flag 533
+narrate Mrs. Oda: My bag! Oh, you good children. You always were, whatever the building said.
+narrate She takes out a photograph, bent at the corners, and holds it out to Lazuli.
+narrate Mrs. Oda: Your mother gave me this to keep, the winter she got sick. She said, "If they ever come back, give it to them." So. You came back.
+say lazuli.0 That's us. And her. I'd forgotten her hair was like that.
+say lapis.2 You hadn't. You just stopped saying it.
+narrate Mrs. Oda: Go on, now. Whatever's chasing you, don't let it catch you standing still.
+do call 129 0 2; call 129 11 1
+narrate Got 2 Milks and a Senzu Bean.
+stop
+label oda_wait
+narrate Mrs. Oda: The fence by the dome house at the docks. A grey cloth bag. Be careful of those machines.
+stop
+label oda_after
+narrate Mrs. Oda: (holding her bag close) Go on, both of you. Stay together.
+list oda_bag
+if_flag 532 oda_bag_taken
+set_flag 532
+narrate A grey cloth bag hangs off the fence, torn on one corner. A tin cup, a blanket, a bundle of letters.
+unless_flag 531 oda_bag_stranger
+say lazuli.0 Mrs. Oda's. Let's get it back to her.
+stop
+label oda_bag_stranger
+say lapis.1 Someone dropped everything they own. Hang on to it, maybe they're nearby.
+stop
+label oda_bag_taken
+narrate A white fence. Nothing hanging off it now.

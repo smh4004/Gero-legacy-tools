@@ -32,9 +32,35 @@ narrate Range Sergeant: Three target sites out there, each with a grounded senso
 journal Record sensor data at three {c07}target sites{c02} on the range
 do call 47; call 51 0
 list range_sergeant
+if_flag 496 sarge_job
+set_flag 496
+narrate Range Sergeant: Target sites: the Target Field at the top of the canyon road, the Fuel Depot down the south trail, and the Bone Flats past the Pit to the east.
+narrate Range Sergeant: One more thing, Doctor. Three of the old training mechanoids slipped their leashes last night. They're shooting at anything that moves.
+narrate Range Sergeant: Last seen on the Canyon Road, down in the Pit, and out on the Target Field. Red tags on their shoulders. Put them down and I'll make it worth the drone's while.
+say young_gero.1 Old units, running loose. Good practice for the drone, Sergeant.
+narrate Range Sergeant: The save pad's behind me if you want to file your progress, Doctor.
+stop
+label sarge_job
+if_flag 500 sarge_done
+unless_flag 497 sarge_wait
+unless_flag 498 sarge_wait
+unless_flag 499 sarge_wait
+set_flag 500
+narrate Range Sergeant: Three red tags, three wrecks. The board's clean for the first time in a month.
+narrate Range Sergeant: Requisitioned these for you. Don't tell supply.
+do call 129 10 1; call 129 7 2
+narrate Got a Holy Water and 2 Elixirs.
+say young_gero.1 Write it in the log, Sergeant. "Drone, first field test: four kills, no damage."
+narrate Range Sergeant: It took some damage, Doctor.
+say young_gero.1 Write it anyway.
+stop
+label sarge_wait
+narrate Range Sergeant: Still red tags on my board. Canyon Road, the Pit, the Target Field. Don't let them chew up my targets.
+if_flag 358 sarge_arena
+stop
+label sarge_done
 if_flag 358 sarge_arena
 narrate Range Sergeant: Target sites: the Target Field at the top of the canyon road, the Fuel Depot down the south trail, and the Bone Flats past the Pit to the east.
-narrate Range Sergeant: The save pad's behind me if you want to file your progress, Doctor.
 stop
 label sarge_arena
 narrate Range Sergeant: The arena's open, west end of the Bone Flats. Word is the Commander put twenty zeni on the tank.

@@ -595,6 +595,43 @@ Footage: scratchpad t3/ (*.mkv recorded with harness `rec` from save states; rec
 there). Game font: tools/gamefont.py builds tools/gamefont_atlas.npz (51 glyphs) from fully typed dialogue pages in
 footage + the scene scripts, and renders any text with it.
 
+## 2026-11-03 (evening): second length pass, cleanups, Gero's moves (user: "Do step 3, then 4 ... then step 1")
+- The music pass is DONE (user, 2026-11-03: "We already did step 2"): log4/music.json is the user's plan. New areas take
+  their neighbour's track (added 2026-11-03: 1:113 <- 1:71, 1:114 <- 1:108, 4:46 <- 4:45, 16:46/16:47 <- 16:1,
+  1:115/1:117 <- 1:81, 1:116 <- 1:111, 17:48/17:49 <- 17:40). Ask the user before changing any pick.
+- New content (log4/gen_more.py ch1_jobs / ch2_jobs / ch6_jobs / ch7_quarters; scenes in the chapter files):
+  ch1 "Rogue Targets" (Range Sergeant; rows 3/4/5 re-statted as training mechanoids, char 187, ai 359; flags 496 job,
+  497-499 kills, 500 reward); ch2 "The Squad Radio" (Cpl. Mori's sb_again; parts radio_antenna 1:100, radio_battery
+  1:101, radio_handset 1:68; flags 501-505) -> the raider sniper on the Scorched Canyon's east rim (row 46, char 247,
+  ai 533; 506); ch6 "Mrs. Oda" (Riverside NPC actor 183, her bag on the Docks fence; 531-533); ch7 Gero's Quarters
+  1:117 (BF Chi-Chi's room 2:5, UI 1727) through the misty passage on the right of the hidden lab's cave 1:82: diary
+  538, Gevo's photograph -> key 535, the wall safe 536 wakes Gero's sentry (row 58, char 142, ai 249; 537), the spare
+  shutdown remote + blueprints 539. Free flags left: 442-449, 453-454, 458-459, 468-469, 475-479, 487-489, 507-509,
+  540-543 (544-551 = Super 17's byte).
+- Journal goals: 65 now; the table moved from 0xF7EA00 (1.5 KB, overflowed) to 0xF3C000 (after the ki effects).
+- Cleanups: the Research Archive's LoG2 save pad (map OBJ region 1) is dropped: areas.py 'keep_regions' now works on
+  LoG2 imports too. The five older reachaudit failures were real and are fixed through gen_more.reach_fixes (MOD_DOOR /
+  MOD_SPAWN edit the generators' own entries): arena gate 1:93 and bunker door 17:37 (examine strips at the map edge too
+  narrow to stand in, widened), relay node 3 moved off the mine gate's approach, the Z-Mart clerk moved out of the
+  corner between a wall, plants and a table, the ch10 cache moved clear of the fly-away zone (its text now matches the
+  trampled patch where the stall stood).
+- Gero's moves (user: "make Gero's kamehameha replaced with the full power energy wave as well, keep instant
+  transmission"): only the debug all-moves option gives Gero skills; gen_debug MOVES[0] = [7, 6, 14]. Checked in the
+  emulator (shoot list t_gero_moves): the wave fires green from Gero's own hand-beam frame; Instant Transmission (hold
+  B, release, then a direction) charges with BF's yellow aura on Gero's sprite and fades him next to an enemy: no Goku
+  frames anywhere, nothing to fix.
+- Bosses bot-tested (shoot lists t_bal_rogue / t_bal_sniper / t_bal_sentry, scratchpad bosses2/run.py): rogue
+  mechanoid 340 won (fresh drone); sniper 520 and 380 beat the melee-only bot (it can't catch a kiter) -> 300, wants a
+  human check; sentry 1700 too easy -> 2400 / 26 (bot down to 195 of 415 HP before winning).
+- Checks: clipcheck 0 failing; reachaudit of every touched area passes (34 + 6 re-checked); full storyrun (242 lists):
+  14 CHECKs, all explained - branches that need items or kills first (surv_b 505, mrs_oda 533, quarters_safe 539,
+  wc_hercule 462, ch5_check 460, ch5_rest 467, and the older zmart_clerk / museum_curator / ch8_stall / lookout_door /
+  fs_wake), test artifacts (breaker_doors: storyrun drops flags a list itself clears, so the wrong-order branch runs;
+  ch7_archive: verified directly, 480 is set; file_range: the injected trigger lands in the Fuel Depot's exit - the
+  list sets 510 from the lab, and the real spot passes reachaudit). Each new side job's payoff branch was run with
+  its prerequisite flags preset: 500, 505, 533, 539 all set. Length report: 4.9 h (story 4.3 h).
+- The third rogue mechanoid moved from the Fuel Depot (cramped, on the army file's approach) to the Target Field.
+
 ## 2026-11-03 (later): length pass ("all five options, plus more lore and side content"), Super 17 changes
 - log4/gen_more.py writes the new areas and patches the doors/spawns/enemies of the areas they hang off (entries tagged
   _more=1; re-running replaces them). `python3 log4/gen_more.py --preview <dir>` draws every new/patched area with doors

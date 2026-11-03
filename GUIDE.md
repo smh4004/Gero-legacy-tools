@@ -48,7 +48,8 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - **Fuel Depot** (examine): Soda x2, Tea x1
    - **The Pit** (examine): Milk x2
    - Army file 1 (on the Fuel Depot's left fuel tank): **Fuel Depot** (examine).
-5. With all three sites logged, the objective becomes "Pass the final test in the live-fire arena". The arena gate on the Bone Flats' west side opens. Before that, examining it just shows the "locked" sign.
+   - **Side job "Rogue Targets":** the Range Sergeant also asks the drone to destroy three rogue training mechanoids (Rogue mechanoid (HP 340, level 56)): one on the Canyon Road, one in the Pit, one on the Target Field. They only appear after he asks. Report back to him for the reward (**Range Gate**: Holy Water x1, Elixir x2).
+5. With all three sites logged, the objective becomes "Pass the final test in the live-fire arena". The arena gate on the Bone Flats' west side opens. Before that, walking up to the gate and pressing A just shows the "locked" sign.
 6. **Boss: Heavy tank (HP 500, level 58)** in the Live-Fire Arena. 
 7. The drone link returns you to the lab for Gero's report, and chapter 2 begins.
 
@@ -66,6 +67,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - **Fuel Dump** (examine): Soda x2, Milk x1
    - **Supply Yard** (examine): Senzu Bean x1, Tea x1 (face the top crate of the stack)
    - Army file 4 (the Supply Yard office): **Supply Yard** (examine).
+   - **Side job "The Squad Radio":** once you've found Cpl. Mori, talk to him again (**Raider Cave**: Senzu Bean x1, Tea x2). Bring him the radio's antenna (behind the lone crate by the right-hand fuel tank in the Fuel Dump: **Fuel Dump** (examine)), its battery pack (behind the bottom crate in the Supply Yard: **Supply Yard** (examine)) and its handset (on the dead stump at the bottom of Ambush Ridge: **Ambush Ridge** (examine)). The fixed radio picks up HQ writing Squad Seven off, and a raider sniper on the canyon rim. **Mini-boss: Raider sniper (HP 300, level 58)** on the east side of the Scorched Canyon.
 6. With all three found, the objective becomes "Reach Gevo at the fence on Ambush Ridge". The Scorched Canyon's right-hand exit now leads to Gevo. Walk up to him for the end of the chapter.
 
 ## Chapter 3: The Boy Called Goku
@@ -134,6 +136,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
 3. **Rooftops**: "Get past the hunter on the fire stairs". **Mini-boss: Rooftop hunter (HP 200, level 55)** blocks the fire stairs at the east end. Once it's down, the stairs lead down to the Riverside.
 4. Gero's hunter drones patrol the Riverside and the Docks.
    - Caches: **Riverside (night)** (examine): Root Beer x1 and **Docks (night)** (hold Up): Senzu Bean x1.
+   - **Side job "Mrs. Oda":** the twins' old neighbour sleeps under the bridge on the Riverside (**Riverside (night)**: Milk x2, Senzu Bean x1). Her bag is snagged on the white fence by the dome house at the Docks (**Docks (night)** (examine)). Bring it back for a memory of their mother.
 5. The Old Warehouse: "Destroy the machine in the warehouse".
 6. **Boss: The Collector (HP 520, level 56)**.
 7. The ambush follows. The twins wake in Gero's lab: "Lapis and Lazuli are gone". New skills for both twins: **Energy Blast** (their blasts are blue), **Full Power Energy Wave** (a long green beam) and **Outfit** (select it and press B to switch between the android outfit and the old clothes). Eighteen also gets **Stun Shot**.
@@ -153,7 +156,9 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - **The power puzzle:** the lower corridor at the bottom of the Security Wing is shuttered. Close the three breakers on the Security Wing's consoles in the order CORE (**Security Wing** (examine)), LIGHTS (**Security Wing** (examine)), DOORS (**Security Wing** (examine)). The wrong order trips them all.
    - **Bio Wing** (down the lower corridor; ): "Destroy the bio wing's warden". **Mini-boss: Bio wing warden (HP 1900, level 57)** on the catwalk. Then use the monitor on the far side (**Bio Wing** (examine)) for a first look at Project Cell. The door on the left is sealed.
 4. **Boss: Security Unit (HP 3300, level 56)** guards the Control Room (right of the Security Wing).
-5. Use the console (**Control Room** (examine)) to end the lockdown. Then leave through the cave to the northern mountains for the end of the chapter.
+5. Use the console (**Control Room** (examine)) to end the lockdown. This takes you out to the cave in front of the lab.
+6. **Optional: Gero's Quarters**, through the misty passage on the right side of the cave. Read the diary on the nightstand (**Gero's Quarters** (examine)), straighten Gevo's photograph on the dresser to find the key (**Gero's Quarters** (examine)), and open the safe behind the painting (**Gero's Quarters** (examine): Senzu Bean x2, S. Elixir x1, Holy Water x1). **Mini-boss: Gero's sentry (HP 2400, level 57)** wakes up when the safe opens. The bed: . You can't come back here once you leave the cave.
+7. Leave through the cave mouth to the northern mountains for the end of the chapter.
 
 ## Chapter 8: The Massacre
 **You play:** Seventeen; one fight as Eighteen. **Goal:** West City, then the Z Fighters.
@@ -194,7 +199,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
 **You play:** Seventeen. **Goal:** the crossroads.
 
 1. Age 780, the Circus Lot ruins: "Get to the crossroads". The resistance has wired the lot with turrets and old machines.
-   - Cache: **Circus Lot ruins (780)** (examine): Senzu Bean x1, Elixir x1.
+   - Cache: at the foot of the circus sign's left post, in the Circus Lot ruins (**Circus Lot ruins (780)** (examine): Senzu Bean x1, Elixir x1).
    - The world map is open again here: talk to Eighteen, or walk off the top of the lot.
 2. **The Burning District** (right of the Circus Lot ruins): the resistance ambushes the twins: "Get through the burning district (the shelter: the subway stairs)".
    - **Optional: the Resistance Shelter**, down the subway stairs at the top left. **Mini-boss: Resistance captain (HP 1800, level 58)**. Afterwards, the girl behind the crates (**Resistance Shelter**), the radio (**Resistance Shelter** (examine)), Gero's note 10 on the resistance's map (**Resistance Shelter** (examine)), and a cache (**Resistance Shelter** (examine): Senzu Bean x2).
@@ -279,6 +284,7 @@ Every container, gift and reward that gives items. Each one works once.
 | Roshi's Island: Kame House | examine (face up) | Dragon Ball 1 x1 |
 | Kami's Lookout | examine (face up) | Holy Water x2, Senzu Bean x3, DinosaurMilk x1 |
 | Riverside | talk | V. Soda x1 |
+| Riverside (night) | talk | Milk x2, Senzu Bean x1 |
 | West City Museum | talk | Senzu Bean x1 |
 | Nataday Village | talk | Dragon Ball 5 x1, Senzu Bean x1 |
 | West City Docks: Docks (night) | hold Up | Senzu Bean x1 |
@@ -297,7 +303,10 @@ Every container, gift and reward that gives items. Each one works once.
 | Goku's House: Mount Paozu: Goku's house | examine (face up) | Dragon Ball 4 x1 |
 | Papaya Island | talk | Dragon Ball 7 x1 |
 | Pilaf's Castle | examine (face up) | Dragon Ball 6 x1 |
+| Gero's Quarters | examine (face up) | Senzu Bean x2, S. Elixir x1, Holy Water x1 |
+| Red Ribbon Proving Ground: Range Gate | talk | Holy Water x1, Elixir x2 |
 | Museum Storeroom | examine (face up) | Ribbon Ruby x1 |
+| Northern Wilderness: Raider Cave | talk | Senzu Bean x1, Tea x2 |
 | Z-Mart | talk | V. Soda x2 |
 
 ## Secret chapter conditions (read from the epilogue script)
@@ -321,6 +330,7 @@ Every container, gift and reward that gives items. Each one works once.
 | Security Unit | Dr. Gero's Lab: Control Room | 3300 | 56 | 32 | 0 | 30 | 700 |
 | Prototype 3, reactivated | Prototype Graveyard | 800 | 60 | 17 | 0 | 20 | 650 |
 | Bio wing warden | Bio Wing | 1900 | 57 | 24 | 0 | 24 | 900 |
+| Gero's sentry | Gero's Quarters | 2400 | 57 | 26 | 12 | 22 | 850 |
 | Big Ox, Red Fang boss | Old Warehouse | 420 | 55 | 10 | 0 | 12 | 320 |
 | The Collector | Old Warehouse (night) | 520 | 56 | 11 | 0 | 13 | 400 |
 | Vegeta | West City: Crossroads: Vegeta | 1100 | 54 | 19 | 17 | 20 | 600 |
@@ -391,6 +401,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Northern Wilderness: Ambush Ridge  `1:68`
 - Up exit -> Northern Wilderness: Scorched Canyon
 - walk in: `ch2_field` (when flag 313 clear)
+- examine (face up): `radio_handset`
 - enemies: Raider sniper, Gunman, Raider thug
 
 ### Dr. Gero's Lab: Main lab (under attack)  `1:69`
@@ -449,6 +460,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### Northern Wilderness: Cave outside the hidden lab  `1:82`
 - Down exit -> Northern Wilderness: Northern mountains
+- Right exit -> Gero's Quarters
 
 ### Northern Wilderness: Northern mountains  `1:83`
 - walk in: `ch7_end` (when conditional)
@@ -470,17 +482,17 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Right exit -> Red Ribbon Proving Ground: The Pit
 - Down exit -> Red Ribbon Proving Ground: Fuel Depot
 - walk in: `ch1_brief` (when flag 352 clear)
-- person: `range_sergeant`
+- person: `range_sergeant` - gives Holy Water x1, Elixir x2
 
 ### Red Ribbon Proving Ground: Canyon Road  `1:91`
 - Down exit -> Red Ribbon Proving Ground: Range Gate
 - Up exit -> Red Ribbon Proving Ground: Target Field
-- enemies: Gunman x2
+- enemies: Gunman x2, Rogue mechanoid
 
 ### Red Ribbon Proving Ground: Target Field  `1:92`
 - Down exit -> Red Ribbon Proving Ground: Canyon Road
 - person: `site_a`
-- enemies: Laser turret x2, Mercenary
+- enemies: Laser turret x2, Mercenary, Rogue mechanoid
 
 ### Red Ribbon Proving Ground: Bone Flats  `1:93`
 - Down exit -> Red Ribbon Proving Ground: The Pit
@@ -493,7 +505,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Left exit -> Red Ribbon Proving Ground: Range Gate
 - Up exit -> Red Ribbon Proving Ground: Bone Flats
 - examine (face left): `crate_pit` - gives Milk x2
-- enemies: Bomber, Gunman
+- enemies: Bomber, Gunman, Rogue mechanoid
 
 ### Northern Wilderness: Ambush Ridge (Gevo)  `1:95`
 - Up exit -> Northern Wilderness: Scorched Canyon
@@ -506,7 +518,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Left exit -> Northern Wilderness: Dry Basin
 - Up exit -> Northern Wilderness: Supply Yard
 - Down exit -> Northern Wilderness: Fuel Dump
-- enemies: Raider thug x2, Gunman, Mercenary, Raider sniper
+- enemies: Raider thug x2, Gunman, Mercenary, Raider sniper x2
 
 ### Northern Wilderness: Dry Basin  `1:97`
 - Right exit -> Northern Wilderness: Scorched Canyon
@@ -516,6 +528,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Northern Wilderness: Fuel Dump  `1:100`
 - Down exit -> Northern Wilderness: Scorched Canyon
 - examine (face up): `cache_dump` - gives Soda x2, Milk x1
+- examine (face up): `radio_antenna`
 - person: `surv_a`
 - enemies: Raider sniper, Gunman
 
@@ -524,13 +537,14 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - walk in: `ch2_yard` (when flag 314 clear)
 - examine (face up): `cache_yard` - gives Senzu Bean x1, Tea x1
 - examine (face up): `file_yard` - gives Army File x1
+- examine (face up): `radio_battery`
 - person: `surv_c`
 - enemies: Gunman, Mercenary, Raider Chief
 
 ### Northern Wilderness: Raider Cave  `1:102`
 - Down exit -> Northern Wilderness: Dry Basin
 - Right exit -> Northern Wilderness: Dry Basin
-- person: `surv_b`
+- person: `surv_b` - gives Senzu Bean x1, Tea x2
 - enemies: Raider thug
 
 ### Red Ribbon Headquarters: Munitions Line A  `1:103`
@@ -637,6 +651,15 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - walk in: `ch7_bio` (when flag 481 clear)
 - enemies: Bio wing warden
 
+### Gero's Quarters  `1:117`
+- Up exit -> Northern Wilderness: Cave outside the hidden lab
+- walk in: `ch7_quarters` (when flag 534 clear)
+- examine (face up): `quarters_diary`
+- examine (face up): `quarters_photo`
+- examine (face up): `quarters_bed`
+- examine (face up): `quarters_safe` - gives Senzu Bean x2, S. Elixir x1, Holy Water x1
+- enemies: Gero's sentry
+
 ### West City  `4:1`
 - Left exit -> Circus Lot
 - Down exit -> Riverside
@@ -722,12 +745,14 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Up exit -> West City (night)
 - Right exit -> West City Docks: Docks (night)
 - examine (face left): `night_cache_river` - gives Root Beer x1
+- person: `mrs_oda` - gives Milk x2, Senzu Bean x1
 - enemies: Gero's hunter drone x2
 
 ### West City Docks: Docks (night)  `16:42`
 - Down exit -> Riverside (night)
 - Up exit -> Old Warehouse (night)
 - hold Up: `night_cache_docks` - gives Senzu Bean x1
+- examine (face up): `oda_bag`
 - enemies: Gero's hunter drone x3
 
 ### Old Warehouse (night)  `16:43`

@@ -227,7 +227,8 @@ def ch7():
     g.ev(115, (164, 204, 188, 240), 'log_cell', examine='left', note='research log: project Cell')
     g.ev(115, (188, 204, 212, 240), 'note_archive', examine='right', note="Gero's note 5 (524)")
     doors += g.doors[115]
-    entry(1, 115, 1723, 'act3', 'Chapter 7: Research Archive', ('l2', '0x5e3de4'), doors)
+    entry(1, 115, 1723, 'act3', 'Chapter 7: Research Archive', ('l2', '0x5e3de4'), doors,
+          keep_regions=[0])          # region 1 = LoG2's save pad by the stairs (not a BF save point): dropped
     b_doors = [{'rect': [32, 242, 64, 256], 'warp': [1, 111] + g.arrival(111, 'down', 168, 296), 'dir': 'down',
                 'face': 'up', '_note': 'Bio Wing -> Security Wing (its lower corridor)'}]
     g.ev(116, (8, 176, 72, 200), 'bio_units_door', examine='up', note='sealed: UNITS 13-15')
@@ -293,8 +294,86 @@ def lore():
     add(17, 39, {'rect': [24, 228, 48, 256], 'event': 'note_mine', 'examine': 'left', '_note': "Gero's note 9: under a rock by the cave wall (528)"})
 
 
+# ------------------------------------------------------------------ second length pass (user 2026-11-03: "do step 3")
+def ch1_jobs():
+    """Rogue Targets: three training mechanoids slipped their leashes (rows 3/4/5 as mechanoids; 496 job, 497-499
+    each one down, 500 rewarded at the Range Sergeant): Canyon Road, The Pit, Target Field."""
+    g = gen({91: ('bf', [20, 2]), 94: ('bf', [20, 4]), 92: ('bf', [20, 7])},
+            {91: (320, 480), 94: (480, 400), 92: (480, 480)}, 1)
+    # (the third one was at the Fuel Depot: too cramped there, it stood on the army file's approach)
+    for a, row, f, (x, y) in ((91, 3, 497, (170, 300)), (94, 4, 498, (330, 150)), (92, 5, 499, (380, 380))):
+        ENEMY_PATCH.setdefault((1, a), []).append(
+            dict(E(g, a, row, x, y), character=187, condition=hexcond(('set', 496), ('clear', f)),
+                 _note='rogue mechanoid (row %d, red-tagged): after the job (496) until destroyed (%d)' % (row, f)))
+
+
+def ch2_jobs():
+    """The squad radio: Cpl. Mori's radio parts (501 job, 502 antenna in the Fuel Dump, 503 battery in the Supply
+    Yard, 504 handset on Ambush Ridge, 505 fixed) -> the raider sniper on the canyon rim (row 46, char 247; 506)."""
+    g = gen({96: ('bf', [20, 3])}, {96: (640, 256)}, 1)
+    add = lambda w, a, d: PATCH.setdefault((w, a), []).append(d)
+    add(1, 100, {'rect': [204, 140, 236, 162], 'event': 'radio_antenna', 'examine': 'up',
+                 '_note': 'radio part: the antenna, behind the lone crate by the right tank (502)'})
+    add(1, 101, {'rect': [180, 284, 212, 312], 'event': 'radio_battery', 'examine': 'up',
+                 '_note': 'radio part: the battery pack, wedged behind the bottom crate (503)'})
+    add(1, 68, {'rect': [156, 344, 196, 380], 'event': 'radio_handset', 'examine': 'up',
+                '_note': 'radio part: the handset, hanging from the dead stump (504)'})
+    ENEMY_PATCH[(1, 96)] = [dict(E(g, 96, 46, 560, 120), character=247,
+                                 condition=hexcond(('set', 505), ('clear', 506)),
+                                 _note='the raider sniper on the canyon rim (row 46): after the radio (505) until beaten (506)')]
+
+
+def ch6_jobs():
+    """Mrs. Oda: the twins' old neighbour, sleeping under the Riverside bridge (531 met, 532 bag found at the docks
+    fence, 533 bag returned)."""
+    g = gen({41: ('bf', [2, 9])}, {41: (480, 320)}, 16)
+    SPAWN_PATCH[(16, 41)] = [NPC(g, 41, 176, 104, 'mrs_oda', 'Mrs. Oda, the old neighbour (531/533)', actor_id=183)]
+    PATCH.setdefault((16, 42), []).append({'rect': [84, 280, 144, 300], 'event': 'oda_bag', 'examine': 'up',
+                                           '_note': "Mrs. Oda's bag, snagged on the white fence (532)"})
+
+
+def ch7_quarters():
+    """Gero's Quarters (1:117, BF Chi-Chi's room 2:5) through the misty passage on the right of the hidden lab's cave
+    (1:82): arrival 534, diary 538, the key behind Gevo's photograph 535, the wall safe 536 (wakes the sentry: row 58,
+    char 142; death 537), the safe's contents 539."""
+    g = gen({82: ('l2raw', '0x55ea78'), 117: ('bf', [2, 5])}, {82: (336, 350), 117: (320, 176)}, 1)
+    q_arr = g.snap(117, 108, 72, 14, 'down')
+    PATCH[(1, 82)] = [{'rect': g.rect(82, 'right', 208, 264), 'warp': [1, 117] + q_arr, 'dir': 'right', 'face': 'down',
+                       '_note': "the misty passage on the cave's right side -> Gero's Quarters"}]
+    doors = [{'rect': [100, 16, 132, 52], 'warp': [1, 82] + g.arrival(82, 'right', 208, 264), 'dir': 'up', 'face': 'left',
+              '_note': "Gero's Quarters (the arched doorway) -> cave"}]
+    g.ev(117, (q_arr[0] - 24, q_arr[1] - 8, q_arr[0] + 40, q_arr[1] + 28), 'ch7_quarters', walk=True,
+         when=hexcond(('clear', 534)), note='first arrival (534)')
+    g.ev(117, (140, 56, 164, 72), 'quarters_diary', examine='up', note="the nightstand: Gero's diary (538)")
+    g.ev(117, (272, 56, 304, 76), 'quarters_photo', examine='up', note="the dresser: Gevo's photograph, the key behind it (535)")
+    g.ev(117, (196, 80, 228, 98), 'quarters_bed', examine='up', note='the bed (made, never slept in)')
+    g.ev(117, (244, 44, 270, 62), 'quarters_safe', examine='up', note='the painting: a wall safe (536 open, 539 emptied)')
+    doors += g.doors[117]
+    en = [dict(E(g, 117, 58, 160, 120), character=142, condition=hexcond(('set', 536), ('clear', 537)),
+               _note="Gero's sentry (row 58): wakes when the safe opens (536) until destroyed (537)")]
+    entry(1, 117, 1727, 'act3', "Chapter 7: Gero's Quarters", ('bf', [2, 5]), doors, enemies=en)
+
+
+MOD_DOOR = {}                          # (world, area) -> {event: fn(door) -> door}, applied to the generators' own doors
+MOD_SPAWN = {}                         # (world, area) -> {talk: dict of fields to set}
+
+
+def reach_fixes():
+    """The five older spots tools/reachaudit.py could not set off (2026-11-03): examine strips at a map edge too
+    narrow to stand in (arena gate, bunker door), a relay node standing in front of the mine gate, the Z-Mart clerk
+    boxed in by a wall, plants and a table, and the chapter 10 cache whose approach ran into the fly-away zone."""
+    MOD_DOOR[(1, 93)] = {'arena_locked': lambda d: dict(d, rect=[0, 208, 44, 256])}
+    MOD_DOOR[(17, 37)] = {'ch9_sealed': lambda d: dict(d, rect=[0, 248, 40, 360])}
+    MOD_SPAWN[(1, 110)] = {'relay_3': {'x': 176, 'y': 212}}
+    MOD_SPAWN[(4, 44)] = {'zmart_clerk': {'x': 264, 'y': 176}}
+    PATCH[(17, 40)] = [d if d.get('event') != 'ch10_cache' else dict(d, rect=[324, 100, 356, 118],
+                       _note='rubble at the foot of the circus sign\'s left post (403), on the open lot (the grass behind the fence hides sprites)')
+                       for d in PATCH[(17, 40)]]
+
+
 def apply():
     ch3(); ch4(); ch5(); ch6(); ch7(); ch10(); lore()
+    ch1_jobs(); ch2_jobs(); ch6_jobs(); ch7_quarters(); reach_fixes()
     p = os.path.join(HERE, 'areas.json'); cfg = json.load(open(p))
     mine = {(e['world'], e['area']) for e in NEW}
     cfg['new_areas'] = [x for x in cfg['new_areas'] if (x['world'], x['area']) not in mine] + NEW
@@ -308,10 +387,17 @@ def apply():
             if k in DROP:
                 ds = [d for d in ds if not DROP[k](d)] if DROP[k] else ds
             v[key] = ds + [dict(d, _more=1) for d in PATCH.get(k, [])]
-        if k in ENEMY_PATCH:
-            v['enemies'] = [s for s in v.get('enemies', []) if not s.get('_more')] + [dict(s, _more=1) for s in ENEMY_PATCH[k]]
+        if k in ENEMY_PATCH or any(s.get('_more') for s in v.get('enemies', [])):   # (also drops stale patches)
+            v['enemies'] = [s for s in v.get('enemies', []) if not s.get('_more')] + [dict(s, _more=1) for s in ENEMY_PATCH.get(k, [])]
         if k in SPAWN_PATCH:
             v['spawns'] = [s for s in v.get('spawns', []) if not s.get('_more')] + [dict(s, _more=1) for s in SPAWN_PATCH[k]]
+        if k in MOD_DOOR:
+            for key2 in ('doors', 'doors_append'):
+                if key2 in v:
+                    v[key2] = [MOD_DOOR[k][d['event']](d) if d.get('event') in MOD_DOOR[k] else d for d in v[key2]]
+        if k in MOD_SPAWN:
+            v['spawns'] = [dict(s, **MOD_SPAWN[k][s['talk']]) if s.get('talk') in MOD_SPAWN[k] else s
+                           for s in v.get('spawns', [])]
     json.dump(cfg, open(p, 'w'), indent=1)
     return cfg
 

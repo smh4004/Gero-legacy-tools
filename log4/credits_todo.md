@@ -34,3 +34,6 @@ Add a line here whenever a new asset, source, feature or character goes into the
   the rooftop hunter, the bio wing warden, the resistance captain; lore pages (Army Files, Gero's Notes).
 - 2026-11-03: Super 17 now Strength x1.5 (gold-haired version removed); 17/18 ki blasts blue, their Full Power Energy
   Wave (green; Eighteen has it too). Mention on the features card.
+- 2026-11-03: second length pass: side jobs Rogue Targets (ch1), The Squad Radio (ch2), Mrs. Oda (ch6); new area
+  Gero's Quarters (ch7, BF Chi-Chi's room map) with Gero's sentry; new bosses the raider sniper and Gero's sentry.
+  Gero's debug move set: Full Power Energy Wave replaces the Kamehameha.

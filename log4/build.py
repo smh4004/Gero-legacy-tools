@@ -145,13 +145,14 @@ def main(clean_path):
     print('-- world map: %d places (%d bytes)' % (nloc, end_w - 0xAF0000))
     end7 = outfit.apply(out, os.path.join(HERE, 'asm', 'outfit.s'), 0xF7E000, json.load(open(os.path.join(HERE, 'forms.json'))), ids)
     print('-- outfit swap: skill 18 hooks + forms (%d bytes)' % (end7 - 0xF7E000))
-    end7 = goals.apply(out, os.path.join(HERE, 'goals.json'), 0xF7EA00)       # journal goals table
-    print('-- journal goals: %d (%d bytes)' % (len(json.load(open(os.path.join(HERE, 'goals.json')))['goals']), end7 - 0xF7EA00))
-    assert end7 <= 0xF7F000
+    # journal goals table: moved 2026-11-03 from 0xF7EA00 (1.5 KB, outgrown at 65 goals) to 0xF3C000, after the ki effects
+    end_g = goals.apply(out, os.path.join(HERE, 'goals.json'), 0xF3C000)
+    print('-- journal goals: %d (%d bytes)' % (len(json.load(open(os.path.join(HERE, 'goals.json')))['goals']), end_g - 0xF3C000))
+    assert end_g <= 0xF40000
     import kifx                                                   # blue ki blasts / green energy wave for 17 and 18
     assert end3 < 0xF38000, 'scenes ran into the ki effect copy at 0xF38000'
     end8 = kifx.apply(out, 0xF38000)
-    assert end8 < 0xF40000
+    assert end8 <= 0xF3C000, 'ki effects ran into the journal goals at 0xF3C000'
     print('-- ki effects: 17/18 blue blast copy + hook, green energy wave (%d bytes)' % (end8 - 0xF38000))
     import kiregen                                                # ki recharge: drone and converted androids
     end7 = kiregen.apply(out, os.path.join(HERE, 'asm', 'kiregen.s'), 0xF7E800)

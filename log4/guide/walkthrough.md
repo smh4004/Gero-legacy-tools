@@ -48,7 +48,8 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - {{C:crate_depot}}
    - {{C:crate_pit}}
    - Army file 1 (on the Fuel Depot's left fuel tank): {{L:file_range}}.
-5. With all three sites logged, the objective becomes {{J:ch1_sites}}. The arena gate on the Bone Flats' west side opens ({{X:arena_locked}}). Before that, examining it just shows the "locked" sign.
+   - **Side job "Rogue Targets":** the Range Sergeant also asks the drone to destroy three rogue training mechanoids ({{B:3}}): one on the Canyon Road, one in the Pit, one on the Target Field. They only appear after he asks. Report back to him for the reward ({{C:range_sergeant}}).
+5. With all three sites logged, the objective becomes {{J:ch1_sites}}. The arena gate on the Bone Flats' west side opens ({{X:arena_locked}}). Before that, walking up to the gate and pressing A just shows the "locked" sign.
 6. **Boss: {{B:127}}** in the Live-Fire Arena. {{X:ch1_arena}}
 7. The drone link returns you to the lab for Gero's report ({{X:ch1_report}}), and chapter 2 begins.
 
@@ -66,6 +67,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - {{C:cache_dump}}
    - {{C:cache_yard}} (face the top crate of the stack)
    - Army file 4 (the Supply Yard office): {{L:file_yard}}.
+   - **Side job "The Squad Radio":** once you've found Cpl. Mori, talk to him again ({{C:surv_b}}). Bring him the radio's antenna (behind the lone crate by the right-hand fuel tank in the Fuel Dump: {{L:radio_antenna}}), its battery pack (behind the bottom crate in the Supply Yard: {{L:radio_battery}}) and its handset (on the dead stump at the bottom of Ambush Ridge: {{L:radio_handset}}). The fixed radio picks up HQ writing Squad Seven off, and a raider sniper on the canyon rim. **Mini-boss: {{B:46}}** on the east side of the Scorched Canyon.
 6. With all three found ({{X:ch2_found}}), the objective becomes {{J:ch2_found}}. The Scorched Canyon's right-hand exit now leads to Gevo ({{X:gevo_field_talk}}). Walk up to him for the end of the chapter ({{X:ch2_gevo}}).
 
 ## Chapter 3: The Boy Called Goku
@@ -134,6 +136,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
 3. **Rooftops** ({{X:roof_chase_1}}): {{J:roof_chase_1}}. **Mini-boss: {{B:95}}** blocks the fire stairs at the east end ({{X:roof_stairs_blocked}}). Once it's down, the stairs lead down to the Riverside.
 4. Gero's hunter drones patrol the Riverside and the Docks.
    - Caches: {{C:night_cache_river}} and {{C:night_cache_docks}}.
+   - **Side job "Mrs. Oda":** the twins' old neighbour sleeps under the bridge on the Riverside ({{C:mrs_oda}}). Her bag is snagged on the white fence by the dome house at the Docks ({{L:oda_bag}}). Bring it back for a memory of their mother.
 5. The Old Warehouse ({{X:ch6_home}}): {{J:ch6_home}}.
 6. **Boss: {{B:76}}**.
 7. The ambush follows ({{X:ch6_ambush}}). The twins wake in Gero's lab ({{X:gero_lab_talk}}{{X:lazuli_lab_talk}}): {{J:ch6_ambush}}. New skills for both twins: **Energy Blast** (their blasts are blue), **Full Power Energy Wave** (a long green beam) and **Outfit** (select it and press B to switch between the android outfit and the old clothes). Eighteen also gets **Stun Shot**.
@@ -153,7 +156,9 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - **The power puzzle:** the lower corridor at the bottom of the Security Wing is shuttered ({{X:wing_lower_locked}}). Close the three breakers on the Security Wing's consoles in the order CORE ({{L:breaker_core}}), LIGHTS ({{L:breaker_lights}}), DOORS ({{L:breaker_doors}}). The wrong order trips them all.
    - **Bio Wing** (down the lower corridor; {{X:ch7_bio}}): {{J:ch7_bio}}. **Mini-boss: {{B:42}}** on the catwalk. Then use the monitor on the far side ({{L:bio_monitor}}) for a first look at Project Cell. The door on the left is sealed ({{X:bio_units_door}}).
 4. **Boss: {{B:20}}** guards the Control Room (right of the Security Wing).
-5. Use the console ({{L:ch7_console}}) to end the lockdown. Then leave through the cave to the northern mountains for the end of the chapter ({{X:ch7_end}}).
+5. Use the console ({{L:ch7_console}}) to end the lockdown. This takes you out to the cave in front of the lab.
+6. **Optional: Gero's Quarters**, through the misty passage on the right side of the cave ({{X:ch7_quarters}}). Read the diary on the nightstand ({{L:quarters_diary}}), straighten Gevo's photograph on the dresser to find the key ({{L:quarters_photo}}), and open the safe behind the painting ({{C:quarters_safe}}). **Mini-boss: {{B:58}}** wakes up when the safe opens. The bed: {{X:quarters_bed}}. You can't come back here once you leave the cave.
+7. Leave through the cave mouth to the northern mountains for the end of the chapter ({{X:ch7_end}}).
 
 ## Chapter 8: The Massacre
 **You play:** Seventeen; one fight as Eighteen. **Goal:** West City, then the Z Fighters.
@@ -194,7 +199,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
 **You play:** Seventeen. **Goal:** the crossroads.
 
 1. Age 780, the Circus Lot ruins ({{X:ch10_start}}): {{J:ch10_start}}. The resistance has wired the lot with turrets and old machines.
-   - Cache: {{C:ch10_cache}}.
+   - Cache: at the foot of the circus sign's left post, in the Circus Lot ruins ({{C:ch10_cache}}).
    - The world map is open again here: talk to Eighteen, or walk off the top of the lot.
 2. **The Burning District** (right of the Circus Lot ruins): the resistance ambushes the twins ({{X:ch10_district}}): {{J:ch10_district}}.
    - **Optional: the Resistance Shelter**, down the subway stairs at the top left ({{X:ch10_shelter}}). **Mini-boss: {{B:2}}**. Afterwards, the girl behind the crates ({{L:ch10_girl}}), the radio ({{L:shelter_radio}}), Gero's note 10 on the resistance's map ({{L:note_shelter}}), and a cache ({{C:cache_shelter}}).

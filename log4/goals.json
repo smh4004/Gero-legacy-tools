@@ -20,6 +20,12 @@
    "hide": "set:310"
   },
   {
+   "text": "Optional: shut down the three rogue mechanoids",
+   "active": "set:496",
+   "done": "set:500",
+   "hide": "set:310"
+  },
+  {
    "text": "Take control of a drone at the drone terminal",
    "active": "set:310",
    "done": "set:313",
@@ -41,6 +47,18 @@
    "text": "Reach Gevo at the fence on Ambush Ridge",
    "active": "set:378",
    "done": "set:311",
+   "hide": "set:315"
+  },
+  {
+   "text": "Optional: find the three parts of Mori's radio",
+   "active": "set:501",
+   "done": "set:505",
+   "hide": "set:315"
+  },
+  {
+   "text": "Optional: silence the sniper on the canyon rim",
+   "active": "set:505",
+   "done": "set:506",
    "hide": "set:315"
   },
   {
@@ -200,6 +218,12 @@
    "hide": "set:330"
   },
   {
+   "text": "Optional: find Mrs. Oda's bag at the docks",
+   "active": "set:531",
+   "done": "set:533",
+   "hide": "set:330"
+  },
+  {
    "text": "Leave Dr. Gero's hidden laboratory",
    "active": "set:331",
    "done": "set:332",
@@ -221,6 +245,12 @@
    "text": "Optional: destroy the bio wing's warden",
    "active": "set:481",
    "done": "set:482",
+   "hide": "set:340"
+  },
+  {
+   "text": "Optional: open the safe in Gero's quarters",
+   "active": "set:534",
+   "done": "set:539",
    "hide": "set:340"
   },
   {

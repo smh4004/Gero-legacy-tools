@@ -205,3 +205,63 @@ run notes_check
 stop
 label narch_read
 narrate Gero's notebooks. Thousands of pages. Nobody will ever read them all.
+# ---------- Gero's Quarters (second length pass, log4/gen_more.py ch7_quarters; 534 arrival, 538 diary, 535 key,
+# 536 safe opened (the sentry wakes), 537 sentry destroyed, 539 safe emptied)
+list ch7_quarters
+set_flag 534
+narrate A bedroom. A real one: a bed, a lamp, a picture on the wall. Ten steps of rock away from the pods.
+say android18 He slept here? Next door to us?
+say android17 Even mad scientists need a bed. Let's see what the old man kept for himself.
+list quarters_diary
+set_flag 538
+narrate A diary on the nightstand, the last pages written in a shaking hand.
+narrate "Gevo would have laughed at me. Twenty years of work, and the two finest machines I ever built won't take a single order."
+narrate "I keep the key where Gevo would look first. He always went straight for my desk photograph, to straighten it. He hated a crooked frame."
+narrate "I keep the switch on me. The spare, and its blueprints, stay in the safe. They must never fall into their hands."
+say android18 A spare off switch. In case the first one got broken.
+say android17 Like that one did. Let's break this one too.
+list quarters_photo
+if_flag 535 photo_after
+set_flag 535
+narrate A framed photograph on the dresser: a young man in a Red Ribbon uniform, grinning at the camera. The frame sits crooked.
+say android18 Gevo. His son. The one in the diary.
+narrate Seventeen straightens the frame. A small brass key drops out from behind it.
+say android17 The key's where his son would look first. Sentimental old man.
+stop
+label photo_after
+narrate Gevo's photograph. The frame is straight now.
+list quarters_bed
+narrate The bed is made with military corners. The pillow has never been slept on.
+say android18 He never even used it.
+list quarters_safe
+if_flag 539 safe_empty
+if_flag 536 safe_open
+unless_flag 535 safe_locked
+set_flag 536
+narrate Behind the painting, a steel safe. The brass key turns.
+narrate Computer: Unauthorised access. Private quarters. Sentry activated.
+do call 120 30; call 119 1 117 1 256 72; call 121 30
+stop
+label safe_open
+unless_flag 537 safe_guarded
+set_flag 539
+narrate Inside the safe: a second black handset with two buttons, marked 17 and 18. A folder of blueprints underneath. And a medical kit.
+say android18 One press, and we're switched off. That's all we were to him.
+narrate Seventeen crushes the remote in one hand and lets the pieces drop. Eighteen feeds the blueprints into the lamp, page by page.
+say android17 Nobody's switching us off. Not him, not anyone.
+do call 129 11 2; call 129 8 1; call 129 10 1
+narrate Got 2 Senzu Beans, a Super Elixir and a Holy Water.
+stop
+label safe_guarded
+narrate The sentry stands between you and the safe.
+stop
+label safe_locked
+narrate Behind the painting, a steel safe with a small brass keyhole. It's locked.
+unless_flag 538 safe_nohint
+say android18 Read the diary, Seventeen. He kept the key where his son would look first.
+stop
+label safe_nohint
+say android17 Locked. The old man kept his key somewhere in here.
+stop
+label safe_empty
+narrate The safe stands empty. Bits of the remote are still on the floor.

@@ -111,7 +111,7 @@ label finale_seen
 list ch10_cache
 if_flag 403 c10_empty
 set_flag 403
-narrate A wrecked food stall. Under the counter, somebody's emergency box: a Senzu Bean and an elixir.
+narrate The circus sign still stands over the lot. In the rubble at the foot of its post, somebody's emergency box: a Senzu Bean and an elixir.
 say android18 Somebody was going to need these.
 do call 129 11 1; call 129 7 1
 stop

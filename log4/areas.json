@@ -1473,6 +1473,24 @@
      "dir": "down",
      "face": "down",
      "_note": "cave mouth -> Northern Wilderness"
+    },
+    {
+     "rect": [
+      284,
+      208,
+      336,
+      264
+     ],
+     "warp": [
+      1,
+      117,
+      108,
+      72
+     ],
+     "dir": "right",
+     "face": "down",
+     "_note": "the misty passage on the cave's right side -> Gero's Quarters",
+     "_more": 1
     }
    ]
   },
@@ -3233,6 +3251,15 @@
      "type": 44,
      "x": 170,
      "y": 200
+    },
+    {
+     "type": 3,
+     "x": 158,
+     "y": 288,
+     "character": 187,
+     "condition": "hex 01 87 60 02 1b 01 87 62 02 1c 04 11",
+     "_note": "rogue mechanoid (row 3, red-tagged): after the job (496) until destroyed (497)",
+     "_more": 1
     }
    ],
    "solid": [
@@ -3292,6 +3319,15 @@
      "type": 75,
      "x": 242,
      "y": 198
+    },
+    {
+     "type": 5,
+     "x": 356,
+     "y": 356,
+     "character": 187,
+     "condition": "hex 01 87 60 02 1b 01 87 66 02 1c 04 11",
+     "_note": "rogue mechanoid (row 5, red-tagged): after the job (496) until destroyed (499)",
+     "_more": 1
     }
    ],
    "spawns": [
@@ -3355,7 +3391,7 @@
      "rect": [
       0,
       208,
-      28,
+      44,
       256
      ],
      "examine": "left",
@@ -3467,6 +3503,15 @@
      "type": 44,
      "x": 232,
      "y": 288
+    },
+    {
+     "type": 4,
+     "x": 330,
+     "y": 150,
+     "character": 187,
+     "condition": "hex 01 87 60 02 1b 01 87 64 02 1c 04 11",
+     "_note": "rogue mechanoid (row 4, red-tagged): after the job (496) until destroyed (498)",
+     "_more": 1
     }
    ],
    "keep_regions": [],
@@ -3905,14 +3950,14 @@
     },
     {
      "rect": [
-      36,
-      24,
-      76,
-      70
+      324,
+      100,
+      356,
+      118
      ],
      "event": "ch10_cache",
      "examine": "up",
-     "_note": "a wrecked food stall (403); was 40,40,72,72 (gen_ch10.py)",
+     "_note": "rubble at the foot of the circus sign's left post (403), on the open lot (the grass behind the fence hides sprites)",
      "_more": 1
     }
    ],
@@ -4757,8 +4802,8 @@
    "map_log2": "0x63ed74",
    "spawns": [
     {
-     "x": 292,
-     "y": 112,
+     "x": 264,
+     "y": 176,
      "actor_id": 171,
      "face": "down",
      "talk": "zmart_clerk",
@@ -4940,6 +4985,17 @@
      288,
      32
     ]
+   ],
+   "spawns": [
+    {
+     "x": 176,
+     "y": 104,
+     "face": "down",
+     "talk": "mrs_oda",
+     "_note": "Mrs. Oda, the old neighbour (531/533)",
+     "actor_id": 183,
+     "_more": 1
+    }
    ]
   },
   {
@@ -4997,6 +5053,18 @@
      ],
      "event": "night_cache_docks",
      "_note": "the dome house (336)"
+    },
+    {
+     "rect": [
+      84,
+      280,
+      144,
+      300
+     ],
+     "event": "oda_bag",
+     "examine": "up",
+     "_note": "Mrs. Oda's bag, snagged on the white fence (532)",
+     "_more": 1
     }
    ],
    "map_from": [
@@ -5642,8 +5710,8 @@
    ],
    "spawns": [
     {
-     "x": 112,
-     "y": 150,
+     "x": 176,
+     "y": 212,
      "actor": "drone_l2",
      "face": "down",
      "talk": "relay_3",
@@ -5716,7 +5784,7 @@
      "rect": [
       0,
       248,
-      14,
+      40,
       360
      ],
      "event": "ch9_sealed",
@@ -5967,6 +6035,18 @@
      "_note": "drone arrival (160,420): radio + journal",
      "fn2": "0x080077DF",
      "when": "hex 01 84 72 02 1c 11"
+    },
+    {
+     "rect": [
+      156,
+      344,
+      196,
+      380
+     ],
+     "event": "radio_handset",
+     "examine": "up",
+     "_note": "radio part: the handset, hanging from the dead stump (504)",
+     "_more": 1
     }
    ],
    "map_log2": "0x67542c",
@@ -6167,6 +6247,15 @@
      "type": 108,
      "x": 360,
      "y": 70
+    },
+    {
+     "type": 46,
+     "x": 544,
+     "y": 136,
+     "character": 247,
+     "condition": "hex 01 87 72 02 1b 01 87 74 02 1c 04 11",
+     "_note": "the raider sniper on the canyon rim (row 46): after the radio (505) until beaten (506)",
+     "_more": 1
     }
    ],
    "solid": [
@@ -6285,6 +6374,18 @@
      "event": "cache_dump",
      "_note": "crates by the fuel tanks (items, flag 379)",
      "examine": "up"
+    },
+    {
+     "rect": [
+      204,
+      140,
+      236,
+      162
+     ],
+     "event": "radio_antenna",
+     "examine": "up",
+     "_note": "radio part: the antenna, behind the lone crate by the right tank (502)",
+     "_more": 1
     }
    ],
    "map_log2": "0x66684c",
@@ -6372,6 +6473,18 @@
      "event": "file_yard",
      "examine": "up",
      "_note": "army file 4 (513)",
+     "_more": 1
+    },
+    {
+     "rect": [
+      180,
+      284,
+      212,
+      312
+     ],
+     "event": "radio_battery",
+     "examine": "up",
+     "_note": "radio part: the battery pack, wedged behind the bottom crate (503)",
      "_more": 1
     }
    ],
@@ -7586,7 +7699,10 @@
      "examine": "right"
     }
    ],
-   "map_log2": "0x5e3de4"
+   "map_log2": "0x5e3de4",
+   "keep_regions": [
+    0
+   ]
   },
   {
    "world": 1,
@@ -7872,6 +7988,106 @@
      "x": 120,
      "y": 200,
      "character": 171
+    }
+   ]
+  },
+  {
+   "world": 1,
+   "area": 117,
+   "template": [
+    15,
+    10
+   ],
+   "name": 1727,
+   "palette_act": "act3",
+   "_note": "Chapter 7: Gero's Quarters (generated by log4/gen_more.py)",
+   "doors": [
+    {
+     "rect": [
+      100,
+      16,
+      132,
+      52
+     ],
+     "warp": [
+      1,
+      82,
+      256,
+      228
+     ],
+     "dir": "up",
+     "face": "left",
+     "_note": "Gero's Quarters (the arched doorway) -> cave"
+    },
+    {
+     "rect": [
+      84,
+      64,
+      148,
+      100
+     ],
+     "event": "ch7_quarters",
+     "_note": "first arrival (534)",
+     "fn2": "0x080077DF",
+     "when": "hex 01 88 2c 02 1c 11"
+    },
+    {
+     "rect": [
+      140,
+      56,
+      164,
+      72
+     ],
+     "event": "quarters_diary",
+     "_note": "the nightstand: Gero's diary (538)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      272,
+      56,
+      304,
+      76
+     ],
+     "event": "quarters_photo",
+     "_note": "the dresser: Gevo's photograph, the key behind it (535)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      196,
+      80,
+      228,
+      98
+     ],
+     "event": "quarters_bed",
+     "_note": "the bed (made, never slept in)",
+     "examine": "up"
+    },
+    {
+     "rect": [
+      244,
+      44,
+      270,
+      62
+     ],
+     "event": "quarters_safe",
+     "_note": "the painting: a wall safe (536 open, 539 emptied)",
+     "examine": "up"
+    }
+   ],
+   "map_from": [
+    2,
+    5
+   ],
+   "enemies": [
+    {
+     "type": 58,
+     "x": 160,
+     "y": 120,
+     "character": 142,
+     "condition": "hex 01 88 30 02 1b 01 88 32 02 1c 04 11",
+     "_note": "Gero's sentry (row 58): wakes when the safe opens (536) until destroyed (537)"
     }
    ]
   }

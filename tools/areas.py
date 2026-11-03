@@ -270,7 +270,7 @@ def apply(rom, cfg, l2, actor_ids, at, talk=None, doors=None):
                     # area): empty rect. Our 'doors' are the area's exits (found 2026-11-02: 1:85, 1:71, 1:102, 1:109...
                     # had live built-in doors to BF areas where no LoG4 door covers them)
                     struct.pack_into('<4H', rom, pre + 8, 0, 0, 0, 0)
-            if 'keep_regions' in a and 'map_from' in a:        # drop map OBJ regions (e.g. BF's level-140 gate graphic)
+            if 'keep_regions' in a:                            # drop map OBJ regions (BF's level-140 gate graphic, LoG2 save pads)
                 rec = bytearray(rom[newM - 4 - BASE:newM - BASE + 0x54])
                 self_ = struct.unpack_from('<I', rec, 4 + 0x48)[0]
                 nm = W.put(bytes(rec)) + 4
