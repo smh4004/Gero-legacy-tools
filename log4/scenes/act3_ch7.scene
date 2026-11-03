@@ -75,3 +75,133 @@ do call 120 1; call 119 1 82 1 112 200; call 121 40
 stop
 label console_locked
 narrate The console is behind the security machine. It isn't going to let anyone near it.
+# ---------- the research archive and the bio wing (log4/gen_more.py; flags 480 archive arrival, 481 bio wing
+# arrival, 482 warden destroyed, 483-485 breakers CORE / LIGHTS / DOORS (485 = power to the bio wing), 486 monitor)
+list ch7_archive
+set_flag 480
+narrate Gero's archive. Shelves of notebooks from floor to ceiling, and terminals that never stopped running.
+say android18 He wrote everything down. Everything.
+say android17 Then somewhere in here it says why. Not that it matters now.
+do call 47; call 51 0
+list log_subjects
+narrate Research log: SUBJECTS 17 AND 18.
+narrate "Conversion complete. Strength beyond projections. Memory suppression: incomplete. Nothing was erased. Only buried."
+narrate "I looked for the part of them that would not leave the other behind. I could not find it. It would not come out."
+say android18 ...
+say android17 Come on. It's just an old man's diary.
+list log_units
+narrate Research log: UNITS 13, 14, 15.
+narrate "Designed from my own patterns. No will, no curiosity, no names. One order only: Son Goku's death."
+narrate "If I fail, the computer will finish them. They will not refuse it. They are not like 17 and 18."
+say android17 Not like us. He finally said something nice.
+list log_cell
+narrate Research log: PROJECT CELL.
+narrate "The spy robot has gathered cells from every great fighter it could find. The computer will grow them into one."
+narrate "It will take decades. I will not live to see it wake. My perfect creation, and I will never meet it."
+say android18 Seventeen. He made something worse than us.
+say android17 Then it can wait its turn.
+list breaker_core
+if_flag 485 brk_on
+if_flag 483 brk_core_on
+set_flag 483
+narrate Breaker panel: CORE. The lever thunks down. Deep below, a hum starts up.
+narrate Taped to the panel, in small handwriting: COLD START. CORE, LIGHTS, DOORS. IN THAT ORDER.
+stop
+label brk_core_on
+narrate CORE is closed. The hum goes on.
+stop
+label brk_on
+narrate All three breakers are closed. The power is on.
+list breaker_lights
+if_flag 485 brkl_on
+if_flag 484 brkl_done
+unless_flag 483 brkl_trip
+set_flag 484
+narrate Breaker panel: LIGHTS. The lever holds. Every light in the wing flickers, then stays on.
+stop
+label brkl_trip
+narrate Breaker panel: LIGHTS. The lever bangs straight back up. Sparks. Nothing holds without CORE.
+narrate Taped to the panel: COLD START. CORE, LIGHTS, DOORS. IN THAT ORDER.
+stop
+label brkl_done
+narrate LIGHTS is closed.
+stop
+label brkl_on
+narrate All three breakers are closed. The power is on.
+list breaker_doors
+if_flag 485 brkd_on
+unless_flag 484 brkd_trip
+set_flag 485
+narrate Breaker panel: DOORS. The lever drops. At the bottom of the wing, the shutters over the lower corridor grind open.
+say android18 The lower corridor. The sign down there said BIO WING.
+do call 120 20; call 119 1 111 1 220 300; call 121 20
+do call 47; call 51 0
+stop
+label brkd_trip
+do call 30 483; call 30 484
+narrate Breaker panel: DOORS. A bang, a shower of sparks, and every breaker in the wing snaps back open.
+narrate Taped to the panel: COLD START. CORE, LIGHTS, DOORS. IN THAT ORDER.
+say android17 Read the instructions, Eighteen.
+say android18 You pulled it, not me.
+stop
+label brkd_on
+narrate All three breakers are closed. The power is on.
+list wing_lower_locked
+narrate The lower corridor is shuttered and dark. A sign over it reads BIO WING. NO POWER: RESTORE AT THE BREAKERS.
+say android17 The breaker panels. Of course it couldn't just be a switch.
+do call 120 10; call 119 1 111 1 220 370; call 121 10
+do call 47; call 51 0
+list ch7_bio
+set_flag 481
+narrate The bio wing. Two great machines hang from the ceiling, their red eyes dark. A catwalk crosses a tank of green fluid.
+narrate On the catwalk, something big unfolds itself and turns toward the door.
+narrate Computer: Unregistered units in the bio wing. Warden, protect the samples.
+journal Destroy the bio wing's {c07}warden{c02}
+do call 47; call 51 0
+list bio_units_door
+narrate A sealed door. UNITS 13 / 14 / 15. TRANSFERRED: NORTHERN BUNKER, CONSTRUCTION BAY.
+say android17 So that's where the computer keeps its toys.
+list bio_monitor
+unless_flag 482 monitor_guarded
+if_flag 486 monitor_again
+set_flag 486
+narrate A monitor on its own circuit, still running. INCUBATOR LINK: NORTHERN BUNKER, LOWER LEVEL.
+do call 120 30; call 115 17 25 1 140 150; call 121 30
+narrate A pod in the dark. Something small is curled up inside it, green and spotted. It twitches.
+narrate Computer: Project Cell. Growth nominal. Estimated maturity: twenty-one years.
+do call 120 30; call 119 1 116 1 448 184; call 121 30
+say android18 What was that thing?
+say android17 Something that won't be ready for twenty-one years. Let it be somebody else's problem.
+say android18 And when it is ready?
+say android17 Then we'll be bored, and it'll be something to do.
+do call 47; call 51 0
+stop
+label monitor_again
+narrate INCUBATOR LINK. The pod. The twitching shape. Twenty-one years.
+stop
+label monitor_guarded
+narrate A monitor across the catwalk. The warden is between it and the twins.
+# ---------- Gero's notes 4 and 5 (flags 523 / 524)
+list note_wing
+if_flag 523 nwing_read
+set_flag 523
+narrate A notebook page under the console's keyboard.
+narrate "Units 17 and 18 refuse every order. I could correct it in an hour. I don't. I tell myself it is scientific curiosity."
+say android18 Him again.
+do call 129 31 1
+run notes_check
+stop
+label nwing_read
+narrate The console. Nothing else under the keyboard.
+list note_archive
+if_flag 524 narch_read
+set_flag 524
+narrate One notebook on the shelf has a page torn half out, as if someone started to throw it away and stopped.
+narrate "The shutdown controller works. I keep it in my coat. I have had a hundred reasons to use it. I wonder if I ever will."
+say android17 He didn't. Too slow.
+say android18 Or he didn't want to.
+do call 129 31 1
+run notes_check
+stop
+label narch_read
+narrate Gero's notebooks. Thousands of pages. Nobody will ever read them all.

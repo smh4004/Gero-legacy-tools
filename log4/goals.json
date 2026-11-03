@@ -62,9 +62,15 @@
    "hide": "set:320"
   },
   {
-   "text": "Get clear of the base",
+   "text": "Get off the mountain through the supply depot",
    "active": "set:319",
    "done": "set:318",
+   "hide": "set:320"
+  },
+  {
+   "text": "Get past the Quartermaster to the depot tunnel",
+   "active": "set:450",
+   "done": "set:451",
    "hide": "set:320"
   },
   {
@@ -77,6 +83,12 @@
    "text": "Destroy Prototype 9 in the old mine",
    "active": "set:289",
    "done": "set:290",
+   "hide": "set:300"
+  },
+  {
+   "text": "Optional: destroy Prototype 3 in the graveyard",
+   "active": "set:455",
+   "done": "set:456",
    "hide": "set:300"
   },
   {
@@ -140,9 +152,39 @@
    "hide": "set:330"
   },
   {
+   "text": "Optional: find the lost boy's sister",
+   "active": "set:464",
+   "done": "set:465",
+   "hide": "set:330"
+  },
+  {
+   "text": "Optional: take the Ribbon Ruby from the museum storeroom",
+   "active": "set:461",
+   "done": "set:463",
+   "hide": "set:330"
+  },
+  {
+   "text": "Rest at the warehouse when you're ready",
+   "active": "set:460",
+   "done": "set:303",
+   "hide": "set:330"
+  },
+  {
    "text": "Hide out until nightfall",
    "active": "set:303",
    "done": "set:304",
+   "hide": "set:330"
+  },
+  {
+   "text": "Slip through the searchlights to your old house",
+   "active": "set:304",
+   "done": "set:471",
+   "hide": "set:330"
+  },
+  {
+   "text": "Run for the fire stairs across the rooftops",
+   "active": "set:471",
+   "done": "set:473",
    "hide": "set:330"
   },
   {
@@ -167,6 +209,18 @@
    "text": "Get through the lockdown to the control room",
    "active": "set:338",
    "done": "set:339",
+   "hide": "set:340"
+  },
+  {
+   "text": "Restore power to the bio wing (the Security Wing breakers)",
+   "active": "set:338",
+   "done": "set:485",
+   "hide": "set:340"
+  },
+  {
+   "text": "Optional: destroy the bio wing's warden",
+   "active": "set:481",
+   "done": "set:482",
    "hide": "set:340"
   },
   {
@@ -263,6 +317,18 @@
    "text": "Get to the crossroads",
    "active": "set:380",
    "done": "set:381",
+   "hide": "set:390"
+  },
+  {
+   "text": "Get through the burning district",
+   "active": "set:490",
+   "done": "set:381",
+   "hide": "set:390"
+  },
+  {
+   "text": "Optional: defeat the resistance captain in the shelter",
+   "active": "set:491",
+   "done": "set:492",
    "hide": "set:390"
   },
   {

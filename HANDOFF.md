@@ -584,23 +584,6 @@ memories, optional bosses, outfits, new boss fights, LoG2 maps / Buu's Fury engi
 signal tearing, "SPECIMEN STATUS: ALIVE". Ending: Gero's terminal types the project load and COMING SOON, then the
 CRT switches off. Crops skip the HUD and the area-name banner (start clips 3+ s in, or zoom off the bottom).
 
-### Trailer v7 (2026-11-03, user: "same parameters as last time but new clips; no repetitive or illogical movement
-(attacking the air, walking away from an enemy); show the new flying animations; locations must be fine; keep the
-Act 1-3 order but no act names in the captions, flavour text / features instead")
-GerosLegacy_trailer_v7.mp4 (86 s, same music, cut points, look, terminal ending as v6) = tools/trailer7.py <mp3> <out>.
-Footage: tools/trailer7_shoot.py <shoot rom> <named_lists_shoot.json> <outdir> [clip ...]. Fights are played by
-tools/fightbot.py (walks straight at the enemy, attacks only in reach) and its keys.txt is replayed from the same
-start state while recording, so the recorded fight is exactly the bot's. t_bal_* lists: A is pressed through the
-level-up pages until the boss is in memory at full HP. New shoot lists: t7_outfits (17:38, no enemies, skill 20),
-t7_kame / t7_paozu / t7_hub / t7_ruins (arrival flags set so no narration), cam_t7_fs25 (incubator hold, the tease).
-Order: Gero's lab / Age 767 opener -> city -> drone and prototypes -> runaways -> Piccolo, Krillin -> world map
-(new flyb frames) -> ninjas -> Sentinel -> outfits / Super 17 -> Android 13 -> places montage -> incubator tease.
-Rejected takes: sh_drone_93/105 (never engaged), Butcher (stuck behind a hut), north walk (into a door), fs26 tease
-(same room as the opener).
-Shoot-list artifact (not a game bug): t_bal_kri (`call 151 1; ... call 157 1 111`) leaves a garbled sprite where the
-partner stands at the start of the fight; the real ch8_yamcha -> Krillin arrival in the release ROM is clean (checked
-2026-11-03). The trailer's kri shot starts at 10.4 s, after the garble has scrolled off.
-
 ### Teaser v3 (made 2026-11-01 on request: "remake the teaser with the new stuff, 45-50 s")
 log4/out/GerosLegacy_teaser_v3.mp4 (49.6 s) = tools/teaser.py <mp3> <out> <footage dir> (old script: tools/teaser_v2.py).
 Shots: main lab (Gero, Gevo, drone) -> animated door -> tank room -> West City day (Lapis out of Z-Mart) -> the park
@@ -611,6 +594,50 @@ graded, dissolves, no cards); music = Era of Darkness from 0 s (swell at 20 s on
 Footage: scratchpad t3/ (*.mkv recorded with harness `rec` from save states; recorder scripts rec_act2.py / stage.py
 there). Game font: tools/gamefont.py builds tools/gamefont_atlas.npz (51 glyphs) from fully typed dialogue pages in
 footage + the scene scripts, and renders any text with it.
+
+## 2026-11-03 (later): length pass ("all five options, plus more lore and side content"), Super 17 changes
+- log4/gen_more.py writes the new areas and patches the doors/spawns/enemies of the areas they hang off (entries tagged
+  _more=1; re-running replaces them). `python3 log4/gen_more.py --preview <dir>` draws every new/patched area with doors
+  (red), events (yellow), NPCs (cyan), enemies (magenta) and arrival points (green). tools/mapview.py renders any map
+  (bf:w:a, l2:0xPTR, out:w:a) with a 16 px grid and the floor tinted; LoG2 floor masks are read straight from log2.gba
+  (areagen kind 'l2raw'), so placing things on a new LoG2 map no longer needs a build first.
+- New areas: 1:113 Supply Depot (LoG2 Warlord's Domain cave 0x606dc4), 1:114 Prototype Graveyard (BF 15:18), 4:46 Museum
+  Storeroom (BF 14:3), 16:46 Old House (BF 3:6), 16:47 Rooftops (LoG2 CC roof 0x5d13c4), 1:115 Research Archive (LoG2
+  0x5e3de4; a dead end: logs are read from the centre aisle, the shelf gaps are too narrow to walk), 1:116 Bio Wing
+  (LoG2 0x5e6648; reached through the Security Wing's open bottom edge once 485 is set), 17:48 Burning District (LoG2 Sasebo 0x5f3bf4), 17:49 Resistance Shelter
+  (map of 1:113). Area names UI 1718-1726. LoG2 map imports now spill into 0xDF8000-0xF00000 once the main region
+  passes 0x9C0000 (tools/areas.py SPILL; build.py asserts the actors end before it).
+- Chapter changes: ch3 escape: the old bridge is out (bridge_out); the east edge of 1:71 -> the depot; its tunnel
+  (depot_tunnel, needs 451) runs ch3_end. ch4: graveyard off the Mountain Pass's bottom edge. ch5: the chapter no longer
+  ends by itself: ch5_check sets 460, and the mattresses in the Old Warehouse (ch5_rest) end it (and stash the ruby).
+  ch6: the crossroads cutscene is gone (its lines are in ch5_end, which sets 337); searchlight walk-ins (until 471) send
+  the twins back to the park; the south road is blocked until 473. ch7: breakers CORE/LIGHTS/DOORS on the Security
+  Wing consoles open the wing's lower corridor (bottom edge) to the bio wing; breaker_doors reloads 1:111 so the exit
+  appears. (The archive's top "door" was dropped: it is a building seen through the window, not an exit.) ch10: 17:40 -> 17:48 -> 17:21 (the old 17:40 <-> 17:21 link removed).
+- Flags: 450-452 depot, 455-457 graveyard, 460-467 ch5 (460 ready to end, 461 ruby heard, 462 Hercule's show, 463 ruby
+  taken, 464/465 lost boy, 466 storeroom, 467 ruby stashed), 470-474 ch6, 480-486 ch7, 490-495 ch10, 510-516 army files,
+  520-530 Gero's notes. The flag byte for 544-551 (0x03001101) holds Super 17's Strength bonus: don't use those flags.
+- New enemy rows: 43 Quartermaster (char 136), 1 Prototype 3 (char 17), 95 rooftop hunter (char 230, death reloads the
+  roof), 42 bio wing warden (char 133), 67 resistance fighter (char 171), 2 resistance captain (char 25, ai 0x8A).
+- Checks: clipcheck 0 failing; storyrun of the 57 new lists OK (3 CHECKs explained: branch-only flags); reachaudit
+  154/161 on the full ROM - every new spot passes; the failures are older spots in areas this pass didn't touch
+  (arena_locked 1:93, mine_gate 1:110 where the relay node stands in front of the gate, zmart_clerk 4:44 across the
+  counter, ch9_sealed 17:37, ch10_cache 17:40 - likely the audit's limits; worth a human look). Bosses bot-tested
+  (results in stats.json _balance); the rooftop hunter and the Act 1 bosses want a human check.
+- Items repurposed: 28 Ribbon Ruby (UI 806-809), 29 Army File (810-813), 31 Gero's Note (818-821). Army files are taken
+  back at the end of Act One (ch4_pod, native 130 once per file read).
+- Super 17 (user 2026-11-03): the gold-haired form 13 / actor player_17_supergold are removed (Outfit does nothing in
+  Super 17). Strength x1.5: log4/asm/kiregen.s adds half of character 1's STR while his form is 15 and takes the same
+  amount off when he leaves it (bonus kept in 0x03001101, saved with the flags). Verified: STR 36 -> 54, back to 36.
+- Ki effects (user 2026-11-03; tools/kifx.py, build step after kiregen, ROM 0xF38000): 17/18's Energy Blast is blue
+  (a recoloured copy of BF's blast frames 0x71300C-0x71370C + table; the player projectile constructor sub_080197B4
+  is hooked at 0x080197F2 to use it when G[0] is character 1 or 3; Gero, the drone, Cell and enemy projectiles keep
+  BF's yellow; the impact burst stays BF's). Skill 6 (BF Electric Kamehameha, was "Power Blitz") is now "Full Power
+  Energy Wave" (UI 1322/1323), green: its tiles 0x721218-0x722318 are recoloured in place (only its own frame tables
+  use them). Eighteen gets skill 6 too at the conversion (act2_siblings.scene, gen_debug ANDROIDS / MOVES). Recolours
+  map onto existing OBJ colours only; kifx.IN_GAME_CHANGED lists the 20 OBJ slots whose in-game colour isn't BF's
+  (measured from PRAM in Act 3) - never targets. Verified in the emulator: blue blast, green wave for both, all
+  directions.
 
 ## CREDITS (user, 2026-11-03): hold the credits update until the game is complete. log4/credits_todo.md lists every
 change to make; ADD A LINE THERE whenever a new asset, source, feature or character goes in (also a CLAUDE.md rule).

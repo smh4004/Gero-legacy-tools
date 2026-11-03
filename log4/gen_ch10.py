@@ -12,7 +12,7 @@ NAMES = {21: 'West City ruins (780)', 40: 'Circus Lot ruins (780)'}
 g = G.Gen(SRC, SIZE, world=W17)
 arr = g.link(21, ('left', 312, 424), 40, ('right', 112, 184), NAMES)
 S = lambda a, x, y, r=12, f=None: g.snap(a, x, y, r, f)
-g.ev(40, (40, 40, 72, 72), 'ch10_cache', examine='up', note='a wrecked food stall (403)')
+g.ev(40, (36, 24, 76, 70), 'ch10_cache', examine='up', note='a wrecked food stall (403)')
 E = lambda a, t, x, y, **k: dict(type=t, x=S(a, x, y, 14)[0], y=S(a, x, y, 14)[1], **k)
 HEAVY, TURRET, DRONE = 62, 64, 94
 enemies = {40: [E(40, HEAVY, 120, 40), E(40, TURRET, 250, 140), E(40, DRONE, 330, 60), E(40, HEAVY, 420, 60),

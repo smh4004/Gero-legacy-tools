@@ -289,6 +289,9 @@ def main():
     PLACES = ('spawn_ids', 'spawn_pos', 'doors', 'map_log2', 'keep_objects', 'spawns', 'map_from', 'spawns_append')
     targets = [(a['world'], a['area']) for a in cfg.get('areas', []) if any(k in a for k in PLACES)] + \
               [(a['world'], a['area']) for a in cfg.get('new_areas', [])]
+    if '--only' in args:                       # e.g. --only 1:81,4:45 (quick re-checks; the build always checks all)
+        keep = {tuple(int(v) for v in t.split(':')) for t in opt('--only', '').split(',')}
+        targets = [t for t in targets if t in keep]
 
     def our_spawns(w, a):
         """Spawns to check: all of them in new areas and areas whose object list we rebuilt (keep_objects /

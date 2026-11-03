@@ -117,3 +117,77 @@ do call 129 11 1; call 129 7 1
 stop
 label c10_empty
 narrate The stall is empty.
+# ---------- the burning district and the resistance shelter (log4/gen_more.py; flags 490 district arrival, 491 shelter
+# arrival, 492 captain beaten, 493 the girl, 494 cache, 495 radio)
+list ch10_district
+set_flag 490
+narrate The east side is still burning from the last time they came through. The rain can't put it out.
+narrate A whistle from the rubble. Then shapes in grey coats, rising from behind the wrecked cars.
+narrate Resistance fighter: That's them! The twins! Everybody, now!
+say android17 They never learn.
+say android18 They're not trying to win, Seventeen. They're buying time for someone.
+journal Get through the {c07}burning district{c02} (the shelter: the subway stairs)
+do call 47; call 51 0
+list ch10_shelter
+set_flag 491
+narrate The old subway shelter. Blankets on the floor. A radio. Children's drawings taped to the crates.
+narrate A woman in a grey coat stands in front of them all, a rifle braced against her shoulder.
+narrate Resistance captain: You don't take one more step. Not one. Everyone behind me is somebody's whole family.
+say android17 Then you should have kept them somewhere else.
+say android18 Seventeen...
+journal Defeat the {c07}resistance captain{c02}
+do call 47; call 51 0
+list ch10_girl
+if_flag 493 girl_after
+unless_flag 492 girl_hiding
+set_flag 493
+narrate Behind the crates, a girl of nine or ten, holding a broom handle like a sword. Her hands are shaking.
+say android17 Seven.
+say android18 Leave her.
+say android17 What?
+say android18 I said leave her. She's nobody. She doesn't count.
+narrate Seventeen looks from his sister to the girl, and shrugs.
+say android17 Fine. She doesn't count. Happy?
+narrate The girl doesn't move until long after they're gone. Years later, she'd tell people the blonde one winked at her.
+stop
+label girl_hiding
+narrate Someone small is hiding behind the crates. The captain is between her and the twins.
+stop
+label girl_after
+narrate The crates. Nobody is behind them now. Nobody that counts.
+list shelter_radio
+if_flag 495 radio_again
+set_flag 495
+narrate The radio crackles. A woman's voice, tired and steady.
+narrate "This is Capsule Corporation. If you can hear this, the shelters at the old airfield are still open. Travel by day. Stay together."
+narrate "And if anybody out there has seen my son... he's fourteen, lavender hair, too stubborn for his own good. Tell him to come home."
+say android18 The woman from Capsule Corporation. The one with the blue hair.
+say android17 Still broadcasting. Still hoping. Humans are weird.
+stop
+label radio_again
+narrate Static, and now and then the tired woman's voice. "Stay together."
+list cache_shelter
+if_flag 494 cshelter_empty
+set_flag 494
+narrate The resistance's supplies. Mostly empty boxes. At the bottom: two Senzu Beans in a jar labelled FOR GOHAN.
+say android18 For Gohan.
+narrate She puts them in her pocket and doesn't say anything else.
+do call 129 11 2
+stop
+label cshelter_empty
+narrate Empty boxes. FOR GOHAN, on the jar.
+# ---------- Gero's note 10 (flag 529)
+list note_shelter
+if_flag 529 nshel_read
+set_flag 529
+narrate Pinned to the resistance's map of the city: a page from a notebook, under a label in red ink: FOUND IN GERO'S LAB. READ THIS.
+narrate "Lapis. Lazuli. I took your names and gave you numbers. I could not take the rest. I tried. I am sorry I tried."
+narrate "If you ever read this, I am not asking you to forgive me. I am asking you to stay together."
+say android18 ...
+say android17 Eighteen?
+say android18 Nothing. It's nothing. Let's go.
+do call 129 31 1
+run notes_check
+stop
+label nshel_read
+narrate The resistance's map. Red circles around every place the twins have been.

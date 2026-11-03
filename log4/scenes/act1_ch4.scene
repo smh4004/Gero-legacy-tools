@@ -117,6 +117,25 @@ say gero Now I have all the time in the world. Goku... I will build the soldiers
 say gero Computer. Begin construction on designs thirteen, fourteen and fifteen.
 narrate The bunker's great computer wakes. On its screens, three new androids begin to take shape.
 say gero Whatever becomes of me, finish them. Their only purpose: Goku's death.
+# the army files stay with Gero (native 130 = take one item; only as many as were read)
+unless_flag 510 fc0
+do call 130 29
+label fc0
+unless_flag 511 fc1
+do call 130 29
+label fc1
+unless_flag 512 fc2
+do call 130 29
+label fc2
+unless_flag 513 fc3
+do call 130 29
+label fc3
+unless_flag 514 fc4
+do call 130 29
+label fc4
+unless_flag 515 fc5
+do call 130 29
+label fc5
 narrate End of Act One.
 do call 120 60
 # Act 2: West City; chapter 5's opening fires on arrival (flag 300 clear) and plays its own card and fade-in
@@ -150,3 +169,75 @@ narrate Nothing but rocks.
 list mine_gate
 narrate An iron gate bars the old shaft. Beyond it the tunnel has fallen in: rock and rotten beams, all the way down.
 stop
+# ---------- the prototype graveyard (areas from log4/gen_more.py; flags 455 arrival, 456 Prototype 3 destroyed,
+# 457 cache). Gero speaks over the drone's radio.
+list ch4_graveyard
+set_flag 455
+narrate A canyon below the pass. Rusted shapes lie everywhere: torsos, arms, heads half buried in the scree.
+narrate Gero's failures. Twelve years of them, dumped here one by one.
+say young_gero.1 Don't waste time down there. They're scrap. Every one of them failed me.
+narrate Something among the wrecks lifts its head. Its eye lights up red.
+say young_gero.2 ...Prototype 3. It shouldn't have any power left. Put it down.
+journal Destroy {c07}Prototype 3{c02} in the graveyard
+do call 47; call 51 0
+list wreck_1
+narrate Prototype 1. The plate on its chest reads FIRST MODEL. COULD NOT STAND.
+narrate Next to the words, in grease pencil, someone has drawn a smiling face. A child's drawing.
+say young_gero.0 Gevo drew that. He was six. He said it looked lonely.
+list wreck_5
+narrate Prototype 5. The file said it obeyed every order perfectly.
+narrate It was ordered to guard the lab. It found its own reflection in a window and fired at it for three days.
+list wreck_8
+narrate Prototype 8's voice box still holds a charge. When the drone touches it, it plays a recording.
+narrate A young man, laughing: "Dad! It's working! It said my name!" Then static.
+say young_gero.3 ...Leave that one alone.
+list cache_grave
+if_flag 457 cgrave_empty
+set_flag 457
+narrate A Red Ribbon crate, stove in. Inside, packed in straw: an Elixir and two root beers.
+do call 129 7 1; call 129 5 2
+stop
+label cgrave_empty
+narrate An empty crate.
+# ---------- army files 5 and 6 (flags 514 / 515)
+list file_grave
+if_flag 514 fgrave_read
+set_flag 514
+narrate Under this wreck: a soldier's field pack, and a diary.
+narrate "Drew guard duty at the old scientist's bunker. He talks to the robots at night. Like they're his sons."
+narrate The last entry: "Transferred out tomorrow. Good. I don't think he'd notice if I died up here."
+do call 129 29 1
+run files_check
+stop
+label fgrave_read
+narrate A rusted wreck. The soldier's pack is gone.
+list file_cave
+if_flag 515 fcave_read
+set_flag 515
+narrate Army file: a radio log, still on the relay desk. The last entry:
+narrate "To all units. Headquarters destroyed. Commander Red is dead. The Red Ribbon Army is dissolved. Go home."
+say young_gero.1 Home.
+do call 129 29 1
+run files_check
+stop
+label fcave_read
+narrate The radio log. The army's last order.
+# all six army files read -> files_done (once, flag 516)
+list files_check
+unless_flag 510 files_not_yet
+unless_flag 511 files_not_yet
+unless_flag 512 files_not_yet
+unless_flag 513 files_not_yet
+unless_flag 514 files_not_yet
+unless_flag 515 files_not_yet
+if_flag 516 files_not_yet
+run files_done
+label files_not_yet
+list files_done
+set_flag 516
+narrate Six army files. The whole Red Ribbon Army in one thin folder.
+narrate A commander who wanted to be taller. An officer who shot him for it. A son who asked them not to tell his father.
+say young_gero.2 Fools. Every one of them. Only the machines ever did as they were told.
+narrate Clipped inside the last file: two vials from the army's medical stores. Experimental. Never approved.
+do call 129 10 2
+narrate Got two Holy Waters.

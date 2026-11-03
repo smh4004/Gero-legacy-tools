@@ -232,6 +232,66 @@
 "= The seven-star Dragon Ball, gone to grey stone. Kami is dead."
 ],
 [
+"ui:806",
+"[ui:806]",
+"= Ribbon Ruby"
+],
+[
+"ui:807",
+"[ui:807]",
+"= Ribbon Ruby"
+],
+[
+"ui:808",
+"[ui:808]",
+"= Ribbon Rubies"
+],
+[
+"ui:809",
+"[ui:809]",
+"= Commander Red's ruby, from the West City Museum's storeroom. Lazuli's idea."
+],
+[
+"ui:810",
+"[ui:810]",
+"= Army File"
+],
+[
+"ui:811",
+"[ui:811]",
+"= Army File"
+],
+[
+"ui:812",
+"[ui:812]",
+"= Army Files"
+],
+[
+"ui:813",
+"[ui:813]",
+"= A Red Ribbon Army file, read and kept. There are six to find."
+],
+[
+"ui:818",
+"[ui:818]",
+"= Gero's Note"
+],
+[
+"ui:819",
+"[ui:819]",
+"= Gero's Note"
+],
+[
+"ui:820",
+"[ui:820]",
+"= Gero's Notes"
+],
+[
+"ui:821",
+"[ui:821]",
+"= A page from Dr. Gero's notebooks. There are ten to find."
+],
+[
 "ui:1186",
 "[ui:1186]",
 "= Lapis"
@@ -284,7 +344,12 @@
 [
 "ui:1322",
 "[ui:1322]",
-"= Power Blitz"
+"= Full Power Energy Wave"
+],
+[
+"ui:1323",
+"[ui:1323]",
+"= Hold the B Button to fire a long wave of energy at full power.  Enemies hit by it can become electrically charged."
 ],
 [
 "ui:1346",
@@ -304,7 +369,7 @@
 [
 "ui:1349",
 "[ui:1349]",
-"= Press the B Button to become Super 17 (android clothes only). Press it again to change back."
+"= Press the B Button to become Super 17: Strength x1.5 (android clothes only). Press it again to change back."
 ],
 [
 "ui:1451",
@@ -465,6 +530,51 @@
 "ui:1717",
 "[ui:1717]",
 "= Debug Room"
+],
+[
+"ui:1718",
+"[ui:1718]",
+"= Supply Depot"
+],
+[
+"ui:1719",
+"[ui:1719]",
+"= Prototype Graveyard"
+],
+[
+"ui:1720",
+"[ui:1720]",
+"= Museum Storeroom"
+],
+[
+"ui:1721",
+"[ui:1721]",
+"= Old House"
+],
+[
+"ui:1722",
+"[ui:1722]",
+"= Rooftops"
+],
+[
+"ui:1723",
+"[ui:1723]",
+"= Research Archive"
+],
+[
+"ui:1724",
+"[ui:1724]",
+"= Bio Wing"
+],
+[
+"ui:1725",
+"[ui:1725]",
+"= Burning District"
+],
+[
+"ui:1726",
+"[ui:1726]",
+"= Resistance Shelter"
 ]
 ],
 "dialogue.txt": [

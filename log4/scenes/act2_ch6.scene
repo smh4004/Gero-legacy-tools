@@ -36,3 +36,77 @@ do call 129 11 1
 stop
 label ndocks_empty
 narrate The dome house is dark and empty.
+# ---------- the searchlights and the old house (log4/gen_more.py; flags 470 south road seen, 471 the memory,
+# 472 rooftop chase, 473 rooftop hunter destroyed (its death script reloads the roof), 474 house cache)
+list night_spotted
+narrate A red beam snaps onto Lazuli's face.
+narrate Drone (flat voice): Subject sighted. Subject sighted.
+say lapis.1 Back! Into the park, now!
+narrate They don't stop running until they're under the trees. The beams go back to sweeping the road.
+say lazuli.0 There's a gap where the beams don't meet. South of the crossroads. We go through there, together.
+do call 120 20; call 119 16 1 1 112 480; call 121 20
+do call 47; call 51 0
+list night_south
+set_flag 470
+narrate Two drones hang over the south bridge, their beams crossing on the road. Nobody is getting past them.
+say lapis.1 Not that way. The houses. Over the roofs.
+do call 120 20; call 119 16 1 1 420 600; call 121 20
+do call 47; call 51 0
+list ch6_oldhouse
+set_flag 471
+narrate Their old house. The door was never locked. There was never anything worth taking.
+narrate Dust on everything. Mom's chair by the window. A television that stopped working before they left.
+say lazuli.0 Lapis, look. The doorframe.
+narrate Pencil marks, climbing the wood. L and L, age six. Age seven. Age eight. Then nothing.
+say lapis.2 You always stood on your toes.
+say lazuli.3 I did not. ...Once. Maybe twice.
+say lapis.1 After Mom, they wanted to split us up. Two families. Two different cities.
+say lazuli.0 We left the same night. You carried the bag. I carried you for the second half.
+say lapis.2 I was tired. I was eight.
+narrate A red light slides across the window. Then another. Then the glass blows inward.
+narrate Drone: Subjects located. Begin retrieval.
+say lazuli.0 The roof! The ladder, the hatch!
+do call 120 20; call 119 16 47 1 56 124; call 121 20
+journal Run for the {c07}fire stairs{c02} across the rooftops
+do call 47; call 51 0
+list house_ladder
+unless_flag 471 ladder_early
+narrate The hatch to the roof. They used to sit up there on summer nights and count the airships.
+do call 120 20; call 119 16 47 1 56 124; call 121 20
+do call 47; call 51 0
+stop
+label ladder_early
+narrate A ladder in the corner, up to a hatch in the ceiling. It leads to the roof.
+list cache_house
+if_flag 474 chouse_empty
+set_flag 474
+narrate Lapis's old shoebox, still under the bed. A slingshot. A comic with no cover. A can of cherry soda he was saving for a special day.
+say lapis.2 I guess this is the special day.
+do call 129 4 1
+stop
+label chouse_empty
+narrate The empty shoebox. Lapis kept the slingshot.
+list roof_chase_1
+set_flag 472
+narrate Behind them, a drone rises over the edge of the roof. Its beam lights up the whole ledge.
+say lazuli.0 It's right behind us. The fire stairs, at the far end. Go!
+narrate Another one drops out of the sky ahead of them, onto the fire stairs, with a heavy clang. Its guns are already out.
+say lapis.1 That one's not here to take us home.
+journal Get past the {c07}hunter{c02} on the fire stairs
+do call 47; call 51 0
+list roof_stairs_blocked
+narrate The hunter drone is planted on the fire stairs. There's no way down while it's there.
+# ---------- Gero's note 3 (flag 522)
+list note_house
+if_flag 522 nhouse_read
+set_flag 522
+narrate On top of the broken television: a notebook page, placed there neatly. The dust around it is fresh.
+narrate "Subjects' former residence. Mother deceased. Father unknown. The twins ran from the children's home rather than be separated."
+narrate "Their loyalty to each other is excessive. Correctable."
+say lazuli.0 He's been in our house, Lapis. He stood right here.
+say lapis.1 Then he can come back and say it to my face.
+do call 129 31 1
+run notes_check
+stop
+label nhouse_read
+narrate The dead television. Lazuli doesn't look at it.

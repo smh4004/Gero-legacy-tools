@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.join(HERE, '..', 'tools'))
 import clipcheck as C, scenes
 
 BF = C.Rom(open(os.path.join(HERE, '..', 'bf.gba'), 'rb').read())
+L2 = open(os.path.join(HERE, '..', 'log2.gba'), 'rb').read()
 _built = os.path.join(HERE, 'out', 'LoG4_shoot.gba')
 OUT = C.Rom(open(_built if os.path.exists(_built) else os.path.join(HERE, 'out', 'LoG4.gba'), 'rb').read())
 STEP = {'down': (0, 1), 'up': (0, -1), 'left': (-1, 0), 'right': (1, 0), None: (0, 0)}
@@ -34,7 +35,11 @@ class Gen:
     def mask(self, a):
         if a not in self._m:
             k, s = self.src[a]
-            self._m[a] = BF.walk_mask(BF.map_of(*s)) if k == 'bf' else OUT.walk_mask(OUT.map_of(self.world, s if k == 'new' else a))
+            if k == 'l2raw':                     # straight from log2.gba (the import copies the mask verbatim)
+                import mapview
+                self._m[a] = mapview.l2_mask(L2, int(s, 16))
+            else:
+                self._m[a] = BF.walk_mask(BF.map_of(*s)) if k == 'bf' else OUT.walk_mask(OUT.map_of(self.world, s if k == 'new' else a))
         return self._m[a]
 
     def ok(self, a, x, y, r=12, face=None):

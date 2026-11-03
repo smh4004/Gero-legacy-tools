@@ -235,6 +235,16 @@ narrate ...and a strip of photo-booth pictures. Two kids pulling faces. A boy wi
 say android17 Who are they?
 say android18 ...Nobody.
 narrate She puts the photo strip in her pocket anyway.
+unless_flag 467 hideout_noruby
+narrate Under the photos, wrapped in an old sock: a red stone the size of a hen's egg.
+say android17 Whoa. Where did that come from?
+say android18 ...For later. Somebody said that once. Put one thing away for later, for when you need it.
+say android17 Need it for what? We can take anything we want now.
+say android18 I know.
+narrate She keeps it anyway.
+do call 129 28 1
+narrate Got the Ribbon Ruby.
+label hideout_noruby
 say android17 Hey. I know that case. I swiped it off some guy at a bus stop... didn't I?
 say android18 You did. And I told you to ditch it, Lapis.
 say android17 What did you just call me?
@@ -260,3 +270,17 @@ do call 129 7 1; call 129 11 1
 stop
 label c8docks_empty
 narrate Nothing left in the dome house.
+# ---------- Gero's note 6 (log4/gen_more.py: the Old Warehouse 17:36; flag 525)
+list note_warehouse
+if_flag 525 nware_read
+set_flag 525
+narrate Pinned behind a crate, yellow with age: a notebook page in small, careful handwriting.
+narrate "Age 762. Paid a street gang to take their hideout, to see what they would do. They took it back in a day."
+narrate "I was proud of them. Is that the word? I have not used it in years."
+say android18 Proud. He was proud of us.
+say android17 He was proud of his experiment. Don't mix those up.
+do call 129 31 1
+run notes_check
+stop
+label nware_read
+narrate The crate where the page was pinned.

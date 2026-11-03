@@ -99,6 +99,12 @@ say lazuli.3 Please don't.
 narrate Curator: Then take this. Old army rations... the soldiers swore by them.
 do call 129 11 1
 narrate Got a Senzu Bean.
+set_flag 461
+narrate Curator: And next week, the gala! Commander Red's own ruby, the Ribbon Ruby. It's locked in the storeroom until then.
+narrate Curator: We've hired a guard and everything. He sits by the storeroom door all day.
+say lazuli.0 A ruby. How big?
+narrate Curator: Big enough to buy this museum twice! Not that it's for sale, of course.
+journal (Optional) The {c07}Ribbon Ruby{c02} in the museum storeroom
 stop
 label curator_ask
 set_flag 387
@@ -106,9 +112,130 @@ narrate Curator: Welcome to the West City Museum. I'm afraid our best piece is m
 narrate Curator: A gang broke in two nights ago. The police say it's "not a priority". Hmph.
 stop
 label curator_done
+set_flag 461
 narrate Curator: Every school class in West City comes to see that medal. Thanks to you, it's still here.
+narrate Curator: Come back for the gala next week. The Ribbon Ruby! Our guard hasn't left that storeroom door all day.
 list museum_exhibit
 narrate The Red Ribbon Army exhibit. Uniforms, a rusted rifle, a photograph of a burned-out headquarters.
 narrate The plaque reads: "Destroyed in a single day. The army's chief scientist was never found."
 say lazuli.0 Somebody built all this... and one kid knocked it down.
 say lapis.1 Never found, huh? Bet he's somewhere sulking about it.
+# ---------- side job "Lost Brother" (log4/gen_more.py; flags 464 asked, 465 reunited)
+list lost_boy
+if_flag 465 boy_after
+set_flag 464
+narrate Little boy: (sniffling) My sister said wait right here. She said she'd be right back. That was before lunch.
+say lazuli.0 What does she look like?
+narrate Little boy: Yellow hair. Like yours. She's really bossy.
+say lapis.2 Sounds familiar.
+say lazuli.3 Lapis.
+narrate Little boy: We were going to the river to see the boats...
+journal Find the lost boy's sister (the river?)
+stop
+label boy_after
+narrate Little boy: My sister found me! She said two scary teenagers told her where I was. Thanks, scary teenagers!
+list lost_sister
+if_flag 465 sister_after
+unless_flag 464 sister_alone
+set_flag 465
+narrate Girl: Have you seen a little boy? This tall, yellow hair, won't stop talking? I turned around for one minute...
+say lazuli.1 The circus lot. He's still waiting where you told him to.
+narrate Girl: Oh, thank goodness. He never listens to anyone, except when it's the one time he shouldn't.
+say lapis.1 You left him alone with the Red Fangs around?
+narrate Girl: I know. I know! I'm going. Thank you, both of you!
+narrate She presses a bottle into Lazuli's hands and runs for the bridge.
+say lazuli.0 Lapis. Remember the rule?
+say lapis.2 Never split up. I remember. I made it up.
+say lazuli.3 You did not. I did.
+do call 129 3 1
+narrate Got a Vanilla Soda.
+stop
+label sister_alone
+narrate Girl: (looking up and down the riverbank) Sorry, I can't talk, I'm looking for someone!
+stop
+label sister_after
+narrate Girl: He's sitting on my feet so I can't leave again. It's working.
+# ---------- the Ribbon Ruby (flags 461 heard of it, 462 Hercule's show, 463 taken, 466 storeroom arrival, 467 stashed)
+list museum_guard
+if_flag 463 guard_after
+if_flag 462 guard_show
+narrate Museum guard: That door says STAFF ONLY, kids. And I'm the staff.
+narrate Museum guard: Nobody goes in there till the gala. Not with the ruby back there.
+stop
+label guard_show
+narrate Museum guard: (nose against the window, watching the street) Is that... Hercule? Doing push-ups? On the museum steps?
+stop
+label guard_after
+narrate Museum guard: Back to my post. Nothing ever happens in this museum. Thank goodness.
+list storeroom_door
+if_flag 463 door_done
+unless_flag 461 door_plain
+unless_flag 462 door_guarded
+narrate The guard has his back to the door, glued to the window. Lazuli has the lock open in six seconds.
+say lazuli.0 Stay close. And don't touch anything you can't carry.
+do call 120 20; call 119 4 46 1 140 256; call 121 20
+stop
+label door_plain
+narrate A tall double door in the back wall. STAFF ONLY. Locked.
+stop
+label door_guarded
+narrate A tall double door marked STAFF ONLY. The guard on his stool beside it hasn't looked away once.
+say lapis.1 We need him looking somewhere else.
+stop
+label door_done
+narrate STAFF ONLY. Locked again, as if nothing ever happened.
+list ch5_storeroom
+set_flag 466
+narrate The museum's storeroom. Statues, crates, sheets over everything. And a night guard with a flashlight.
+narrate His beam sweeps the middle of the room, slow and steady. The statues along the walls throw long shadows.
+say lazuli.0 Along the walls. Stay in the shadows. The case is at the far end.
+journal Take the {c07}Ribbon Ruby{c02} without being seen
+do call 47; call 51 0
+list storeroom_beam
+narrate The flashlight beam swings straight into Lapis's face.
+narrate Night guard: Hey! Who's back there? This area is off limits!
+say lapis.2 Sorry! Looking for the bathroom!
+narrate The twins are out the door before he gets off his stool. Back to the hall, and try again.
+do call 120 20; call 119 4 45 1 112 144; call 121 20
+list storeroom_guard
+narrate Night guard: (sweeping the beam, humming) ...Nobody here. Nobody ever here...
+list ruby_case
+if_flag 463 ruby_gone
+set_flag 463
+narrate A glass case under a sheet. Inside, on red velvet: a ruby the size of a hen's egg.
+narrate The card reads: THE RIBBON RUBY. Personal property of Commander Red, Red Ribbon Army. Recovered from the ruins of headquarters.
+say lapis.1 That's it? We could sell that for a car. Two cars.
+say lazuli.0 We're not selling it.
+say lapis.2 Then why are we stealing it?
+say lazuli.1 For later. For when we need it. Everybody needs one thing put away for later.
+do call 129 28 1
+narrate Got the Ribbon Ruby.
+journal Get out of the museum with the ruby
+stop
+label ruby_gone
+narrate The empty case. Someone has left a single zeni coin on the velvet.
+# ---------- Gero's notes 1 and 2 (item 31 "Gero's Note"; flags 520 / 521; all ten -> notes_done in act3_world)
+list note_park
+if_flag 520 npark_read
+set_flag 520
+narrate Under the park bench, a page torn from a notebook. Small, careful handwriting.
+narrate "Observation, day four. The boy steals. The girl decides what is worth stealing. Neither ever lets the other out of sight."
+say lapis.1 Somebody's been taking notes on us.
+say lazuli.0 Keep it.
+do call 129 31 1
+run notes_check
+stop
+label npark_read
+narrate Just a park bench.
+list note_museum
+if_flag 521 nmus_read
+set_flag 521
+narrate A notebook page, dropped behind the uniform case. The same small handwriting.
+narrate "Visited the exhibit. They have my lab coat behind glass. They spelled my name wrong. Let them keep looking in the wrong place."
+say lazuli.0 It's the same writing as the page in the park.
+say lapis.1 Somebody who used to work for the Red Ribbon Army. And now he watches kids in parks. Great.
+do call 129 31 1
+run notes_check
+stop
+label nmus_read
+narrate The uniform case. A red ribbon pinned to a grey coat.

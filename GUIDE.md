@@ -24,6 +24,13 @@ Nothing in the game locks you out of finishing it. Four things in Act 3 decide w
 
 Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 772 hub)**) reminds you which of the chapter 9 visits you have made.
 
+**Optional, but only in their own chapter:** the Ribbon Ruby heist (chapter 5, it pays off in chapter 8), and the lore pages below. Missing them never blocks the story.
+
+## Lore pages
+Two sets of collectibles tell the story behind the story. Each page is an examine spot; the Inventory counts them.
+- **Army Files** (Act One, 6): **Fuel Depot** (examine) / **Supply Yard** (examine) / **Munitions Line B** (examine) / **Supply Depot** (examine) / **Prototype Graveyard** / **Generator Cave** (examine). All six: Gero closes the folder and gets 2 Holy Waters. The files stay with Gero when Act One ends.
+- **Gero's Notes** (Acts Two and Three, 10): **West City** (examine) / **West City Museum** (examine) / **Old House** (examine) / **Security Wing** (examine) / **Research Archive** (examine) / **Old Warehouse (767)** (examine) / **Northern bunker (Age 768)** (examine) / **Generator Cave (768)** (examine) / **Old Mine (768)** (examine) / **Resistance Shelter** (examine). All ten: the twins read the whole notebook and find Gero's last capsule: 3 Senzu Beans and 2 Super Elixirs.
+
 ---
 
 # Act One: The Doctor
@@ -40,6 +47,7 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 4. **Caches on the range:**
    - **Fuel Depot** (examine): Soda x2, Tea x1
    - **The Pit** (examine): Milk x2
+   - Army file 1 (on the Fuel Depot's left fuel tank): **Fuel Depot** (examine).
 5. With all three sites logged, the objective becomes "Pass the final test in the live-fire arena". The arena gate on the Bone Flats' west side opens. Before that, examining it just shows the "locked" sign.
 6. **Boss: Heavy tank (HP 500, level 58)** in the Live-Fire Arena. 
 7. The drone link returns you to the lab for Gero's report, and chapter 2 begins.
@@ -57,6 +65,7 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 5. **Caches:**
    - **Fuel Dump** (examine): Soda x2, Milk x1
    - **Supply Yard** (examine): Senzu Bean x1, Tea x1 (face the top crate of the stack)
+   - Army file 4 (the Supply Yard office): **Supply Yard** (examine).
 6. With all three found, the objective becomes "Reach Gevo at the fence on Ambush Ridge". The Scorched Canyon's right-hand exit now leads to Gevo. Walk up to him for the end of the chapter.
 
 ## Chapter 3: The Boy Called Goku
@@ -67,8 +76,13 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 3. **Munitions Line A, then B, then C.** Looters strip the belts: "Take the vault keycard from the looters' captain".
    - **Mini-boss: Looters' captain (HP 420, level 57)** in Munitions Line C. He drops the vault keycard.
    - Caches: **Munitions Line C** (examine): Tea x1, Milk x2 and **Munitions Line B** (examine): Senzu Bean x1.
+   - Army file 3 (in Line B, by the press): **Munitions Line B** (examine).
 4. **Archive Vault** (down from Line C): the blast door needs the keycard. With it, go up into the Army Archive and use the console (**Army Archive** (examine)). Gero wipes the files and starts the self-destruct.
-5. The emergency hatch drops you on the escape route: "Get clear of the base". Climb to the old bridge for the end of the chapter.
+5. The emergency hatch drops you on the escape route: "Get off the mountain through the supply depot". The old bridge is out: take the trail off the east edge of the slope to the **Supply Depot**.
+6. **Supply Depot**: "Get past the Quartermaster to the depot tunnel".
+   - **Mini-boss: The Quartermaster (HP 380, level 58)** stands in front of the back tunnel, with looters.
+   - Army file 2 (the ledger, on the crates by the door): **Supply Depot** (examine). Cache: **Supply Depot** (examine): Senzu Bean x1, Root Beer x2.
+   - With the Quartermaster beaten, examine the dark gap in the crates from their right side (**Supply Depot** (examine)) for the end of the chapter.
 
 ## Chapter 4: The First Androids
 **You play:** the drone (Gero at the end). **Goal:** restore the bunker's power and wake Android 16.
@@ -81,6 +95,8 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
    - **Mini-boss: Prototype 9 (HP 450, level 59)** sits on relay 3 in the Old Mine; destroy it first.
    - The barred shaft in the Old Mine is not an exit (**Old Mine (768)** (examine), **Old Mine** (examine)).
    - Caches: **Generator Cave** (examine): Soda x2, Senzu Bean x1 and **Old Mine** (examine): Tea x1, Milk x1.
+   - Army file 6 (the radio log in the Generator Cave): **Generator Cave** (examine).
+   - **Optional: the Prototype Graveyard**, down the trail at the bottom of the Mountain Pass. Gero's old failures lie in the canyon. **Mini-boss: Prototype 3, reactivated (HP 800, level 60)** wakes up among them. Army file 5 is under the wreck at the bottom (**Prototype Graveyard**). Cache: **Prototype Graveyard** (examine): Elixir x1, Root Beer x2.
 4. With all three relays on, Prototype 12 breaks out of the conversion pod: "Destroy Prototype 12".
 5. **Boss: Prototype 12 (HP 420, level 53)** in the bunker incubator.
 6. Talk to Android 16 in the tank room (**Bunker tank room**). Then enter the conversion pod (**Bunker incubator** (examine)): "Enter the conversion pod in the incubator". **End of Act One.**
@@ -90,7 +106,7 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 # Act Two: Lapis and Lazuli
 
 ## Chapter 5: Siblings
-**You play:** Lapis (Lazuli in the party). **Goal:** West City. Four things must be done before the chapter ends: the fence, Hercule, the police chase, and the warehouse.
+**You play:** Lapis (Lazuli in the party). **Goal:** West City. Four things must be done before you can end the chapter: the fence, Hercule, the police chase, and the warehouse.
 
 1. West City: "Explore West City". The townsfolk all have something to say.
 2. **The fence** (**West City**) recognises the Red Ribbon mark on your stolen capsule case: "Find out who's asking about you".
@@ -103,17 +119,24 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
    - The Z-Mart clerk (**Z-Mart**: V. Soda x2).
    - The West City Museum curator (**West City Museum**: Senzu Bean x1). The Red Ribbon exhibit in the museum (**West City Museum** (examine)) is worth a look.
 7. **Other caches:** **Riverside** (examine): Tea x1 and **Docks** (hold Up): Milk x1, C. Soda x1 (the dome house).
-8. Once the fence, Hercule, the chase and the warehouse are done, the chapter ends: "Hide out until nightfall; Get to the docks unseen".
+8. **Side job "Lost Brother":** a little boy in the Circus Lot (**Circus Lot**) lost his sister: "Find the lost boy's sister (the river?)". She's on the Riverside (**Riverside**: V. Soda x1).
+9. **Side job "The Ribbon Ruby"** (after returning the medal, the curator mentions it: "(Optional) The Ribbon Ruby in the museum storeroom"). A guard sits by the tall STAFF ONLY door at the back of the museum. Tell Hercule there's a crowd at the museum (**West City**); while the guard watches his show, slip through the door.
+   - **Museum Storeroom**: the night guard's flashlight sweeps the middle of the room. Walk up along either wall and across the top row to the case between the statues (**Museum Storeroom** (examine): Ribbon Ruby x1).
+   - The ruby goes into the tin box when you rest at the warehouse, and turns up again in chapter 8.
+10. Gero's notes 1 and 2: under the park bench in West City's park (**West City** (examine)) and by the uniform case in the museum (**West City Museum** (examine)).
+11. Once the fence, Hercule, the chase and the warehouse are done: "Rest at the warehouse when you're ready (the chapter ends)". Finish anything else in town, then examine the mattresses in the Old Warehouse (**Old Warehouse** (examine)) to end the chapter: "Hide out until nightfall; Slip through the searchlights to your old house".
 
 ## Chapter 6: Taken
 **You play:** Lapis, at night. **Goal:** get home unseen.
 
-1. West City at night. A drone sweeps the crossroads; go down the south road to the Riverside.
-2. Gero's hunter drones patrol the Riverside and the Docks.
+1. West City at night. Drones hover over the south bridge, and a line of searchlight drones runs down the east side of the main road, plus one in the lane past the city hall. Step into a beam and you're sent back to the park. **The gap:** cross just south of where the two beams on the main road end, about halfway down the park. Two hunter drones on the street north of the shops can be fought for experience.
+2. **The old house:** the dome house top right, east of the road: "Run for the fire stairs across the rooftops". Cache: **Old House** (examine): C. Soda x1. Gero's note 3 is on the television (**Old House** (examine)). The ladder (**Old House** (examine)) also takes you back up to the roof.
+3. **Rooftops**: "Get past the hunter on the fire stairs". **Mini-boss: Rooftop hunter (HP 200, level 55)** blocks the fire stairs at the east end. Once it's down, the stairs lead down to the Riverside.
+4. Gero's hunter drones patrol the Riverside and the Docks.
    - Caches: **Riverside (night)** (examine): Root Beer x1 and **Docks (night)** (hold Up): Senzu Bean x1.
-3. The Old Warehouse: "Destroy the machine in the warehouse".
-4. **Boss: The Collector (HP 520, level 56)**.
-5. The ambush follows. The twins wake in Gero's lab: "Lapis and Lazuli are gone". You also unlock the **Outfit** skill: select it and press B to switch between the android outfit and the old clothes.
+5. The Old Warehouse: "Destroy the machine in the warehouse".
+6. **Boss: The Collector (HP 520, level 56)**.
+7. The ambush follows. The twins wake in Gero's lab: "Lapis and Lazuli are gone". You also unlock the **Outfit** skill: select it and press B to switch between the android outfit and the old clothes.
 
 ---
 
@@ -125,8 +148,12 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 1. Age 767. Gero wakes the twins, and it goes badly for him: "Leave Dr. Gero's hidden laboratory". Eighteen lingers in the pod room.
 2. Go down into the Security Wing. The lab's computer locks everything down: "Get through the lockdown to the control room".
    - Cache: **Security Wing** (examine): Senzu Bean x1, Tea x1.
-3. **Boss: Security Unit (HP 3300, level 56)** guards the Control Room (right of the Security Wing).
-4. Use the console (**Control Room** (examine)) to end the lockdown. Then leave through the cave to the northern mountains for the end of the chapter.
+   - Gero's note 4: under the small console's keyboard in the Security Wing (**Security Wing** (examine)).
+3. **Optional: the Research Archive**, through the opening on the right of the pod room. Walk up the centre aisle and face the shelves on either side: three research logs (**Research Archive** (examine)) and Gero's note 5 (**Research Archive** (examine)).
+   - **The power puzzle:** the lower corridor at the bottom of the Security Wing is shuttered. Close the three breakers on the Security Wing's consoles in the order CORE (**Security Wing** (examine)), LIGHTS (**Security Wing** (examine)), DOORS (**Security Wing** (examine)). The wrong order trips them all.
+   - **Bio Wing** (down the lower corridor; ): "Destroy the bio wing's warden". **Mini-boss: Bio wing warden (HP 1900, level 57)** on the catwalk. Then use the monitor on the far side (**Bio Wing** (examine)) for a first look at Project Cell. The door on the left is sealed.
+4. **Boss: Security Unit (HP 3300, level 56)** guards the Control Room (right of the Security Wing).
+5. Use the console (**Control Room** (examine)) to end the lockdown. Then leave through the cave to the northern mountains for the end of the chapter.
 
 ## Chapter 8: The Massacre
 **You play:** Seventeen; one fight as Eighteen. **Goal:** West City, then the Z Fighters.
@@ -135,6 +162,8 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 2. Go down to the Riverside, right to the Docks, and up to the Old Warehouse. Gero's old machines prowl here.
    - **The tin box** (needed for the apple). Examine the crates in the Old Warehouse (**Old Warehouse (767)** (examine)): "Head back into West City".
    - Caches: **Riverside (767)** (examine): C. Soda x1 and **Docks (767)** (hold Up): Elixir x1, Senzu Bean x1.
+   - If you took the Ribbon Ruby in chapter 5, it's still in the tin box.
+   - Gero's note 6: pinned behind a crate in the Old Warehouse (**Old Warehouse (767)** (examine)).
 3. **Memory: the apple (missable).** Back in West City, talk to the fruit seller (**West City (Age 767)**). It only works after the tin box. The objective becomes "Meet them at the crossroads".
 4. Walk onto the crossroads; the Z Fighters land.
 5. **Boss: Vegeta (HP 1100, level 54)**.
@@ -149,8 +178,9 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 2. **The northern mountains.** The bunker door is sealed: "Destroy the Sentinel in the generator cave".
    - **Mini-boss: The Sentinel (HP 2600, level 58)** in the Generator Cave (right of the Mountain Pass).
    - Cache: **Old Mine (768)** (examine): Hercule-ade x2, Senzu Bean x1. The Old Mine is up from the Generator Cave.
+   - Gero's notes 8 and 9: behind the generator in the Generator Cave (**Generator Cave (768)** (examine)) and under a rock by the Old Mine's lower-left wall (**Old Mine (768)** (examine)).
    - With the Sentinel destroyed, the bunker door on the left of the Mountain Pass opens.
-3. The bunker: "Find Unit Thirteen". Android 16's empty pod is in the tank room (**Bunker tank room (Age 768)** (examine)).
+3. The bunker: "Find Unit Thirteen". Gero's note 7 is tucked behind the old tank in the bottom-left corner (**Northern bunker (Age 768)** (examine)). Android 16's empty pod is in the tank room (**Bunker tank room (Age 768)** (examine)).
 4. **Two-phase boss in the incubator**: first **Android 13 (HP 700, level 56)**, then he absorbs Fourteen and Fifteen (you're fully healed) and you fight **Super Android 13 (HP 1500, level 58)**.
 5. **Age 772: the hub.** Capsule Corporation is now the twins' base: "Fly anywhere you like: the airship pad or the hangar. West City's crossroads when you're ready.".
    - **New outfits:** talk to Eighteen at the hub (**Capsule Corporation (Age 772 hub)**). From then on, Outfit cycles through every outfit you own (see "Outfits and Super 17" below).
@@ -166,9 +196,11 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 1. Age 780, the Circus Lot ruins: "Get to the crossroads". The resistance has wired the lot with turrets and old machines.
    - Cache: **Circus Lot ruins (780)** (examine): Senzu Bean x1, Elixir x1.
    - The world map is open again here: talk to Eighteen, or walk off the top of the lot.
-2. Go right to the crossroads in the rain. If you visited Mount Paozu, Eighteen tells Gohan about his mother.
-3. **Final boss: One-armed Future Gohan (HP 1850, level 58)**.
-4. **The finale** (Age 785) and the **epilogue** (Age 788) follow. With all four memories, the **secret chapter** starts. Otherwise the game ends and hints that something else could wake up.
+2. **The Burning District** (right of the Circus Lot ruins): the resistance ambushes the twins: "Get through the burning district (the shelter: the subway stairs)".
+   - **Optional: the Resistance Shelter**, down the subway stairs at the top left. **Mini-boss: Resistance captain (HP 1800, level 58)**. Afterwards, the girl behind the crates (**Resistance Shelter**), the radio (**Resistance Shelter** (examine)), Gero's note 10 on the resistance's map (**Resistance Shelter** (examine)), and a cache (**Resistance Shelter** (examine): Senzu Bean x2).
+3. Go right from the Burning District to the crossroads in the rain. If you visited Mount Paozu, Eighteen tells Gohan about his mother.
+4. **Final boss: One-armed Future Gohan (HP 1850, level 58)**.
+5. **The finale** (Age 785) and the **epilogue** (Age 788) follow. With all four memories, the **secret chapter** starts. Otherwise the game ends and hints that something else could wake up.
 
 ---
 
@@ -193,7 +225,7 @@ Eighteen stands next to the landing spot at every destination; talk to her to fl
 **Outfits and Super 17.** Select Outfit with the L Button and press B to change. Each press moves on to the next outfit:
 - Seventeen: old clothes, android clothes, then (after talking to Eighteen at the hub) a white shirt and a brown jacket.
 - Eighteen: old clothes, android clothes, then (same unlock) a red top with yellow trousers, a red top with black sleeves, and a maroon tracksuit.
-- **Super 17:** beat **Prototype 11 (HP 6150, level 60)** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. While in Super 17, Outfit switches between dark hair and gold hair.
+- **Super 17:** beat **Prototype 11 (HP 6150, level 60)** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. Super 17 raises Seventeen's Strength by half (x1.5) until he changes back or runs out of ki.
 
 **Other sights:** Orange Star City's school (**Orange Star City** (examine)), a police officer (**Orange Star City**) and a schoolgirl (**Orange Star City**). Every place also has its own first-landing scene.
 
@@ -217,32 +249,55 @@ Every container, gift and reward that gives items. Each one works once.
 | Where | How | Gives |
 |---|---|---|
 | Red Ribbon Headquarters: Munitions Line B | examine (face up) | Senzu Bean x1 |
+| Supply Depot | examine (face left) | Senzu Bean x1, Root Beer x2 |
 | Northern Wilderness: Fuel Dump | examine (face up) | Soda x2, Milk x1 |
 | Northern Wilderness: Generator Cave | examine (face left) | Soda x2, Senzu Bean x1 |
+| Prototype Graveyard | examine (face left) | Elixir x1, Root Beer x2 |
+| Old House | examine (face left) | C. Soda x1 |
 | Red Ribbon Headquarters: Munitions Line C | examine (face right) | Tea x1, Milk x2 |
 | Northern Wilderness: Old Mine | examine (face left) | Tea x1, Milk x1 |
 | Riverside | examine (face left) | Tea x1 |
+| Resistance Shelter | examine (face left) | Senzu Bean x2 |
 | Northern Wilderness: Supply Yard | examine (face up) | Senzu Bean x1, Tea x1 |
 | Circus Lot ruins (780) | examine (face up) | Senzu Bean x1, Elixir x1 |
 | Old Warehouse | examine (face down) | Senzu Bean x1, Soda x2 |
 | Dr. Gero's Lab: Security Wing | examine (face up) | Senzu Bean x1, Tea x1 |
 | West City Docks: Docks (767) | hold Up | Elixir x1, Senzu Bean x1 |
 | Riverside (767) | examine (face left) | C. Soda x1 |
+| Old Warehouse (767) | examine (face down) | Ribbon Ruby x1 |
 | Northern Wilderness: Old Mine (768) | examine (face left) | Hercule-ade x2, Senzu Bean x1 |
 | Red Ribbon Proving Ground: Fuel Depot | examine (face up) | Soda x2, Tea x1 |
 | Red Ribbon Proving Ground: The Pit | examine (face left) | Milk x2 |
 | Diablo Desert | examine (face up) | Dragon Ball 3 x1 |
 | West City Docks: Docks | hold Up | Milk x1, C. Soda x1 |
+| Northern Wilderness: Generator Cave | examine (face left) | Army File x1 |
+| Supply Depot | examine (face left) | Army File x1 |
+| Prototype Graveyard | talk | Army File x1 |
+| Red Ribbon Headquarters: Munitions Line B | examine (face up) | Army File x1 |
+| Red Ribbon Proving Ground: Fuel Depot | examine (face up) | Army File x1 |
+| Northern Wilderness: Supply Yard | examine (face up) | Army File x1 |
 | Roshi's Island: Kame House | examine (face up) | Dragon Ball 1 x1 |
 | Kami's Lookout | examine (face up) | Holy Water x2, Senzu Bean x3, DinosaurMilk x1 |
+| Riverside | talk | V. Soda x1 |
 | West City Museum | talk | Senzu Bean x1 |
 | Nataday Village | talk | Dragon Ball 5 x1, Senzu Bean x1 |
 | West City Docks: Docks (night) | hold Up | Senzu Bean x1 |
 | Riverside (night) | examine (face left) | Root Beer x1 |
+| Research Archive | examine (face right) | Gero's Note x1 |
+| Dr. Gero's Lab: Northern bunker (Age 768) | examine (face left) | Gero's Note x1 |
+| Northern Wilderness: Generator Cave (768) | examine (face left) | Gero's Note x1 |
+| Old House | examine (face up) | Gero's Note x1 |
+| Northern Wilderness: Old Mine (768) | examine (face left) | Gero's Note x1 |
+| West City Museum | examine (face up) | Gero's Note x1 |
+| West City | examine (face up) | Gero's Note x1 |
+| Resistance Shelter | examine (face left) | Gero's Note x1 |
+| Old Warehouse (767) | examine (face up) | Gero's Note x1 |
+| Dr. Gero's Lab: Security Wing | examine (face up) | Gero's Note x1 |
 | Orange Star City | talk | Dragon Ball 2 x1 |
 | Goku's House: Mount Paozu: Goku's house | examine (face up) | Dragon Ball 4 x1 |
 | Papaya Island | talk | Dragon Ball 7 x1 |
 | Pilaf's Castle | examine (face up) | Dragon Ball 6 x1 |
+| Museum Storeroom | examine (face up) | Ribbon Ruby x1 |
 | Z-Mart | talk | V. Soda x2 |
 
 ## Secret chapter conditions (read from the epilogue script)
@@ -264,6 +319,8 @@ Every container, gift and reward that gives items. Each one works once.
 | Looters' captain | Red Ribbon Headquarters: Munitions Line C | 420 | 57 | 13 | 0 | 20 | 500 |
 | Prototype 9 | Northern Wilderness: Old Mine | 450 | 59 | 13 | 0 | 22 | 600 |
 | Security Unit | Dr. Gero's Lab: Control Room | 3300 | 56 | 32 | 0 | 30 | 700 |
+| Prototype 3, reactivated | Prototype Graveyard | 800 | 60 | 17 | 0 | 20 | 650 |
+| Bio wing warden | Bio Wing | 1900 | 57 | 24 | 0 | 24 | 900 |
 | Big Ox, Red Fang boss | Old Warehouse | 420 | 55 | 10 | 0 | 12 | 320 |
 | The Collector | Old Warehouse (night) | 520 | 56 | 11 | 0 | 13 | 400 |
 | Vegeta | West City: Crossroads: Vegeta | 1100 | 54 | 19 | 17 | 20 | 600 |
@@ -288,6 +345,8 @@ Every container, gift and reward that gives items. Each one works once.
 | Castle ninja | Pilaf's Castle | 450 | 56 | 17 | 0 | 18 | 240 |
 | Ninja captain | Pilaf's Castle | 4000 | 59 | 38 | 0 | 28 | 1300 |
 | Butcher, raider boss | Nataday Village | 3200 | 59 | 32 | 0 | 28 | 1400 |
+| Gero's old heavy unit | Burning District | 420 | 57 | 15 | 0 | 20 | 260 |
+| Resistance captain | Resistance Shelter | 1800 | 58 | 22 | 0 | 22 | 1000 |
 
 # Area atlas (generated from the ROM)
 
@@ -353,8 +412,9 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - enemies: Bomber x2
 
 ### Northern Wilderness: Escape route  `1:71`
+- Right exit -> Supply Depot
 - walk in: `ch3_escape` (when conditional)
-- walk in: `ch3_end` (when conditional)
+- walk in: `bridge_out`
 - enemies: Bomber x2
 
 ### Dr. Gero's Lab: Northern bunker  `1:72`
@@ -384,6 +444,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### Dr. Gero's Lab: Hidden laboratory (pod room)  `1:81`
 - Down exit -> Dr. Gero's Lab: Security Wing
+- Right exit -> Research Archive
 - person: `eighteen_lab_talk`
 
 ### Northern Wilderness: Cave outside the hidden lab  `1:82`
@@ -400,6 +461,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Red Ribbon Proving Ground: Fuel Depot  `1:85`
 - Down exit -> Red Ribbon Proving Ground: Range Gate
 - examine (face up): `crate_depot` - gives Soda x2, Tea x1
+- examine (face up): `file_range` - gives Army File x1
 - person: `site_b`
 - enemies: Laser turret, Mercenary
 
@@ -461,6 +523,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Left exit -> Northern Wilderness: Scorched Canyon
 - walk in: `ch2_yard` (when flag 314 clear)
 - examine (face up): `cache_yard` - gives Senzu Bean x1, Tea x1
+- examine (face up): `file_yard` - gives Army File x1
 - person: `surv_c`
 - enemies: Gunman, Mercenary, Raider Chief
 
@@ -480,6 +543,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Left exit -> Red Ribbon Headquarters: Munitions Line A
 - Right exit -> Red Ribbon Headquarters: Munitions Line C
 - examine (face up): `cache_belt` - gives Senzu Bean x1
+- examine (face up): `file_line` - gives Army File x1
 - enemies: Raider thug x2, Mercenary
 
 ### Red Ribbon Headquarters: Munitions Line C  `1:105`
@@ -502,6 +566,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Northern Wilderness: Mountain Pass  `1:108`
 - Right exit -> Northern Wilderness: Generator Cave
 - Left exit -> Dr. Gero's Lab: Northern bunker
+- Down exit -> Prototype Graveyard
 - walk in: `ch4_pass` (when flag 289 clear)
 - enemies: Raider thug x2, Gunman, Failed prototype
 
@@ -509,6 +574,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Down exit -> Northern Wilderness: Mountain Pass
 - Up exit -> Northern Wilderness: Old Mine
 - examine (face left): `cache_gen` - gives Soda x2, Senzu Bean x1
+- examine (face left): `file_cave` - gives Army File x1
 - person: `relay_2`
 - enemies: Failed prototype x2
 
@@ -522,14 +588,54 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Dr. Gero's Lab: Security Wing  `1:111`
 - Right exit -> Dr. Gero's Lab: Control Room
 - Left exit -> Dr. Gero's Lab: Hidden laboratory (pod room)
+- Down exit -> Bio Wing (only when flag 485 set)
 - walk in: `ch7_alarm` (when flag 338 clear)
 - examine (face up): `ch7_locker` - gives Senzu Bean x1, Tea x1
+- walk in: `wing_lower_locked` (when flag 485 clear)
+- examine (face up): `breaker_core`
+- examine (face up): `breaker_lights`
+- examine (face up): `breaker_doors`
+- examine (face up): `note_wing` - gives Gero's Note x1
 - enemies: Failed prototype x3, Laser turret x2
 
 ### Dr. Gero's Lab: Control Room  `1:112`
 - Right exit -> Dr. Gero's Lab: Security Wing
 - examine (face up): `ch7_console`
 - enemies: Security Unit
+
+### Supply Depot  `1:113`
+- Down exit -> Northern Wilderness: Escape route
+- walk in: `ch3_depot` (when flag 450 clear)
+- examine (face left): `depot_tunnel`
+- examine (face left): `file_depot` - gives Army File x1
+- examine (face left): `cache_depot` - gives Senzu Bean x1, Root Beer x2
+- enemies: Raider thug, Gunman, The Quartermaster
+
+### Prototype Graveyard  `1:114`
+- Up exit -> Northern Wilderness: Mountain Pass
+- walk in: `ch4_graveyard` (when flag 455 clear)
+- walk in: `ch4_graveyard` (when flag 455 clear)
+- examine (face left): `cache_grave` - gives Elixir x1, Root Beer x2
+- person: `wreck_1`
+- person: `wreck_5`
+- person: `wreck_8`
+- person: `file_grave` - gives Army File x1
+- enemies: Failed prototype, Prototype 3, reactivated
+
+### Research Archive  `1:115`
+- Down exit -> Dr. Gero's Lab: Hidden laboratory (pod room)
+- walk in: `ch7_archive` (when flag 480 clear)
+- examine (face left): `log_subjects`
+- examine (face right): `log_units`
+- examine (face left): `log_cell`
+- examine (face right): `note_archive` - gives Gero's Note x1
+
+### Bio Wing  `1:116`
+- Down exit -> Dr. Gero's Lab: Security Wing
+- examine (face up): `bio_units_door`
+- examine (face up): `bio_monitor`
+- walk in: `ch7_bio` (when flag 481 clear)
+- enemies: Bio wing warden
 
 ### West City  `4:1`
 - Left exit -> Circus Lot
@@ -538,6 +644,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Up exit -> West City Museum
 - walk in: `ch5_start` (when conditional)
 - walk in: `park_hide` (when conditional)
+- examine (face up): `note_park` - gives Gero's Note x1
 - person: `wc_woman_pink`
 - person: `wc_woman_blue`
 - person: `wc_man_green`
@@ -552,12 +659,14 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Circus Lot  `4:40`
 - Right exit -> West City
 - person: `ch5_vendor`
+- person: `lost_boy`
 - enemies: Red Fang punk x2, Red Fang bruiser
 
 ### Riverside  `4:41`
 - Up exit -> West City
 - Right exit -> West City Docks: Docks
 - examine (face left): `cache_river` - gives Tea x1
+- person: `lost_sister` - gives V. Soda x1
 - enemies: Red Fang punk x2, Red Fang bruiser
 
 ### West City Docks: Docks  `4:42`
@@ -570,6 +679,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Up exit -> West City Docks: Docks
 - walk in: `ch5_den` (when flag 389 clear)
 - examine (face down): `ch5_stash` - gives Senzu Bean x1, Soda x2
+- examine (face left): `ch5_rest`
 - enemies: Red Fang punk, Red Fang bruiser, Big Ox, Red Fang boss
 
 ### Z-Mart  `4:44`
@@ -579,15 +689,34 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### West City Museum  `4:45`
 - Down exit -> West City
 - examine (face up): `museum_exhibit`
+- examine (face up): `storeroom_door`
+- examine (face up): `note_museum` - gives Gero's Note x1
 - person: `museum_curator` - gives Senzu Bean x1
+- person: `museum_guard`
+
+### Museum Storeroom  `4:46`
+- Down exit -> West City Museum
+- walk in: `ch5_storeroom` (when flag 466 clear)
+- walk in: `storeroom_beam` (when flag 463 clear)
+- walk in: `storeroom_beam` (when flag 463 clear)
+- examine (face up): `ruby_case` - gives Ribbon Ruby x1
+- person: `storeroom_guard`
 
 ### West City (night)  `16:1`
 - Down exit -> Riverside (night)
-- walk in: `night_crossroads` (when flag 337 clear)
+- Up exit -> Old House
+- walk in: `night_south` (when flag 473 clear)
+- walk in: `night_spotted` (when flag 471 clear)
+- walk in: `night_spotted` (when flag 471 clear)
+- walk in: `night_spotted` (when flag 471 clear)
 - person: `night_police`
 - person: `night_drone`
 - person: `night_drone`
 - person: `night_drone`
+- person: `night_drone`
+- person: `night_drone`
+- person: `night_drone`
+- enemies: Gero's hunter drone x2
 
 ### Riverside (night)  `16:41`
 - Up exit -> West City (night)
@@ -608,6 +737,19 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### Old Warehouse (ambush)  `16:44`
 - walk in: `ch6_ambush` (when flag 305 clear)
+
+### Old House  `16:46`
+- Right exit -> West City (night)
+- walk in: `ch6_oldhouse` (when flag 471 clear)
+- examine (face left): `cache_house` - gives C. Soda x1
+- examine (face up): `note_house` - gives Gero's Note x1
+- examine (face up): `house_ladder`
+
+### Rooftops  `16:47`
+- Down exit -> Riverside (night) (only when flag 473 set)
+- walk in: `roof_chase_1` (when flag 472 clear)
+- examine (face down): `roof_stairs_blocked` (when flag 473 clear)
+- enemies: Rooftop hunter
 
 ### West City (Age 767)  `17:1`
 - Down exit -> Riverside (767)
@@ -653,6 +795,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Down exit -> Northern Wilderness: Mountain Pass (768)
 - walk in: `ch9_bunker`
 - walk in: `ch9_bunker` (when flag 362 clear)
+- examine (face left): `note_bunker` - gives Gero's Note x1
 
 ### Dr. Gero's Lab: Bunker tank room (Age 768)  `17:13`
 - Up exit -> Dr. Gero's Lab: Northern bunker (Age 768)
@@ -694,7 +837,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - person: `fly_kame`
 
 ### West City: Crossroads in the rain (Age 780)  `17:21`
-- Left exit -> Circus Lot ruins (780)
+- Left exit -> Burning District
 - walk in: `ch10_rain` (when conditional)
 
 ### West City: Crossroads: Future Gohan  `17:22`
@@ -748,7 +891,8 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### Old Warehouse (767)  `17:36`
 - Up exit -> West City Docks: Docks (767)
-- examine (face down): `ch8_hideout`
+- examine (face down): `ch8_hideout` - gives Ribbon Ruby x1
+- examine (face up): `note_warehouse` - gives Gero's Note x1
 - enemies: Gero's old heavy unit, Gero's hunter drone
 
 ### Northern Wilderness: Mountain Pass (768)  `17:37`
@@ -761,19 +905,21 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Northern Wilderness: Generator Cave (768)  `17:38`
 - Down exit -> Northern Wilderness: Mountain Pass (768)
 - Up exit -> Northern Wilderness: Old Mine (768)
+- examine (face left): `note_cave` - gives Gero's Note x1
 - enemies: Failed prototype, The Sentinel
 
 ### Northern Wilderness: Old Mine (768)  `17:39`
 - Down exit -> Northern Wilderness: Generator Cave (768)
 - examine (face up): `mine_gate`
 - examine (face left): `ch9_cache_mine` - gives Hercule-ade x2, Senzu Bean x1
+- examine (face left): `note_mine` - gives Gero's Note x1
 - enemies: Gero's old heavy unit x2, Failed prototype
 
 ### Circus Lot ruins (780)  `17:40`
-- Right exit -> West City: Crossroads in the rain (Age 780)
+- Right exit -> Burning District
+- walk in: `fly_west`
+- walk in: `fly_west`
 - examine (face up): `ch10_cache` - gives Senzu Bean x1, Elixir x1
-- walk in: `fly_west`
-- walk in: `fly_west`
 - person: `fly_west`
 - enemies: Gero's old heavy unit x2, Laser turret x2, Gero's hunter drone
 
@@ -828,6 +974,22 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - person: `nat_farmer`
 - enemies: Raider x3, Butcher, raider boss
 
+### Burning District  `17:48`
+- Left exit -> Circus Lot ruins (780)
+- Right exit -> West City: Crossroads in the rain (Age 780)
+- Up exit -> Resistance Shelter
+- walk in: `ch10_district` (when flag 490 clear)
+- enemies: Resistance fighter x3, Laser turret, Gero's old heavy unit
+
+### Resistance Shelter  `17:49`
+- Down exit -> Burning District
+- walk in: `ch10_shelter` (when flag 491 clear)
+- examine (face left): `shelter_radio`
+- examine (face left): `cache_shelter` - gives Senzu Bean x2
+- examine (face left): `note_shelter` - gives Gero's Note x1
+- person: `ch10_girl`
+- enemies: Resistance captain, Resistance fighter
+
 # Items (generated)
 
 | Item | Effect (in-game description) |
@@ -840,6 +1002,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 | Root Beer | A cool refreshing root beer. Restores 250 energy points. |
 | Hercule-ade | Replenishes your precious electrolytes. Restores 350 energy points. |
 | Elixir | A rare magical liquid that restores your vitality! Restores 500 energy points. |
+| S. Elixir | The best magical elixir on the market. Restores 750 energy points. |
 | DinosaurMilk | Where does dinosaur milk come from? Restores 2500 energy points. |
 | Holy Water | The legendary holy water of Korin. Greatly increases your stats for 30 seconds. |
 | Senzu Bean | One of Korin's special Senzu Beans. Fully restores hit points and energy. |
@@ -850,3 +1013,6 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 | Dragon Ball 5 | The five-star Dragon Ball, gone to grey stone. Kami is dead. |
 | Dragon Ball 6 | The six-star Dragon Ball, gone to grey stone. Kami is dead. |
 | Dragon Ball 7 | The seven-star Dragon Ball, gone to grey stone. Kami is dead. |
+| Ribbon Ruby | Commander Red's ruby, from the West City Museum's storeroom. Lazuli's idea. |
+| Army File | A Red Ribbon Army file, read and kept. There are six to find. |
+| Gero's Note | A page from Dr. Gero's notebooks. There are ten to find. |

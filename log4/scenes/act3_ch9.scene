@@ -247,3 +247,41 @@ do call 129 6 2; call 129 11 1
 stop
 label c9mine_empty
 narrate Nothing but rocks.
+# ---------- Gero's notes 7-9 (log4/gen_more.py: bunker 17:12, generator cave 17:38, old mine 17:39; flags 526-528)
+list note_bunker
+if_flag 526 nbunk_read
+set_flag 526
+narrate Tucked behind the old tank's gauge: a child's drawing, folded into a notebook page. A stick figure and a robot, holding hands.
+narrate Under it, in Gero's handwriting: "Gevo, age six: Papa, can robots be sad? I told him no."
+say android18 Who's Gevo?
+say android17 Some kid. Before us.
+do call 129 31 1
+run notes_check
+stop
+label nbunk_read
+narrate The old tank. Nothing else tucked behind it.
+list note_cave
+if_flag 527 ncave_read
+set_flag 527
+narrate A notebook page jammed behind the generator's housing.
+narrate "Unit 16 shelved. He has my son's face, and he will not hurt anything that lives. I could not bring myself to scrap him."
+say android18 Sixteen. The big one in the pod.
+say android17 He kept that one. Interesting.
+do call 129 31 1
+run notes_check
+stop
+label ncave_read
+narrate The generator hums. Nothing else is hidden here.
+list note_mine
+if_flag 528 nmine_read
+set_flag 528
+narrate Under a rock by the cave wall: a notebook page, soaked and dried a dozen times.
+narrate "The computer will finish Project Cell long after I am gone. A perfect creature with no will but mine."
+narrate "I should be glad. I find I would rather have had two children who never listened."
+say android18 ...
+say android17 He means us, doesn't he.
+do call 129 31 1
+run notes_check
+stop
+label nmine_read
+narrate Rocks and old timbers.

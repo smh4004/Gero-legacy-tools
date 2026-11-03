@@ -223,7 +223,7 @@ journal Get to the docks unseen
 do call 47; call 51 0
 unless_flag 430 dap_ch6_nomoves
 do call 165 1 8; call 164 1 8; call 165 1 7; call 164 1 7; call 165 1 6; call 164 1 6; call 165 1 17; call 164 1 17; call 165 1 18; call 164 1 18; call 165 1 20; call 164 1 20
-do call 165 3 8; call 164 3 8; call 165 3 7; call 164 3 7; call 165 3 4; call 164 3 4; call 165 3 11; call 164 3 11; call 165 3 18; call 164 3 18
+do call 165 3 8; call 164 3 8; call 165 3 7; call 164 3 7; call 165 3 6; call 164 3 6; call 165 3 4; call 164 3 4; call 165 3 11; call 164 3 11; call 165 3 18; call 164 3 18
 set_flag 440
 set_flag 441
 label dap_ch6_nomoves
@@ -278,7 +278,7 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
 do call 165 1 20; call 165 3 20
 do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
 do call 164 1 8; call 164 3 8
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 309
 set_flag 352
@@ -358,7 +358,7 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
 do call 165 1 20; call 165 3 20
 do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
 do call 164 1 8; call 164 3 8
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 309
 set_flag 352
@@ -444,7 +444,7 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
 do call 165 1 20; call 165 3 20
 do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
 do call 164 1 8; call 164 3 8
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 309
 set_flag 352
@@ -545,7 +545,7 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
 do call 165 1 20; call 165 3 20
 do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
 do call 164 1 8; call 164 3 8
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 309
 set_flag 352
@@ -662,7 +662,7 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
 do call 165 1 20; call 165 3 20
 do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
 do call 164 1 8; call 164 3 8
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 309
 set_flag 352
@@ -924,7 +924,7 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
 do call 165 1 20; call 165 3 20
 do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
 do call 164 1 8; call 164 3 8
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 309
 set_flag 352
@@ -1041,7 +1041,7 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
 do call 165 1 20; call 165 3 20
 do call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11
 do call 164 1 8; call 164 3 8
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 309
 set_flag 352

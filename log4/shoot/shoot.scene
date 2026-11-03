@@ -462,3 +462,32 @@ stop
 list cam_t7_fs25
 do call 120 1; call 115 17 25 1 140 150; call 121 40
 stop
+# ---- length pass (2026-11-03): the new bosses
+list t_bal_qm
+do call 151 2; call 149 2; call 152 0
+do call 29 450
+do heal; call 120 1; call 119 1 113 1 140 224; call 121 30
+stop
+list t_bal_p3
+do call 151 2; call 149 2; call 152 0
+do call 29 455
+do heal; call 120 1; call 119 1 114 1 150 200; call 121 30
+stop
+list t_bal_roof
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 29 472
+do heal; call 120 1; call 119 16 47 1 56 124; call 121 30
+stop
+list t_bal_warden
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+code 02 c8 00 32 0b 13 00 08 01 a2 30 02 c2 11 02 c8 00 33 0b 13 00 08 01 a2 1c 02 c2 11 02 c8 00 34 0b 13 00 08 01 a1 60 02 c2 11 02 c8 00 35 0b 13 00 08 01 a0 68 02 c2 11 02 c8 00 36 0b 13 00 08 01 9f 20 02 c2 11 02 c8 00 37 0b 13 00 08 01 9c 74 02 c2 11 02 c8 00 38 0b 13 00 08 01 99 50 02 c2 11 02 c8 00 39 0b 13 00 08 01 95 20 02 c2 11 02 c8 00 3a 0b 13 00 08 01 8f 50 02 c2 11 02 c8 00 3b 0b 13 00 08 01 88 4c 02 c2 11 11
+do call 29 481; call 29 485
+do heal; call 120 1; call 119 1 116 1 120 160; call 121 30
+stop
+list t_bal_rcapt
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+code 02 c8 00 32 0b 13 00 09 01 81 ab 0c 02 c2 11 02 c8 00 33 0b 13 00 09 01 81 aa 78 02 c2 11 02 c8 00 34 0b 13 00 09 01 81 aa 3c 02 c2 11 02 c8 00 35 0b 13 00 09 01 81 a9 44 02 c2 11 02 c8 00 36 0b 13 00 09 01 81 a7 7c 02 c2 11 02 c8 00 37 0b 13 00 09 01 81 a5 50 02 c2 11 02 c8 00 38 0b 13 00 09 01 81 a2 2c 02 c2 11 02 c8 00 39 0b 13 00 09 01 81 9d 7c 02 c2 11 02 c8 00 3a 0b 13 00 09 01 81 98 2c 02 c2 11 02 c8 00 3b 0b 13 00 09 01 81 91 28 02 c2 11 02 c8 00 3c 0b 13 00 09 01 81 88 5c 02 c2 11 02 c8 00 3d 0b 13 00 08 01 fe 16 02 c2 11 02 c8 00 3e 0b 13 00 08 01 f1 24 02 c2 11 02 c8 00 3f 0b 13 00 08 01 e1 54 02 c2 11 02 c8 00 40 0b 13 00 08 01 ce 74 02 c2 11 02 c8 00 41 0b 13 00 08 01 b8 52 02 c2 11 02 c8 00 42 0b 13 00 08 01 9e 3c 02 c2 11 11
+do call 29 491; call 29 490
+do heal; call 120 1; call 119 17 49 1 140 224; call 121 30
+stop

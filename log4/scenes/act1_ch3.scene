@@ -81,12 +81,14 @@ narrate The screen is blank. There is nothing left to find.
 list ch3_escape
 set_flag 319
 narrate Behind him, the first explosions shake the mountain.
-journal Get clear of the base
+narrate The old bridge down the slope hangs in pieces over the gorge. The boy must have come that way.
+say young_gero.1 The supply depot, east along the ridge. Its tunnel runs down to the river road. If the looters left it standing.
+journal Get off the mountain through the {c07}supply depot{c02}
 do call 47; call 51 0
 list ch3_end
 set_flag 318
 do call 149 0
-narrate At the old bridge, Gero looks back. The Red Ribbon Army's headquarters burned until morning.
+narrate On the river road below the ridge, Gero looks back. The Red Ribbon Army's headquarters burned until morning.
 say young_gero.2 Gevo... my army... all of it, gone. Because of one boy.
 say young_gero.1 Goku. I will build a soldier that never tires, never doubts and never disobeys. And it will be your end.
 do call 120 60
@@ -94,3 +96,55 @@ do call 120 1; call 119 1 72 1 112 200; call 121 60
 narrate Deep in the northern mountains, Gero found an abandoned Red Ribbon bunker. He would not leave it for years.
 journal Rebuild.
 do call 47; call 51 0
+# ---------- the supply depot (areas from log4/gen_more.py; flags 450 arrival, 451 Quartermaster beaten, 452 cache)
+list bridge_out
+narrate The old bridge is gone: a few planks hanging over the gorge. Nobody is crossing here.
+narrate The supply depot is east along the ridge trail. Its tunnel runs down to the river road.
+list ch3_depot
+set_flag 450
+narrate The Red Ribbon supply depot. Ten years of the army's stores, dug into the mountain.
+narrate Most of it is already gone. Looters are carrying out the rest, crate by crate.
+narrate Quartermaster: Doctor Gero! Ha! The boy took the tower, and you took your toys. Everybody's leaving rich tonight.
+say young_gero.2 You're stealing from the army you swore to serve.
+narrate Quartermaster: What army? I'm the last man in this depot with a list, Doctor, and the tunnel is on my list. You want out, you pay the toll.
+journal Get past the {c07}Quartermaster{c02} to the depot tunnel
+do call 47; call 51 0
+list depot_tunnel
+unless_flag 451 tunnel_guarded
+narrate Behind the last crates, the emergency tunnel slopes down into the dark. Somewhere at the bottom, water is running.
+run ch3_end
+stop
+label tunnel_guarded
+narrate The Quartermaster's men are stacked in front of the tunnel. He isn't letting anyone through for free.
+list cache_depot
+if_flag 452 cdepot_empty
+set_flag 452
+narrate Field barrels, stencilled MEDICAL. The looters went straight past them: they wanted things they could sell.
+narrate Inside: a Senzu Bean in a padded box, and two bottles of root beer.
+do call 129 11 1; call 129 5 2
+stop
+label cdepot_empty
+narrate Empty barrels.
+# ---------- Red Ribbon army files (Act 1 lore; item 29 "Army File"; flags 510-515; all six -> files_done)
+list file_depot
+if_flag 511 fdepot_read
+set_flag 511
+narrate Army file: the Quartermaster's ledger. Shipped to Muscle Tower: one Android 8 frame. Returned as defective. Remark: "Too gentle."
+narrate Shipped to Commander Red, by personal order: one pair of shoes with built-in lifts. Marked URGENT.
+say young_gero.0 Ten years of my work in this ledger, and the line he marked urgent was his shoes.
+do call 129 29 1
+run files_check
+stop
+label fdepot_read
+narrate The ledger. Gero has read enough of it.
+list file_line
+if_flag 512 fline_read
+set_flag 512
+narrate Army file: a memo tucked in the press's control box, signed Staff Officer Black.
+narrate "If the commander's wish is what I think it is, I will end this myself. The army is bigger than one man's height."
+say young_gero.1 Black. So the rumours were true. Red died at his own officer's hand, not the boy's.
+do call 129 29 1
+run files_check
+stop
+label fline_read
+narrate Black's memo. Nothing more to learn from it.

@@ -35,10 +35,14 @@ for i in range(0, len(ew) - 12, 4):                             # nearest the ar
         x, y = (v >> 8 for v in struct.unpack_from('<II', ew, i + 4))
         if 0x2000000 + i + 4 != pos and abs(x - AX) < 40 and abs(y - AY) < 40:
             if ppos is None or abs(x - AX) + abs(y - AY) < best: ppos, best = 0x2000000 + i + 4, abs(x - AX) + abs(y - AY)
-assert ppos, 'player position not found'
 cands = [0x2000000 + i + 4 for i in range(0, len(ew) - 12, 4) if struct.unpack_from('<I', ew, i)[0] == 0x02050810
          and 0x2000000 + i + 4 != pos and abs((struct.unpack_from('<I', ew, i + 4)[0] >> 8) - AX) < 60
          and abs((struct.unpack_from('<I', ew, i + 8)[0] >> 8) - AY) < 60]
+if not cands:                                        # not near the given point: try every position struct
+    cands = [0x2000000 + i + 4 for i in range(0, len(ew) - 12, 4) if struct.unpack_from('<I', ew, i)[0] == 0x02050810
+             and 0x2000000 + i + 4 != pos]
+    ppos = cands[0] if cands else None
+assert ppos, 'player position not found'
 if len(cands) > 1:                                  # an NPC (e.g. Eighteen next to the landing spot) can stand closer:
     xs = {}
     for key in ('RIGHT', 'LEFT'):                  # the player is the one that goes right on RIGHT and left on LEFT

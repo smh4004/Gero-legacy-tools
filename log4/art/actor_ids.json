@@ -40,13 +40,12 @@
  "player_17_casual": 317,
  "player_17_jacket": 318,
  "player_17_super": 319,
- "player_17_supergold": 320,
- "player_18_redyellow": 321,
- "player_18_redblack": 322,
- "player_18_tracksuit": 323,
- "door_540fd4_0_0": 324,
- "door_540fd4_0_1": 325,
- "door_53fff8_0_0": 326,
- "door_53fff8_0_1": 327,
- "door_66dff8_0_0": 328
+ "player_18_redyellow": 320,
+ "player_18_redblack": 321,
+ "player_18_tracksuit": 322,
+ "door_540fd4_0_0": 323,
+ "door_540fd4_0_1": 324,
+ "door_53fff8_0_0": 325,
+ "door_53fff8_0_1": 326,
+ "door_66dff8_0_0": 327
 }

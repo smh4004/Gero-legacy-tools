@@ -8,9 +8,45 @@
 	.syntax unified
 	.thumb
 	.equ COUNTER, 0x0203FF04          @ EWRAM word, unused by BF (fadepal.s uses 0x0203FF00)
+	.equ S17DELTA, 0x03001101         @ Super 17's Strength bonus, saved with the game: the flag byte for flags 544-551
 	.global hook_regen
 	.align 2
+@ Super 17 (user 2026-11-03: Strength x1.5). While Seventeen (character 1) is in form 15, half his Strength is added on
+@ top and remembered in S17DELTA; when he leaves the form (B again, ki ran out, outfit change), the same amount comes
+@ off. Checked every frame for the active character only, so a change while 17 is benched is fixed when he's back.
 hook_regen:
+	ldr r1, =0x030015C8                @ character 1's record
+	cmp r5, r1
+	bne 28f
+	ldr r2, =S17DELTA
+	ldrb r3, [r2]
+	movs r1, #0x28                     @ STR is at +0x28 (ldrb's immediate only reaches 31)
+	ldrb r0, [r5, #0x14]               @ current form
+	cmp r0, #15
+	bne 25f
+	cmp r3, #0
+	bne 28f                            @ already boosted
+	ldrb r0, [r5, r1]                  @ STR
+	lsrs r3, r0, #1
+	bne 21f
+	movs r3, #1
+21:	adds r0, r0, r3
+	cmp r0, #255
+	bls 22f
+	movs r0, #255
+22:	strb r0, [r5, r1]
+	strb r3, [r2]
+	b 28f
+25:	cmp r3, #0
+	beq 28f
+	ldrb r0, [r5, r1]
+	subs r0, r0, r3
+	bcs 26f
+	movs r0, #0
+26:	strb r0, [r5, r1]
+	movs r3, #0
+	strb r3, [r2]
+28:
 	ldr r1, =0x03001560
 	subs r2, r5, r1
 	cmp r2, #0xD0                      @ character 2 = the combat drone

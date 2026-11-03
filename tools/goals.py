@@ -33,7 +33,7 @@ def write_ui(cfg_path, textdir):
 
 def apply(rom, cfg_path, at):
     goals = json.load(open(cfg_path))['goals']
-    assert len(goals) < 256
+    assert len(goals) <= 100, 'goal texts are UI 1600-1699 (area names start at 1700)'
     assert rom[COUNT_AT:COUNT_AT + 2] == b'\x28\x2e', 'goal count instruction changed'
     cache, tab = {}, bytearray()
     def put(code):

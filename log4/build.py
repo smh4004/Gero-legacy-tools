@@ -94,6 +94,7 @@ def main(clean_path):
     actors_cfg = json.load(open(os.path.join(HERE, 'actors.json'))); actors_cfg.update(door_plan['actors'])
     ids, end = sprites.build_actors(out, actors_cfg, os.path.join(art, 'clean'), 0xC00000, log2, colour_ctx, proto)
     json.dump(ids, open(os.path.join(art, 'actor_ids.json'), 'w'), indent=1)
+    assert end <= areas.SPILL[0] if hasattr(areas, 'SPILL') else True, 'actors ran into the map spill region (tools/areas.py SPILL)'
     print('-- actors: table moved to 0xC00000, %d new actors %s, %d bytes' % (len(ids), ids, end - 0xC00000))
     end3 = scenes.compile_all(out, scene_list, text_tool.EXTRA_REFS, scenes.aliases(os.path.join(art, 'speakers.json')), 0xF00000, ids)
     if not shoot: json.dump({k: v for k, v in scenes.NAMED.items()}, open(os.path.join(HERE, 'out', 'named_lists_debug.json' if debug else 'named_lists.json'), 'w'), indent=1)
@@ -105,7 +106,7 @@ def main(clean_path):
     assert end2 < 0xA00000, 'areas overflow into the portraits'
     print('-- doors: %d animated door(s) in %s' % (sum(len(v) for v in door_plan['areas'].values()),
                                                    sorted('%d:%d' % k for k in door_plan['areas'])))
-    print('-- areas: %s edited, %d bytes of imported maps' % (done, end2 - 0x880000))
+    print('-- areas: %s edited, %d bytes of imported maps (+%d in the spill region)' % (done, end2 - 0x880000, areas.SPILL[0] - 0xDF8000))
     plan_path = os.path.join(art, 'palette_plan.json')
     if area_worlds and os.path.exists(plan_path):                 # areas.json can assign worlds to an act's palette
         plan = json.load(open(plan_path))
@@ -147,6 +148,11 @@ def main(clean_path):
     end7 = goals.apply(out, os.path.join(HERE, 'goals.json'), 0xF7EA00)       # journal goals table
     print('-- journal goals: %d (%d bytes)' % (len(json.load(open(os.path.join(HERE, 'goals.json')))['goals']), end7 - 0xF7EA00))
     assert end7 <= 0xF7F000
+    import kifx                                                   # blue ki blasts / green energy wave for 17 and 18
+    assert end3 < 0xF38000, 'scenes ran into the ki effect copy at 0xF38000'
+    end8 = kifx.apply(out, 0xF38000)
+    assert end8 < 0xF40000
+    print('-- ki effects: 17/18 blue blast copy + hook, green energy wave (%d bytes)' % (end8 - 0xF38000))
     import kiregen                                                # ki recharge: drone and converted androids
     end7 = kiregen.apply(out, os.path.join(HERE, 'asm', 'kiregen.s'), 0xF7E800)
     print('-- ki recharge hook (%d bytes)' % (end7 - 0xF7E800))

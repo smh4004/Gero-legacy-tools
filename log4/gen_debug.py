@@ -38,7 +38,7 @@ TWINS = ['call 151 1; call 151 3; call 149 1; call 152 0; call 152 2',
          'call 165 1 20; call 165 3 20',
          'call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11',
          'call 164 1 8; call 164 3 8']
-ANDROIDS = TWINS + ['call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4',
+ANDROIDS = TWINS + ['call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4',
                     'call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240']
 TITLE = {1: 'Red Ribbon Science', 2: 'An Enemy Bullet', 3: 'The Boy Called Goku', 4: 'The First Androids',
          5: 'Siblings', 6: 'Taken', 7: 'Activation', 8: 'The Massacre', 9: 'Years of Terror', 10: 'The Last Stand'}
@@ -101,7 +101,7 @@ sys.path.insert(0, os.path.join(G.HERE, '..', 'tools')); import scenes
 _bf = open(os.path.join(G.HERE, '..', 'bf.gba'), 'rb').read()
 EXP = struct.unpack_from('<151I', _bf, 0x6B7084)                 # EXP needed for level 50 + i
 MOVES_FLAG, LEVEL_FLAGS = 430, {431: 55, 432: 60, 433: 70, 434: 80, 435: 90, 436: 99}
-MOVES = {0: [7, 15, 14], 2: [7, 8, 16], 1: [8, 7, 6, 17, 18, 20], 3: [8, 7, 4, 11, 18], 6: [7, 15, 14, 1, 9]}
+MOVES = {0: [7, 15, 14], 2: [7, 8, 16], 1: [8, 7, 6, 17, 18, 20], 3: [8, 7, 6, 4, 11, 18], 6: [7, 15, 14, 1, 9]}
 MOVES_ALSO = [440, 441]    # all moves also unlocks every outfit and Super 17 (skill 20 for character 1)
 
 def level_code(T):

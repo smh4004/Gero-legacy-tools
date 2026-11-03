@@ -236,3 +236,30 @@ stop
 label kball_done
 narrate Pink boards and a lot of sand.
 stop
+# ---------- all ten of Gero's notes (flags 520-529) -> notes_done (once, flag 530). Notes 1-3 are found in Act 2; the
+# last one always comes in Act 3, so the twins here are Seventeen and Eighteen.
+list notes_check
+unless_flag 520 notes_not_yet
+unless_flag 521 notes_not_yet
+unless_flag 522 notes_not_yet
+unless_flag 523 notes_not_yet
+unless_flag 524 notes_not_yet
+unless_flag 525 notes_not_yet
+unless_flag 526 notes_not_yet
+unless_flag 527 notes_not_yet
+unless_flag 528 notes_not_yet
+unless_flag 529 notes_not_yet
+if_flag 530 notes_not_yet
+run notes_done
+label notes_not_yet
+list notes_done
+set_flag 530
+narrate Ten pages from Dr. Gero's notebooks. Put in order, they cover twenty years.
+narrate A son who asked if robots could be sad. Two runaways in a park. A shutdown switch he never pressed.
+say android18 He watched us for years before he took us. He knew everything about us.
+say android17 He's dead, Eighteen. He doesn't get to know anything anymore.
+narrate Eighteen folds the last page and puts it in her pocket, next to the photo strip.
+narrate The notebook's cover has a pocket sewn inside it. In it: a capsule, labelled in the same small hand. FOR 17 AND 18.
+narrate Inside the capsule: three Senzu Beans and two bottles of Super Elixir. Nothing else. No note.
+do call 129 11 3; call 129 8 2
+narrate Got three Senzu Beans and two Super Elixirs.

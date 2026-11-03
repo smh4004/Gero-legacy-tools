@@ -66,6 +66,16 @@ set_flag 302
 run ch5_check
 stop
 label herc_done
+unless_flag 461 herc_plain
+if_flag 462 herc_plain
+set_flag 462
+say lazuli.1 Hercule. There's a crowd at the museum. A big one. And nobody there has ever heard of you.
+narrate Hercule: NOBODY? That's an outrage! A tragedy! Stand aside, kids. Those people need a show!
+narrate He jogs off toward the city hall steps, already shouting. A minute later the cheering starts.
+say lapis.2 And every guard in that building is going to want to see what the noise is.
+journal Slip into the museum storeroom while the guard is watching Hercule
+stop
+label herc_plain
 narrate Hercule: Hah! Watch and learn, kids. Dynamite kick! ...Ow. My ankle.
 # both quests done (and not run before) -> the end of chapter 5
 list ch5_check
@@ -74,10 +84,31 @@ unless_flag 302 not_yet
 unless_flag 308 not_yet
 unless_flag 295 not_yet
 if_flag 303 not_yet
-run ch5_end
+if_flag 460 not_yet
+set_flag 460
+say lazuli.0 That's everything, Lapis. Let's lie low at the warehouse till dark.
+say lapis.1 Fine. But there's still daylight. Whatever we haven't done in town, now's the time.
+journal Rest at the {c07}warehouse{c02} when you're ready (the chapter ends)
 label not_yet
+# the mattress heap in the old warehouse (examine): rest until night once everything is done (460)
+list ch5_rest
+unless_flag 460 rest_early
+narrate The mattresses, dragged back where they belong. The twins settle in to wait for dark.
+if_flag 467 rest_go
+unless_flag 463 rest_go
+set_flag 467
+do call 130 28
+narrate Lazuli wraps the Ribbon Ruby in a sock and puts it in the tin box, under the loose board.
+say lapis.2 For later?
+say lazuli.1 For later.
+label rest_go
+run ch5_end
+stop
+label rest_early
+narrate Their old mattresses. There's no time to rest yet.
 list ch5_end
 set_flag 303
+set_flag 337
 say lazuli.0 Lapis. That man in the coat... the fence saw him, Big Ox took his money, I saw him on the bus. He's everywhere we go.
 say lapis.1 Then we lie low. Back to the warehouse tonight. If he wants us that badly, let him come looking.
 say lazuli.0 Fine. And Lapis? Ditch the case.
@@ -90,7 +121,10 @@ do call 29 304
 narrate That night.
 say lazuli.0 Every patrol in the city is out. And those flying things... what are they?
 say lapis.1 Don't know. Don't care. Through the crossroads and down to the docks. Stay in the shadows.
-journal Get to the docks unseen
+narrate Out on the main road, the drones hang in a line, sweeping red beams across the street. Two more hover over the south bridge.
+say lazuli.0 They've cut the city in half. Look, there's a gap in the beams, south of the crossroads.
+say lapis.1 Our old house is on the other side. The roofs from there run all the way to the river.
+journal Slip through the searchlights to your {c07}old house{c02}
 do call 47; call 51 0
 # chapter 5 side job "Ditch the Patrol" (flag 307 chase running, 308 done): taunt the patrol cop, lose him in the park,
 # and the man in the long coat (Gero) sees how good they are
@@ -169,7 +203,7 @@ do call 120 60
 # (Android 17), 271 = actor 262 -> form 23 (Android 18).
 # 1:79 is the same tank room with Lazuli's NPC as 18.
 # 165 with skill id 240 (0xF0) = android upgrade (tools/outfit.py hook_rm): STR/POW +22, END +18, SPD +12, HP +230, EP +70
-do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 do call 119 1 79 1 150 228; call 121 60
 narrate The procedure took eleven days.

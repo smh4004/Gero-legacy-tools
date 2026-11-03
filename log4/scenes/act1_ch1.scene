@@ -110,3 +110,15 @@ say young_gero.0 Then he should have built a better one. Three degrees, correcte
 say young_gero.3 Gevo will have them by dawn.
 journal Chapter 1 complete
 run ch2_start
+# ---------- army file 1 (log4/gen_more.py: the Fuel Depot 1:85; flag 510)
+list file_range
+if_flag 510 frange_read
+set_flag 510
+narrate Army file: a requisition order taped to the fuel tank, signed Commander Red himself.
+narrate "Effective today, every Dragon Ball expedition takes priority over the android program. Dr. Gero's budget is halved."
+say young_gero.3 Halved. For a wish. Whatever that fool wants from the dragon, it isn't victory.
+do call 129 29 1
+run files_check
+stop
+label frange_read
+narrate Red's order. Gero has it memorised.

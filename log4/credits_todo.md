@@ -20,9 +20,17 @@ Add a line here whenever a new asset, source, feature or character goes into the
 - Prototype D: credit the Android 13/14/15 portraits too, not just Super Android 13.
 - Legacy of Goku II assets used so far: maps, animations for 17/18 (walk, melee, hurt, ki), portraits, music
   (check the music plan for the exact tracks before writing the line).
+- More LoG2 maps (2026-11-03 length pass): Warlord's Domain cave (Supply Depot / Resistance Shelter), Capsule
+  Corporation library, lab and roof (Research Archive, Bio Wing, Rooftops), Sasebo (Burning District).
 
 ## Optional
-- A features card: open world (Act 3 world map), alternate outfits, the two-phase Android 13 boss, the secret chapter.
+- A features card: open world (Act 3 world map), alternate outfits, the two-phase Android 13 boss, the secret chapter,
+  the lore pages (6 Army Files, 10 of Gero's Notes), the Ribbon Ruby heist, the night-time searchlight sneak.
 
 ## Log (newest last; one line per addition)
 - 2026-11-03: list started (items above).
+- 2026-11-03: length pass (log4/gen_more.py): new areas Supply Depot, Prototype Graveyard, Museum Storeroom, Old House,
+  Rooftops, Research Archive, Bio Wing, Burning District, Resistance Shelter; new bosses the Quartermaster, Prototype 3,
+  the rooftop hunter, the bio wing warden, the resistance captain; lore pages (Army Files, Gero's Notes).
+- 2026-11-03: Super 17 now Strength x1.5 (gold-haired version removed); 17/18 ki blasts blue, their Full Power Energy
+  Wave (green; Eighteen has it too). Mention on the features card.

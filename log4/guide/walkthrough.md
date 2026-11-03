@@ -24,6 +24,13 @@ Nothing in the game locks you out of finishing it. Four things in Act 3 decide w
 
 Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you which of the chapter 9 visits you have made.
 
+**Optional, but only in their own chapter:** the Ribbon Ruby heist (chapter 5, it pays off in chapter 8), and the lore pages below. Missing them never blocks the story.
+
+## Lore pages
+Two sets of collectibles tell the story behind the story. Each page is an examine spot; the Inventory counts them.
+- **Army Files** (Act One, 6): {{L:file_range}} / {{L:file_yard}} / {{L:file_line}} / {{L:file_depot}} / {{L:file_grave}} / {{L:file_cave}}. All six: Gero closes the folder ({{X:files_check}}{{X:files_done}}) and gets 2 Holy Waters. The files stay with Gero when Act One ends.
+- **Gero's Notes** (Acts Two and Three, 10): {{L:note_park}} / {{L:note_museum}} / {{L:note_house}} / {{L:note_wing}} / {{L:note_archive}} / {{L:note_warehouse}} / {{L:note_bunker}} / {{L:note_cave}} / {{L:note_mine}} / {{L:note_shelter}}. All ten: the twins read the whole notebook ({{X:notes_check}}{{X:notes_done}}) and find Gero's last capsule: 3 Senzu Beans and 2 Super Elixirs.
+
 ---
 
 # Act One: The Doctor
@@ -40,6 +47,7 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 4. **Caches on the range:**
    - {{C:crate_depot}}
    - {{C:crate_pit}}
+   - Army file 1 (on the Fuel Depot's left fuel tank): {{L:file_range}}.
 5. With all three sites logged, the objective becomes {{J:ch1_sites}}. The arena gate on the Bone Flats' west side opens ({{X:arena_locked}}). Before that, examining it just shows the "locked" sign.
 6. **Boss: {{B:127}}** in the Live-Fire Arena. {{X:ch1_arena}}
 7. The drone link returns you to the lab for Gero's report ({{X:ch1_report}}), and chapter 2 begins.
@@ -57,6 +65,7 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 5. **Caches:**
    - {{C:cache_dump}}
    - {{C:cache_yard}} (face the top crate of the stack)
+   - Army file 4 (the Supply Yard office): {{L:file_yard}}.
 6. With all three found ({{X:ch2_found}}), the objective becomes {{J:ch2_found}}. The Scorched Canyon's right-hand exit now leads to Gevo ({{X:gevo_field_talk}}). Walk up to him for the end of the chapter ({{X:ch2_gevo}}).
 
 ## Chapter 3: The Boy Called Goku
@@ -67,8 +76,13 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 3. **Munitions Line A, then B, then C.** Looters strip the belts ({{X:ch3_factory}}): {{J:ch3_factory}}.
    - **Mini-boss: {{B:47}}** in Munitions Line C. He drops the vault keycard.
    - Caches: {{C:cache_line}} and {{C:cache_belt}}.
+   - Army file 3 (in Line B, by the press): {{L:file_line}}.
 4. **Archive Vault** (down from Line C): the blast door needs the keycard ({{X:ch3_vault}}{{X:vault_locked}}). With it, go up into the Army Archive and use the console ({{L:ch3_archive}}). Gero wipes the files and starts the self-destruct.
-5. The emergency hatch drops you on the escape route: {{J:ch3_escape}} ({{X:ch3_escape}}). Climb to the old bridge for the end of the chapter ({{X:ch3_end}}).
+5. The emergency hatch drops you on the escape route: {{J:ch3_escape}} ({{X:ch3_escape}}). The old bridge is out ({{X:bridge_out}}): take the trail off the east edge of the slope to the **Supply Depot**.
+6. **Supply Depot** ({{X:ch3_depot}}): {{J:ch3_depot}}.
+   - **Mini-boss: {{B:43}}** stands in front of the back tunnel, with looters.
+   - Army file 2 (the ledger, on the crates by the door): {{L:file_depot}}. Cache: {{C:cache_depot}}.
+   - With the Quartermaster beaten, examine the dark gap in the crates from their right side ({{L:depot_tunnel}}) for the end of the chapter ({{X:ch3_end}}).
 
 ## Chapter 4: The First Androids
 **You play:** the drone (Gero at the end). **Goal:** restore the bunker's power and wake Android 16.
@@ -81,6 +95,8 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
    - **Mini-boss: {{B:41}}** sits on relay 3 in the Old Mine; destroy it first.
    - The barred shaft in the Old Mine is not an exit ({{L:mine_gate}}).
    - Caches: {{C:cache_gen}} and {{C:cache_mine}}.
+   - Army file 6 (the radio log in the Generator Cave): {{L:file_cave}}.
+   - **Optional: the Prototype Graveyard**, down the trail at the bottom of the Mountain Pass ({{X:ch4_graveyard}}). Gero's old failures lie in the canyon ({{X:wreck_1}}{{X:wreck_5}}{{X:wreck_8}}). **Mini-boss: {{B:63}}** wakes up among them. Army file 5 is under the wreck at the bottom ({{L:file_grave}}). Cache: {{C:cache_grave}}.
 4. With all three relays on ({{X:ch4_power}}), Prototype 12 breaks out of the conversion pod: {{J:ch4_power}}.
 5. **Boss: {{B:30}}** in the bunker incubator.
 6. Talk to Android 16 in the tank room ({{L:a16_talk}}). Then enter the conversion pod ({{L:ch4_pod}}): {{J:a16_talk}}. **End of Act One.**
@@ -90,7 +106,7 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 # Act Two: Lapis and Lazuli
 
 ## Chapter 5: Siblings
-**You play:** Lapis (Lazuli in the party). **Goal:** West City. Four things must be done before the chapter ends: the fence, Hercule, the police chase, and the warehouse.
+**You play:** Lapis (Lazuli in the party). **Goal:** West City. Four things must be done before you can end the chapter: the fence, Hercule, the police chase, and the warehouse.
 
 1. West City ({{X:ch5_start}}): {{J:ch5_start}}. The townsfolk all have something to say ({{X:wc_woman_pink}}{{X:wc_woman_blue}}{{X:wc_old_man}}{{X:wc_police_1}}{{X:wc_police_2}}{{X:wc_police_3}}).
 2. **The fence** ({{L:wc_man_green}}) recognises the Red Ribbon mark on your stolen capsule case: {{J:wc_man_green}}.
@@ -103,17 +119,24 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
    - The Z-Mart clerk ({{C:zmart_clerk}}).
    - The West City Museum curator ({{C:museum_curator}}). The Red Ribbon exhibit in the museum ({{L:museum_exhibit}}) is worth a look.
 7. **Other caches:** {{C:cache_river}} and {{C:docks_dome}} (the dome house).
-8. Once the fence, Hercule, the chase and the warehouse are done, the chapter ends ({{X:ch5_check}}{{X:ch5_end}}): {{J:ch5_end}}.
+8. **Side job "Lost Brother":** a little boy in the Circus Lot ({{L:lost_boy}}) lost his sister: {{J:lost_boy}}. She's on the Riverside ({{C:lost_sister}}).
+9. **Side job "The Ribbon Ruby"** (after returning the medal, the curator mentions it: {{J:museum_curator}}). A guard sits by the tall STAFF ONLY door at the back of the museum ({{X:museum_guard}}{{X:storeroom_door}}). Tell Hercule there's a crowd at the museum ({{L:wc_hercule}}); while the guard watches his show, slip through the door.
+   - **Museum Storeroom** ({{X:ch5_storeroom}}): the night guard's flashlight sweeps the middle of the room ({{X:storeroom_beam}}{{X:storeroom_guard}}). Walk up along either wall and across the top row to the case between the statues ({{C:ruby_case}}).
+   - The ruby goes into the tin box when you rest at the warehouse, and turns up again in chapter 8.
+10. Gero's notes 1 and 2: under the park bench in West City's park ({{L:note_park}}) and by the uniform case in the museum ({{L:note_museum}}).
+11. Once the fence, Hercule, the chase and the warehouse are done ({{X:ch5_check}}): {{J:ch5_check}}. Finish anything else in town, then examine the mattresses in the Old Warehouse ({{L:ch5_rest}}) to end the chapter ({{X:ch5_end}}): {{J:ch5_end}}.
 
 ## Chapter 6: Taken
 **You play:** Lapis, at night. **Goal:** get home unseen.
 
-1. West City at night ({{X:night_police}}{{X:night_drone}}). A drone sweeps the crossroads ({{X:night_crossroads}}); go down the south road to the Riverside.
-2. Gero's hunter drones patrol the Riverside and the Docks.
+1. West City at night ({{X:night_police}}{{X:night_drone}}). Drones hover over the south bridge ({{X:night_south}}{{X:night_crossroads}}), and a line of searchlight drones runs down the east side of the main road, plus one in the lane past the city hall. Step into a beam and you're sent back to the park ({{X:night_spotted}}). **The gap:** cross just south of where the two beams on the main road end, about halfway down the park. Two hunter drones on the street north of the shops can be fought for experience.
+2. **The old house:** the dome house top right, east of the road ({{X:ch6_oldhouse}}): {{J:ch6_oldhouse}}. Cache: {{C:cache_house}}. Gero's note 3 is on the television ({{L:note_house}}). The ladder ({{L:house_ladder}}) also takes you back up to the roof.
+3. **Rooftops** ({{X:roof_chase_1}}): {{J:roof_chase_1}}. **Mini-boss: {{B:95}}** blocks the fire stairs at the east end ({{X:roof_stairs_blocked}}). Once it's down, the stairs lead down to the Riverside.
+4. Gero's hunter drones patrol the Riverside and the Docks.
    - Caches: {{C:night_cache_river}} and {{C:night_cache_docks}}.
-3. The Old Warehouse ({{X:ch6_home}}): {{J:ch6_home}}.
-4. **Boss: {{B:76}}**.
-5. The ambush follows ({{X:ch6_ambush}}). The twins wake in Gero's lab ({{X:gero_lab_talk}}{{X:lazuli_lab_talk}}): {{J:ch6_ambush}}. You also unlock the **Outfit** skill: select it and press B to switch between the android outfit and the old clothes.
+5. The Old Warehouse ({{X:ch6_home}}): {{J:ch6_home}}.
+6. **Boss: {{B:76}}**.
+7. The ambush follows ({{X:ch6_ambush}}). The twins wake in Gero's lab ({{X:gero_lab_talk}}{{X:lazuli_lab_talk}}): {{J:ch6_ambush}}. You also unlock the **Outfit** skill: select it and press B to switch between the android outfit and the old clothes.
 
 ---
 
@@ -125,8 +148,12 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 1. Age 767. Gero wakes the twins, and it goes badly for him ({{X:ch7_start}}): {{J:ch7_start}}. Eighteen lingers in the pod room ({{X:eighteen_lab_talk}}).
 2. Go down into the Security Wing. The lab's computer locks everything down ({{X:ch7_alarm}}): {{J:ch7_alarm}}.
    - Cache: {{C:ch7_locker}}.
-3. **Boss: {{B:20}}** guards the Control Room (right of the Security Wing).
-4. Use the console ({{L:ch7_console}}) to end the lockdown. Then leave through the cave to the northern mountains for the end of the chapter ({{X:ch7_end}}).
+   - Gero's note 4: under the small console's keyboard in the Security Wing ({{L:note_wing}}).
+3. **Optional: the Research Archive**, through the opening on the right of the pod room ({{X:ch7_archive}}). Walk up the centre aisle and face the shelves on either side: three research logs ({{L:log_subjects}}{{X:log_units}}{{X:log_cell}}) and Gero's note 5 ({{L:note_archive}}).
+   - **The power puzzle:** the lower corridor at the bottom of the Security Wing is shuttered ({{X:wing_lower_locked}}). Close the three breakers on the Security Wing's consoles in the order CORE ({{L:breaker_core}}), LIGHTS ({{L:breaker_lights}}), DOORS ({{L:breaker_doors}}). The wrong order trips them all.
+   - **Bio Wing** (down the lower corridor; {{X:ch7_bio}}): {{J:ch7_bio}}. **Mini-boss: {{B:42}}** on the catwalk. Then use the monitor on the far side ({{L:bio_monitor}}) for a first look at Project Cell. The door on the left is sealed ({{X:bio_units_door}}).
+4. **Boss: {{B:20}}** guards the Control Room (right of the Security Wing).
+5. Use the console ({{L:ch7_console}}) to end the lockdown. Then leave through the cave to the northern mountains for the end of the chapter ({{X:ch7_end}}).
 
 ## Chapter 8: The Massacre
 **You play:** Seventeen; one fight as Eighteen. **Goal:** West City, then the Z Fighters.
@@ -135,6 +162,8 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 2. Go down to the Riverside, right to the Docks, and up to the Old Warehouse. Gero's old machines prowl here.
    - **The tin box** (needed for the apple). Examine the crates in the Old Warehouse ({{L:ch8_hideout}}): {{J:ch8_hideout}}.
    - Caches: {{C:ch8_cache_river}} and {{C:ch8_cache_docks}}.
+   - If you took the Ribbon Ruby in chapter 5, it's still in the tin box.
+   - Gero's note 6: pinned behind a crate in the Old Warehouse ({{L:note_warehouse}}).
 3. **Memory: the apple (missable).** Back in West City, talk to the fruit seller ({{L:ch8_stall}}). It only works after the tin box. The objective becomes {{J:ch8_stall}}.
 4. Walk onto the crossroads; the Z Fighters land ({{X:ch8_landing}}).
 5. **Boss: {{B:70}}**.
@@ -149,8 +178,9 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 2. **The northern mountains.** The bunker door is sealed ({{X:ch9_pass}}{{X:ch9_sealed}}): {{J:ch9_pass}}.
    - **Mini-boss: {{B:100}}** in the Generator Cave (right of the Mountain Pass).
    - Cache: {{C:ch9_cache_mine}}. The Old Mine is up from the Generator Cave.
+   - Gero's notes 8 and 9: behind the generator in the Generator Cave ({{L:note_cave}}) and under a rock by the Old Mine's lower-left wall ({{L:note_mine}}).
    - With the Sentinel destroyed, the bunker door on the left of the Mountain Pass opens.
-3. The bunker ({{X:ch9_bunker}}): {{J:ch9_bunker}}. Android 16's empty pod is in the tank room ({{L:ch9_pod16}}).
+3. The bunker ({{X:ch9_bunker}}): {{J:ch9_bunker}}. Gero's note 7 is tucked behind the old tank in the bottom-left corner ({{L:note_bunker}}). Android 16's empty pod is in the tank room ({{L:ch9_pod16}}).
 4. **Two-phase boss in the incubator** ({{X:ch9_thirteen}}): first **{{B:11}}**, then he absorbs Fourteen and Fifteen{{X:ch9_thirteen2}} (you're fully healed) and you fight **{{B:21}}** ({{X:ch9_after13}}).
 5. **Age 772: the hub.** Capsule Corporation is now the twins' base ({{X:ch9_hub}}): {{J:ch9_hub}}.
    - **New outfits:** talk to Eighteen at the hub ({{L:ch9_hub18}}). From then on, Outfit cycles through every outfit you own (see "Outfits and Super 17" below).
@@ -166,9 +196,11 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 1. Age 780, the Circus Lot ruins ({{X:ch10_start}}): {{J:ch10_start}}. The resistance has wired the lot with turrets and old machines.
    - Cache: {{C:ch10_cache}}.
    - The world map is open again here: talk to Eighteen, or walk off the top of the lot.
-2. Go right to the crossroads in the rain ({{X:ch10_rain}}). If you visited Mount Paozu, Eighteen tells Gohan about his mother.
-3. **Final boss: {{B:23}}** ({{X:ch10_after}}).
-4. **The finale** (Age 785) and the **epilogue** (Age 788) follow ({{X:ch10_finale}}). With all four memories, the **secret chapter** starts. Otherwise the game ends and hints that something else could wake up.
+2. **The Burning District** (right of the Circus Lot ruins): the resistance ambushes the twins ({{X:ch10_district}}): {{J:ch10_district}}.
+   - **Optional: the Resistance Shelter**, down the subway stairs at the top left ({{X:ch10_shelter}}). **Mini-boss: {{B:2}}**. Afterwards, the girl behind the crates ({{L:ch10_girl}}), the radio ({{L:shelter_radio}}), Gero's note 10 on the resistance's map ({{L:note_shelter}}), and a cache ({{C:cache_shelter}}).
+3. Go right from the Burning District to the crossroads in the rain ({{X:ch10_rain}}). If you visited Mount Paozu, Eighteen tells Gohan about his mother.
+4. **Final boss: {{B:23}}** ({{X:ch10_after}}).
+5. **The finale** (Age 785) and the **epilogue** (Age 788) follow ({{X:ch10_finale}}). With all four memories, the **secret chapter** starts. Otherwise the game ends and hints that something else could wake up.
 
 ---
 
@@ -193,7 +225,7 @@ Eighteen stands next to the landing spot at every destination; talk to her to fl
 **Outfits and Super 17.** Select Outfit with the L Button and press B to change. Each press moves on to the next outfit:
 - Seventeen: old clothes, android clothes, then (after talking to Eighteen at the hub) a white shirt and a brown jacket.
 - Eighteen: old clothes, android clothes, then (same unlock) a red top with yellow trousers, a red top with black sleeves, and a maroon tracksuit.
-- **Super 17:** beat **{{B:19}}** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. While in Super 17, Outfit switches between dark hair and gold hair.
+- **Super 17:** beat **{{B:19}}** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. Super 17 raises Seventeen's Strength by half (x1.5) until he changes back or runs out of ki.
 
 **Other sights:** Orange Star City's school ({{L:osc_school}}), a police officer ({{L:osc_police}}) and a schoolgirl ({{L:osc_girl}}). Every place also has its own first-landing scene.{{X:osc_arrive}}{{X:lookout_arrive}}{{X:papaya_arrive}}{{X:diablo_arrive}}{{X:pilaf_arrive}}{{X:nat_arrive}}
 

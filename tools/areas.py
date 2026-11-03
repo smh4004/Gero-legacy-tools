@@ -112,10 +112,25 @@ def door_action(d):
     return dict(d, action='call 114 %d %d %d %d %d' % (w, a, 1 if (x or y) else 0, x, y))
 
 
+SPILL = [0xDF8000, 0xF00000, 0x9C0000]   # second region for LoG2 map imports [cursor, end] once the main one passes
+                                           # its soft limit (0x880000-0xA00000 filled up 2026-11-03); 0xDF1000- is free
+
+
+def import_l2(rom, l2, ptr, W):
+    """Import a LoG2 map into the main region, or into the spill region once the main one passes SPILL[2]."""
+    if W.cur < SPILL[2]:
+        newM, W.cur = mapimport.import_map(rom, l2, ptr, W.cur)
+        return newM
+    newM, SPILL[0] = mapimport.import_map(rom, l2, ptr, SPILL[0])
+    assert SPILL[0] <= SPILL[1], 'LoG2 map imports overflow the spill region'
+    return newM
+
+
 def apply(rom, cfg, l2, actor_ids, at, talk=None, doors=None):
     """talk: {name: step list bus address} for NPC talk scripts compiled elsewhere.
     doors: tools/doors.plan() result (animated door panels + triggers, regions to drop)."""
     import doors as doors_mod
+    SPILL[0] = 0xDF8000
     W = _W(rom, at); done = []; worlds = {}; NIGHT.clear()
     talk = talk or {}
     doors = doors or {'areas': {}, 'maps': {}}
@@ -194,7 +209,7 @@ def apply(rom, cfg, l2, actor_ids, at, talk=None, doors=None):
             kill_pre_door(struct.unpack_from('<I', rom, struct.unpack_from('<I', rom, e + 0x2C)[0] - BASE)[0] - 4)
         st = struct.unpack_from('<I', rom, e + 0x2C)[0] - BASE
         if 'map_log2' in a and l2 is not None:
-            newM, W.cur = mapimport.import_map(rom, l2, int(a['map_log2'], 16), W.cur)
+            newM = import_l2(rom, l2, int(a['map_log2'], 16), W)
             struct.pack_into('<I', rom, st, newM + 4)
             drop_regions(newM, int(a['map_log2'], 16))
         if 'keep_objects' in a:                             # drop the rest of the area's object list (leftovers)
@@ -248,7 +263,7 @@ def apply(rom, cfg, l2, actor_ids, at, talk=None, doors=None):
                 newM = struct.unpack_from('<I', rom, struct.unpack_from('<I', rom, fe + 0x2C)[0] - BASE)[0] - 4
                 if a.get('pre_door') != 'keep': kill_pre_door(newM)
             else:
-                newM, W.cur = mapimport.import_map(rom, l2, int(a['map_log2'], 16), W.cur)
+                newM = import_l2(rom, l2, int(a['map_log2'], 16), W)
                 drop_regions(newM, int(a['map_log2'], 16))
                 if a.get('pre_door') != 'keep':                # the map's built-in LoG2 door (pre-struct warp with LoG2
                     pre = struct.unpack_from('<I', rom, newM - BASE)[0] - BASE      # world/area numbers, i.e. some BF
