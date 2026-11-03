@@ -572,7 +572,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -588,9 +587,10 @@
    "18": "P2_android18_idle",
    "19": "P2_android18_interact",
    "21": "P2_android18_special!side",
-   "15": "P2_android18_fly"
+   "15": "P2_android18_flyb",
+   "16": "P2_android18_flyb"
   },
-  "_note": "Android 18 outfit (form 23, actor 262). P2 sheets + LoG2 Android 18 animations (walk 1, melee 6/7, hurt 3, ki 5). Record cloned from BF Trunks 260 (22 slots): BF 262 itself has only 2 slots, and the engine does not bounds-check the slot (sub_0800ECDA), so attacks read past the record (fixed 2026-11-02). Slot 15 = BF flying (world map, checked in RAM: obj+0x50 = slot 15): the hover fly sheet until Buu's Fury-style flat flying frames are drawn.",
+  "_note": "Android 18 outfit (form 23, actor 262). P2 sheets + LoG2 Android 18 animations (walk 1, melee 6/7, hurt 3, ki 5). Record cloned from BF Trunks 260 (22 slots): BF 262 itself has only 2 slots, and the engine does not bounds-check the slot (sub_0800ECDA), so attacks read past the record (fixed 2026-11-02). Slot 15 = BF flying (world map, checked in RAM: obj+0x50 = slot 15): the user's Buu's Fury-style flying frames (P2_android18_flyb, 2026-11-03); slot 16 (knock-back spin / world-map turn) too.",
   "template_orig": 260
  },
  "gohan_bf": {
@@ -1382,7 +1382,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -1398,7 +1397,8 @@
    "18": "P2_android18_idle",
    "19": "P2_android18_interact",
    "21": "P2_android18_special!side",
-   "15": "P2_android18_fly"
+   "15": "P2_android18_flyb",
+   "16": "P2_android18_flyb"
   },
   "recolor": {
    "anchors": {
@@ -1484,7 +1484,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -1500,7 +1499,8 @@
    "18": "P2_android18_idle",
    "19": "P2_android18_interact",
    "21": "P2_android18_special!side",
-   "15": "P2_android18_fly"
+   "15": "P2_android18_flyb",
+   "16": "P2_android18_flyb"
   },
   "recolor": {
    "anchors": {
@@ -1605,7 +1605,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -1621,7 +1620,8 @@
    "18": "P2_android18_idle",
    "19": "P2_android18_interact",
    "21": "P2_android18_special!side",
-   "15": "P2_android18_fly"
+   "15": "P2_android18_flyb",
+   "16": "P2_android18_flyb"
   },
   "recolor": {
    "anchors": {
