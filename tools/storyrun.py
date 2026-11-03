@@ -39,6 +39,8 @@ def story_lists():
 
 
 WHEN = {}
+DEATH = {int(f) for e in json.load(open(os.path.join(HERE, '..', 'log4', 'stats.json')))['enemies'].values()
+         if isinstance(e, dict) for f in re.findall(r'call 29 (\d+)', e.get('death', ''))}
 
 
 def when_flags(w):
@@ -89,7 +91,8 @@ def main(rom, out, filt):
     done = set(); jobs = []
     for e in L:
         need, clear = WHEN.get(e['list'], ([], []))
-        pre = sorted((done | set(need)) - set(clear) - set(e['sets']) - set(e['guards']) - set(e['clears']))
+        boss = set(e['guards']) & DEATH                   # it checks a boss's death flag: that fight was won
+        pre = sorted((done | set(need) | boss) - set(clear) - set(e['sets']) - set(e['clears']))   # (its other if_flag checks are prerequisites: keep them)
         p = pl.get(e['list'])
         if p:
             import clipcheck as C
@@ -104,7 +107,7 @@ def main(rom, out, filt):
 
     def run(e):
         d = os.path.join(out, e['list'])
-        env = dict(os.environ, SHOTS=shots, BOOTFLAGS=boot, ONESHOT='1', TAIL='120 -|dump %s_area 3001980 4' % 'r')
+        env = dict(os.environ, SHOTS=shots, BOOTFLAGS=boot, ONESHOT='1', NOENEMIES='1', TAIL='120 -|dump %s_area 3001980 4' % 'r')
         w, a, x, y = e['place']
         r = subprocess.run(['python3', os.path.join(HERE, 'listtest.py'), rom, d, 'r', '%d:%d:%d:%d' % (w, a, x, y), e['list']]
                            + [str(f) for f in e['pre']], env=env, capture_output=True, text=True)

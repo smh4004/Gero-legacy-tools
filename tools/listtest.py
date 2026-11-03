@@ -10,12 +10,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import clipcheck
 rom, S, name, place, lname = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5]; pre = [int(f) for f in sys.argv[6:]]
 W, A_, x, y = (int(v) for v in place.split(':'))
 named = json.load(open(os.environ.get('NAMED') or os.path.join(os.path.dirname(os.path.abspath(rom)), 'named_lists.json')))
-R = C.Rom(open(rom, 'rb').read()); T, hook = C.make_test_rom(R, keep_story=os.environ.get("STORY") == "1", keep_enemies=True)
+R = C.Rom(open(rom, 'rb').read()); T, hook = C.make_test_rom(R, keep_story=os.environ.get("STORY") == "1", keep_enemies=os.environ.get("NOENEMIES") != "1")
 FB, BASE = 0x30010BD, 0x08000000
 u = lambda o: struct.unpack_from('<I', T, o)[0]
 e = R.entry(W, A_)
 ex = T[e + 3]; old = T[u(e + 0x10) - BASE:u(e + 0x10) - BASE + 8 * ex]
-o = len(T); T += struct.pack('<IIHHHHI', 0x0800742D, 0x0800770D, x - 40, y - 40, x + 40, y + 40, named[lname])
+o = len(T); T += struct.pack('<IIHHHHI', 0x0800742D, 0x0800770D, max(x - 40, 0), max(y - 40, 0), x + 40, y + 40, named[lname])
 ONESHOT = 890        # env ONESHOT=1: the injected trigger only fires while flag 890 is clear; the harness sets it
                      # right after the first A press, so later A presses can't start the list again
 t = len(T); T += old + struct.pack('<II', (0x20000 + ONESHOT) if os.environ.get('ONESHOT') else 0, BASE + o)

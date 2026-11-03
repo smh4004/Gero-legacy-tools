@@ -624,6 +624,15 @@ footage + the scene scripts, and renders any text with it.
   kite / ki-spam / skill runs: he plays 0 idle, 1 walk, 4/5/6 melee, 7 hurt, 9 = reaction to a ki hit (red flash; NOT a
   ki attack). Never: 2, 3, 8, 10-18. Slot 9 now uses the hurt frame. Art still wanted: melee 2 (H kick) and melee 3
   (K hook); M absorb only for a cutscene. Prompts: scratchpad prompts/art_prompts.md (updated).
+- FULL STORY RUN (plan step 3, 2026-11-03): tools/storyrun.py plays all 171 story lists in story order, each from a fresh
+  boot at its own trigger with every earlier flag preset (+ trigger 'when' flags + boss death flags it checks), then
+  checks flags, end area and the last screen (contact sheets). Result: no game bugs. All 32 first-pass CHECKs were test
+  issues, fixed in the tools (presets were written after the warp; prerequisite if_flags were dropped; field enemies
+  killed the idle tester -> BF's "You have died!" -> title; trigger rects off the map edge) or are branch-only flags
+  (zmart_clerk 388 / museum_curator 387 are the "ask" branch, ch8_stall 341 needs the tin box 359 first,
+  lookout_door 413 needs all seven balls). fs_wake doesn't fire from the injected trigger in 17:25 (test limitation)
+  but runs fine from 1:1. listtest: presets before the warp, ONESHOT=1 (injected trigger fires once), NOENEMIES=1,
+  BOOTFLAGS cache.
 - Flags used: 438 13 beaten, 439 transformation seen, 440 outfits, 441 Super 17. Free from 442.
 - BOSS BOT TESTS (plan step 1, 2026-11-03; shoot lists t_bal_13/s13/pic/g774/sent/capt/butch/kri, level = the level players
   reach, no stat points spent; scratchpad bosses/run.py drives listtest + fightbot). Results and changes:
