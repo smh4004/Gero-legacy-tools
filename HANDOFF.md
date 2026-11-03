@@ -620,6 +620,10 @@ footage + the scene scripts, and renders any text with it.
   (1000/19 lost to the fightbot at level 64; 700/16 won with 37% HP). 17:14: 13 spawns when 367 set and 438 clear; his
   death sets 438, heals, reloads; the arrival list ch9_thirteen2 (438 set, 439 clear) plays the absorption and sets 439;
   Super 13 spawns when 439 set and 363 clear. Verified in the emulator (STORY=1 listtest from shoot list t_bal_13 + 438).
+- Android 13 slot trace (2026-11-03): each slot given its own animation copy in a test ROM, then bot fights and idle /
+  kite / ki-spam / skill runs: he plays 0 idle, 1 walk, 4/5/6 melee, 7 hurt, 9 = reaction to a ki hit (red flash; NOT a
+  ki attack). Never: 2, 3, 8, 10-18. Slot 9 now uses the hurt frame. Art still wanted: melee 2 (H kick) and melee 3
+  (K hook); M absorb only for a cutscene. Prompts: scratchpad prompts/art_prompts.md (updated).
 - Flags used: 438 13 beaten, 439 transformation seen, 440 outfits, 441 Super 17. Free from 442.
 - BOSS BOT TESTS (plan step 1, 2026-11-03; shoot lists t_bal_13/s13/pic/g774/sent/capt/butch/kri, level = the level players
   reach, no stat points spent; scratchpad bosses/run.py drives listtest + fightbot). Results and changes:
