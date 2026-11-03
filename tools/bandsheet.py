@@ -13,8 +13,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import artclean
 
 
-def bands(mag):
+def bands(mag, im=None):
     rows = mag.mean(1) > 0.5
+    if im is not None:                          # a label bar = a row that is mostly dark (sprites never are)
+        rows = ~((im[..., :3].sum(2) < 200).mean(1) > 0.5)
     out, s = [], None
     for y, v in enumerate(rows):
         if v and s is None: s = y
@@ -44,9 +46,22 @@ def components(mask, min_frac=0.03):
 
 def main(src, dst, native_h=30, shadow=False, max_h=32):
     im = np.array(Image.open(src).convert('RGBA')).astype(int)
-    mag = (im[..., 0] > 190) & (im[..., 1] < 90) & (im[..., 2] > 190)
+    mag = (im[..., 0] > 150) & (im[..., 1] < 120) & (im[..., 2] > 150) & (abs(im[..., 0] - im[..., 2]) < 80)   # magenta + JPEG fringe
     frames = []
-    for (y0, y1) in bands(mag):
+    rows = []
+    for (y0, y1) in bands(mag, im):             # unlabelled sheets are one big panel: split it at fully magenta rows
+        nm = (~mag[y0:y1]).sum(1)
+        busy = (nm > 0) & (nm < 0.6 * mag.shape[1]); s0 = None; gap = 0     # (full-width rows = panel edges)
+        for y, v in enumerate(list(busy) + [False] * 4):
+            if v:
+                if s0 is None: s0 = y
+                gap = 0
+            elif s0 is not None:
+                gap += 1
+                if gap >= 4: rows.append((y0 + max(s0 - 2, 0), y0 + y)); s0 = None
+    tall = max((b - a for a, b in rows), default=0)
+    rows = [(a, b) for a, b in rows if b - a >= 0.3 * tall]          # drop slivers
+    for (y0, y1) in rows:
         sub = mag[y0:y1]
         boxes = components(~sub)
         hs = [b[3] - b[1] for b in boxes if b[5] is not None]   # frames without effects give the body height

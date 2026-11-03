@@ -16,16 +16,29 @@ u = lambda o: struct.unpack_from('<I', T, o)[0]
 e = R.entry(W, A_)
 ex = T[e + 3]; old = T[u(e + 0x10) - BASE:u(e + 0x10) - BASE + 8 * ex]
 o = len(T); T += struct.pack('<IIHHHHI', 0x0800742D, 0x0800770D, x - 40, y - 40, x + 40, y + 40, named[lname])
-t = len(T); T += old + struct.pack('<II', 0, BASE + o)
+ONESHOT = 890        # env ONESHOT=1: the injected trigger only fires while flag 890 is clear; the harness sets it
+                     # right after the first A press, so later A presses can't start the list again
+t = len(T); T += old + struct.pack('<II', (0x20000 + ONESHOT) if os.environ.get('ONESHOT') else 0, BASE + o)
 T[e + 3] = ex + 1; struct.pack_into('<I', T, e + 0x10, BASE + t)
 struct.pack_into('<II', T, hook + 16, (1 << 4) | (W << 8) | (A_ << 16) | (1 << 24), (y << 16) | x)
 os.makedirs(S, exist_ok=True); open(S + '/lt.gba', 'wb').write(T)
-l = C.BOOT + ['3 DOWN', '200 -']
 bytes_ = {}
 for f in pre: bytes_[FB + f // 8] = bytes_.get(FB + f // 8, 0) | 1 << (f % 8)
-l += ['w8 %x %x' % kv for kv in bytes_.items()]
+# preset flags go in BEFORE the DOWN press that warps to the test area, so its arrival events already see them
+# (written after the warp, an arrival scene had already started with the flags clear). The bytes are OR-ed into the
+# flags the opening left, read once from a boot-only run.
+OPENING = {}
+if bytes_:
+    cache = os.environ.get('BOOTFLAGS') or os.path.join(S, '_bootflags.bin')   # BOOTFLAGS: share one across runs
+    if not os.path.exists(cache):
+        C.run(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'harness'), S + '/lt.gba',
+              C.BOOT + ['dump _bootflags %x 70' % FB], S)
+        if cache != os.path.join(S, '_bootflags.bin'): os.replace(os.path.join(S, '_bootflags.bin'), cache)
+    bf_ = open(cache, 'rb').read()
+    OPENING = {FB + i: bf_[i] for i in range(len(bf_))}
+l = C.BOOT + ['w8 %x %x' % (a, v | OPENING.get(a, 0)) for a, v in bytes_.items()] + ['3 DOWN', '200 -']
 l += [x for x in os.environ.get('PRE', '').split('|') if x]      # PRE = harness lines before the A press
-l += ['4 A', '30 -']
+l += ['4 A', '30 -'] + (['w8 %x %x' % (FB + ONESHOT // 8, 1 << (ONESHOT % 8))] if os.environ.get('ONESHOT') else [])
 for i in range(int(os.environ.get("SHOTS", 16))): l += ['shot %s_%02d' % (name, i), '4 A', '50 -']
 l += [x for x in os.environ.get('TAIL', '').split('|') if x] + ['save %s_end' % name, 'shot %s_end' % name, 'dump %s_flags %x 40' % (name, FB + 30)]
 C.run(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'harness'), S + '/lt.gba', l, S)
