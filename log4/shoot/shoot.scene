@@ -399,3 +399,66 @@ do call 151 1; call 151 3; call 149 3; call 152 0; call 152 2; call 157 1 111; c
 code 02 c8 00 32 0b 13 00 08 01 b9 68 02 c2 11 02 c8 00 33 0b 13 00 08 01 b9 54 02 c2 11 02 c8 00 34 0b 13 00 08 01 b9 18 02 c2 11 02 c8 00 35 0b 13 00 08 01 b8 20 02 c2 11 02 c8 00 36 0b 13 00 08 01 b6 58 02 c2 11 02 c8 00 37 0b 13 00 08 01 b4 2c 02 c2 11 02 c8 00 38 0b 13 00 08 01 b1 08 02 c2 11 02 c8 00 39 0b 13 00 08 01 ac 58 02 c2 11 02 c8 00 3a 0b 13 00 08 01 a7 08 02 c2 11 02 c8 00 3b 0b 13 00 08 01 a0 04 02 c2 11 02 c8 00 3c 0b 13 00 08 01 97 38 02 c2 11 02 c8 00 3d 0b 13 00 08 01 8c 72 02 c2 11 11
 do heal; call 120 1; call 119 17 7 1 424 440; call 121 30
 stop
+# ---- trailer v7 (2026-11-03): new footage
+list t7_lapis_docks
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do heal; call 120 1; call 119 4 42 1 200 200; call 121 30
+stop
+list t7_outfits
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do call 164 1 20
+set_flag 440
+set_flag 441
+set_flag 400
+set_flag 401
+do heal; call 120 1; call 119 17 38 1 88 166; call 121 30
+stop
+list t7_paozu
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 368
+set_flag 409
+set_flag 411
+set_flag 370
+do heal; call 120 1; call 119 17 19 1 112 170; call 121 30
+stop
+list t7_hub
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 368
+set_flag 409
+do heal; call 120 1; call 119 17 18 1 240 150; call 121 30
+stop
+list t7_ruins
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 364
+set_flag 368
+do heal; call 120 1; call 119 17 16 1 424 440; call 121 30
+stop
+list cam_t7_fs26
+do call 120 1; call 115 17 26 1 60 120; call 121 40
+stop
+list t7_kame
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 368
+set_flag 409
+set_flag 371
+do heal; call 120 1; call 119 17 20 1 380 340; call 121 30
+stop
+list cam_t7_fs25
+do call 120 1; call 115 17 25 1 140 150; call 121 40
+stop

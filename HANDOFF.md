@@ -584,6 +584,23 @@ memories, optional bosses, outfits, new boss fights, LoG2 maps / Buu's Fury engi
 signal tearing, "SPECIMEN STATUS: ALIVE". Ending: Gero's terminal types the project load and COMING SOON, then the
 CRT switches off. Crops skip the HUD and the area-name banner (start clips 3+ s in, or zoom off the bottom).
 
+### Trailer v7 (2026-11-03, user: "same parameters as last time but new clips; no repetitive or illogical movement
+(attacking the air, walking away from an enemy); show the new flying animations; locations must be fine; keep the
+Act 1-3 order but no act names in the captions, flavour text / features instead")
+GerosLegacy_trailer_v7.mp4 (86 s, same music, cut points, look, terminal ending as v6) = tools/trailer7.py <mp3> <out>.
+Footage: tools/trailer7_shoot.py <shoot rom> <named_lists_shoot.json> <outdir> [clip ...]. Fights are played by
+tools/fightbot.py (walks straight at the enemy, attacks only in reach) and its keys.txt is replayed from the same
+start state while recording, so the recorded fight is exactly the bot's. t_bal_* lists: A is pressed through the
+level-up pages until the boss is in memory at full HP. New shoot lists: t7_outfits (17:38, no enemies, skill 20),
+t7_kame / t7_paozu / t7_hub / t7_ruins (arrival flags set so no narration), cam_t7_fs25 (incubator hold, the tease).
+Order: Gero's lab / Age 767 opener -> city -> drone and prototypes -> runaways -> Piccolo, Krillin -> world map
+(new flyb frames) -> ninjas -> Sentinel -> outfits / Super 17 -> Android 13 -> places montage -> incubator tease.
+Rejected takes: sh_drone_93/105 (never engaged), Butcher (stuck behind a hut), north walk (into a door), fs26 tease
+(same room as the opener).
+Shoot-list artifact (not a game bug): t_bal_kri (`call 151 1; ... call 157 1 111`) leaves a garbled sprite where the
+partner stands at the start of the fight; the real ch8_yamcha -> Krillin arrival in the release ROM is clean (checked
+2026-11-03). The trailer's kri shot starts at 10.4 s, after the garble has scrolled off.
+
 ### Teaser v3 (made 2026-11-01 on request: "remake the teaser with the new stuff, 45-50 s")
 log4/out/GerosLegacy_teaser_v3.mp4 (49.6 s) = tools/teaser.py <mp3> <out> <footage dir> (old script: tools/teaser_v2.py).
 Shots: main lab (Gero, Gevo, drone) -> animated door -> tank room -> West City day (Lapis out of Z-Mart) -> the park
