@@ -512,3 +512,51 @@ code 02 c8 00 32 0b 13 00 08 01 a2 30 02 c2 11 02 c8 00 33 0b 13 00 08 01 a2 1c 
 do call 29 534; call 29 536
 do heal; call 120 1; call 119 1 117 1 108 76; call 121 30
 stop
+# ---------- trailer v8 (2026-11-03): the length passes' new places
+list cam_t8_quarters
+set_flag 534
+do call 120 1; call 115 1 117 1 150 60; call 121 40
+stop
+list t8_night
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+set_flag 304
+do heal; call 120 1; call 119 16 1 1 420 560; call 121 30
+stop
+list t8_store
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+set_flag 461
+set_flag 466
+do heal; call 120 1; call 119 4 46 1 140 256; call 121 30
+stop
+list t8_wave
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 48 1 60 210; call 121 30
+stop
+list t8_archive
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 480
+do heal; call 120 1; call 119 1 115 1 180 240; call 121 30
+stop
+list t8_district
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 490
+do heal; call 120 1; call 119 17 48 1 30 200; call 121 30
+stop
+list t8_roof
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+set_flag 471
+set_flag 472
+do heal; call 120 1; call 119 16 47 1 56 124; call 121 30
+stop
