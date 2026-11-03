@@ -1,6 +1,6 @@
 """Import a labelled sprite sheet as drawn by an image generator from the art prompts: magenta (#FF00FF) panels, one per
 animation view (DOWN, UP, RIGHT, in that order), separated by dark label bars, frames left to right.
-Writes one raw strip at native pixel scale (frames down..., up..., right..., transparent background) for
+Writes one raw strip of equal cells at native pixel scale (frames down..., up..., right..., transparent background) for
 tools/intake.py, and optionally strips a black ground shadow.
 
 usage: python3 tools/bandsheet.py <sheet.png> <out.png> [--native-height 30] [--shadow] [--views 3]
@@ -31,19 +31,27 @@ def components(mask, min_frac=0.03):
         ys, xs = np.nonzero((lab == i) & mask)
         if len(ys): boxes.append((xs.min(), ys.min(), xs.max() + 1, ys.max() + 1, len(ys)))
     big = max(b[4] for b in boxes)
-    return sorted([b for b in boxes if b[4] >= min_frac * big], key=lambda b: b[0])
+    boxes = [b for b in boxes if b[4] >= min_frac * big]
+    bodies = [list(b) for b in boxes if b[4] >= 0.25 * big]    # the characters; smaller pieces (swooshes, sparks)
+    for b in boxes:                                            # join the nearest character's frame
+        if b[4] >= 0.25 * big: continue
+        cx = (b[0] + b[2]) / 2
+        t = min(bodies, key=lambda c: abs((c[0] + c[2]) / 2 - cx))
+        t[0], t[1], t[2], t[3] = min(t[0], b[0]), min(t[1], b[1]), max(t[2], b[2]), max(t[3], b[3])
+        t.append(b[3] - b[1])                                  # remember: not part of the body height
+    return sorted([tuple(c[:5]) + (c[1] if len(c) == 5 else None,) for c in bodies], key=lambda b: b[0])
 
 
-def main(src, dst, native_h=30, shadow=False):
+def main(src, dst, native_h=30, shadow=False, max_h=32):
     im = np.array(Image.open(src).convert('RGBA')).astype(int)
     mag = (im[..., 0] > 190) & (im[..., 1] < 90) & (im[..., 2] > 190)
     frames = []
     for (y0, y1) in bands(mag):
         sub = mag[y0:y1]
         boxes = components(~sub)
-        hs = [b[3] - b[1] for b in boxes]
-        guess = np.median(hs) / native_h
-        for (x0, by0, x1, by1, _) in boxes:
+        hs = [b[3] - b[1] for b in boxes if b[5] is not None]   # frames without effects give the body height
+        guess = np.median(hs or [b[3] - b[1] for b in boxes]) / native_h
+        for (x0, by0, x1, by1, _, _) in boxes:
             pad = int(guess * 2)
             ya, yb, xa, xb = max(by0 - pad, 0), min(by1 + pad, y1 - y0), max(x0 - pad, 0), x1 + pad
             crop = im[y0 + ya:y0 + yb, xa:xb].astype(np.uint8).copy()
@@ -58,14 +66,25 @@ def main(src, dst, native_h=30, shadow=False):
                 blk[:-7] = False
                 px[blk] = 0
                 ys, xs = np.nonzero(px[..., 3]); px = px[ys.min():ys.max() + 1, xs.min():xs.max() + 1]
+            if px.shape[0] > max_h:                 # an effect sticks out above the cell (one 32x32 OBJ per frame):
+                ov = px.shape[0] - max_h                # move the white effect pixels down over the empty space
+                wh = (px[..., :3].astype(int).min(2) > 225) & (px[..., 3] > 0)
+                body = (px[..., 3] > 0) & ~wh
+                top = np.nonzero(body.any(1))[0][0]
+                fx = wh.copy(); fx[top:] = False                    # the effect pixels above the body
+                ys, xs = np.nonzero(fx); px[fx] = 0
+                for y, x in zip(ys, xs):
+                    if px[y + ov, x, 3] == 0: px[y + ov, x] = (248, 248, 248, 255)
+                px = px[ov:]
             frames.append(px)
     H = max(f.shape[0] for f in frames) + 4
-    W = sum(f.shape[1] + 6 for f in frames)
-    S = np.zeros((H, W, 4), np.uint8); x = 3
-    for f in frames:
-        S[H - 2 - f.shape[0]:H - 2, x:x + f.shape[1]] = f; x += f.shape[1] + 6      # feet on one baseline
+    CW = max(f.shape[1] for f in frames) + 6                   # equal cells: intake splits by "frames": {"cols": n}
+    S = np.zeros((H, CW * len(frames), 4), np.uint8)
+    for k, f in enumerate(frames):
+        x = k * CW + (CW - f.shape[1]) // 2
+        S[H - 2 - f.shape[0]:H - 2, x:x + f.shape[1]] = f                         # feet on one baseline
     Image.fromarray(S).save(dst)
-    print('%s: %d frames, %dx%d strip' % (os.path.basename(src), len(frames), W, H))
+    print('%s: %d frames, %dx%d strip (cells %d wide: spec "frames": {"cols": %d})' % (os.path.basename(src), len(frames), S.shape[1], H, CW, len(frames)))
     return frames
 
 

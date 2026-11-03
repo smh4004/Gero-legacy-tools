@@ -4626,5 +4626,45 @@
   "new_palette_slots": 0,
   "warnings": [],
   "act": null
+ },
+ {
+  "id": "P14_android13_punch",
+  "detected_scale": [
+   1.0,
+   1.0
+  ],
+  "grid_offset": [
+   0.0,
+   0.0
+  ],
+  "grid_strength": 0.0,
+  "native_size": [
+   384,
+   36
+  ],
+  "mode": "pixel grid",
+  "frames": 12,
+  "colors": 16,
+  "palette_indices": [
+   16,
+   24,
+   27,
+   33,
+   47,
+   48,
+   70,
+   71,
+   78,
+   80,
+   115,
+   118,
+   120,
+   213,
+   214,
+   243
+  ],
+  "new_palette_slots": 0,
+  "warnings": [],
+  "act": null
  }
 ]

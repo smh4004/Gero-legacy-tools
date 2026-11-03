@@ -1,6 +1,6 @@
 [
  {
-  "id": "P14_android13_guard",
+  "id": "P14_android13_punch",
   "detected_scale": [
    1.0,
    1.0
@@ -11,24 +11,26 @@
   ],
   "grid_strength": 0.0,
   "native_size": [
-   187,
-   34
+   384,
+   36
   ],
   "mode": "pixel grid",
-  "frames": 9,
-  "colors": 14,
+  "frames": 12,
+  "colors": 16,
   "palette_indices": [
-   1,
    16,
    24,
    27,
    33,
    47,
+   48,
    70,
+   71,
    78,
+   80,
+   115,
    118,
-   119,
-   212,
+   120,
    213,
    214,
    243
