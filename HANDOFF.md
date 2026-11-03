@@ -595,6 +595,9 @@ Footage: scratchpad t3/ (*.mkv recorded with harness `rec` from save states; rec
 there). Game font: tools/gamefont.py builds tools/gamefont_atlas.npz (51 glyphs) from fully typed dialogue pages in
 footage + the scene scripts, and renders any text with it.
 
+## CREDITS (user, 2026-11-03): hold the credits update until the game is complete. log4/credits_todo.md lists every
+change to make; ADD A LINE THERE whenever a new asset, source, feature or character goes in (also a CLAUDE.md rule).
+
 ## 2026-11-03: alternate outfits, Super 17, Android 13 two-phase boss, fly slot, Eighteen's record fix
 - User request: alternate skins for 17/18 from their reference sheets + a Super 17 form; Android 13 sprites (walk sheet,
   then combat frames as they draw them) with option 4 = a two-phase boss (13, then Super 13).
