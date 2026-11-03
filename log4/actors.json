@@ -804,7 +804,7 @@
    "0": "P14_android13_idle2",
    "1": "P14_android13_walk",
    "2": "P14_android13_run",
-   "3": "P14_android13_idle2",
+   "3": "P14_android13_guard",
    "4": "P14_android13_walk@1:2",
    "5": "P14_android13_walk@3:4",
    "6": "P14_android13_walk@1:2",
@@ -821,7 +821,7 @@
    "17": "P14_android13_idle2",
    "18": "P14_android13_idle2"
   },
-  "_note": "Android 13 before he absorbs 14 and 15 (chapter 9 phase-1 boss, stats row 11) on BF Gohan's record (actor 97, 19 slots). User's art (P14, cap version): walk (from the first sheet), idle (A, 2 frames) and run (C, 4 frames) from the 2026-11-03 sheets (tools/bandsheet.py). The other combat slots still show idle/walk poses until those frames arrive (prompt letters D-M)."
+  "_note": "Android 13 before he absorbs 14 and 15 (chapter 9 phase-1 boss, stats row 11) on BF Gohan's record (actor 97, 19 slots). User's art (P14, cap version): walk (from the first sheet), idle (A, 2 frames), run (C, 4 frames) and guard (D, 3 frames) from the 2026-11-03 sheets (tools/bandsheet.py). The other combat slots still show idle/walk poses until those frames arrive (prompt letters D-M)."
  },
  "player_17_casual": {
   "template_orig": 102,

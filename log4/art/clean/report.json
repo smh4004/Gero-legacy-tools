@@ -1,6 +1,6 @@
 [
  {
-  "id": "P14_android13_idle2",
+  "id": "P14_android13_guard",
   "detected_scale": [
    1.0,
    1.0
@@ -11,52 +11,12 @@
   ],
   "grid_strength": 0.0,
   "native_size": [
-   124,
-   35
-  ],
-  "mode": "pixel grid",
-  "frames": 6,
-  "colors": 16,
-  "palette_indices": [
-   1,
-   16,
-   24,
-   27,
-   33,
-   47,
-   48,
-   70,
-   71,
-   78,
-   79,
-   118,
-   212,
-   213,
-   214,
-   243
-  ],
-  "new_palette_slots": 0,
-  "warnings": [],
-  "act": null
- },
- {
-  "id": "P14_android13_run",
-  "detected_scale": [
-   1.0,
-   1.0
-  ],
-  "grid_offset": [
-   0.0,
-   0.0
-  ],
-  "grid_strength": 0.0,
-  "native_size": [
-   250,
+   187,
    34
   ],
   "mode": "pixel grid",
-  "frames": 12,
-  "colors": 15,
+  "frames": 9,
+  "colors": 14,
   "palette_indices": [
    1,
    16,
@@ -65,11 +25,10 @@
    33,
    47,
    70,
-   71,
    78,
-   80,
    118,
    119,
+   212,
    213,
    214,
    243
