@@ -4666,5 +4666,45 @@
   "new_palette_slots": 0,
   "warnings": [],
   "act": null
+ },
+ {
+  "id": "P14_android13_hurtA",
+  "detected_scale": [
+   1.0,
+   1.0
+  ],
+  "grid_offset": [
+   0.0,
+   0.0
+  ],
+  "grid_strength": 0.0,
+  "native_size": [
+   99,
+   33
+  ],
+  "mode": "pixel grid",
+  "frames": 3,
+  "colors": 16,
+  "palette_indices": [
+   1,
+   17,
+   25,
+   47,
+   48,
+   54,
+   70,
+   71,
+   77,
+   79,
+   80,
+   83,
+   117,
+   119,
+   212,
+   242
+  ],
+  "new_palette_slots": 0,
+  "warnings": [],
+  "act": null
  }
 ]

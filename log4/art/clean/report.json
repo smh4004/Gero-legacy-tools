@@ -1,6 +1,6 @@
 [
  {
-  "id": "P14_android13_punch",
+  "id": "P14_android13_hurtA",
   "detected_scale": [
    1.0,
    1.0
@@ -11,29 +11,29 @@
   ],
   "grid_strength": 0.0,
   "native_size": [
-   384,
-   36
+   99,
+   33
   ],
   "mode": "pixel grid",
-  "frames": 12,
+  "frames": 3,
   "colors": 16,
   "palette_indices": [
-   16,
-   24,
-   27,
-   33,
+   1,
+   17,
+   25,
    47,
    48,
+   54,
    70,
    71,
-   78,
+   77,
+   79,
    80,
-   115,
-   118,
-   120,
-   213,
-   214,
-   243
+   83,
+   117,
+   119,
+   212,
+   242
   ],
   "new_palette_slots": 0,
   "warnings": [],

@@ -808,7 +808,7 @@
    "4": "P14_android13_punch",
    "5": "P14_android13_punch",
    "6": "P14_android13_punch",
-   "7": "P14_android13_idle2",
+   "7": "P14_android13_hurtA",
    "8": "P14_android13_punch@1:4",
    "9": "P14_android13_punch@1:4",
    "10": "P14_android13_idle2",
@@ -817,11 +817,11 @@
    "13": "P14_android13_idle2",
    "14": "P14_android13_walk@3:4",
    "15": "P14_android13_idle2",
-   "16": "P14_android13_idle2",
-   "17": "P14_android13_idle2",
+   "16": "P14_android13_hurtA",
+   "17": "P14_android13_hurtA",
    "18": "P14_android13_idle2"
   },
-  "_note": "Android 13 before he absorbs 14 and 15 (chapter 9 phase-1 boss, stats row 11) on BF Gohan's record (actor 97, 19 slots). User's art (P14, cap version): walk (from the first sheet), idle (A, 2 frames), run (C, 4 frames), guard (D, 3 frames) and punch (E, 4 frames: melee slots 4-6, its thrust also stands in for ki 8/9) from the 2026-11-03 sheets (tools/bandsheet.py). The other combat slots still show idle/walk poses until those frames arrive (prompt letters D-M)."
+  "_note": "Android 13 before he absorbs 14 and 15 (chapter 9 phase-1 boss, stats row 11) on BF Gohan's record (actor 97, 19 slots). User's art (P14, cap version): walk (from the first sheet), idle (A, 2 frames), run (C, 4 frames), guard (D, 3 frames) punch (E, 4 frames: melee slots 4-6, its thrust also stands in for ki 8/9) and hurt (F: the user's recoil drawing 'A', resampled x19 to his 29 px height; also knock-back 16/17 for now) from the 2026-11-03 sheets (tools/bandsheet.py). The other combat slots still show idle/walk poses until those frames arrive (prompt letters D-M)."
  },
  "player_17_casual": {
   "template_orig": 102,
