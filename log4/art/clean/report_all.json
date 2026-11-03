@@ -4785,5 +4785,45 @@
   "new_palette_slots": 0,
   "warnings": [],
   "act": null
+ },
+ {
+  "id": "P1_android17_flyb",
+  "detected_scale": [
+   1.0,
+   1.0
+  ],
+  "grid_offset": [
+   0.0,
+   0.0
+  ],
+  "grid_strength": 0.0,
+  "native_size": [
+   432,
+   29
+  ],
+  "mode": "pixel grid",
+  "frames": 12,
+  "colors": 16,
+  "palette_indices": [
+   1,
+   32,
+   64,
+   68,
+   77,
+   81,
+   88,
+   111,
+   112,
+   114,
+   116,
+   158,
+   161,
+   182,
+   200,
+   208
+  ],
+  "new_palette_slots": 0,
+  "warnings": [],
+  "act": "menu"
  }
 ]

@@ -540,7 +540,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -556,9 +555,10 @@
    "18": "P1_android17_idle",
    "19": "P1_android17_interact",
    "21": "P1_android17_special!side",
-   "15": "P1_android17_fly"
+   "15": "P1_android17_flyb",
+   "16": "P1_android17_flyb"
   },
-  "_note": "Android 17 outfit (form 14, BF Great Saiyaman's form, actor 102). Drawn sheets (P1: idle, dash, block, special, charge, interact, victory) + LoG2 Android 17 animations for walk (1), melee (6/7), hurt/KO (3), ki (5). Global colours only, so it shows in every act. Slot 15 = BF flying (world map, checked in RAM: obj+0x50 = slot 15): the hover fly sheet until Buu's Fury-style flat flying frames are drawn."
+  "_note": "Android 17 outfit (form 14, BF Great Saiyaman's form, actor 102). Drawn sheets (P1: idle, dash, block, special, charge, interact, victory) + LoG2 Android 17 animations for walk (1), melee (6/7), hurt/KO (3), ki (5). Global colours only, so it shows in every act. Slot 15 = BF flying (world map, checked in RAM: obj+0x50 = slot 15): the user's Buu's Fury-style flat flying frames (P1_android17_flyb, 2026-11-03). Slot 16 (BF: the spin when knocked back, and the world map's TURN animation, checked in RAM) also uses the flying frames."
  },
  "player_18": {
   "replace": 262,
@@ -835,7 +835,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -851,7 +850,8 @@
    "18": "P1_android17_idle",
    "19": "P1_android17_interact",
    "21": "P1_android17_special!side",
-   "15": "P1_android17_fly"
+   "15": "P1_android17_flyb",
+   "16": "P1_android17_flyb"
   },
   "recolor": {
    "anchors": {
@@ -947,7 +947,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -963,7 +962,8 @@
    "18": "P1_android17_idle",
    "19": "P1_android17_interact",
    "21": "P1_android17_special!side",
-   "15": "P1_android17_fly"
+   "15": "P1_android17_flyb",
+   "16": "P1_android17_flyb"
   },
   "recolor": {
    "anchors": {
@@ -1056,7 +1056,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -1072,7 +1071,8 @@
    "18": "P1_android17_idle",
    "19": "P1_android17_interact",
    "21": "P1_android17_special!side",
-   "15": "P1_android17_fly"
+   "15": "P1_android17_flyb",
+   "16": "P1_android17_flyb"
   },
   "recolor": {
    "anchors": {
@@ -1204,7 +1204,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "16": "3",
    "17": "3",
    "20": "5"
   },
@@ -1220,7 +1219,8 @@
    "18": "P1_android17_idle",
    "19": "P1_android17_interact",
    "21": "P1_android17_special!side",
-   "15": "P1_android17_fly"
+   "15": "P1_android17_flyb",
+   "16": "P1_android17_flyb"
   },
   "recolor": {
    "anchors": {

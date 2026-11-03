@@ -3,7 +3,7 @@ animation view (DOWN, UP, RIGHT, in that order), separated by dark label bars, f
 Writes one raw strip of equal cells at native pixel scale (frames down..., up..., right..., transparent background) for
 tools/intake.py, and optionally strips a black ground shadow.
 
-usage: python3 tools/bandsheet.py <sheet.png> <out.png> [--native-height 30] [--shadow] [--views 3]
+usage: python3 tools/bandsheet.py <sheet.png> <out.png> [--native-height 30] [--shadow] [--scale S]
 --native-height: the frame height (shadow included) the art should have at 1x, used to find the pixel scale.
 --shadow: drop near-black pixels in the bottom 7 rows of each frame (eyes are black too, so only there)."""
 import os, sys
@@ -16,7 +16,9 @@ import artclean
 def bands(mag, im=None):
     rows = mag.mean(1) > 0.5
     if im is not None:                          # a label bar = a row that is mostly dark (sprites never are)
-        rows = ~((im[..., :3].sum(2) < 200).mean(1) > 0.5)
+        c = im[..., :3]                         # bars are flat dark grey (~30,30,30); sprite rows mix black and colours
+        grey = (c.min(2) >= 15) & (c.max(2) <= 60) & (c.max(2) - c.min(2) <= 12)
+        rows = ~(grey.mean(1) > 0.6)
     out, s = [], None
     for y, v in enumerate(rows):
         if v and s is None: s = y
@@ -44,14 +46,14 @@ def components(mask, min_frac=0.03):
     return sorted([tuple(c[:5]) + (c[1] if len(c) == 5 else None,) for c in bodies], key=lambda b: b[0])
 
 
-def main(src, dst, native_h=30, shadow=False, max_h=32):
+def main(src, dst, native_h=30, shadow=False, max_h=32, scale=None):
     im = np.array(Image.open(src).convert('RGBA')).astype(int)
     mag = (im[..., 0] > 150) & (im[..., 1] < 120) & (im[..., 2] > 150) & (abs(im[..., 0] - im[..., 2]) < 80)   # magenta + JPEG fringe
     frames = []
     rows = []
     for (y0, y1) in bands(mag, im):             # unlabelled sheets are one big panel: split it at fully magenta rows
         nm = (~mag[y0:y1]).sum(1)
-        busy = (nm > 0) & (nm < 0.6 * mag.shape[1]); s0 = None; gap = 0     # (full-width rows = panel edges)
+        busy = (nm > 0) & (nm < 0.97 * mag.shape[1]); s0 = None; gap = 0     # (full-width rows = panel edges)
         for y, v in enumerate(list(busy) + [False] * 4):
             if v:
                 if s0 is None: s0 = y
@@ -65,7 +67,7 @@ def main(src, dst, native_h=30, shadow=False, max_h=32):
         sub = mag[y0:y1]
         boxes = components(~sub)
         hs = [b[3] - b[1] for b in boxes if b[5] is not None]   # frames without effects give the body height
-        guess = np.median(hs or [b[3] - b[1] for b in boxes]) / native_h
+        guess = scale or np.median(hs or [b[3] - b[1] for b in boxes]) / native_h   # --scale: views of different heights (flying)
         for (x0, by0, x1, by1, _, _) in boxes:
             pad = int(guess * 2)
             ya, yb, xa, xb = max(by0 - pad, 0), min(by1 + pad, y1 - y0), max(x0 - pad, 0), x1 + pad
@@ -106,4 +108,4 @@ def main(src, dst, native_h=30, shadow=False, max_h=32):
 if __name__ == '__main__':
     a = sys.argv[1:]
     nh = int(a[a.index('--native-height') + 1]) if '--native-height' in a else 30
-    main(a[0], a[1], nh, '--shadow' in a)
+    main(a[0], a[1], nh, '--shadow' in a, scale=float(a[a.index('--scale') + 1]) if '--scale' in a else None)

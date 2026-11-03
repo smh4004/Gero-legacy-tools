@@ -99,7 +99,7 @@ SHA1 f1c4b07554d2a3b1ad2f325307051e775ce68087, 8 MB, code BG3E, last data 0x7B89
 - Player slot template (frames per direction, Goku/Gohan; labels are visual reads, confirm in-game):
   0 idle 2 | 1 walk 4 | 2 run 4 | 3 guard/block 3 | 4-6 melee combo hits 4/4/4 | 7 hurt 1 | 8 signature beam 11 | 9 ki blast 3 |
   10 transform (SS) 11 | 11 costume/form change out 4-9 | 12 victory 2 | 13 power-up / item (arms up) 2 | 14 kick/jump 3 |
-  15 FLY (horizontal flight; the world map plays it, checked in RAM 2026-11-02) 4 | 16 spin knock-back 4 | 17 knockdown 4 | 18 recover 3 | 19 costume change in / teleport 3-10 | 20 throw 1-3 | 21 second special 11
+  15 FLY (horizontal flight; the world map plays it, checked in RAM 2026-11-02) 4 | 16 spin knock-back + world-map turn (RAM-checked) 4 | 17 knockdown 4 | 18 recover 3 | 19 costume change in / teleport 3-10 | 20 throw 1-3 | 21 second special 11
 - Great Saiyaman's slots 11/19 are a white-flash costume change: the model for LoG4's outfit swap.
 
 ## LoG2 actors
