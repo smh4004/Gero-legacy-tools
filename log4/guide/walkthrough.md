@@ -136,7 +136,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - Caches: {{C:night_cache_river}} and {{C:night_cache_docks}}.
 5. The Old Warehouse ({{X:ch6_home}}): {{J:ch6_home}}.
 6. **Boss: {{B:76}}**.
-7. The ambush follows ({{X:ch6_ambush}}). The twins wake in Gero's lab ({{X:gero_lab_talk}}{{X:lazuli_lab_talk}}): {{J:ch6_ambush}}. You also unlock the **Outfit** skill: select it and press B to switch between the android outfit and the old clothes.
+7. The ambush follows ({{X:ch6_ambush}}). The twins wake in Gero's lab ({{X:gero_lab_talk}}{{X:lazuli_lab_talk}}): {{J:ch6_ambush}}. New skills for both twins: **Energy Blast** (their blasts are blue), **Full Power Energy Wave** (a long green beam) and **Outfit** (select it and press B to switch between the android outfit and the old clothes). Eighteen also gets **Stun Shot**.
 
 ---
 
@@ -225,7 +225,7 @@ Eighteen stands next to the landing spot at every destination; talk to her to fl
 **Outfits and Super 17.** Select Outfit with the L Button and press B to change. Each press moves on to the next outfit:
 - Seventeen: old clothes, android clothes, then (after talking to Eighteen at the hub) a white shirt and a brown jacket.
 - Eighteen: old clothes, android clothes, then (same unlock) a red top with yellow trousers, a red top with black sleeves, and a maroon tracksuit.
-- **Super 17:** beat **{{B:19}}** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. Super 17 raises Seventeen's Strength by half (x1.5) until he changes back or runs out of ki.
+- **Super 17:** beat **{{B:19}}** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17**, his own transformation. Use it from the android clothes. Super 17 raises Seventeen's Strength by half (x1.5) until he changes back or runs out of ki.
 
 **Other sights:** Orange Star City's school ({{L:osc_school}}), a police officer ({{L:osc_police}}) and a schoolgirl ({{L:osc_girl}}). Every place also has its own first-landing scene.{{X:osc_arrive}}{{X:lookout_arrive}}{{X:papaya_arrive}}{{X:diablo_arrive}}{{X:pilaf_arrive}}{{X:nat_arrive}}
 

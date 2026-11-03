@@ -136,7 +136,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - Caches: **Riverside (night)** (examine): Root Beer x1 and **Docks (night)** (hold Up): Senzu Bean x1.
 5. The Old Warehouse: "Destroy the machine in the warehouse".
 6. **Boss: The Collector (HP 520, level 56)**.
-7. The ambush follows. The twins wake in Gero's lab: "Lapis and Lazuli are gone". You also unlock the **Outfit** skill: select it and press B to switch between the android outfit and the old clothes.
+7. The ambush follows. The twins wake in Gero's lab: "Lapis and Lazuli are gone". New skills for both twins: **Energy Blast** (their blasts are blue), **Full Power Energy Wave** (a long green beam) and **Outfit** (select it and press B to switch between the android outfit and the old clothes). Eighteen also gets **Stun Shot**.
 
 ---
 
@@ -225,7 +225,7 @@ Eighteen stands next to the landing spot at every destination; talk to her to fl
 **Outfits and Super 17.** Select Outfit with the L Button and press B to change. Each press moves on to the next outfit:
 - Seventeen: old clothes, android clothes, then (after talking to Eighteen at the hub) a white shirt and a brown jacket.
 - Eighteen: old clothes, android clothes, then (same unlock) a red top with yellow trousers, a red top with black sleeves, and a maroon tracksuit.
-- **Super 17:** beat **Prototype 11 (HP 6150, level 60)** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. Super 17 raises Seventeen's Strength by half (x1.5) until he changes back or runs out of ki.
+- **Super 17:** beat **Prototype 11 (HP 6150, level 60)** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17**, his own transformation. Use it from the android clothes. Super 17 raises Seventeen's Strength by half (x1.5) until he changes back or runs out of ki.
 
 **Other sights:** Orange Star City's school (**Orange Star City** (examine)), a police officer (**Orange Star City**) and a schoolgirl (**Orange Star City**). Every place also has its own first-landing scene.
 
