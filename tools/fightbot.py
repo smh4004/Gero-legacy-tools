@@ -36,6 +36,17 @@ for i in range(0, len(ew) - 12, 4):                             # nearest the ar
         if 0x2000000 + i + 4 != pos and abs(x - AX) < 40 and abs(y - AY) < 40:
             if ppos is None or abs(x - AX) + abs(y - AY) < best: ppos, best = 0x2000000 + i + 4, abs(x - AX) + abs(y - AY)
 assert ppos, 'player position not found'
+cands = [0x2000000 + i + 4 for i in range(0, len(ew) - 12, 4) if struct.unpack_from('<I', ew, i)[0] == 0x02050810
+         and 0x2000000 + i + 4 != pos and abs((struct.unpack_from('<I', ew, i + 4)[0] >> 8) - AX) < 60
+         and abs((struct.unpack_from('<I', ew, i + 8)[0] >> 8) - AY) < 60]
+if len(cands) > 1:                                  # an NPC (e.g. Eighteen next to the landing spot) can stand closer:
+    xs = {}
+    for key in ('RIGHT', 'LEFT'):                  # the player is the one that goes right on RIGHT and left on LEFT
+        run(['load _bot', '10 -'] + ['dump _q%d %x 8' % (j, a) for j, a in enumerate(cands)] + ['20 ' + key]
+            + ['dump _r%d %x 8' % (j, a) for j, a in enumerate(cands)])
+        xs[key] = [struct.unpack('<i', rd('_r%d' % j)[:4])[0] - struct.unpack('<i', rd('_q%d' % j)[:4])[0] for j in range(len(cands))]
+    mv = [(xs['RIGHT'][j] - xs['LEFT'][j], a) for j, a in enumerate(cands)]
+    if max(mv)[0] > 0: ppos = max(mv)[1]
 trace = []; ALL = []      # every key line sent, in order (keys.txt: replay it from the start state to record video)
 for k in range(steps):
     run(['load _bot', 'dump _p %x 8' % ppos, 'dump _b %x 8' % pos, 'dump _h %x 4' % hpaddr,

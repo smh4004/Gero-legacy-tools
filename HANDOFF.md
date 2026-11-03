@@ -595,7 +595,45 @@ Footage: scratchpad t3/ (*.mkv recorded with harness `rec` from save states; rec
 there). Game font: tools/gamefont.py builds tools/gamefont_atlas.npz (51 glyphs) from fully typed dialogue pages in
 footage + the scene scripts, and renders any text with it.
 
-## STATUS AT END OF 2026-11-02 (read this first)
+## 2026-11-03: alternate outfits, Super 17, Android 13 two-phase boss, fly slot, Eighteen's record fix
+- User request: alternate skins for 17/18 from their reference sheets + a Super 17 form; Android 13 sprites (walk sheet,
+  then combat frames as they draw them) with option 4 = a two-phase boss (13, then Super 13).
+- FIX: player_18 (form 23) cloned BF actor 262, which has only 2 animation slots; the engine doesn't bounds-check the slot
+  (sub_0800ECDA), so attacking in 18's android outfit read past the record. Now "template_orig": 260 (22 slots).
+- BF slot 15 = FLYING (the world map plays it: obj+0x50 checked in RAM). 17/18 had LoG2 hurt frames there; now their
+  hover fly sheets until flat Buu's Fury-style fly frames are drawn (prompt sent: scratchpad prompts/art_prompts.md).
+- Recolour outfits: tools/recolor.py (actors.json "recolor": anchors neck/waist/waist_last/feet, rules from->to/ramp with
+  where below/above/interior/not_near/touching). Existing palette colours only (palette rule). Preview any actor's frames
+  with tools/skinpreview.py (sprites.FRAME_HOOK / CUR_ACTOR collect every frame build_actors makes).
+  New actors (appended last, ids 317-323): player_17_casual/_jacket/_super/_supergold, player_18_redyellow/_redblack/_tracksuit.
+- Forms (forms.json, tools/outfit.py now supports copy/actor/into/back): 11/12 = 17 casual/jacket, 22/24/25 = 18 outfits
+  (copies of 14/23, +0x17 = 0xFF so skill 20 can't fire there), 15 = Super 17 and 13 = gold Super 17 (copies of BF SSJ
+  Gohan form 16: flags 0x51, revert 14). Form 14 +0x16 = 15.
+- log4/asm/outfit.s: both skill-18 hooks step to the next form from tables next_plain / next_all (next_all once flag 440).
+  17: 10 -> 14 -> 11 -> 12 -> 10; 15 <-> 13. 18: 21 -> 23 -> 22 -> 24 -> 25 -> 21. Verified in the emulator (debug ROM).
+- Skill 20 renamed "Super 17" (UI 1348/1349); BF Super Saiyan mechanics: needs [0x03001988] != 0 (set by an area-script
+  native: combat areas only, so not in towns), drains EP and reverts when it runs out. Verified: transform, gold swap, revert.
+- Unlocks: flag 440 = outfits (talk to Eighteen at the Age 772 hub, ch9_hub18); flag 441 + skill 20 for character 1 =
+  Super 17 (Project 17-S chip in Prototype 11's field case, Diablo Desert, diablo_ball). Debug all-moves sets both.
+- Android 13 = actor android13 (template_orig 97, P14 user art: walk, idle A, run C via tools/bandsheet.py; other slots
+  placeholders until the user's frames arrive), stats row 11 (BF unused; ai 0x8A), HP 700 / STR 16 / POW 15 / END 18
+  (1000/19 lost to the fightbot at level 64; 700/16 won with 37% HP). 17:14: 13 spawns when 367 set and 438 clear; his
+  death sets 438, heals, reloads; the arrival list ch9_thirteen2 (438 set, 439 clear) plays the absorption and sets 439;
+  Super 13 spawns when 439 set and 363 clear. Verified in the emulator (STORY=1 listtest from shoot list t_bal_13 + 438).
+- Flags used: 438 13 beaten, 439 transformation seen, 440 outfits, 441 Super 17. Free from 442.
+- BOSS BOT TESTS (plan step 1, 2026-11-03; shoot lists t_bal_13/s13/pic/g774/sent/capt/butch/kri, level = the level players
+  reach, no stat points spent; scratchpad bosses/run.py drives listtest + fightbot). Results and changes:
+  Android 13 700/16 win (37% left); Super 13 1700 -> 1500 win (21/471); Piccolo never hurt the bot (row 136's own
+  behaviour 0x30F), now ai 0x8A: win with 121/455; Gohan 774 win, lost 39%; Sentinel 3700/33 -> 2600/30 win (90/471);
+  ninja captain 3550/34 barely hits the bot -> 4000/38 (still an easy win: human check); Butcher + his raiders swarm the
+  bot (it fights the group at once): 3200/32 still a bot loss, human check; Krillin (as Eighteen, now with a full record)
+  easy win (431/476 lowest), left as is (story fight). Act 1 drone bosses: only tested at fresh level before (they get
+  easier with levels), not re-run.
+  fightbot: the player struct is now found by a RIGHT/LEFT probe when NPCs stand near the arrival point.
+- tools/bandsheet.py: imports the generator's labelled magenta sheets (panels down/up/right, frames left to right):
+  finds the pixel scale from a native height (30 with shadow), strips the shadow, writes a strip for tools/intake.py.
+
+## STATUS AT END OF 2026-11-02 (read this first; the 2026-11-03 section above adds to it)
 Latest deliveries: GerosLegacy_balance.bps (main game: everything below) and GerosLegacy_debug_v4.bps (debug ROM).
 Repo: https://github.com/smh4004/Gero-legacy-tools is in sync (code, mod data, docs, cleaned art). Re-sync with
 `python3 tools/text_edits.py make bf.gba; python3 tools/sync_repo.py . <clone>`, then commit and push.
@@ -615,7 +653,8 @@ hand-verified); supply-yard crate fix; Act 3 boss rescale for real player levels
 tools/sync_repo.py; length report (tools/length_report.py).
 
 The user's plan, in order. Each step is checked by the user before the next one starts:
-1. Bot-test the bosses not yet tested at their current stats, at the level players reach:
+1. DONE 2026-11-03 for Act 3 (results in the 2026-11-03 section; captain and Butcher still want a human check). Original note:
+   Bot-test the bosses not yet tested at their current stats, at the level players reach:
    - Act 3: Piccolo, Super 13, Gohan 774, Sentinel, ninja captain, Butcher.
    - Act 1 drone bosses: tank r127, Raider Chief r128, looters' captain r47, Prototype 9 r41, Prototype 12 r30.
    How: add shoot.scene t_bal_* lists (party, then native-194 level code, then warp), build --shoot, create a state

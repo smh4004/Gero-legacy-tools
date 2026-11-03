@@ -294,7 +294,17 @@
 [
 "ui:1347",
 "[ui:1347]",
-"= Press the B Button to change into your android clothes.  Press the B Button again to change back into your old clothes."
+"= Press the B Button to change clothes. Each press moves on to the next outfit you own."
+],
+[
+"ui:1348",
+"[ui:1348]",
+"= Super 17"
+],
+[
+"ui:1349",
+"[ui:1349]",
+"= Press the B Button to become Super 17 (android clothes only). Press it again to change back."
 ],
 [
 "ui:1451",

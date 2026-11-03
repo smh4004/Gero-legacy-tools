@@ -1423,5 +1423,77 @@
   "file": "E6_cell_tail_glow.png",
   "target_height": 16,
   "act": "act3"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "scale": 1,
+  "allow_new_colors": 0,
+  "id": "P14_android13_walk",
+  "file": "P14_android13_walk.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "scale": 1,
+  "allow_new_colors": 0,
+  "id": "P14_android13_idle",
+  "file": "P14_android13_idle.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "scale": 1,
+  "allow_new_colors": 0,
+  "id": "P14_android13nocap_walk",
+  "file": "P14_android13nocap_walk.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "scale": 1,
+  "allow_new_colors": 0,
+  "id": "P14_android13nocap_idle",
+  "file": "P14_android13nocap_idle.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "scale": 1,
+  "allow_new_colors": 0,
+  "id": "P14_android13_idle2",
+  "file": "P14_android13_idle2.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "scale": 1,
+  "allow_new_colors": 0,
+  "id": "P14_android13_run",
+  "file": "P14_android13_run.png"
  }
 ]

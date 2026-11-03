@@ -143,16 +143,17 @@ Talking to Eighteen at the Capsule Corporation hub (**Capsule Corporation (Age 7
 8. **Boss: Piccolo (HP 1350, level 55)**, fought as Seventeen. Gohan runs, and the night on the Z-Mart roof ends the chapter.
 
 ## Chapter 9: Years of Terror
-**You play:** Seventeen. **Goal:** Gero's computer, Super 13, then the open world. Two missable memories are in this chapter.
+**You play:** Seventeen. **Goal:** Gero's computer, Android 13 and Super 13, then the open world. Two missable memories are in this chapter.
 
 1. Age 768, Capsule Corporation: "Search Capsule Corporation". Bulma and baby Trunks are in the dome house (**Capsule Corporation (Age 768)**); talk to her. Gero's computer calls the twins home.
 2. **The northern mountains.** The bunker door is sealed: "Destroy the Sentinel in the generator cave".
-   - **Mini-boss: The Sentinel (HP 3700, level 58)** in the Generator Cave (right of the Mountain Pass).
+   - **Mini-boss: The Sentinel (HP 2600, level 58)** in the Generator Cave (right of the Mountain Pass).
    - Cache: **Old Mine (768)** (examine): Hercule-ade x2, Senzu Bean x1. The Old Mine is up from the Generator Cave.
    - With the Sentinel destroyed, the bunker door on the left of the Mountain Pass opens.
 3. The bunker: "Find Unit Thirteen". Android 16's empty pod is in the tank room (**Bunker tank room (Age 768)** (examine)).
-4. **Boss: Super Android 13 (HP 1700, level 58)** in the incubator.
+4. **Two-phase boss in the incubator**: first **Android 13 (HP 700, level 56)**, then he absorbs Fourteen and Fifteen (you're fully healed) and you fight **Super Android 13 (HP 1500, level 58)**.
 5. **Age 772: the hub.** Capsule Corporation is now the twins' base: "Fly anywhere you like: the airship pad or the hangar. West City's crossroads when you're ready.".
+   - **New outfits:** talk to Eighteen at the hub (**Capsule Corporation (Age 772 hub)**). From then on, Outfit cycles through every outfit you own (see "Outfits and Super 17" below).
    - **The world map opens here.** Examine Bulma's airship, or walk off the west edge of the grounds, or examine the hangar jets to take off. See "The open world" below.
    - **Memory: Mount Paozu (missable).** Land on Mount Paozu and meet Chi-Chi (**Mount Paozu: Goku's house** (walk in)).
    - **Memory: Kame House (missable).** Land on Roshi's island and meet Roshi (**Kame House** (walk in)).
@@ -183,11 +184,16 @@ Eighteen stands next to the landing spot at every destination; talk to her to fl
 2. **Two-star:** Hercule in Orange Star City (**Orange Star City**: Dragon Ball 2 x1).
 3. **Three-star:** under Prototype 11 in Diablo Desert (**Diablo Desert** (examine): Dragon Ball 3 x1). You must beat **Prototype 11 (HP 6150, level 60)** first (optional boss).
 4. **Four-star:** the shrine in Goku's house on Mount Paozu (**Mount Paozu: Goku's house** (examine): Dragon Ball 4 x1).
-5. **Five-star:** the elder of Nataday Village (**Nataday Village**: Dragon Ball 5 x1, Senzu Bean x1). Run Butcher's raiders out first: **Butcher, raider boss (HP 4000, level 59)** (optional boss). The farmer (**Nataday Village**) tells you about them.
-6. **Six-star:** Pilaf's old safe (**Pilaf's Castle** (examine): Dragon Ball 6 x1). Beat **Ninja captain (HP 3550, level 59)** first (optional boss).
+5. **Five-star:** the elder of Nataday Village (**Nataday Village**: Dragon Ball 5 x1, Senzu Bean x1). Run Butcher's raiders out first: **Butcher, raider boss (HP 3200, level 59)** (optional boss). The farmer (**Nataday Village**) tells you about them.
+6. **Six-star:** Pilaf's old safe (**Pilaf's Castle** (examine): Dragon Ball 6 x1). Beat **Ninja captain (HP 4000, level 59)** first (optional boss).
 7. **Seven-star:** the tournament announcer on Papaya Island (**Papaya Island**: Dragon Ball 7 x1). The welded tournament gate is **Papaya Island** (examine).
 
 **Kami's palace:** stand under the palace arch on the Lookout and examine it (**Kami's Lookout** (examine): Holy Water x2, Senzu Bean x3, DinosaurMilk x1). With all seven balls, Eighteen sets them on the altar.
+
+**Outfits and Super 17.** Select Outfit with the L Button and press B to change. Each press moves on to the next outfit:
+- Seventeen: old clothes, android clothes, then (after talking to Eighteen at the hub) a white shirt and a brown jacket.
+- Eighteen: old clothes, android clothes, then (same unlock) a red top with yellow trousers, a red top with black sleeves, and a maroon tracksuit.
+- **Super 17:** beat **Prototype 11 (HP 6150, level 60)** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. While in Super 17, Outfit switches between dark hair and gold hair.
 
 **Other sights:** Orange Star City's school (**Orange Star City** (examine)), a police officer (**Orange Star City**) and a schoolgirl (**Orange Star City**). Every place also has its own first-landing scene.
 
@@ -263,7 +269,8 @@ Every container, gift and reward that gives items. Each one works once.
 | Vegeta | West City: Crossroads: Vegeta | 1100 | 54 | 19 | 17 | 20 | 600 |
 | Krillin | West City: Crossroads: Krillin | 700 | 53 | 13 | 16 | 16 | 480 |
 | Piccolo | West City: Crossroads: Piccolo | 1350 | 55 | 20 | 17 | 22 | 800 |
-| Super Android 13 | Dr. Gero's Lab: Bunker incubator: Super 13 | 1700 | 58 | 22 | 20 | 24 | 1200 |
+| Android 13 | Dr. Gero's Lab: Bunker incubator: Android 13 / Super 13 | 700 | 56 | 16 | 15 | 18 | 700 |
+| Super Android 13 | Dr. Gero's Lab: Bunker incubator: Android 13 / Super 13 | 1500 | 58 | 22 | 20 | 24 | 1200 |
 | Gohan | West City ruins: Gohan (Age 774) | 1600 | 57 | 17 | 15 | 22 | 1000 |
 | One-armed Future Gohan | West City: Crossroads: Future Gohan | 1850 | 58 | 18 | 17 | 23 | 1500 |
 | Cyborg | Dr. Gero's Lab: Bunker main lab (Age 788) | 875 | 90 | 22 | 26 | 41 | 0 |
@@ -272,15 +279,15 @@ Every container, gift and reward that gives items. Each one works once.
 | Gero's old heavy unit | West City Docks: Docks (767) | 420 | 57 | 15 | 0 | 20 | 260 |
 | Gero's old heavy unit | Old Warehouse (767) | 420 | 57 | 15 | 0 | 20 | 260 |
 | Gero's old heavy unit | Northern Wilderness: Mountain Pass (768) | 420 | 57 | 15 | 0 | 20 | 260 |
-| The Sentinel | Northern Wilderness: Generator Cave (768) | 3700 | 58 | 33 | 0 | 28 | 1200 |
+| The Sentinel | Northern Wilderness: Generator Cave (768) | 2600 | 58 | 30 | 0 | 28 | 1200 |
 | Gero's old heavy unit | Northern Wilderness: Old Mine (768) | 420 | 57 | 15 | 0 | 20 | 260 |
 | Gero's old heavy unit | Circus Lot ruins (780) | 420 | 57 | 15 | 0 | 20 | 260 |
 | Cyborg | Dr. Gero's Lab: Security Wing, Age 788 | 875 | 90 | 22 | 26 | 41 | 0 |
 | Tournament hopeful | Papaya Island | 520 | 57 | 18 | 0 | 19 | 260 |
 | Prototype 11 | Diablo Desert | 6150 | 60 | 40 | 0 | 32 | 1800 |
 | Castle ninja | Pilaf's Castle | 450 | 56 | 17 | 0 | 18 | 240 |
-| Ninja captain | Pilaf's Castle | 3550 | 59 | 34 | 0 | 28 | 1300 |
-| Butcher, raider boss | Nataday Village | 4000 | 59 | 36 | 0 | 28 | 1400 |
+| Ninja captain | Pilaf's Castle | 4000 | 59 | 38 | 0 | 28 | 1300 |
+| Butcher, raider boss | Nataday Village | 3200 | 59 | 32 | 0 | 28 | 1400 |
 
 # Area atlas (generated from the ROM)
 
@@ -649,12 +656,13 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### Dr. Gero's Lab: Bunker tank room (Age 768)  `17:13`
 - Up exit -> Dr. Gero's Lab: Northern bunker (Age 768)
-- Down exit -> Dr. Gero's Lab: Bunker incubator: Super 13
+- Down exit -> Dr. Gero's Lab: Bunker incubator: Android 13 / Super 13
 - examine (face up): `ch9_pod16`
 
-### Dr. Gero's Lab: Bunker incubator: Super 13  `17:14`
+### Dr. Gero's Lab: Bunker incubator: Android 13 / Super 13  `17:14`
 - walk in: `ch9_thirteen` (when conditional)
-- enemies: Super Android 13
+- walk in: `ch9_thirteen2` (when flag 438 set and flag 439 clear)
+- enemies: Android 13, Super Android 13
 
 ### Dr. Gero's Lab: Bunker incubator (after Super 13)  `17:15`
 - walk in: `ch9_after13`

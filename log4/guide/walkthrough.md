@@ -143,7 +143,7 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
 8. **Boss: {{B:136}}**, fought as Seventeen ({{X:ch8_after_krillin}}{{X:ch8_piccolo}}). Gohan runs ({{X:ch8_run}}), and the night on the Z-Mart roof ends the chapter.
 
 ## Chapter 9: Years of Terror
-**You play:** Seventeen. **Goal:** Gero's computer, Super 13, then the open world. Two missable memories are in this chapter.
+**You play:** Seventeen. **Goal:** Gero's computer, Android 13 and Super 13, then the open world. Two missable memories are in this chapter.
 
 1. Age 768, Capsule Corporation ({{X:ch9_start}}): {{J:ch9_start}}. Bulma and baby Trunks are in the dome house ({{L:ch9_bulma}}); talk to her. Gero's computer calls the twins home.
 2. **The northern mountains.** The bunker door is sealed ({{X:ch9_pass}}{{X:ch9_sealed}}): {{J:ch9_pass}}.
@@ -151,8 +151,9 @@ Talking to Eighteen at the Capsule Corporation hub ({{L:ch9_hub18}}) reminds you
    - Cache: {{C:ch9_cache_mine}}. The Old Mine is up from the Generator Cave.
    - With the Sentinel destroyed, the bunker door on the left of the Mountain Pass opens.
 3. The bunker ({{X:ch9_bunker}}): {{J:ch9_bunker}}. Android 16's empty pod is in the tank room ({{L:ch9_pod16}}).
-4. **Boss: {{B:21}}** in the incubator ({{X:ch9_thirteen}}{{X:ch9_after13}}).
+4. **Two-phase boss in the incubator** ({{X:ch9_thirteen}}): first **{{B:11}}**, then he absorbs Fourteen and Fifteen{{X:ch9_thirteen2}} (you're fully healed) and you fight **{{B:21}}** ({{X:ch9_after13}}).
 5. **Age 772: the hub.** Capsule Corporation is now the twins' base ({{X:ch9_hub}}): {{J:ch9_hub}}.
+   - **New outfits:** talk to Eighteen at the hub ({{L:ch9_hub18}}). From then on, Outfit cycles through every outfit you own (see "Outfits and Super 17" below).
    - **The world map opens here.** Examine Bulma's airship, or walk off the west edge of the grounds ({{X:fly_hub}}), or examine the hangar jets ({{X:fly_hub_jet}}) to take off. See "The open world" below.{{X:ch9_fly_paozu}}{{X:ch9_fly_kame}}
    - **Memory: Mount Paozu (missable).** Land on Mount Paozu and meet Chi-Chi ({{L:ch9_paozu}}).
    - **Memory: Kame House (missable).** Land on Roshi's island and meet Roshi ({{L:ch9_kame}}).
@@ -188,6 +189,11 @@ Eighteen stands next to the landing spot at every destination; talk to her to fl
 7. **Seven-star:** the tournament announcer on Papaya Island ({{C:papaya_announcer}}). The welded tournament gate is {{L:papaya_gate}}.
 
 **Kami's palace:** stand under the palace arch on the Lookout and examine it ({{C:lookout_door}}). With all seven balls, Eighteen sets them on the altar.
+
+**Outfits and Super 17.** Select Outfit with the L Button and press B to change. Each press moves on to the next outfit:
+- Seventeen: old clothes, android clothes, then (after talking to Eighteen at the hub) a white shirt and a brown jacket.
+- Eighteen: old clothes, android clothes, then (same unlock) a red top with yellow trousers, a red top with black sleeves, and a maroon tracksuit.
+- **Super 17:** beat **{{B:19}}** in Diablo Desert and open the field case under it: the Project 17-S chip teaches Seventeen **Super 17** (the Super Saiyan-style transformation). Use it from the android clothes. While in Super 17, Outfit switches between dark hair and gold hair.
 
 **Other sights:** Orange Star City's school ({{L:osc_school}}), a police officer ({{L:osc_police}}) and a schoolgirl ({{L:osc_girl}}). Every place also has its own first-landing scene.{{X:osc_arrive}}{{X:lookout_arrive}}{{X:papaya_arrive}}{{X:diablo_arrive}}{{X:pilaf_arrive}}{{X:nat_arrive}}
 

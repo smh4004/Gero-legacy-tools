@@ -96,19 +96,20 @@
    "end": 22,
    "on_defeat": "boss",
    "death": "call 29 348; heal; call 120 30; call 119 17 10 1 424 440; call 121 30",
-   "_balance": "x1.27 (HP and hit damage x1.13 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
+   "_balance": "x1.27 (HP and hit damage x1.13 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked). 2026-11-03: row 136 (BF behaviour 0x30F) walked up to the player and never hurt the bot (win at full HP); given the Elite Majin Fighter behaviour 0x8A (like Gohan rows 22/23): the bot at level 63 now wins with 121/455 left.",
+   "ai": 138
   },
   "21": {
    "name": "Super Android 13 (chapter 9; BF row 21 Elite Majin Fighter; row 122 Super Janemba never appears)",
    "exp": 1200,
-   "hp": 1700,
+   "hp": 1500,
    "level": 58,
    "str": 22,
    "pow": 20,
    "end": 24,
    "on_defeat": "boss",
    "death": "call 29 363; heal; call 120 30; call 119 17 15 1 208 300; call 121 30",
-   "_balance": "x1.31 (HP and hit damage x1.15 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
+   "_balance": "x1.31 (HP and hit damage x1.15 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked). 2026-11-03: now phase 2 after Android 13 (row 11), so HP 1700 -> 1500: the fightbot at level 64 (no points spent) lost at 1700 (boss on 300) and wins at 1500 with 21/471 left."
   },
   "22": {
    "name": "Gohan (chapter 9, Age 774; BF row 22 Elite Majin Soldier, given the Elite Majin Fighter behaviour 0x8A)",
@@ -351,14 +352,14 @@
   "100": {
    "name": "The Sentinel (chapter 9 mini-boss; BF row 100 Shadow Colossus, character 240)",
    "exp": 1200,
-   "hp": 3700,
+   "hp": 2600,
    "level": 58,
-   "str": 33,
+   "str": 30,
    "pow": 0,
    "end": 28,
    "on_defeat": "boss",
    "death": "call 29 401; heal",
-   "_balance": "x1.33 (HP and hit damage x1.16 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
+   "_balance": "x1.33 (HP and hit damage x1.16 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked). 2026-11-03: the bot at level 64 lost at 3700/33 (boss on 1296) and 3000/30 (boss on 337); 2600/30 wins with 90/471 left."
   },
   "19": {
    "name": "Prototype 11 (Act 3 optional boss, Diablo Desert; BF row 19, Death Machine char 76)",
@@ -375,26 +376,26 @@
   "82": {
    "name": "Ninja captain (Act 3 optional boss, Pilaf's Castle; BF row 82, char 202)",
    "exp": 1300,
-   "hp": 3550,
+   "hp": 4000,
    "level": 59,
-   "str": 34,
+   "str": 38,
    "pow": 0,
    "end": 28,
    "on_defeat": "boss",
    "death": "call 29 420; heal",
-   "_balance": "x1.39 (HP and hit damage x1.18 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
+   "_balance": "x1.39 (HP and hit damage x1.18 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked). 2026-11-03: at 3550/34 the bot (level 68) won losing only 54 HP (he rarely lands a hit), so 4000/38: still a win with 472/526; needs a human check."
   },
   "131": {
    "name": "Butcher, raider boss (Act 3 optional boss, Nataday Village; BF row 131, char 272)",
    "exp": 1400,
-   "hp": 4000,
+   "hp": 3200,
    "level": 59,
-   "str": 36,
+   "str": 32,
    "pow": 0,
    "end": 28,
    "on_defeat": "boss",
    "death": "call 29 423; heal",
-   "_balance": "x1.39 (HP and hit damage x1.18 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked)"
+   "_balance": "x1.39 (HP and hit damage x1.18 each): tuned at level 50, rescaled 2026-11-02 for the level players reach here (half the computed correction; bot-checked). 2026-11-03: the bot (level 68) was swarmed by Butcher plus his raiders and lost at 4000/36 (boss on 3033); 3200/32 is still a loss for the naive bot (it fights the whole group at once), so a human should check it."
   },
   "71": {
    "name": "Raider (Act 3, Diablo Desert / Nataday; BF row 71, char 184)",
@@ -449,6 +450,19 @@
    "str": 0,
    "pow": 18,
    "end": 19
+  },
+  "11": {
+   "name": "Android 13 (chapter 9 phase 1, before Super 13; BF row 11, unused)",
+   "exp": 700,
+   "hp": 700,
+   "level": 56,
+   "str": 16,
+   "pow": 15,
+   "end": 18,
+   "ai": 138,
+   "on_defeat": "boss",
+   "death": "call 29 438; heal; call 120 30; call 119 17 14 1 208 312; call 121 30",
+   "_balance": "new 2026-11-02: the warm-up before Super 13 (row 21, unchanged); full heal between phases. First pass 1000 HP / STR 19 beat the fightbot at level 64 (no points spent), so 700 / 16 / 15 / 18."
   }
  }
 }

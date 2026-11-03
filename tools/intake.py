@@ -24,7 +24,8 @@ DEFAULTS = {
     'P7': dict(SPRITE, target_height=31), 'P8': dict(SPRITE, target_height=30), 'P9': dict(SPRITE, target_height=31),
     'P10': dict(SPRITE, cell=[64, 64], target_height=53), 'P11': dict(SPRITE, cell=[16, 16], target_height=12),
     'P12': dict(SPRITE, target_height=32),
-    'P13': dict(SPRITE, target_height=27, allow_new_colors=1),   # kid Goku (Goten-sized); pole_extend needs a wide cell (set per file)
+    'P13': dict(SPRITE, target_height=27, allow_new_colors=1),
+    'P14': dict(SPRITE, scale=1, allow_new_colors=0),          # Android 13 (user's own pixel art at 1x: keep the grid, existing colours only)   # kid Goku (Goten-sized); pole_extend needs a wide cell (set per file)
     'E1': dict(SPRITE, cell=[64, 64]), 'E2': dict(SPRITE, cell=[64, 32]), 'E3': dict(SPRITE, cell=[64, 64]),
     'E4': dict(SPRITE, cell=[32, 16]), 'E5': dict(SPRITE, cell=[64, 32]), 'E6': dict(SPRITE, cell=[32, 32]),
     'E7': dict(SPRITE, cell=[64, 64]),

@@ -2036,15 +2036,23 @@
     1
    ],
    "name": 531,
-   "_note": "Bunker incubator: Super 13 (stats row 21, character 316). Nothing else in the room (big sprite, OBJ VRAM).",
+   "_note": "Bunker incubator: two-phase boss. Android 13 (row 11, actor android13) then Super 13 (row 21, character 316). Only one of them at a time (big sprite, OBJ VRAM).",
    "enemies": [
+    {
+     "type": 11,
+     "actor": "android13",
+     "x": 232,
+     "y": 256,
+     "condition": "hex 01 85 5e 02 1b 01 86 6c 02 1c 04 11",
+     "_note": "Android 13 (phase 1): after his speech (367) until beaten (438)"
+    },
     {
      "type": 21,
      "actor": "super13",
      "x": 232,
      "y": 256,
-     "condition": "hex 01 85 5e 02 1b 01 85 56 02 1c 04 11",
-     "_note": "Super 13: only after his speech (367 set: the arrival scene sets it and reloads the room) and until destroyed (363)"
+     "condition": "hex 01 86 6e 02 1b 01 85 56 02 1c 04 11",
+     "_note": "Super 13 (phase 2): after the transformation scene (439) and until destroyed (363)"
     }
    ],
    "doors": [
@@ -2059,6 +2067,18 @@
      "fn2": "0x080077DF",
      "when": "call 28 367",
      "_note": "arrival: Super 13 speaks"
+    },
+    {
+     "rect": [
+      176,
+      280,
+      240,
+      330
+     ],
+     "event": "ch9_thirteen2",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 6c 02 1b 01 86 6e 02 1c 04 11",
+     "_note": "arrival after phase 1: 13 absorbs 14 and 15"
     }
    ],
    "palette_act": "act3"

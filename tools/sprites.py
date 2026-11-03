@@ -6,7 +6,7 @@ Pieces are placed relative to the actor origin, which sits 8 px right of the pie
 8 px above its bottom (x = 8 - w/2 for a centred piece, y = 8 - h). Dir 3 mirrors dir 2: x3 = 16 - w - x2, attr1 |= 0x1000.
 Tiles are stored uncompressed (WFZ type 0), 8bpp, 1D mapping order; colours are OBJ palette indices.
 """
-import struct
+import json, struct
 import numpy as np
 
 SHAPE = {(8, 8): (0, 0), (16, 16): (0, 1), (32, 32): (0, 2), (64, 64): (0, 3), (16, 8): (1, 0), (32, 8): (1, 1),
@@ -115,6 +115,9 @@ def set_slot(rom, actor_id, slot, anim_ptr, actor_list=0x6B6BD8):
     struct.pack_into('<I', rom, p + 0x54 + 4 * slot, anim_ptr)
 
 
+CUR_ACTOR = None
+FRAME_HOOK = None                    # debug: called with (key, frame of BF OBJ indices) for every frame built
+
 # ---------- actor table relocation + new actors ----------
 ACTOR_LIST, ACTOR_COUNT = 0x6B6BD8, 298
 ACTOR_LITERALS = (0x3C0, 0x1715C)        # both hold list+4; code reads [lit + 4*idx - 0x28] (game idx = actor id + 10)
@@ -169,8 +172,10 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
     ins = Inserter(rom, at + 4 * (ACTOR_COUNT + len(cfg)) + 16)
     table = list(struct.unpack_from('<%dI' % ACTOR_COUNT, rom, ACTOR_LIST))
     ids = {}; anims = {}
+    global CUR_ACTOR
     for name, a in cfg.items():
         if name.startswith('_'): continue
+        CUR_ACTOR = name
         target = a.get('replace')                          # modify an existing actor instead of adding one
         if 'proto_actor' in a:                             # whole actor copied from the Prototype D cart
             if proto is None: continue
@@ -184,6 +189,10 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
             rec = bytearray(rom[tp:tp + 0x54 + 4 * n])
         if not a.get('halo'):                              # record +0x50 = per-slot halo/attachment table (Other World)
             struct.pack_into('<I', rec, 0x50, 0)
+        recol = None; rkey = json.dumps(a.get('recolor'), sort_keys=True)
+        if a.get('recolor'):                               # alternate outfit: region-aware index swaps (tools/recolor.py)
+            import recolor as _rc
+            recol = _rc.make(a['recolor'])
         if 'log2_record' in a and l2 is not None:          # animations taken from a LoG2 actor
             usable, pal_rgb = colour_ctx(a.get('act'))
             cmap = log2_colour_map(l2, usable, pal_rgb); cache = {}
@@ -207,7 +216,7 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
                 if str(k).startswith('r'): src, k = str(k).split(':', 1)    # "r51:3@0:2" = LoG2 actor 51, anim 3
                 k, sl = (str(k).split('@') + [None])[:2]
                 sl = slice(*map(int, sl.split(':'))) if sl else None
-                ptr = log2_anim(ins, l2, log2_rec(l2, src), int(k), cmap, cache, want, sl, edit, a.get('log2_scale', {}).get(str(src)))
+                ptr = log2_anim(ins, l2, log2_rec(l2, src), int(k), cmap, cache, want, sl, edit, a.get('log2_scale', {}).get(str(src)), recol)
                 if ptr: struct.pack_into('<I', rec, 0x54 + 4 * int(slot), ptr)
         if 'raw_frames' in a:                              # frames given as arrays of BF OBJ indices (tools/doors.py:
             ins.oy = a.get('origin_dy', 0)                 # map door regions already draw with the BF OBJ palette)
@@ -221,9 +230,13 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
             if int(slot) >= n: continue                    # the template has fewer slots
             old = struct.unpack_from('<I', rec, 0x54 + 4 * int(slot))[0]
             want = struct.unpack_from('<I', rom, old - BASE)[0] if (target is not None or a.get('stretch')) and old else 0
-            key = (spec, want)
+            key = (spec, want, rkey)
             if key not in anims:
                 dirs = slot_frames(clean_dir, spec)
+                if dirs and recol: dirs = [[recol(f) for f in dd] for dd in dirs]
+                if dirs and FRAME_HOOK:
+                    for di, dd in enumerate(dirs):
+                        for fi, f in enumerate(dd): FRAME_HOOK(('sheet', spec, di, fi), f)
                 anims[key] = ins.anim(stretch(dirs, want)) if dirs else None
             if anims[key]: struct.pack_into('<I', rec, 0x54 + 4 * int(slot), anims[key])
         if target is not None:
@@ -257,7 +270,7 @@ def log2_colour_map(l2, usable, pal_rgb):
     return m.astype(np.uint8)
 
 
-def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=None):
+def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=None, recol=None):
     """Convert LoG2 animation k of the actor record at slice offset `rec` into a BF animation. Returns ptr or 0.
     sl = frames a..b-1 only (a slice with a step, e.g. 3:-5:-1, plays them backwards); want = repeat frames evenly to
     that count (the replaced BF slot's own frame count). edit(k, d, pixels) -> (key, pixels): optional pixel edit of each
@@ -287,7 +300,7 @@ def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=No
             attr, tp = struct.unpack_from('<II', l2, r + 4)
             assert scale or w * h <= 1024, 'LoG2 frame %dx%d at %x is over the 1 KB one-piece budget' % (w, h, r)
             ek = edit(rec, k, d, None)[0] if edit else None
-            key = (tp, ek, scale)
+            key = (tp, ek, scale, id(recol))
             if key not in cache:
                 o = tp - L2_BASE; t, size = struct.unpack_from('<II', l2, o)
                 data = l2[o + 8:o + 8 + size] if t == 0 else bytes(decompress_stream(l2, o + 8, size)[0])
@@ -298,8 +311,10 @@ def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=No
                 if scale:
                     img, fbox = _shrink_fit(img, x, y, scale)
                 hh, ww = img.shape
-                px = img.reshape(hh // 8, 8, ww // 8, 8).transpose(0, 2, 1, 3).reshape(-1)
-                data = cmap[px].tobytes()
+                bf = cmap[img]                                   # BF OBJ indices
+                if recol: bf = recol(bf)
+                if FRAME_HOOK: FRAME_HOOK(('l2', k, d, f), bf)
+                data = bf.reshape(hh // 8, 8, ww // 8, 8).transpose(0, 2, 1, 3).reshape(-1).tobytes()
                 cache[key] = (ins.put(struct.pack('<II', 0, len(data)) + data), fbox)
             tptr, fbox = cache[key]
             if scale: attr = (attr & 0x30000000) | 0x80002000        # one 32x32 8bpp piece, keep the flip bits

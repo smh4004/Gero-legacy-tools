@@ -222,8 +222,10 @@ say lapis.1 Don't know. Don't care. Through the crossroads and down to the docks
 journal Get to the docks unseen
 do call 47; call 51 0
 unless_flag 430 dap_ch6_nomoves
-do call 165 1 8; call 164 1 8; call 165 1 7; call 164 1 7; call 165 1 6; call 164 1 6; call 165 1 17; call 164 1 17; call 165 1 18; call 164 1 18
+do call 165 1 8; call 164 1 8; call 165 1 7; call 164 1 7; call 165 1 6; call 164 1 6; call 165 1 17; call 164 1 17; call 165 1 18; call 164 1 18; call 165 1 20; call 164 1 20
 do call 165 3 8; call 164 3 8; call 165 3 7; call 164 3 7; call 165 3 4; call 164 3 4; call 165 3 11; call 164 3 11; call 165 3 18; call 164 3 18
+set_flag 440
+set_flag 441
 label dap_ch6_nomoves
 unless_flag 431 dap_ch6_l55
 code 02 c8 00 32 0b 13 00 08 01 85 3c 02 c2 11 02 c8 00 33 0b 13 00 08 01 85 28 02 c2 11 02 c8 00 34 0b 13 00 08 01 84 6c 02 c2 11 02 c8 00 35 0b 13 00 08 01 83 74 02 c2 11 02 c8 00 36 0b 13 00 08 01 82 2c 02 c2 11 11
@@ -641,6 +643,8 @@ set_flag 362
 set_flag 365
 set_flag 366
 set_flag 367
+set_flag 438
+set_flag 439
 set_flag 368
 set_flag 370
 set_flag 371
@@ -756,6 +760,8 @@ set_flag 362
 set_flag 365
 set_flag 366
 set_flag 367
+set_flag 438
+set_flag 439
 set_flag 368
 set_flag 370
 set_flag 371
@@ -870,6 +876,8 @@ set_flag 362
 set_flag 365
 set_flag 366
 set_flag 367
+set_flag 438
+set_flag 439
 set_flag 368
 set_flag 370
 set_flag 371
@@ -1014,6 +1022,8 @@ set_flag 362
 set_flag 365
 set_flag 366
 set_flag 367
+set_flag 438
+set_flag 439
 set_flag 368
 set_flag 370
 set_flag 371
@@ -1129,6 +1139,8 @@ set_flag 362
 set_flag 365
 set_flag 366
 set_flag 367
+set_flag 438
+set_flag 439
 set_flag 368
 set_flag 370
 set_flag 371

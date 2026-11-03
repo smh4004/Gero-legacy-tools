@@ -1,5 +1,5 @@
 {
- "_note": "Form table edits (tools/outfit.py). 14 = Lapis's outfit form (BF Great Saiyaman) -> Android 17 (actor 102); 23 = Lazuli's (BF Trunks form 23) -> Android 18 (actor 262). names = [field name UI, status-screen name UI]; portraits = speaker id(s). 39 = character 6 (BF Vegito) -> Imperfect Cell (actor 275); 27 = character 4's second form (BF Vegeta, actor 271) -> Cell's larva, UI 165/181 'Cell', LoG2 Cell portrait.",
+ "_note": "Form table edits (tools/outfit.py). 14 = Lapis's outfit form (BF Great Saiyaman) -> Android 17 (actor 102); 23 = Lazuli's (BF Trunks form 23) -> Android 18 (actor 262). names = [field name UI, status-screen name UI]; portraits = speaker id(s). 39 = character 6 (BF Vegito) -> Imperfect Cell (actor 275); 27 = character 4's second form (BF Vegeta, actor 271) -> Cell's larva, UI 165/181 'Cell', LoG2 Cell portrait. Alternate outfits (2026-11-02, log4/asm/outfit.s cycles them): 11/12 = 17 casual/jacket, 22/24/25 = 18 red-yellow/red-black/tracksuit (copies of 14 / 23, +0x17 = 0xFF so skill 20 can't use them); 15 = Super 17 and 13 = Super 17 gold (copies of BF's Super Saiyan Gohan form 16: flags 0x51, revert to 14). 14's +0x16 = 15, so skill 20 'Super 17' works from the android outfit only.",
  "14": {
   "names": [
    164,
@@ -7,7 +7,8 @@
   ],
   "portraits": [
    192
-  ]
+  ],
+  "into": 15
  },
  "23": {
   "names": [
@@ -35,5 +36,91 @@
   "portraits": [
    197
   ]
+ },
+ "11": {
+  "copy": 14,
+  "actor": "player_17_casual",
+  "names": [
+   164,
+   180
+  ],
+  "portraits": [
+   192
+  ],
+  "back": 255
+ },
+ "12": {
+  "copy": 14,
+  "actor": "player_17_jacket",
+  "names": [
+   164,
+   180
+  ],
+  "portraits": [
+   192
+  ],
+  "back": 255
+ },
+ "15": {
+  "copy": 16,
+  "actor": "player_17_super",
+  "names": [
+   164,
+   180
+  ],
+  "portraits": [
+   192
+  ],
+  "back": 14,
+  "into": 255
+ },
+ "13": {
+  "copy": 16,
+  "actor": "player_17_supergold",
+  "names": [
+   164,
+   180
+  ],
+  "portraits": [
+   192
+  ],
+  "back": 14,
+  "into": 255
+ },
+ "22": {
+  "copy": 23,
+  "actor": "player_18_redyellow",
+  "names": [
+   166,
+   182
+  ],
+  "portraits": [
+   193
+  ],
+  "back": 255
+ },
+ "24": {
+  "copy": 23,
+  "actor": "player_18_redblack",
+  "names": [
+   166,
+   182
+  ],
+  "portraits": [
+   193
+  ],
+  "back": 255
+ },
+ "25": {
+  "copy": 23,
+  "actor": "player_18_tracksuit",
+  "names": [
+   166,
+   182
+  ],
+  "portraits": [
+   193
+  ],
+  "back": 255
  }
 }

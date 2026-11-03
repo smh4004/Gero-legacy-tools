@@ -142,7 +142,7 @@ def main(clean_path):
     end_w, nloc = worldmap.apply(out, os.path.join(HERE, 'worldmap.json'), 0xAF0000)
     assert end_w <= 0xAFFF00
     print('-- world map: %d places (%d bytes)' % (nloc, end_w - 0xAF0000))
-    end7 = outfit.apply(out, os.path.join(HERE, 'asm', 'outfit.s'), 0xF7E000, json.load(open(os.path.join(HERE, 'forms.json'))))
+    end7 = outfit.apply(out, os.path.join(HERE, 'asm', 'outfit.s'), 0xF7E000, json.load(open(os.path.join(HERE, 'forms.json'))), ids)
     print('-- outfit swap: skill 18 hooks + forms (%d bytes)' % (end7 - 0xF7E000))
     end7 = goals.apply(out, os.path.join(HERE, 'goals.json'), 0xF7EA00)       # journal goals table
     print('-- journal goals: %d (%d bytes)' % (len(json.load(open(os.path.join(HERE, 'goals.json')))['goals']), end7 - 0xF7EA00))

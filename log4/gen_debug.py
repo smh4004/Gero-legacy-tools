@@ -27,7 +27,7 @@ CH_FLAGS = {
     6: [333, 335, 336, 337, 304, 305, 306, 307, 308, 334],
     7: [329, 330, 331, 332, 338, 339],
     8: [340, 341, 342, 344, 345, 346, 349, 350, 351, 359, 369, 382, 343, 347, 348],
-    9: [360, 361, 362, 365, 366, 367, 368, 370, 371, 400, 402, 363, 364, 401],
+    9: [360, 361, 362, 365, 366, 367, 438, 439, 368, 370, 371, 400, 402, 363, 364, 401],
     10: [380, 381, 384, 403, 383],          # 385/386 = the finale (left clear so it plays)
 }
 before = lambda n: [f for c in range(1, n) for f in CH_FLAGS[c]]
@@ -101,7 +101,8 @@ sys.path.insert(0, os.path.join(G.HERE, '..', 'tools')); import scenes
 _bf = open(os.path.join(G.HERE, '..', 'bf.gba'), 'rb').read()
 EXP = struct.unpack_from('<151I', _bf, 0x6B7084)                 # EXP needed for level 50 + i
 MOVES_FLAG, LEVEL_FLAGS = 430, {431: 55, 432: 60, 433: 70, 434: 80, 435: 90, 436: 99}
-MOVES = {0: [7, 15, 14], 2: [7, 8, 16], 1: [8, 7, 6, 17, 18], 3: [8, 7, 4, 11, 18], 6: [7, 15, 14, 1, 9]}
+MOVES = {0: [7, 15, 14], 2: [7, 8, 16], 1: [8, 7, 6, 17, 18, 20], 3: [8, 7, 4, 11, 18], 6: [7, 15, 14, 1, 9]}
+MOVES_ALSO = [440, 441]    # all moves also unlocks every outfit and Super 17 (skill 20 for character 1)
 
 def level_code(T):
     """Bytecode: if the current character is level L (< T), add the EXP from L to T. One branch per level."""
@@ -116,6 +117,7 @@ def apply_lines(tag, player, party, extra):
     """party: characters in the party when the list ends (player first); extra: ones to level that aren't."""
     L = ['unless_flag %d %s_nomoves' % (MOVES_FLAG, tag)]
     L += ['do ' + '; '.join('call 165 %d %d; call 164 %d %d' % (c, k, c, k) for k in MOVES[c]) for c in party + extra]
+    L += ['set_flag %d' % f for f in MOVES_ALSO]
     L += ['label %s_nomoves' % tag]
     for f, T in LEVEL_FLAGS.items():
         L += ['unless_flag %d %s_l%d' % (f, tag, T)]

@@ -36,9 +36,17 @@
  "trunks_788": 313,
  "trunks_fallen": 314,
  "time_machine_fx": 315,
- "door_540fd4_0_0": 316,
- "door_540fd4_0_1": 317,
- "door_53fff8_0_0": 318,
- "door_53fff8_0_1": 319,
- "door_66dff8_0_0": 320
+ "android13": 316,
+ "player_17_casual": 317,
+ "player_17_jacket": 318,
+ "player_17_super": 319,
+ "player_17_supergold": 320,
+ "player_18_redyellow": 321,
+ "player_18_redblack": 322,
+ "player_18_tracksuit": 323,
+ "door_540fd4_0_0": 324,
+ "door_540fd4_0_1": 325,
+ "door_53fff8_0_0": 326,
+ "door_53fff8_0_1": 327,
+ "door_66dff8_0_0": 328
 }

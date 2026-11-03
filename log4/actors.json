@@ -540,7 +540,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "15": "3",
    "16": "3",
    "17": "3",
    "20": "5"
@@ -556,9 +555,10 @@
    "13": "P1_android17_charge!front",
    "18": "P1_android17_idle",
    "19": "P1_android17_interact",
-   "21": "P1_android17_special!side"
+   "21": "P1_android17_special!side",
+   "15": "P1_android17_fly"
   },
-  "_note": "Android 17 outfit (form 14, BF Great Saiyaman's form, actor 102). Drawn sheets (P1: idle, dash, block, special, charge, interact, victory) + LoG2 Android 17 animations for walk (1), melee (6/7), hurt/KO (3), ki (5). Global colours only, so it shows in every act."
+  "_note": "Android 17 outfit (form 14, BF Great Saiyaman's form, actor 102). Drawn sheets (P1: idle, dash, block, special, charge, interact, victory) + LoG2 Android 17 animations for walk (1), melee (6/7), hurt/KO (3), ki (5). Global colours only, so it shows in every act. Slot 15 = BF flying (world map, checked in RAM: obj+0x50 = slot 15): the hover fly sheet until Buu's Fury-style flat flying frames are drawn."
  },
  "player_18": {
   "replace": 262,
@@ -572,7 +572,6 @@
    "7": "3@0:1",
    "9": "5",
    "14": "7",
-   "15": "3",
    "16": "3",
    "17": "3",
    "20": "5"
@@ -588,9 +587,11 @@
    "13": "P2_android18_charge!front",
    "18": "P2_android18_idle",
    "19": "P2_android18_interact",
-   "21": "P2_android18_special!side"
+   "21": "P2_android18_special!side",
+   "15": "P2_android18_fly"
   },
-  "_note": "Android 18 outfit (form 23, actor 262). P2 sheets + LoG2 Android 18 animations (walk 1, melee 6/7, hurt 3, ki 5)."
+  "_note": "Android 18 outfit (form 23, actor 262). P2 sheets + LoG2 Android 18 animations (walk 1, melee 6/7, hurt 3, ki 5). Record cloned from BF Trunks 260 (22 slots): BF 262 itself has only 2 slots, and the engine does not bounds-check the slot (sub_0800ECDA), so attacks read past the record (fixed 2026-11-02). Slot 15 = BF flying (world map, checked in RAM: obj+0x50 = slot 15): the hover fly sheet until Buu's Fury-style flat flying frames are drawn.",
+  "template_orig": 260
  },
  "gohan_bf": {
   "template_orig": 97,
@@ -794,5 +795,903 @@
    "1": "E7s_time_machine!front"
   },
   "_note": "The time machine's departure / arrival flash (E7 re-cleaned to 32x32, act3 colours)."
+ },
+ "android13": {
+  "template_orig": 97,
+  "act": "act3",
+  "stretch": true,
+  "slots": {
+   "0": "P14_android13_idle2",
+   "1": "P14_android13_walk",
+   "2": "P14_android13_run",
+   "3": "P14_android13_idle2",
+   "4": "P14_android13_walk@1:2",
+   "5": "P14_android13_walk@3:4",
+   "6": "P14_android13_walk@1:2",
+   "7": "P14_android13_idle2",
+   "8": "P14_android13_walk@1:2",
+   "9": "P14_android13_walk@1:2",
+   "10": "P14_android13_idle2",
+   "11": "P14_android13_idle2",
+   "12": "P14_android13_idle2",
+   "13": "P14_android13_idle2",
+   "14": "P14_android13_walk@3:4",
+   "15": "P14_android13_idle2",
+   "16": "P14_android13_idle2",
+   "17": "P14_android13_idle2",
+   "18": "P14_android13_idle2"
+  },
+  "_note": "Android 13 before he absorbs 14 and 15 (chapter 9 phase-1 boss, stats row 11) on BF Gohan's record (actor 97, 19 slots). User's art (P14, cap version): walk (from the first sheet), idle (A, 2 frames) and run (C, 4 frames) from the 2026-11-03 sheets (tools/bandsheet.py). The other combat slots still show idle/walk poses until those frames arrive (prompt letters D-M)."
+ },
+ "player_17_casual": {
+  "template_orig": 102,
+  "stretch": true,
+  "log2_record": "0x1E680C",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P1_android17_idle",
+   "2": "P1_android17_dash",
+   "3": "P1_android17_block",
+   "8": "P1_android17_special!side",
+   "10": "P1_android17_charge!front",
+   "11": "P1_android17_interact",
+   "12": "P1_android17_victory!front",
+   "13": "P1_android17_charge!front",
+   "18": "P1_android17_idle",
+   "19": "P1_android17_interact",
+   "21": "P1_android17_special!side",
+   "15": "P1_android17_fly"
+  },
+  "recolor": {
+   "anchors": {
+    "neck": [
+     63,
+     64,
+     108,
+     32
+    ],
+    "waist": [
+     88,
+     89,
+     96,
+     97,
+     158,
+     159,
+     161,
+     174,
+     168,
+     160
+    ]
+   },
+   "rules": [
+    {
+     "from": [
+      1,
+      111,
+      112
+     ],
+     "to": [
+      119,
+      118,
+      116
+     ],
+     "where": {
+      "below": "neck",
+      "above": "waist",
+      "interior": true
+     }
+    },
+    {
+     "from": [
+      85,
+      69,
+      88,
+      158,
+      159,
+      160,
+      89,
+      96,
+      161,
+      97,
+      174,
+      168
+     ],
+     "ramp": [
+      69,
+      217,
+      217,
+      218,
+      218,
+      180
+     ]
+    },
+    {
+     "from": [
+      11,
+      12,
+      49,
+      59,
+      215
+     ],
+     "ramp": [
+      62,
+      208,
+      207,
+      16
+     ]
+    }
+   ]
+  },
+  "_note": "Alternate outfit: 17 casual (white shirt, grey trousers; user ref 17_09). Same frames as player_17, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
+ },
+ "player_17_jacket": {
+  "template_orig": 102,
+  "stretch": true,
+  "log2_record": "0x1E680C",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P1_android17_idle",
+   "2": "P1_android17_dash",
+   "3": "P1_android17_block",
+   "8": "P1_android17_special!side",
+   "10": "P1_android17_charge!front",
+   "11": "P1_android17_interact",
+   "12": "P1_android17_victory!front",
+   "13": "P1_android17_charge!front",
+   "18": "P1_android17_idle",
+   "19": "P1_android17_interact",
+   "21": "P1_android17_special!side",
+   "15": "P1_android17_fly"
+  },
+  "recolor": {
+   "anchors": {
+    "neck": [
+     63,
+     64,
+     108,
+     32
+    ],
+    "waist": [
+     88,
+     89,
+     96,
+     97,
+     158,
+     159,
+     161,
+     174,
+     168,
+     160
+    ]
+   },
+   "rules": [
+    {
+     "from": [
+      1,
+      111,
+      112
+     ],
+     "to": [
+      208,
+      210,
+      211
+     ],
+     "where": {
+      "below": "neck",
+      "above": "waist",
+      "interior": true
+     }
+    },
+    {
+     "from": [
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      2
+     ],
+     "ramp": [
+      210,
+      211,
+      223,
+      66
+     ],
+     "where": {
+      "below": "neck",
+      "above": "waist",
+      "touching": [
+       1,
+       111,
+       112,
+       200,
+       201,
+       202,
+       203,
+       81,
+       208,
+       63,
+       64
+      ]
+     }
+    }
+   ]
+  },
+  "_note": "Alternate outfit: 17 jacket (brown jacket; user ref 17_10). Same frames as player_17, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
+ },
+ "player_17_super": {
+  "template_orig": 102,
+  "stretch": true,
+  "log2_record": "0x1E680C",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P1_android17_idle",
+   "2": "P1_android17_dash",
+   "3": "P1_android17_block",
+   "8": "P1_android17_special!side",
+   "10": "P1_android17_charge!front",
+   "11": "P1_android17_interact",
+   "12": "P1_android17_victory!front",
+   "13": "P1_android17_charge!front",
+   "18": "P1_android17_idle",
+   "19": "P1_android17_interact",
+   "21": "P1_android17_special!side",
+   "15": "P1_android17_fly"
+  },
+  "recolor": {
+   "anchors": {
+    "neck": [
+     63,
+     64,
+     108,
+     32
+    ],
+    "waist": [
+     88,
+     89,
+     96,
+     97,
+     158,
+     159,
+     161,
+     174,
+     168,
+     160
+    ]
+   },
+   "rules": [
+    {
+     "from": [
+      1,
+      111,
+      112
+     ],
+     "to": [
+      70,
+      236,
+      71
+     ],
+     "where": {
+      "below": "neck",
+      "above": "waist",
+      "interior": true
+     }
+    },
+    {
+     "from": [
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      2
+     ],
+     "ramp": [
+      70,
+      236,
+      71,
+      186,
+      218
+     ],
+     "where": {
+      "below": "neck",
+      "above": "waist",
+      "touching": [
+       1,
+       111,
+       112,
+       200,
+       201,
+       202,
+       203,
+       81,
+       208,
+       63,
+       64
+      ]
+     }
+    },
+    {
+     "from": [
+      85,
+      69,
+      88,
+      158,
+      159,
+      160,
+      89,
+      96,
+      161,
+      97,
+      174,
+      168
+     ],
+     "ramp": [
+      236,
+      176,
+      98,
+      177,
+      178,
+      183
+     ]
+    },
+    {
+     "from": [
+      11,
+      12,
+      49,
+      59,
+      215
+     ],
+     "ramp": [
+      62,
+      208,
+      207
+     ]
+    }
+   ]
+  },
+  "_note": "Alternate outfit: Super 17 (navy, light jeans; user ref 17_06). Same frames as player_17, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
+ },
+ "player_17_supergold": {
+  "template_orig": 102,
+  "stretch": true,
+  "log2_record": "0x1E680C",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P1_android17_idle",
+   "2": "P1_android17_dash",
+   "3": "P1_android17_block",
+   "8": "P1_android17_special!side",
+   "10": "P1_android17_charge!front",
+   "11": "P1_android17_interact",
+   "12": "P1_android17_victory!front",
+   "13": "P1_android17_charge!front",
+   "18": "P1_android17_idle",
+   "19": "P1_android17_interact",
+   "21": "P1_android17_special!side",
+   "15": "P1_android17_fly"
+  },
+  "recolor": {
+   "anchors": {
+    "neck": [
+     63,
+     64,
+     108,
+     32
+    ],
+    "waist": [
+     88,
+     89,
+     96,
+     97,
+     158,
+     159,
+     161,
+     174,
+     168,
+     160
+    ]
+   },
+   "rules": [
+    {
+     "from": [
+      1,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116
+     ],
+     "ramp": [
+      109,
+      110,
+      249,
+      250
+     ],
+     "where": {
+      "above": "neck",
+      "interior": true,
+      "not_near": [
+       200,
+       201,
+       202,
+       203,
+       66,
+       245,
+       81
+      ]
+     }
+    },
+    {
+     "from": [
+      1,
+      111,
+      112
+     ],
+     "to": [
+      70,
+      236,
+      71
+     ],
+     "where": {
+      "below": "neck",
+      "above": "waist",
+      "interior": true
+     }
+    },
+    {
+     "from": [
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      2
+     ],
+     "ramp": [
+      70,
+      236,
+      71,
+      186,
+      218
+     ],
+     "where": {
+      "below": "neck",
+      "above": "waist",
+      "touching": [
+       1,
+       111,
+       112,
+       200,
+       201,
+       202,
+       203,
+       81,
+       208,
+       63,
+       64
+      ]
+     }
+    },
+    {
+     "from": [
+      85,
+      69,
+      88,
+      158,
+      159,
+      160,
+      89,
+      96,
+      161,
+      97,
+      174,
+      168
+     ],
+     "ramp": [
+      236,
+      176,
+      98,
+      177,
+      178,
+      183
+     ]
+    },
+    {
+     "from": [
+      11,
+      12,
+      49,
+      59,
+      215
+     ],
+     "ramp": [
+      62,
+      208,
+      207
+     ]
+    }
+   ]
+  },
+  "_note": "Alternate outfit: Super 17, gold hair (user ref 17_07). Same frames as player_17, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
+ },
+ "player_18_redyellow": {
+  "template_orig": 260,
+  "stretch": true,
+  "log2_record": "0x1EE210",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P2_android18_idle",
+   "2": "P2_android18_dash",
+   "3": "P2_android18_block",
+   "8": "P2_android18_special!side",
+   "10": "P2_android18_charge!front",
+   "11": "P2_android18_interact",
+   "12": "P2_android18_victory!front",
+   "13": "P2_android18_charge!front",
+   "18": "P2_android18_idle",
+   "19": "P2_android18_interact",
+   "21": "P2_android18_special!side",
+   "15": "P2_android18_fly"
+  },
+  "recolor": {
+   "anchors": {
+    "neck": [
+     157,
+     159,
+     161
+    ],
+    "waist_last": [
+     157,
+     159,
+     161
+    ],
+    "feet": [
+     63,
+     64,
+     207,
+     206
+    ]
+   },
+   "rules": [
+    {
+     "from": [
+      157,
+      159,
+      161,
+      96,
+      173
+     ],
+     "ramp": [
+      31,
+      32,
+      33,
+      34
+     ]
+    },
+    {
+     "from": [
+      158,
+      69,
+      85
+     ],
+     "ramp": [
+      31,
+      32
+     ],
+     "where": {
+      "above": "waist"
+     }
+    },
+    {
+     "from": [
+      1,
+      69,
+      85,
+      158
+     ],
+     "to": [
+      243,
+      26,
+      25,
+      242
+     ],
+     "where": {
+      "below": "waist",
+      "above": "feet",
+      "interior": true
+     }
+    }
+   ]
+  },
+  "_note": "Alternate outfit: 18 red top, yellow trousers (user ref 18_04). Same frames as player_18, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
+ },
+ "player_18_redblack": {
+  "template_orig": 260,
+  "stretch": true,
+  "log2_record": "0x1EE210",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P2_android18_idle",
+   "2": "P2_android18_dash",
+   "3": "P2_android18_block",
+   "8": "P2_android18_special!side",
+   "10": "P2_android18_charge!front",
+   "11": "P2_android18_interact",
+   "12": "P2_android18_victory!front",
+   "13": "P2_android18_charge!front",
+   "18": "P2_android18_idle",
+   "19": "P2_android18_interact",
+   "21": "P2_android18_special!side",
+   "15": "P2_android18_fly"
+  },
+  "recolor": {
+   "anchors": {
+    "neck": [
+     157,
+     159,
+     161
+    ],
+    "waist_last": [
+     157,
+     159,
+     161
+    ]
+   },
+   "rules": [
+    {
+     "from": [
+      157,
+      159,
+      161,
+      96,
+      173
+     ],
+     "ramp": [
+      32,
+      33,
+      3,
+      34
+     ]
+    },
+    {
+     "from": [
+      158,
+      69,
+      85
+     ],
+     "ramp": [
+      31,
+      32
+     ],
+     "where": {
+      "above": "waist"
+     }
+    },
+    {
+     "from": [
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      2
+     ],
+     "ramp": [
+      111,
+      112,
+      113
+     ],
+     "where": {
+      "below_eq": "neck",
+      "touching": [
+       1,
+       157,
+       158,
+       159,
+       161,
+       16,
+       202,
+       213,
+       214,
+       212
+      ]
+     }
+    },
+    {
+     "from": [
+      158
+     ],
+     "to": [
+      112
+     ],
+     "where": {
+      "below": "waist"
+     }
+    }
+   ]
+  },
+  "_note": "Alternate outfit: 18 red top, black sleeves (user ref 18_09). Same frames as player_18, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
+ },
+ "player_18_tracksuit": {
+  "template_orig": 260,
+  "stretch": true,
+  "log2_record": "0x1EE210",
+  "log2_slots": {
+   "1": "1",
+   "4": "6",
+   "5": "7",
+   "6": "6",
+   "7": "3@0:1",
+   "9": "5",
+   "14": "7",
+   "16": "3",
+   "17": "3",
+   "20": "5"
+  },
+  "slots": {
+   "0": "P2_android18_idle",
+   "2": "P2_android18_dash",
+   "3": "P2_android18_block",
+   "8": "P2_android18_special!side",
+   "10": "P2_android18_charge!front",
+   "11": "P2_android18_interact",
+   "12": "P2_android18_victory!front",
+   "13": "P2_android18_charge!front",
+   "18": "P2_android18_idle",
+   "19": "P2_android18_interact",
+   "21": "P2_android18_special!side",
+   "15": "P2_android18_fly"
+  },
+  "recolor": {
+   "anchors": {
+    "neck": [
+     157,
+     159,
+     161
+    ],
+    "waist_last": [
+     157,
+     159,
+     161
+    ],
+    "feet": [
+     63,
+     64,
+     207,
+     206
+    ]
+   },
+   "rules": [
+    {
+     "from": [
+      157,
+      159,
+      161,
+      96,
+      173
+     ],
+     "ramp": [
+      127,
+      129,
+      123
+     ]
+    },
+    {
+     "from": [
+      158,
+      69,
+      85
+     ],
+     "ramp": [
+      225,
+      127
+     ],
+     "where": {
+      "above": "waist"
+     }
+    },
+    {
+     "from": [
+      1,
+      69,
+      85,
+      158
+     ],
+     "to": [
+      127,
+      129,
+      225,
+      123
+     ],
+     "where": {
+      "below": "waist",
+      "above": "feet",
+      "interior": true
+     }
+    }
+   ]
+  },
+  "_note": "Alternate outfit: 18 maroon tracksuit (user ref 18_06). Same frames as player_18, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
  }
 }

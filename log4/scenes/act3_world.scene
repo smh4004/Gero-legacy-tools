@@ -144,6 +144,14 @@ say android17 The Red Ribbon Army went looking for these when the old man was st
 say android18 And they found one. And then Goku tore the army apart, and nobody came back for it.
 do call 129 17 1
 set_flag 418
+narrate Taped under the lid, a data chip in Gero's handwriting: PROJECT 17-S. UNIT SEVENTEEN, FINAL STAGE. NOT AUTHORISED.
+say android17 He had a next step planned for me. Of course he did.
+narrate Seventeen plugs it in. For a second his eyes go somewhere very far away.
+say android18 ...Seventeen?
+say android17 I'm fine. Better than fine.
+do call 164 1 20
+set_flag 441
+narrate (Seventeen learned Super 17. Select it with the L Button and press B while wearing the android clothes. In Super 17, Outfit switches between the two looks.)
 stop
 label dball_done
 narrate An empty Red Ribbon field case, half buried in sand.

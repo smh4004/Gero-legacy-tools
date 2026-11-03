@@ -1,6 +1,7 @@
 # Act 3, chapter 9 "Years of Terror" (Age 768-774). Flags: 360 opened, 361 Bulma, 362 bunker arrival, 363 Super 13
-# destroyed, 364 Gohan fought, 365 after Super 13 seen, 366 chapter end, 367 Super 13 awake
-# (his speech sets it and reloads the incubator: enemy conditions are only read at load). Areas (world 17, act3 palette): 17:11 Capsule
+# destroyed, 364 Gohan fought, 365 after Super 13 seen, 366 chapter end, 367 Android 13 awake, 438 Android 13 beaten
+# (phase 1, row 11), 439 transformation seen (phase 2 = Super 13) (each scene sets its flag and reloads the incubator:
+# enemy conditions are only read at load). Areas (world 17, act3 palette): 17:11 Capsule
 # Corporation, 17:12-17:15 Gero's Act 1 bunker (Super 13 = stats row 21, actor super13), 17:16/17:17 West City (Gohan,
 # BF's own Gohan sprite, row 22). Speakers: #17 Bulma, #209/#210/#211 Androids 13/14/15 (Prototype D portraits),
 # future_gohan_twoarm.N (R4b).
@@ -69,12 +70,26 @@ say android17 Or it was too nice to keep. Same thing, to him.
 list ch9_thirteen
 set_flag 367
 do heal
-narrate Something huge steps out of the incubator. Blue skin, a red mane, and the parts of two other androids grown into it.
+narrate The incubator hisses open. A man steps out: white hair, a trucker's cap, hands in his pockets like he's waiting for a bus.
 say #209 Units Seventeen. Eighteen. Your creator ordered your return. You refused.
 say #209 I was built to obey him. It is the only thing I will ever do.
-say android17 Gero's dead, big guy. Nobody's giving orders any more.
+say android17 Gero's dead, pal. Nobody's giving orders any more.
 say #209 Then I will obey a dead man.
 say android18 ...That's what we'd be. If we'd listened.
+do call 120 20; call 119 17 14 1 208 312; call 121 20
+journal Destroy Android 13
+do call 47; call 51 0
+# ---------- phase 2 (17:14 arrival after Android 13 is beaten, flag 438): he absorbs 14 and 15
+list ch9_thirteen2
+set_flag 439
+do heal
+narrate Thirteen goes down hard. Then the floor starts to hum.
+narrate Computer: Unit Thirteen, critical damage. Contingency. Integrating Units Fourteen and Fifteen.
+say #209 ...Yes.
+narrate Two capsules open in the wall. What's left of Fourteen and Fifteen flies to him, and he grows around it.
+narrate A white flash. Blue skin. A red mane. The parts of two other androids, grown into one.
+say #209 Now I am complete.
+say android17 Great. Now he's bigger.
 do call 120 20; call 119 17 14 1 208 312; call 121 20
 journal Destroy Super 13
 do call 47; call 51 0
@@ -105,6 +120,14 @@ do call 47; call 51 0
 stop
 label hub_seen
 list ch9_hub18
+if_flag 440 h18_dressed
+set_flag 440
+say android18 I went through her closets. She had good taste. For a human.
+say android17 You're wearing her clothes?
+say android18 We're wearing her clothes. Here. Something that isn't Red Ribbon issue.
+narrate (New outfits for both of you. Select Outfit with the L Button: each press of the B Button changes into the next one.)
+stop
+label h18_dressed
 if_flag 370 h18_paozu
 if_flag 371 h18_roshi
 say android18 Go wherever you want. I'll catch up.
