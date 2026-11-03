@@ -699,15 +699,15 @@ change to make; ADD A LINE THERE whenever a new asset, source, feature or charac
   native: combat areas only, so not in towns), drains EP and reverts when it runs out. Verified: transform, gold swap, revert.
 - Unlocks: flag 440 = outfits (talk to Eighteen at the Age 772 hub, ch9_hub18); flag 441 + skill 20 for character 1 =
   Super 17 (Project 17-S chip in Prototype 11's field case, Diablo Desert, diablo_ball). Debug all-moves sets both.
-- Android 13 = actor android13 (template_orig 97, P14 user art: walk, idle A, run C via tools/bandsheet.py; other slots
-  placeholders until the user's frames arrive), stats row 11 (BF unused; ai 0x8A), HP 700 / STR 16 / POW 15 / END 18
+- Android 13 = actor android13 (template_orig 97, P14 user art via tools/bandsheet.py: walk, idle, run, guard, punch, kick,
+  hook, hurt; see the slot trace below), stats row 11 (BF unused; ai 0x8A), HP 700 / STR 16 / POW 15 / END 18
   (1000/19 lost to the fightbot at level 64; 700/16 won with 37% HP). 17:14: 13 spawns when 367 set and 438 clear; his
   death sets 438, heals, reloads; the arrival list ch9_thirteen2 (438 set, 439 clear) plays the absorption and sets 439;
   Super 13 spawns when 439 set and 363 clear. Verified in the emulator (STORY=1 listtest from shoot list t_bal_13 + 438).
 - Android 13 slot trace (2026-11-03): each slot given its own animation copy in a test ROM, then bot fights and idle /
   kite / ki-spam / skill runs: he plays 0 idle, 1 walk, 4/5/6 melee, 7 hurt, 9 = reaction to a ki hit (red flash; NOT a
-  ki attack). Never: 2, 3, 8, 10-18. Slot 9 now uses the hurt frame. Art still wanted: melee 2 (H kick) and melee 3
-  (K hook); M absorb only for a cutscene. Prompts: scratchpad prompts/art_prompts.md (updated).
+  ki attack). Never: 2, 3, 8, 10-18. Slot 9 now uses the hurt frame. All three melee hits are drawn (user art: punch E
+  slot 4, kick H slot 5, hook K slot 6; commit 252ac69). Nothing else is needed for the fight; M absorb only for a cutscene. Prompts: scratchpad prompts/art_prompts.md (updated).
 - FULL STORY RUN (plan step 3, 2026-11-03): tools/storyrun.py plays all 171 story lists in story order, each from a fresh
   boot at its own trigger with every earlier flag preset (+ trigger 'when' flags + boss death flags it checks), then
   checks flags, end area and the last screen (contact sheets). Result: no game bugs. All 32 first-pass CHECKs were test
