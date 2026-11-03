@@ -284,3 +284,72 @@ do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2; call 157 1 111; c
 code 02 c8 00 32 0b 13 00 09 01 81 ce 20 02 c2 11 02 c8 00 33 0b 13 00 09 01 81 ce 0c 02 c2 11 02 c8 00 34 0b 13 00 09 01 81 cd 50 02 c2 11 02 c8 00 35 0b 13 00 09 01 81 cc 58 02 c2 11 02 c8 00 36 0b 13 00 09 01 81 cb 10 02 c2 11 02 c8 00 37 0b 13 00 09 01 81 c8 64 02 c2 11 02 c8 00 38 0b 13 00 09 01 81 c5 40 02 c2 11 02 c8 00 39 0b 13 00 09 01 81 c1 10 02 c2 11 02 c8 00 3a 0b 13 00 09 01 81 bb 40 02 c2 11 02 c8 00 3b 0b 13 00 09 01 81 b4 3c 02 c2 11 02 c8 00 3c 0b 13 00 09 01 81 ab 70 02 c2 11 02 c8 00 3d 0b 13 00 09 01 81 a1 2a 02 c2 11 02 c8 00 3e 0b 13 00 09 01 81 94 38 02 c2 11 02 c8 00 3f 0b 13 00 09 01 81 84 68 02 c2 11 02 c8 00 40 0b 13 00 08 01 f2 08 02 c2 11 02 c8 00 41 0b 13 00 08 01 db 66 02 c2 11 02 c8 00 42 0b 13 00 08 01 c1 50 02 c2 11 02 c8 00 43 0b 13 00 08 01 a3 14 02 c2 11 11
 do heal; call 120 1; call 119 17 45 1 130 236; call 121 30
 stop
+# ---- trailer v6 (2026-11-02): Seventeen in the open world and Age 767 West City
+list sh_w_lookout
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 412
+set_flag 368
+set_flag 409
+do heal; call 120 1; call 119 17 43 1 320 430; call 121 30
+stop
+list sh_w_papaya
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 414
+set_flag 368
+set_flag 409
+do heal; call 120 1; call 119 17 44 1 300 330; call 121 30
+stop
+list sh_w_desert
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 416
+set_flag 368
+set_flag 409
+do heal; call 120 1; call 119 17 45 1 130 236; call 121 30
+stop
+list sh_w_osc
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 410
+set_flag 368
+set_flag 409
+do heal; call 120 1; call 119 17 42 1 96 300; call 121 30
+stop
+list sh_w_pilaf
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 419
+set_flag 368
+set_flag 409
+do heal; call 120 1; call 119 17 46 1 150 210; call 121 30
+stop
+list sh_wc767
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 340
+do heal; call 120 1; call 119 17 1 1 268 304; call 121 30
+stop
+list sh_w_nataday
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 422
+set_flag 368
+set_flag 409
+do heal; call 120 1; call 119 17 47 1 400 560; call 121 30
+stop

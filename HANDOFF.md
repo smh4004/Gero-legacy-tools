@@ -572,6 +572,18 @@ checks the player stays visible while walking into every door (see RE_NOTES "Ani
 Next for Act 2: optional drone fight before the capture (needs an enemy type for the drone: BF enemy table not decoded
 yet); East District 439 has no Act 2 content yet (design doc lists it as an Act 2 map).
 
+### Trailer v6 (2026-11-02, user: "new hype trailer, same music, completely new format, no dialogue, name features,
+spoiler-free rundown, ominous tease, COMING SOON on a Gero's lab computer screen")
+GerosLegacy_trailer_v6.mp4 (86 s, 1080p30) = tools/trailer6.py <Era of Darkness mp3> <out> (frames composed in numpy,
+piped to ffmpeg). Footage: tools/trailer6_shoot.py records clips with listtest + harness `rec` from a --shoot ROM (new
+shoot lists sh_w_* / sh_wc767 = Seventeen in the open-world places and Age 767 West City), plus the teaser-4 clips
+(scratchpad tz4/). Cuts land on the music's onsets (19.75, 25.1, 28.0, 32.75, 38.75, 43.1, 46.75, 49.7, 53.45, 57.65,
+61.6, 64.45). Call-outs are typed in VT323 (OFL, Google Fonts) in phosphor green: "BEFORE THE ANDROIDS...", "A
+SCIENTIST. TWO RUNAWAYS.", "THREE ACTS.", the act names, then the features (drone, world map, side quests and hidden
+memories, optional bosses, outfits, new boss fights, LoG2 maps / Buu's Fury engine). Tease: the humming incubator with
+signal tearing, "SPECIMEN STATUS: ALIVE". Ending: Gero's terminal types the project load and COMING SOON, then the
+CRT switches off. Crops skip the HUD and the area-name banner (start clips 3+ s in, or zoom off the bottom).
+
 ### Teaser v3 (made 2026-11-01 on request: "remake the teaser with the new stuff, 45-50 s")
 log4/out/GerosLegacy_teaser_v3.mp4 (49.6 s) = tools/teaser.py <mp3> <out> <footage dir> (old script: tools/teaser_v2.py).
 Shots: main lab (Gero, Gevo, drone) -> animated door -> tank room -> West City day (Lapis out of Z-Mart) -> the park
