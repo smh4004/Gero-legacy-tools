@@ -686,6 +686,24 @@ process during the whole check ... chapter by chapter and save progress ... to r
   - More playthrough fixes: BF's own NPC objects with talk lists (areas.json object_talk: the fence, townsfolk,
     police) get triggers from reachaudit's spots, and NPCs are approached at their live position (they wander:
     R.approach); ch6_home goes right before the ambush (the Collector's death runs the ambush and Act Three's opening).
+  - STEP 2 RESULT (all 252 lists, Act One to the secret chapter's ending, one carried game state, saves per list in
+    scratchpad pt3/states): 0 sprite-memory problems in any chapter, 0 guard rejects after the Prototype 12 fix,
+    peak OBJ VRAM ~26 KB (Nataday 17:47). Story flags unset at the end, each checked by hand from the saved states:
+    range_sergeant 500 and mrs_oda 533 (rewards: both pay out on a second talk), cache_belt 286 / file_line 512 (and so
+    files_done 516) work (verified), depot_tunnel -> ch3_end 318 works when the player walks down into the gap from
+    above-left (the tool approached from the unreachable right side), fs_lower_caved 449 / fs_out work, zmart_clerk 388
+    and museum_curator 387 are the other branch, fs_wake 391 is the known injected-trigger limitation. reachaudit on
+    v20: 172 of 173; fly_hub_jet's FAIL is the audit's fresh flags (ch9_hub's first-visit scene); with 368 set the jets
+    work (409 set, verified).
+  - More order / tool fixes: chN_end lists after their chapter's side content (ch7_end); chapter 8 = hideout, stall,
+    landing; the Lookout altar after the last ball; free() lets a state settle (a load still to come) and runs before the
+    boss check (Vegeta's arena); bosses wait for a later talk trigger in their area (Krillin); in-area teleports must move
+    someone; NOT DONE lists are retried after later lists of their chapter (4 times).
+  - Walkthrough: the apple memory is not missable (ch8_landing needs 341, so the Z Fighters only land after it);
+    wording changed. Design question for the user: should it be missable (landing without 341)?
+  - Fights the bot can't win (death flag set by hand; play them by hand): rogue mechanoids 3/4/5, raider sniper 46,
+    Prototype 3 (63), rooftop hunter 95, bio wing warden 42, Butcher 131.
+  - Delivered v20 (release + debug).
   - Act One (lists 0-73): 0 VRAM problems, 0 guard rejects after the Prototype 12 fix. Fights the bot couldn't win
     (death flag set by hand; recheck by hand): rogue mechanoids rows 3/4/5, raider sniper 46 (Gero, chapter 2),
     Prototype 3 row 63 (graveyard, ai 310: the bot never damages it). Recheck by hand: range_sergeant reward (500).

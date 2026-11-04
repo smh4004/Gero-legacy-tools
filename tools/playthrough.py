@@ -127,7 +127,12 @@ class Run:
         """Press A (one text page at a time) until the player can move. Returns the state."""
         cur = st
         for k in range(tries):
-            if self.can_move(cur): return cur
+            if self.can_move(cur):
+                # (2026-11-04) and it stays put: a list can end with a fade and a load still to come (ch8_landing hands
+                # control back, then fades to Vegeta's arena 17:3): settle 90 frames, go on from there if the area changed
+                a0 = self.area(cur); self.h(['1 -', 'load ' + cur, '90 -', 'save _settle%d' % (k % 2)])
+                if self.area('_settle%d' % (k % 2)) == a0: return cur
+                cur = '_settle%d' % (k % 2); continue
             # A for the next text page, then a step away (an examine spot / NPC right in front would start again)
             away = ('DOWN', 'RIGHT', 'UP', 'LEFT')[k // 2 % 4]
             self.h(['1 -', 'load ' + cur, '4 A', '20 -', '14 ' + away, '6 -', 'save _free%d' % (k % 2)]); cur = '_free%d' % (k % 2)
@@ -389,6 +394,12 @@ def main():
         mv = [lists[names.index(n_)] for n_ in grp]; rest = [e for e in lists if e not in mv]
         k = [e['list'] for e in rest].index('ch8_landing')
         lists = rest[:k] + mv + rest[k:]
+    # the Lookout's altar (lookout_door) wants all seven balls: after the last ball (kame_ball)
+    names = [e['list'] for e in lists]
+    if 'lookout_door' in names and 'kame_ball' in names:
+        ld = lists[names.index('lookout_door')]; rest = [e for e in lists if e is not ld]
+        k = [e['list'] for e in rest].index('kame_ball')
+        lists = rest[:k + 1] + [ld] + rest[k + 1:]
     # ch4_pod ends Act One (the pod scene warps to Act Two): the chapter's side content (the pass, the graveyard, the
     # files) comes before it
     names = [e['list'] for e in lists]
@@ -489,7 +500,9 @@ def main():
                     res['result'] = 'done' if not miss else ('done (this visit; still unset: %s)' % miss if done else 'NOT DONE: flags %s not set' % miss)
                     if miss and done: revisit.append(e)
         # every boss whose spawn condition now holds (side jobs: the rogue mechanoids once the sergeant gave the job)
-        cur = R.keep(cur, '_main')                       # (advance / free / teleport reuse their state names: a
+        cur = R.keep(R.free(cur), '_main')               # (settled first: the list's own fade + load to a boss arena,
+                                                          # ch8_landing -> Vegeta 17:3, must be done before the boss check)
+                                                          # (advance / free / teleport reuse their state names: a
         fl = R.flags(cur)                                # revisit's advance overwrote _adv1 = cur, 2026-11-04)
         for f, (row, (bw, ba), en) in sorted(bosses.items()):
             if R.fset(fl, f) or not all(R.fset(fl, g) for g in cond_flags(en.get('condition', 0))): continue
