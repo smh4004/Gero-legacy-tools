@@ -10,7 +10,8 @@ a blue copy (tiles + table) is written here, and the player projectile's constru
 burst (record 0x087137CC, shared and loaded from a literal) keeps BF's colours.
 Electric Kamehameha (skill 6, now "Full Power Energy Wave"): its pieces (0x721218-0x722318: horizontal, vertical,
 sparkles) are referenced only by its own frame tables (0x724714-0x7248A0 vertical, 0x724898-0x724A18 horizontal), and in LoG4 only 17 and 18 have the skill, so the
-tiles are recoloured in place, green.
+tiles are recoloured in place, green. Its charge-up ball is shared with other beams, so it gets a green copy
+(charge() below).
 Colours: each pixel's colour gets the target hue (same saturation and brightness) and is mapped to the nearest colour
 that already exists in the OBJ palette, using only slots whose colour is still BF's (LoG4 put new colours in some
 unused slots; slot 255 shows pink in game). The palette itself is not touched."""
@@ -109,4 +110,35 @@ def apply(rom, at):
     assert bytes(rom[SITE:SITE + 14]) == ORIG, 'projectile constructor changed'
     # ldr r1,[pc,#4]; bx r1; nop; .word hook|1; nop; nop  (0x080197F2 .. 0x080197FF)
     rom[SITE:SITE + 14] = bytes.fromhex('01490847c046') + struct.pack('<I', sym['hook_blast'] | 1) + bytes.fromhex('c046c046')
-    return tiles_at + (t1 - t0)
+    return charge(rom, tiles_at + (t1 - t0), green)
+
+
+# The charge-up ball (user 2026-11-03: "make the charge up ball for the full power energy wave green as well"). BF's
+# ki charge ball is shared: frame records 0x721164-0x721218 (12 bytes per frame: s8 x, s8 y, u8 w, u8 h, u32 OBJ attr,
+# u32 raw 8bpp tiles in 0x720864-0x721164) are used by several beams' tables (0x71DA68 Kamehameha, 0x7315A8,
+# 0x72A690, 0x76BA34). The wave's own table 0x08725018 (read only by its skill code, literal at 0x0801AE1C) lists, per
+# direction, [u32][u32][charge record][beam frames]: entries at +8, +0x18, +0x28 -> 0x721188 / 0x721188 / 0x7211F4.
+# So a green copy of the tiles and of the whole record block is written, and only those three pointers move to it.
+CHARGE_TILES = (0x720864, 0x721164)
+CHARGE_RECS = (0x721164, 0x721218)
+WAVE_TABLE, WAVE_ENTRIES = 0x725018, (0x725020, 0x725030, 0x725040)
+
+
+def charge(rom, at, green):
+    at = (at + 3) & ~3
+    t0, t1 = CHARGE_TILES; r0, r1 = CHARGE_RECS
+    assert struct.unpack_from('<I', rom, 0x1AE1C)[0] == 0x08000000 + WAVE_TABLE, 'wave table literal moved'
+    assert set(rom[at:at + (t1 - t0) + (r1 - r0)]) <= {0xFF, 0x00}, 'kifx charge space not free'
+    rom[at:at + (t1 - t0)] = bytes(green[np.frombuffer(bytes(rom[t0:t1]), np.uint8)].astype(np.uint8))
+    recs_at = at + (t1 - t0)
+    recs = bytearray(rom[r0:r1])
+    for k in range(0, len(recs), 12):                     # retarget every frame's tile pointer to the green copy
+        p = struct.unpack_from('<I', recs, k + 8)[0] - 0x08000000
+        assert t0 <= p < t1, hex(p)
+        struct.pack_into('<I', recs, k + 8, 0x08000000 + at + (p - t0))
+    rom[recs_at:recs_at + len(recs)] = recs
+    for e in WAVE_ENTRIES:
+        p = struct.unpack_from('<I', rom, e)[0] - 0x08000000
+        assert r0 <= p < r1, hex(p)
+        struct.pack_into('<I', rom, e, 0x08000000 + recs_at + (p - r0))
+    return recs_at + len(recs)

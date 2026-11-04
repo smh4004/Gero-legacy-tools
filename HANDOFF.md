@@ -697,6 +697,11 @@ footage + the scene scripts, and renders any text with it.
   map onto existing OBJ colours only; kifx.IN_GAME_CHANGED lists the 20 OBJ slots whose in-game colour isn't BF's
   (measured from PRAM in Act 3) - never targets. Verified in the emulator: blue blast, green wave for both, all
   directions.
+- Charge-up ball (user 2026-11-03 night: "make the charge up ball ... green as well"): BF's ki charge ball (frame
+  records 0x721164-0x721218, raw tiles 0x720864-0x721164) is shared by several beams (Kamehameha table 0x71DA68 etc.),
+  so kifx.charge() writes a green copy of tiles + records after the blue blast copy and repoints only the wave's own
+  table 0x08725018 (entries +8/+0x18/+0x28; literal at 0x0801AE1C). Verified in the emulator: green ball facing
+  up/down/left/right; other beams keep BF's.
 
 ## CREDITS (user, 2026-11-03): hold the credits update until the game is complete. log4/credits_todo.md lists every
 change to make; ADD A LINE THERE whenever a new asset, source, feature or character goes in (also a CLAUDE.md rule).
