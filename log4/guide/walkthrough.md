@@ -169,7 +169,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - Caches: {{C:ch8_cache_river}} and {{C:ch8_cache_docks}}.
    - If you took the Ribbon Ruby in chapter 5, it's still in the tin box.
    - Gero's note 6: pinned behind a crate in the Old Warehouse ({{L:note_warehouse}}).
-3. **Memory: the apple (missable).** Back in West City, talk to the fruit seller ({{L:ch8_stall}}). It only works after the tin box. The objective becomes {{J:ch8_stall}}.
+3. **Memory: the apple.** Back in West City, talk to the fruit seller ({{L:ch8_stall}}). It only works after the tin box, and the story waits for it: the Z Fighters only land once Eighteen has the apple. The objective becomes {{J:ch8_stall}}.
 4. Walk onto the crossroads; the Z Fighters land ({{X:ch8_landing}}).
 5. **Boss: {{B:70}}**.
 6. After Vegeta ({{X:ch8_after_vegeta}}), **talk to the woman and her son before anything else** ({{L:ch8_civilians}}). This is missable memory 2. Then walk up to Tien ({{X:ch8_tien}}). Tien's and Yamcha's stands are scenes ({{X:ch8_yamcha}}).

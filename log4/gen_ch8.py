@@ -22,7 +22,7 @@ g.doors[36].append({'rect': [120, 64, 192, 92], 'warp': [W17, 35] + S(35, 136, 2
                     'face': 'down', 'cover_ok': True, '_note': 'Old Warehouse -> Docks'})
 g.ev(36, (304, 224, 360, 252), 'ch8_hideout', examine='down', note='the loose board: the tin box (359)')
 g.ev(34, (40, 120, 72, 152), 'ch8_cache_river', examine='left', note='the rowboat, rotted (382)')
-g.ev(35, (256, 186, 288, 208), 'ch8_cache_docks', note='the dome house (369)')
+g.ev(35, (256, 186, 288, 240), 'ch8_cache_docks', note='the dome house (369). Rect reaches y 240: the player stops at y 232 in front of the door (2026-11-04 playthrough: the old rect ended at 208, out of reach)')
 
 E = lambda a, t, x, y, **k: dict(type=t, x=S(a, x, y, 14)[0], y=S(a, x, y, 14)[1], **k)
 DRONE, HEAVY = 94, 62             # Power Mechandoid (char 230), Knight Destroyer (char 164)

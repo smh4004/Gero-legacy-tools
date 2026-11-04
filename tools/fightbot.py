@@ -116,7 +116,11 @@ for k in range(steps):
     vr = os.environ.get('BOTVRAM')                    # (2026-11-03) a json file: OBJ VRAM check after every step
     if vr: sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import vramcheck as V
     run(['load _bot'] + pre + keys + ['save _bot'] + (['shot _s%02d' % k] if os.environ.get('BOTSHOTS') else [])
-        + (V.sample_lines('_bv') if vr else [])); ALL.extend(pre + keys)
+        + (V.sample_lines('_bv') if vr else []) + (['dump _gc 203ff80 4'] if os.environ.get('BOTCNT') else [])); ALL.extend(pre + keys)
+    if os.environ.get('BOTCNT'):                      # (2026-11-04) the frame guard's reject counter (test ROMs) per step
+        gc = struct.unpack('<I', rd('_gc'))[0]
+        if gc != globals().get('_gc0', gc): print('guard rejects %d -> %d at step %d (player %s boss %s)' % (_gc0, gc, k, (px, py), (bx, by)), flush=True)
+        _gc0 = gc
     if vr:
         import json as _j
         if '_vprev' not in globals(): _vprev = None; _rom = open(rom, 'rb').read()

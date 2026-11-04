@@ -655,6 +655,40 @@ process during the whole check ... chapter by chapter and save progress ... to r
   can be set. VRAM checked every chunk and every bot step; guard rejects read after every list. Saves
   states/NNN_<list>.ss + .png and progress.json after every list: re-running resumes, --from N restarts at list N.
 - tools/fightbot.py: env NOB, BOTPRE, BOTVRAM (json of VRAM problems per step), BOTWEAK; keys.txt also on ENDED.
+- 2026-11-04, step 2 continued (scratchpad pt3, test ROM tc9 = --shoot + LOG4_GUARD_COUNTER):
+  - REAL BUG FIXED: Prototype 12 (stats row 30, Death Machine sprite 76, 1:76) went invisible for most of its fight:
+    178 guard rejects in one replay. Row 30 is never placed in BF, so its own behaviour (id08 203) was never made for
+    any sprite and played slots character 76 lacks; the guard skipped them and the boss vanished. Now "ai": 129 (row 19
+    Death Machine's, natively sprite 76): 0 rejects, visible the whole fight, dies normally (flag 327). The
+    enemy sweep's "4 setup rejects in 1:76" note below was this. tools/enemyslots.py now flags any row BF never
+    places (it used to skip them silently); LoG4 has only this one.
+  - playthrough.py fixes: a walk-in trigger's scene can move the camera to a scene area (world 0) at once: arriving
+    there counts; scene areas (world 0) never count as "the player is free"; arrive 16 px further back only when that
+    floor is walkable (1:104's belt corridor is 32 px tall); the main state is copied to its own name before boss /
+    revisit work (a revisit's advance overwrote _adv1 = the main state: chapter 4 "ended" in 1:102 every list); a list
+    left NOT DONE by a boss in its way is retried after the fight (relay_3 / Prototype 9); a boss whose actors vanish
+    with its death flag set is a win; the teleport hook is first in every exit list and the area's other exits are
+    moved off the map for the move (Act Two starts with Lapis inside the Z-Mart door's rect: that exit matched and the
+    hook never fired); a 40-frame wait before the warp (fades); an in-area teleport must actually move someone to the
+    spot; revisits that can't be reached 3 times are dropped (another act's world). Story order: chapter 4's side
+    content before ch4_pod (it ends Act One), chapter 5's (act2_ch5) before ch5_rest / ch5_end.
+  - REAL BUGS FIXED (chapter 5, both out of the player's reach): the Docks dome house door (docks_dome, the lookout
+    cache 299) rect ended at y 208 but the player stops at y 232 in front of the door -> rect to 240; Gero's note 1 under
+    the park bench (note_park, 4:1) rect ended at 552 but the bench stops the player at 552.5 -> 562 (verified live: the
+    note is found). gen_ch5.py / gen_more.py and areas.json both changed. reachaudit had called note_park ok.
+  - Same class, also fixed: the night Docks cache and chapter 8's Docks cache (the same dome door, rect to 240),
+    Mrs. Oda's bag on the fence (16:42 oda_bag: player stops at 304.6, rect 300 -> 312), Gero's quarters 1:117
+    (diary: stops 73.0, rect 72 -> 82; photo: 80.1, 76 -> 88; safe: 64.2, 62 -> 72). All verified in the playthrough.
+    tools/reachaudit.py now starts its near tries 16 px further back where that floor is walkable (the collision-free
+    arrival walk had carried the player into these rects: they "passed"). Its run on the fixed ROM: 170 of 173; the 3
+    left are the quarters (fixed after the run) and fly_hub_jet (17:18: the ch9_hub arrival scene interrupts the audit's
+    approach; check in the playthrough, list 226).
+  - More playthrough fixes: BF's own NPC objects with talk lists (areas.json object_talk: the fence, townsfolk,
+    police) get triggers from reachaudit's spots, and NPCs are approached at their live position (they wander:
+    R.approach); ch6_home goes right before the ambush (the Collector's death runs the ambush and Act Three's opening).
+  - Act One (lists 0-73): 0 VRAM problems, 0 guard rejects after the Prototype 12 fix. Fights the bot couldn't win
+    (death flag set by hand; recheck by hand): rogue mechanoids rows 3/4/5, raider sniper 46 (Gero, chapter 2),
+    Prototype 3 row 63 (graveyard, ai 310: the bot never damages it). Recheck by hand: range_sergeant reward (500).
 
 ## 2026-11-03 (late night 2): fight bot robustness + second bug sweep (user: "Do 4 first, then run a bug sweep again")
 - tools/fightbot.py now finds every boss: enemy objects are found by their class word 0x0804C484 (+0x18 = 0x03001BA4),

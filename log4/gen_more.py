@@ -143,7 +143,7 @@ def ch5():
     PATCH[(4, 43)] = [{'rect': [40, 120, 96, 160], 'event': 'ch5_rest', 'examine': 'left',
                        '_note': 'the mattress heap: lie low until night (ch5_rest)'}]
     # Gero's note 1: the park bench in West City (4:1, by the hedge where he watched them)
-    PATCH[(4, 1)] = [{'rect': [64, 520, 112, 552], 'event': 'note_park', 'examine': 'up',
+    PATCH[(4, 1)] = [{'rect': [64, 520, 112, 562], 'event': 'note_park', 'examine': 'up',   # (2026-11-04) to 562: the bench stops the player at y 552.5, outside the old rect (552): the note couldn't be found
                       '_note': "Gero's note 1: under the park bench (520)"}]
 
 
@@ -314,9 +314,11 @@ def ch2_jobs():
     add = lambda w, a, d: PATCH.setdefault((w, a), []).append(d)
     add(1, 100, {'rect': [204, 140, 236, 162], 'event': 'radio_antenna', 'examine': 'up',
                  '_note': 'radio part: the antenna, behind the lone crate by the right tank (502)'})
-    add(1, 101, {'rect': [180, 284, 212, 312], 'event': 'radio_battery', 'examine': 'up',
+    # (2026-11-03 playthrough) the rects reach below the crate / stump: Gero (bigger than the drone) stops with his feet
+    # at the crate's bottom edge (y 312) and below the stump (y 392), just outside the old rects
+    add(1, 101, {'rect': [180, 284, 212, 326], 'event': 'radio_battery', 'examine': 'up',
                  '_note': 'radio part: the battery pack, wedged behind the bottom crate (503)'})
-    add(1, 68, {'rect': [156, 344, 196, 380], 'event': 'radio_handset', 'examine': 'up',
+    add(1, 68, {'rect': [156, 344, 196, 402], 'event': 'radio_handset', 'examine': 'up',
                 '_note': 'radio part: the handset, hanging from the dead stump (504)'})
     ENEMY_PATCH[(1, 96)] = [dict(E(g, 96, 46, 560, 120), character=247,
                                  condition=hexcond(('set', 505), ('clear', 506)),
@@ -328,7 +330,7 @@ def ch6_jobs():
     fence, 533 bag returned)."""
     g = gen({41: ('bf', [2, 9])}, {41: (480, 320)}, 16)
     SPAWN_PATCH[(16, 41)] = [NPC(g, 41, 176, 104, 'mrs_oda', 'Mrs. Oda, the old neighbour (531/533)', actor_id=183)]
-    PATCH.setdefault((16, 42), []).append({'rect': [84, 280, 144, 300], 'event': 'oda_bag', 'examine': 'up',
+    PATCH.setdefault((16, 42), []).append({'rect': [84, 280, 144, 312], 'event': 'oda_bag', 'examine': 'up',   # (2026-11-04) to 312: the fence stops the player at y 304.6, outside the old rect (300)
                                            '_note': "Mrs. Oda's bag, snagged on the white fence (532)"})
 
 
@@ -344,10 +346,12 @@ def ch7_quarters():
               '_note': "Gero's Quarters (the arched doorway) -> cave"}]
     g.ev(117, (q_arr[0] - 24, q_arr[1] - 8, q_arr[0] + 40, q_arr[1] + 28), 'ch7_quarters', walk=True,
          when=hexcond(('clear', 534)), note='first arrival (534)')
-    g.ev(117, (140, 56, 164, 72), 'quarters_diary', examine='up', note="the nightstand: Gero's diary (538)")
-    g.ev(117, (272, 56, 304, 76), 'quarters_photo', examine='up', note="the dresser: Gevo's photograph, the key behind it (535)")
+    # (2026-11-04) the three rects reach down to where the player stops (diary y 73.0, photo 80.1, safe 64.2): they
+    # ended above it and could never be examined (tools/playthrough.py; reachaudit had passed them via the arrival walk)
+    g.ev(117, (140, 56, 164, 82), 'quarters_diary', examine='up', note="the nightstand: Gero's diary (538)")
+    g.ev(117, (272, 56, 304, 88), 'quarters_photo', examine='up', note="the dresser: Gevo's photograph, the key behind it (535)")
     g.ev(117, (196, 80, 228, 98), 'quarters_bed', examine='up', note='the bed (made, never slept in)')
-    g.ev(117, (244, 44, 270, 62), 'quarters_safe', examine='up', note='the painting: a wall safe (536 open, 539 emptied)')
+    g.ev(117, (244, 44, 270, 72), 'quarters_safe', examine='up', note='the painting: a wall safe (536 open, 539 emptied)')
     doors += g.doors[117]
     en = [dict(E(g, 117, 58, 160, 120), character=142, condition=hexcond(('set', 536), ('clear', 537)),
                _note="Gero's sentry (row 58): wakes when the safe opens (536) until destroyed (537)")]

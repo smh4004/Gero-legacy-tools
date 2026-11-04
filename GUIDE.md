@@ -169,7 +169,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - Caches: **Riverside (767)** (examine): C. Soda x1 and **Docks (767)** (hold Up): Elixir x1, Senzu Bean x1.
    - If you took the Ribbon Ruby in chapter 5, it's still in the tin box.
    - Gero's note 6: pinned behind a crate in the Old Warehouse (**Old Warehouse (767)** (examine)).
-3. **Memory: the apple (missable).** Back in West City, talk to the fruit seller (**West City (Age 767)**). It only works after the tin box. The objective becomes "Meet them at the crossroads".
+3. **Memory: the apple.** Back in West City, talk to the fruit seller (**West City (Age 767)**). It only works after the tin box, and the story waits for it: the Z Fighters only land once Eighteen has the apple. The objective becomes "Meet them at the crossroads".
 4. Walk onto the crossroads; the Z Fighters land.
 5. **Boss: Vegeta (HP 1100, level 54)**.
 6. After Vegeta, **talk to the woman and her son before anything else** (**Crossroads: after Vegeta**). This is missable memory 2. Then walk up to Tien. Tien's and Yamcha's stands are scenes.

@@ -38,7 +38,12 @@ def main(rom_path, tables, log=None):
     for (row, ch), (w, a) in sorted(pairs.items()):
         ai = st.get(str(row), {}).get('ai'); src = by_id08.get(ai, row) if ai else row
         nat = native.get(src, set())
-        if ch in nat or not nat: continue
+        if ch in nat: continue
+        if not nat:                                   # (2026-11-04) a row BF never places: its behaviour was never
+            bad += 1                                  # made for any sprite (Prototype 12 = row 30 with the Death
+            print('CHECK row %3d sprite %3d (%d:%d): row %d is never placed in BF, so its behaviour has no native '
+                  'sprite; give it the ai of a row that natively uses sprite %d' % (row, ch, w, a, src, ch))   # Machine:
+            continue                                  # vanished for most of the fight, 178 guard rejects)
         mine, n = frames(ch); miss, short = set(), {}
         for nc in nat:
             f, _ = frames(nc)

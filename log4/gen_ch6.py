@@ -33,7 +33,7 @@ g.ev(44, (AMB[0] - 24, AMB[1] - 24, AMB[0] + 40, AMB[1] + 40), 'ch6_ambush', wal
 g.ev(1, (392, 336, 456, 470), 'night_crossroads', walk=True, when=hexcond(('clear', 337)),
      note='a drone sweeps the crossroads (337)')
 g.ev(41, (40, 120, 72, 152), 'night_cache_river', examine='left', note='the rowboat (335)')
-g.ev(42, (256, 186, 288, 208), 'night_cache_docks', note='the dome house (336)')
+g.ev(42, (256, 186, 288, 240), 'night_cache_docks', note='the dome house (336). Rect reaches y 240: the player stops at y 232 in front of the door (2026-11-04 playthrough: the old rect ended at 208, out of reach)')
 
 spawns = {44: [dict(x=150, y=104, actor='drone_night_a', face='down', no_check=True, _note='ambush drone A (moves in)'),
                dict(x=300, y=176, actor='drone_night_b', face='left', no_check=True, _note='ambush drone B'),

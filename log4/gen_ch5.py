@@ -49,7 +49,7 @@ g.doors[43][-1]['cover_ok'] = True        # the doorway is cut into the top wall
 den = S(43, 140, 104)
 g.ev(43, (den[0] - 24, den[1] + 8, den[0] + 56, den[1] + 40), 'ch5_den', walk=True,
      when=hexcond(('clear', 389)), note='first steps into the den: Big Ox (389)')
-g.ev(42, (256, 186, 288, 208), 'docks_dome', note='dome house door: locked; the lookout cache (299)')
+g.ev(42, (256, 186, 288, 240), 'docks_dome', note='dome house door: locked; the lookout cache (299). Rect reaches y 240: the player stops at y 232 in front of the door (2026-11-04 playthrough: the old rect ended at 208, out of reach)')
 g.ev(41, (40, 120, 72, 152), 'cache_river', examine='left', note='a boat under the trees (297)')
 g.ev(45, (448, 112, 512, 140), 'museum_exhibit', examine='up', note='the Red Ribbon exhibit case')
 

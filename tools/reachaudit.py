@@ -103,6 +103,13 @@ def main():
             far = [p_ for p_ in sc_ if (p_[1] - y1 >= 32 if f == 'up' else y0 - p_[1] >= 32 if f == 'down'
                                         else p_[0] - x1 >= 24 if f == 'left' else x0 - p_[0] >= 40)]
             near = [p_ for p_ in sc_ if p_ not in far]
+            # (2026-11-04) the arrival walk (~14 px the facing way) ignores collision: from a near start it carried the
+            # player through the obstacle into the rect, and the spot "passed" though no player can stand there (the park
+            # bench note, Mrs. Oda's bag, the dome doors: found by tools/playthrough.py). Start 16 px further back
+            # wherever that floor is walkable, so the sweep has to walk up to it for real
+            bx, by = {'up': (0, 1), 'down': (0, -1), 'left': (1, 0), 'right': (-1, 0)}[f]
+            near = [(p_[0] + 16 * bx, p_[1] + 16 * by) if all(walk_ok(w, a, p_[0] + d * bx, p_[1] + d * by) for d in (4, 8, 12, 16))
+                    else p_ for p_ in near]
             tries = [(p_[0], p_[1], f, 'sweep') for p_ in (far[:3] + near[:2])]
             # last resort: stand inside the rect facing f (passes only if some floor inside the rect works at all)
             tries += [(xx, yy, f, 'inside') for yy in range(y0 + 2, y1, 4) for xx in range(x0, x1 - 7, 8)
