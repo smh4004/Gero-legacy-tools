@@ -212,6 +212,7 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
                 if int(slot) >= n: continue                # the template has fewer slots (e.g. Goku 106 has 16)
                 old = struct.unpack_from('<I', rec, 0x54 + 4 * int(slot))[0]
                 want = struct.unpack_from('<I', rom, old - BASE)[0] if a.get('stretch') and old else 0
+                want = a.get('frames', {}).get(str(slot), want)   # the behaviour steps further than the template
                 src = a['log2_record']
                 if str(k).startswith('r'): src, k = str(k).split(':', 1)    # "r51:3@0:2" = LoG2 actor 51, anim 3
                 k, sl = (str(k).split('@') + [None])[:2]
@@ -230,6 +231,7 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
             if int(slot) >= n: continue                    # the template has fewer slots
             old = struct.unpack_from('<I', rec, 0x54 + 4 * int(slot))[0]
             want = struct.unpack_from('<I', rom, old - BASE)[0] if (target is not None or a.get('stretch')) and old else 0
+            want = a.get('frames', {}).get(str(slot), want)
             key = (spec, want, rkey)
             if key not in anims:
                 dirs = slot_frames(clean_dir, spec)
@@ -239,6 +241,19 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
                         for fi, f in enumerate(dd): FRAME_HOOK(('sheet', spec, di, fi), f)
                 anims[key] = ins.anim(stretch(dirs, want)) if dirs else None
             if anims[key]: struct.pack_into('<I', rec, 0x54 + 4 * int(slot), anims[key])
+        if a.get('slot_count', 0) > n:                     # more slots than the record has (the behaviour asks for them)
+            rec[0] = a['slot_count']; rec += bytes(4 * (a['slot_count'] - n)); n = a['slot_count']
+        orig = bytes(rec)
+        for dst, src_ in a.get('copy_slots', {}).items():  # an empty slot plays another slot's animation (enemy
+            if int(dst) >= n: continue                     # behaviours ask for slots a non-fighter sprite lacks);
+            sl, _, want = str(src_).partition(':')         # "4:6" = slot 4's animation stretched to 6 frames
+            ap = struct.unpack_from('<I', orig, 0x54 + 4 * int(sl))[0]
+            if want and ap:
+                k = struct.unpack_from('<I', rom, ap - BASE)[0]; m = int(want)
+                ptrs = struct.unpack_from('<%dI' % (4 * k), rom, ap - BASE + 4)
+                ap = ins.put(struct.pack('<I', m) + b''.join(struct.pack('<4I', *ptrs[4 * (i * k // m):4 * (i * k // m) + 4])
+                                                            for i in range(m)))
+            struct.pack_into('<I', rec, 0x54 + 4 * int(dst), ap)
         if target is not None:
             table[target] = ins.put(bytes(rec)); ids[name] = target
         else:

@@ -14,6 +14,9 @@ Read `HANDOFF.md` first, then `RE_NOTES.md` as needed. HANDOFF.md is the source 
 - Sprites: every build runs `tools/frameaudit.py` (every frame must fit its actor's OBJ VRAM) and installs
   `tools/framegrd.py` (the engine skips garbage frames instead of writing them over VRAM). Give an enemy row an
   `ai` only from a row that natively uses the same character; never remove the guard.
+  When adding or re-skinning an enemy, run `tools/enemyslots.py` (every slot / frame its behaviour uses must exist;
+  fix with actors.json copy_slots / frames). When adding an area, run `tools/exitaudit.py` and give every opening that
+  looks like a way out either a real exit or a message.
 - Palettes (user, 2026-11-02): never merge, consolidate or change existing colours, including near-duplicates. That
   covers the master palette (ROM 0x701B0, BG and OBJ), its RGB555 OBJ copy at 0x5652C, and the front-end palette.
   New colours go only into slots nothing in the game uses. Per-chapter (per-act / per-world) palettes stay, but each

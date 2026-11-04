@@ -595,6 +595,32 @@ Footage: scratchpad t3/ (*.mkv recorded with harness `rec` from save states; rec
 there). Game font: tools/gamefont.py builds tools/gamefont_atlas.npz (51 glyphs) from fully typed dialogue pages in
 footage + the scene scripts, and renders any text with it.
 
+## 2026-11-03 (late night): enemy sweep + exit sweep (user: "Do 1 and 2")
+- Enemy sweep. tools/enemysweep.py fights every enemy type (50) in its own area with the act's party (shoot lists
+  sw_drone / sw_lapis / sw_17) via the fight bot and reads the frame guard's reject count from RAM (test ROMs only:
+  build --shoot with LOG4_GUARD_COUNTER=0203FF80; the guard then counts at 0x0203FF80, which nothing else uses -
+  except, likely, the rooftops (garbage value there)). tools/enemyslots.py is the static side: for every (row, sprite)
+  whose behaviour comes from a row BF pairs with other sprites, the slots the native sprites fill that ours lacks and
+  the slots with fewer frames (needs the decomp's assets/tables).
+  Found and fixed (actors.json, new builder options in tools/sprites.py: copy_slots "dst": "src[:frames]",
+  slot_count, frames {slot: n}): Krillin (BF NPC sprite 166 with Dabura's behaviour: 13 empty slots + 4 past the end
+  -> filled from his own walk / attack / idle, stretched to Dabura's frame counts, 23 slots); the Quartermaster (slot 7
+  hurt <- his slot 9 reaction); Vegeta 279 (slot 11 <- idle x4); Gohan 774 / Future Gohan / Trunks 788 (slot 4 has 2
+  frames, the fighter behaviour steps 4 -> frames {4: 4}). Results: depot fight 16 rejects -> 0, Quartermaster 8 -> 0,
+  Krillin 4 -> 0; enemyslots: all OK. Every other enemy uses the sprite BF made its behaviour for.
+- Exit sweep. tools/exitaudit.py lists (A) native BF doorways no LoG4 exit/spot covers and (B) floor that runs into
+  the map art's edge with no exit: 96 hits, 54 unique; most are false (save pads, BF scene triggers, interior bottom
+  walls the camera stops at, spots right beside an exit, cutscene-only rooms 1:64/1:65/1:78/1:80/17:11/17:33).
+  Fixed (gen_more.exit_fixes; one-time messages use flags 442-449 and 453 so a walk-in can never loop):
+  real exits: 1:71's second east trail and 1:97's lower east trail (same destinations as their neighbours);
+  1:1 / 1:73 south corridor = the lift examine (as 1:61 / 1:67); messages: 1:70 incubator corridor barricaded (453),
+  1:82 cave crack (444), 17:48 street south on fire (445), 4:46 bricked-up hatch (446), 1:114 trail ends at a drop
+  (447), 17:41 pod-room door buckled (448) and lower corridor caved in (449), West City's road east: closed in Act 2
+  (4:1, 16:1, 16:2; 442) and buried under rubble in every Act 3 West City (443); 1:117's alcove is a closet
+  (quarters_closet: Gevo's drawing); 4:40: the grass behind the fence (it hid the player and ran off the top) is
+  solid (AREA_PATCH). gen_more now also puts PATCH entries into its own new areas.
+  Free flags now: 454, 458-459, 468-469, 475-479, 487-489, 507-509, 540-543.
+
 ## 2026-11-03 (night): garbled sprite shadows - root cause and the engine guard (user: trailer v8 at 0:20)
 - Symptom: garbage pixels in the shadow under every character (and in the HUD) once a fight got busy (Supply Depot,
   drone vs the Quartermaster). Same family as the 2026-11-01 drone bug ("scrambled sprites when the drone fired").

@@ -265,3 +265,11 @@ say android17 Locked. The old man kept his key somewhere in here.
 stop
 label safe_empty
 narrate The safe stands empty. Bits of the remote are still on the floor.
+# ---------- exit audit 2026-11-03
+list cave_crack
+set_flag 444
+narrate The cave narrows to a crack in the rock. Nothing bigger than a mouse is getting through there.
+list quarters_closet
+narrate A closet. Six identical lab coats on six identical hangers.
+narrate Taped inside the door: a child's crayon drawing of a robot with a big smile. It's signed GEVO.
+say android18 He kept that. All this time.

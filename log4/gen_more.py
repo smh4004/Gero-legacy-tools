@@ -371,11 +371,53 @@ def reach_fixes():
                        for d in PATCH[(17, 40)]]
 
 
+AREA_PATCH = {}                        # (world, area) -> area-level fields to set (e.g. 'solid')
+WEST_CITY_ACT3 = [(17, a) for a in (1, 2, 3, 4, 6, 7, 8, 9, 10, 16, 17, 21, 22, 23, 24, 28, 29, 30, 32)]
+
+
+def exit_fixes():
+    """Things that look like a way out but weren't (tools/exitaudit.py, 2026-11-03, user: "doors that aren't doors"):
+    each becomes a real exit, or says why it isn't one. Edge messages fire once (a flag), so they can never loop."""
+    add = lambda k, d: PATCH.setdefault(k, []).append(d)
+    walk = lambda r, ev, f, note: {'rect': r, 'event': ev, 'fn2': '0x080077DF', 'when': hexcond(('clear', f)), '_note': note}
+    # 1:71: the ridge has two openings on its east edge; both lead to the supply depot
+    east = [d for d in PATCH[(1, 71)] if d.get('warp') and d['warp'][1] == 113][0]
+    add((1, 71), dict(east, rect=[444, 284, 472, 332], _note='the second trail off the east edge -> Supply Depot too'))
+    # 1:97: the Dry Basin's lower east trail joins the upper one: both lead to the Scorched Canyon
+    cfg = json.load(open(os.path.join(HERE, 'areas.json')))
+    v97 = [v for v in cfg['new_areas'] + cfg['areas'] if (v['world'], v['area']) == (1, 97)][0]
+    up = [d for d in v97['doors'] if d.get('warp') and d['warp'][1] == 96 and not d.get('_more')][0]
+    add((1, 97), dict(up, rect=[444, 388, 472, 452], _note='the lower trail off the east edge -> Scorched Canyon too'))
+    # the main lab's south corridor in the opening (1:1) and after Gevo (1:73): the lift, as in 1:61 / 1:67
+    for k in ((1, 1), (1, 73)):
+        add(k, {'rect': [200, 296, 232, 336], 'event': 'lift_talk', 'examine': 'down', '_note': 'the south corridor: the lift'})
+    # one-time "why not" messages at the openings that lead nowhere
+    add((1, 70), walk([116, 300, 156, 342], 'ch3_incubator_blocked', 453, 'the corridor to the incubator: barricaded (453)'))
+    add((1, 82), walk([0, 244, 34, 300], 'cave_crack', 444, 'the cave narrows to a crack on the left (444)'))
+    add((17, 48), walk([72, 334, 248, 360], 'district_fire', 445, 'the street south: on fire (445)'))
+    add((4, 46), walk([294, 194, 320, 238], 'storeroom_side', 446, 'the bricked-up service hatch on the right (446)'))
+    add((1, 114), walk([24, 296, 248, 320], 'grave_drop', 447, 'the trail ends at a drop into the canyon (447)'))
+    add((17, 41), walk([0, 300, 40, 350], 'fs_door_sealed', 448, 'the pod room door: buckled shut (448)'))
+    add((17, 41), walk([168, 400, 296, 432], 'fs_lower_caved', 449, 'the lower corridor: caved in (449)'))
+    for k in ((4, 1), (16, 1), (16, 2)):
+        add(k, walk([852, 330, 880, 404], 'wc_east_closed', 442, 'the road east: closed (442)'))
+    for k in WEST_CITY_ACT3:
+        add(k, walk([852, 330, 880, 404], 'wc_east_rubble', 443, 'the road east: buried under rubble (443)'))
+    # Gero's Quarters: the alcove on the left is a closet
+    add((1, 117), {'rect': [16, 88, 40, 112], 'event': 'quarters_closet', 'examine': 'up', '_note': "the closet (Chi-Chi's room's old side door)"})
+    # Circus Lot (Act 2): the grass behind the fence on the left hides the player's sprite and runs off the top of the
+    # map: solid. On the right the street vendor stands in the grass (visible), so only its top edge is closed off.
+    AREA_PATCH[(4, 40)] = {'solid': [[0, 0, 176, 88], [320, 0, 480, 20]]}
+
+
 def apply():
     ch3(); ch4(); ch5(); ch6(); ch7(); ch10(); lore()
-    ch1_jobs(); ch2_jobs(); ch6_jobs(); ch7_quarters(); reach_fixes()
+    ch1_jobs(); ch2_jobs(); ch6_jobs(); ch7_quarters(); reach_fixes(); exit_fixes()
     p = os.path.join(HERE, 'areas.json'); cfg = json.load(open(p))
     mine = {(e['world'], e['area']) for e in NEW}
+    for e in NEW:                                         # patches for this script's own areas go straight in
+        k = (e['world'], e['area'])
+        if k in PATCH: e['doors'] = e['doors'] + PATCH[k]
     cfg['new_areas'] = [x for x in cfg['new_areas'] if (x['world'], x['area']) not in mine] + NEW
     for v in cfg['new_areas'] + cfg['areas']:
         k = (v['world'], v['area'])
@@ -395,6 +437,8 @@ def apply():
             for key2 in ('doors', 'doors_append'):
                 if key2 in v:
                     v[key2] = [MOD_DOOR[k][d['event']](d) if d.get('event') in MOD_DOOR[k] else d for d in v[key2]]
+        if k in AREA_PATCH:
+            v.update(AREA_PATCH[k])
         if k in MOD_SPAWN:
             v['spawns'] = [dict(s, **MOD_SPAWN[k][s['talk']]) if s.get('talk') in MOD_SPAWN[k] else s
                            for s in v.get('spawns', [])]

@@ -560,3 +560,21 @@ set_flag 471
 set_flag 472
 do heal; call 120 1; call 119 16 47 1 56 124; call 121 30
 stop
+# ---------- enemy sweep (tools/enemysweep.py): party only, no warp (the test drops the player next to each enemy)
+list sw_drone
+do call 151 2; call 149 2; call 152 0
+do call 165 2 20; call 165 2 16
+do heal
+stop
+list sw_lapis
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do heal
+stop
+list sw_17
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 3 20; call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11; call 164 1 8; call 164 3 8
+do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 4
+do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal
+stop

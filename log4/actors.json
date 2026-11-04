@@ -623,7 +623,10 @@
    "17": 3,
    "18": "3@3:-5:-1"
   },
-  "_note": "Future Gohan, Age 774 (chapter 9 boss, row 22): LoG2 actor record 153 (likely LoG2's Future Gohan: orange sleeveless gi, both arms) on BF Gohan's record (actor 97, 19 slots). LoG2 anims: 0 idle, 1 walk, 2 hurt, 3 KO (shared by 3 directions), 4 power-up, 5 ki blast, 6/7 punch combo; slot 18 (getting up) = KO played backwards."
+  "_note": "Future Gohan, Age 774 (chapter 9 boss, row 22): LoG2 actor record 153 (likely LoG2's Future Gohan: orange sleeveless gi, both arms) on BF Gohan's record (actor 97, 19 slots). LoG2 anims: 0 idle, 1 walk, 2 hurt, 3 KO (shared by 3 directions), 4 power-up, 5 ki blast, 6/7 punch combo; slot 18 (getting up) = KO played backwards. frames 4: 4 (2026-11-03): the fighter behaviour 0x8A steps melee 1 through 4 frames; the template's slot 4 has 2, so frames 3-4 were read from past the animation.",
+  "frames": {
+   "4": 4
+  }
  },
  "future_gohan": {
   "template_orig": 97,
@@ -663,7 +666,10 @@
     3
    ]
   },
-  "_note": "One-armed Super Saiyan Future Gohan (chapter 10 boss, Age 780, row 14). Idle, walk, falling and getting up come from LoG2 actor 51 (LoG2's one-armed SSJ Future Gohan, a cutscene actor with no attacks); attacks, hurt and ki come from LoG2 actor 153 (Future Gohan with both arms) with the left arm removed and the hair turned gold by tools/onearm.py. P7 sheets no longer used."
+  "_note": "One-armed Super Saiyan Future Gohan (chapter 10 boss, Age 780, row 14). Idle, walk, falling and getting up come from LoG2 actor 51 (LoG2's one-armed SSJ Future Gohan, a cutscene actor with no attacks); attacks, hurt and ki come from LoG2 actor 153 (Future Gohan with both arms) with the left arm removed and the hair turned gold by tools/onearm.py. P7 sheets no longer used. frames 4: 4 (2026-11-03): the fighter behaviour 0x8A steps melee 1 through 4 frames; the template's slot 4 has 2, so frames 3-4 were read from past the animation.",
+  "frames": {
+   "4": 4
+  }
  },
  "gohan_fallen": {
   "template": 152,
@@ -775,7 +781,10 @@
    "17": 3,
    "18": "3@3:-5:-1"
   },
-  "_note": "Secret chapter boss: Super Saiyan Future Trunks, Age 788 (LoG2 actor 131: jacket, sword) on BF Gohan's record 97."
+  "_note": "Secret chapter boss: Super Saiyan Future Trunks, Age 788 (LoG2 actor 131: jacket, sword) on BF Gohan's record 97. frames 4: 4 (2026-11-03): the fighter behaviour 0x8A steps melee 1 through 4 frames; the template's slot 4 has 2, so frames 3-4 were read from past the animation.",
+  "frames": {
+   "4": 4
+  }
  },
  "trunks_fallen": {
   "template": 152,
@@ -1515,5 +1524,39 @@
    ]
   },
   "_note": "Alternate outfit: 18 maroon tracksuit (user ref 18_06). Same frames as player_18, recoloured with existing palette colours only (tools/recolor.py; forms.json, asm/outfit.s)."
+ },
+ "krillin_enemy": {
+  "replace": 157,
+  "slot_count": 23,
+  "copy_slots": {
+   "2": "1",
+   "3": "0:4",
+   "5": "4",
+   "6": "4",
+   "7": "0",
+   "9": "0:3",
+   "13": "0",
+   "17": "0:4",
+   "18": "18:4",
+   "19": "0",
+   "20": "0:12",
+   "21": "0:4",
+   "22": "0"
+  },
+  "_note": "2026-11-03 enemy sweep (tools/enemysweep.py + the frame guard): this sprite is used with a behaviour from another BF row, which asks for animation slots it doesn't have (an empty slot = animation pointer 0 = garbage frames). Krillin (character 166, BF actor 157, 19 slots, only 0/1/4/12/15/18 drawn) fights with Dabura's behaviour (row 18, native sprite 73, 23 slots): run <- walk, melee 2/3 <- his attack (slot 4, likely a punch), hurt / guard / the rest <- idle, slots 19-22 added. Copies are stretched to the frame counts Dabura's sprite has (slot:frames)."
+ },
+ "quartermaster_slots": {
+  "replace": 127,
+  "copy_slots": {
+   "7": "9"
+  },
+  "_note": "2026-11-03 enemy sweep (tools/enemysweep.py + the frame guard): this sprite is used with a behaviour from another BF row, which asks for animation slots it doesn't have (an empty slot = animation pointer 0 = garbage frames). The Quartermaster (character 136, BF Grenadier) fights with the fighter behaviour 0x8A, which plays slot 7 (hurt) when hit: the Grenadier only draws slot 9 (his hit reaction), so 7 <- 9."
+ },
+ "vegeta_enemy_slots": {
+  "replace": 270,
+  "copy_slots": {
+   "11": "0:4"
+  },
+  "_note": "2026-11-03 enemy sweep (tools/enemysweep.py + the frame guard): this sprite is used with a behaviour from another BF row, which asks for animation slots it doesn't have (an empty slot = animation pointer 0 = garbage frames). Vegeta (character 279) with BF's Majin Vegeta behaviour (row 70, native sprite 282): slot 11 <- idle."
  }
 }

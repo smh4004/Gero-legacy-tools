@@ -284,3 +284,7 @@ run notes_check
 stop
 label nware_read
 narrate The crate where the page was pinned.
+# ---------- exit audit 2026-11-03: West City's road east, in every Act 3 version of the city
+list wc_east_rubble
+set_flag 443
+narrate The road east is buried under a collapsed building. Nothing gets through that way.

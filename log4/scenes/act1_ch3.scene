@@ -148,3 +148,7 @@ run files_check
 stop
 label fline_read
 narrate Black's memo. Nothing more to learn from it.
+# ---------- exit audit 2026-11-03: openings that lead nowhere say why (one time each)
+list ch3_incubator_blocked
+set_flag 453
+narrate The corridor to the incubator is jammed with overturned cabinets. The looters came through here, and nobody is getting back through.

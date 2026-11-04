@@ -75,16 +75,24 @@ hook_frame:                        @ from 0x0800F38C: r0 = new frame record, r4 
 	.global hook_frame_bad
 bad:                               @ like an unchanged frame: movs r0,#0; b epilogue (0x0800F388). Tests watch this PC.
 hook_frame_bad:
+@COUNTER@
 	ldr r3, =0x0800F389
 	bx r3
 	.pool
 '''
-def apply(rom, at):
-    """Assemble the hook at ROM offset `at` and patch the call site. Returns (end offset, address of the reject
+COUNT = '''	ldr r3, =0x%08X               @ test builds only (LOG4_GUARD_COUNTER): count rejected frames
+	ldr r0, [r3]
+	adds r0, #1
+	str r0, [r3]'''
+
+
+def apply(rom, at, counter=None):
+    """Assemble the hook at ROM offset `at` and patch the call site. `counter`: a RAM word to count rejects in (test
+    ROMs only, e.g. 0x0203FF80; release builds never pass it). Returns (end offset, address of the reject
     branch, for tests: tools/tracer <rom> <state> <keys> <steps> p<addr> counts rejected frames)."""
     assert bytes(rom[SITE:SITE + 10]) == ORIG, 'frame decoder changed at 0x0800F38C'
     src = os.path.join(HERE, '..', 'log4', 'out', '_framegrd.s')
-    open(src, 'w').write(HOOK)
+    open(src, 'w').write(HOOK.replace('@COUNTER@', COUNT % counter if counter else ''))
     code, sym = outfit.assemble(src, 0x08000000 + at)
     assert set(rom[at:at + len(code)]) <= {0xFF, 0x00}, 'framegrd space not free'
     rom[at:at + len(code)] = code

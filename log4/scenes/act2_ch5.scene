@@ -239,3 +239,10 @@ run notes_check
 stop
 label nmus_read
 narrate The uniform case. A red ribbon pinned to a grey coat.
+# ---------- exit audit 2026-11-03 (storeroom_side; wc_east_closed is also used in West City at night, 16:1 / 16:2)
+list storeroom_side
+set_flag 446
+narrate A service hatch in the wall, bricked up long ago. Whatever was back there, the museum didn't want it found.
+list wc_east_closed
+set_flag 442
+narrate Police barricades close the road east. A sign hangs from the tape: ROAD CLOSED.

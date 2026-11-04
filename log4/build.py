@@ -155,7 +155,7 @@ def main(clean_path):
     assert end8 <= 0xF3C000, 'ki effects ran into the journal goals at 0xF3C000'
     print('-- ki effects: 17/18 blue blast copy + hook, green energy wave (%d bytes)' % (end8 - 0xF38000))
     import framegrd, frameaudit                                   # sprite frame guard + audit (2026-11-03: garbled
-    endf, _ = framegrd.apply(out, 0xF3B800)                       # shadows when an enemy played a slot its sprite lacks)
+    endf, _ = framegrd.apply(out, 0xF3B800, int(os.environ['LOG4_GUARD_COUNTER'], 16) if shoot and os.environ.get('LOG4_GUARD_COUNTER') else None)                       # shadows when an enemy played a slot its sprite lacks)
     assert end8 <= 0xF3B800 and endf <= 0xF3C000
     na, nf, fprob = frameaudit.audit(out)
     assert not fprob, 'sprite frames that do not fit their actor: %s (tools/frameaudit.py)' % fprob[:5]

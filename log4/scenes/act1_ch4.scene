@@ -241,3 +241,7 @@ say young_gero.2 Fools. Every one of them. Only the machines ever did as they we
 narrate Clipped inside the last file: two vials from the army's medical stores. Experimental. Never approved.
 do call 129 10 2
 narrate Got two Holy Waters.
+# ---------- exit audit 2026-11-03
+list grave_drop
+set_flag 447
+narrate The trail ends at a sheer drop into the canyon. Down there: more scrap, and no way back up.

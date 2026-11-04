@@ -191,3 +191,7 @@ run notes_check
 stop
 label nshel_read
 narrate The resistance's map. Red circles around every place the twins have been.
+# ---------- exit audit 2026-11-03
+list district_fire
+set_flag 445
+narrate The street south is a wall of fire. No way through there.

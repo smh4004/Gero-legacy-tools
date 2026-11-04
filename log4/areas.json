@@ -50,6 +50,18 @@
      "examine": "up",
      "event": "lab_terminal",
      "_note": "drone terminal: sends the drone to the proving ground (chapter 1)"
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "event": "lift_talk",
+     "examine": "down",
+     "_note": "the south corridor: the lift",
+     "_more": 1
     }
    ],
    "name": 531,
@@ -188,6 +200,19 @@
      "event": "note_park",
      "examine": "up",
      "_note": "Gero's note 1: under the park bench (520)",
+     "_more": 1
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_closed",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 74 02 1c 11",
+     "_note": "the road east: closed (442)",
      "_more": 1
     }
    ],
@@ -617,6 +642,19 @@
      "when": "hex 01 87 2e 02 1c 11",
      "_note": "searchlight zone (until the old house)",
      "_more": 1
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_closed",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 74 02 1c 11",
+     "_note": "the road east: closed (442)",
+     "_more": 1
     }
    ],
    "enemies": [
@@ -874,6 +912,18 @@
      "dir": "up",
      "face": "down",
      "_note": "lab door (not reachable: no free control here)"
+    },
+    {
+     "rect": [
+      200,
+      296,
+      232,
+      336
+     ],
+     "event": "lift_talk",
+     "examine": "down",
+     "_note": "the south corridor: the lift",
+     "_more": 1
     }
    ]
   },
@@ -1085,6 +1135,19 @@
      "event": "ch3_pod",
      "examine": "up",
      "_note": "incubator pod: android blueprints + self-destruct"
+    },
+    {
+     "rect": [
+      116,
+      300,
+      156,
+      342
+     ],
+     "event": "ch3_incubator_blocked",
+     "fn2": "0x080077DF",
+     "when": "hex 01 87 0a 02 1c 11",
+     "_note": "the corridor to the incubator: barricaded (453)",
+     "_more": 1
     }
    ]
   },
@@ -1152,6 +1215,24 @@
      "event": "bridge_out",
      "fn2": "0x080077DF",
      "_note": "the foot of the old bridge: it is out (the chapter now ends through the depot)",
+     "_more": 1
+    },
+    {
+     "rect": [
+      444,
+      284,
+      472,
+      332
+     ],
+     "warp": [
+      1,
+      113,
+      140,
+      224
+     ],
+     "dir": "right",
+     "face": "up",
+     "_note": "the second trail off the east edge -> Supply Depot too",
      "_more": 1
     }
    ]
@@ -1491,6 +1572,19 @@
      "face": "down",
      "_note": "the misty passage on the cave's right side -> Gero's Quarters",
      "_more": 1
+    },
+    {
+     "rect": [
+      0,
+      244,
+      34,
+      300
+     ],
+     "event": "cave_crack",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 78 02 1c 11",
+     "_note": "the cave narrows to a crack on the left (444)",
+     "_more": 1
     }
    ]
   },
@@ -1620,6 +1714,19 @@
      "face": "down",
      "_note": "West City (767) -> Riverside (767)",
      "_gen8": 1
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -1680,6 +1787,21 @@
      "y": 476,
      "face": "up"
     }
+   ],
+   "doors": [
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
+    }
    ]
   },
   {
@@ -1703,6 +1825,21 @@
      "x": 420,
      "y": 350,
      "condition": 131415
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -1795,6 +1932,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 345",
      "_note": "walk up to Tien: his last stand (flag 345 clear)"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -1824,6 +1974,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 346",
      "_note": "arrival"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "spawns": [
@@ -1894,6 +2057,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 347",
      "_note": "arrival"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -1942,6 +2118,19 @@
      "event": "ch8_after_krillin",
      "fn2": "0x080077DF",
      "_note": "arrival (the list checks flag 351 itself)"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -1980,6 +2169,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 348",
      "_note": "arrival"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -2023,6 +2225,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 349",
      "_note": "arrival"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -2325,6 +2540,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 364",
      "_note": "arrival"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "palette_act": "act3"
@@ -2353,6 +2581,19 @@
      "event": "ch9_end",
      "fn2": "0x080077DF",
      "_note": "arrival (the list checks flag 366 itself)"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "palette_act": "act3"
@@ -2605,6 +2846,19 @@
      "face": "left",
      "_note": "West City ruins (780) -> Burning District",
      "_more": 1
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "spawns": [
@@ -2638,6 +2892,21 @@
      "y": 350,
      "condition": 131455
     }
+   ],
+   "doors": [
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
+    }
    ]
   },
   {
@@ -2665,6 +2934,19 @@
      "event": "ch10_after",
      "fn2": "0x080077DF",
      "_note": "arrival (the list checks flag 384 itself)"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "spawns": [
@@ -2701,6 +2983,19 @@
      "event": "ch10_finale",
      "fn2": "0x080077DF",
      "_note": "arrival (the list checks flag 385 itself)"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "spawns": [
@@ -2726,7 +3021,22 @@
    "palette_act": "act2",
    "night": true,
    "name": 595,
-   "_note": "West City that night (chapter 8 ending), the twins on the Z-Mart roof (scene only)."
+   "_note": "West City that night (chapter 8 ending), the twins on the Z-Mart roof (scene only).",
+   "doors": [
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_closed",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 74 02 1c 11",
+     "_note": "the road east: closed (442)",
+     "_more": 1
+    }
+   ]
   },
   {
    "world": 17,
@@ -2927,6 +3237,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 395",
      "_note": "arrival"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "spawns": [
@@ -2960,6 +3283,21 @@
      "y": 350,
      "condition": 131465
     }
+   ],
+   "doors": [
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
+    }
    ]
   },
   {
@@ -2988,6 +3326,19 @@
      "fn2": "0x080077DF",
      "when": "call 28 394",
      "_note": "arrival"
+    },
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ],
    "spawns": [
@@ -3065,6 +3416,21 @@
      "x": 300,
      "y": 312,
      "face": "down"
+    }
+   ],
+   "doors": [
+    {
+     "rect": [
+      852,
+      330,
+      880,
+      404
+     ],
+     "event": "wc_east_rubble",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 76 02 1c 11",
+     "_note": "the road east: buried under rubble (443)",
+     "_more": 1
     }
    ]
   },
@@ -4024,6 +4390,32 @@
      "event": "fs_out",
      "_note": "the hangar door: out into the world (17:28)",
      "fn2": "0x080077DF"
+    },
+    {
+     "rect": [
+      0,
+      300,
+      40,
+      350
+     ],
+     "event": "fs_door_sealed",
+     "fn2": "0x080077DF",
+     "when": "hex 01 87 00 02 1c 11",
+     "_note": "the pod room door: buckled shut (448)",
+     "_more": 1
+    },
+    {
+     "rect": [
+      168,
+      400,
+      296,
+      432
+     ],
+     "event": "fs_lower_caved",
+     "fn2": "0x080077DF",
+     "when": "hex 01 87 02 02 1c 11",
+     "_note": "the lower corridor: caved in (449)",
+     "_more": 1
     }
    ],
    "enemies": [
@@ -4492,6 +4884,20 @@
      "x": 420,
      "y": 60
     }
+   ],
+   "solid": [
+    [
+     0,
+     0,
+     176,
+     88
+    ],
+    [
+     320,
+     0,
+     480,
+     20
+    ]
    ]
   },
   {
@@ -6312,6 +6718,24 @@
      "face": "up",
      "cover_ok": true,
      "_note": "Dry Basin cave mouth -> Raider Cave (he walks into the dark mouth)"
+    },
+    {
+     "rect": [
+      444,
+      388,
+      472,
+      452
+     ],
+     "warp": [
+      1,
+      96,
+      72,
+      220
+     ],
+     "dir": "right",
+     "face": "right",
+     "_note": "the lower trail off the east edge -> Scorched Canyon too",
+     "_more": 1
     }
    ],
    "map_log2": "0x66dff8",
@@ -7310,6 +7734,18 @@
      "event": "cache_grave",
      "_note": "a stove-in Red Ribbon crate by the cliff (457)",
      "examine": "left"
+    },
+    {
+     "rect": [
+      24,
+      296,
+      248,
+      320
+     ],
+     "event": "grave_drop",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 7e 02 1c 11",
+     "_note": "the trail ends at a drop into the canyon (447)"
     }
    ],
    "map_from": [
@@ -7441,6 +7877,18 @@
      "event": "ruby_case",
      "_note": "the Ribbon Ruby's case (463)",
      "examine": "up"
+    },
+    {
+     "rect": [
+      294,
+      194,
+      320,
+      238
+     ],
+     "event": "storeroom_side",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 7c 02 1c 11",
+     "_note": "the bricked-up service hatch on the right (446)"
     }
    ],
    "map_from": [
@@ -7852,6 +8300,18 @@
      "_note": "first arrival (490)",
      "fn2": "0x080077DF",
      "when": "hex 01 87 54 02 1c 11"
+    },
+    {
+     "rect": [
+      72,
+      334,
+      248,
+      360
+     ],
+     "event": "district_fire",
+     "fn2": "0x080077DF",
+     "when": "hex 01 86 7a 02 1c 11",
+     "_note": "the street south: on fire (445)"
     }
    ],
    "map_log2": "0x5f3bf4",
@@ -8074,6 +8534,17 @@
      "event": "quarters_safe",
      "_note": "the painting: a wall safe (536 open, 539 emptied)",
      "examine": "up"
+    },
+    {
+     "rect": [
+      16,
+      88,
+      40,
+      112
+     ],
+     "event": "quarters_closet",
+     "examine": "up",
+     "_note": "the closet (Chi-Chi's room's old side door)"
     }
    ],
    "map_from": [

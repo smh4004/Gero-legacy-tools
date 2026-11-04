@@ -366,6 +366,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Up exit -> Dr. Gero's Lab: Tank room
 - examine (face right): `lab_terminal`
 - examine (face up): `lab_terminal`
+- examine (face down): `lift_talk`
 - person: `gevo_talk`
 - person: `drone_npc_talk`
 - person: `scientist_talk`
@@ -420,9 +421,11 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Dr. Gero's Lab: Tank room (under attack)  `1:70`
 - Up exit -> Dr. Gero's Lab: Main lab (under attack)
 - examine (face up): `ch3_pod`
+- walk in: `ch3_incubator_blocked` (when flag 453 clear)
 - enemies: Bomber x2
 
 ### Northern Wilderness: Escape route  `1:71`
+- Right exit -> Supply Depot
 - Right exit -> Supply Depot
 - walk in: `ch3_escape` (when conditional)
 - walk in: `bridge_out`
@@ -436,6 +439,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### Dr. Gero's Lab: Main lab (Gevo's death)  `1:73`
 - Up exit -> Dr. Gero's Lab: Tank room (under attack)
+- examine (face down): `lift_talk`
 
 ### Dr. Gero's Lab: Bunker tank room  `1:74`
 - Up exit -> Dr. Gero's Lab: Northern bunker
@@ -461,6 +465,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Northern Wilderness: Cave outside the hidden lab  `1:82`
 - Down exit -> Northern Wilderness: Northern mountains
 - Right exit -> Gero's Quarters
+- walk in: `cave_crack` (when flag 444 clear)
 
 ### Northern Wilderness: Northern mountains  `1:83`
 - walk in: `ch7_end` (when conditional)
@@ -523,6 +528,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### Northern Wilderness: Dry Basin  `1:97`
 - Right exit -> Northern Wilderness: Scorched Canyon
 - Up exit -> Northern Wilderness: Raider Cave
+- Right exit -> Northern Wilderness: Scorched Canyon
 - enemies: Mercenary, Raider thug
 
 ### Northern Wilderness: Fuel Dump  `1:100`
@@ -630,6 +636,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - walk in: `ch4_graveyard` (when flag 455 clear)
 - walk in: `ch4_graveyard` (when flag 455 clear)
 - examine (face left): `cache_grave` - gives Elixir x1, Root Beer x2
+- walk in: `grave_drop` (when flag 447 clear)
 - person: `wreck_1`
 - person: `wreck_5`
 - person: `wreck_8`
@@ -658,6 +665,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - examine (face up): `quarters_photo`
 - examine (face up): `quarters_bed`
 - examine (face up): `quarters_safe` - gives Senzu Bean x2, S. Elixir x1, Holy Water x1
+- examine (face up): `quarters_closet`
 - enemies: Gero's sentry
 
 ### West City  `4:1`
@@ -668,6 +676,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - walk in: `ch5_start` (when conditional)
 - walk in: `park_hide` (when conditional)
 - examine (face up): `note_park` - gives Gero's Note x1
+- walk in: `wc_east_closed` (when flag 442 clear)
 - person: `wc_woman_pink`
 - person: `wc_woman_blue`
 - person: `wc_man_green`
@@ -723,6 +732,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - walk in: `storeroom_beam` (when flag 463 clear)
 - walk in: `storeroom_beam` (when flag 463 clear)
 - examine (face up): `ruby_case` - gives Ribbon Ruby x1
+- walk in: `storeroom_side` (when flag 446 clear)
 - person: `storeroom_guard`
 
 ### West City (night)  `16:1`
@@ -732,6 +742,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - walk in: `night_spotted` (when flag 471 clear)
 - walk in: `night_spotted` (when flag 471 clear)
 - walk in: `night_spotted` (when flag 471 clear)
+- walk in: `wc_east_closed` (when flag 442 clear)
 - person: `night_police`
 - person: `night_drone`
 - person: `night_drone`
@@ -740,6 +751,9 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - person: `night_drone`
 - person: `night_drone`
 - enemies: Gero's hunter drone x2
+
+### West City: Z-Mart roof (night)  `16:2`
+- walk in: `wc_east_closed` (when flag 442 clear)
 
 ### Riverside (night)  `16:41`
 - Up exit -> West City (night)
@@ -780,37 +794,48 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Down exit -> Riverside (767)
 - walk in: `ch8_start` (when conditional)
 - walk in: `ch8_landing` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - person: `ch8_stall`
 - person: `ch8_stall`
 - person: `ch8_man`
 - person: `ch8_woman`
 - person: `ch8_police`
 
+### West City: Crossroads (Age 767)  `17:2`
+- walk in: `wc_east_rubble` (when flag 443 clear)
+
 ### West City: Crossroads: Vegeta  `17:3`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - enemies: Vegeta
 
 ### West City: Crossroads: after Vegeta  `17:4`
 - walk in: `ch8_after_vegeta`
 - walk in: `ch8_tien` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - person: `ch8_civilians`
 - person: `ch8_civilians`
 
 ### West City: Crossroads: Yamcha  `17:6`
 - walk in: `ch8_yamcha` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### West City: Crossroads: Krillin  `17:7`
 - walk in: `ch8_krillin` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - enemies: Krillin
 
 ### West City: Crossroads: after Krillin  `17:8`
 - walk in: `ch8_after_krillin`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### West City: Crossroads: Piccolo  `17:9`
 - walk in: `ch8_piccolo` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - enemies: Piccolo
 
 ### West City: Crossroads: Gohan runs  `17:10`
 - walk in: `ch8_run` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### Capsule Corporation (Age 768)  `17:11`
 - person: `ch9_bulma`
@@ -837,10 +862,12 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### West City ruins: Gohan (Age 774)  `17:16`
 - walk in: `ch9_gohan` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - enemies: Gohan
 
 ### West City ruins (after Gohan)  `17:17`
 - walk in: `ch9_end`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### Capsule Corporation (Age 772 hub)  `17:18`
 - walk in: `ch9_hub`
@@ -864,15 +891,19 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 ### West City: Crossroads in the rain (Age 780)  `17:21`
 - Left exit -> Burning District
 - walk in: `ch10_rain` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### West City: Crossroads: Future Gohan  `17:22`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - enemies: One-armed Future Gohan
 
 ### West City: Crossroads (after Gohan)  `17:23`
 - walk in: `ch10_after`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### West City (Age 785)  `17:24`
 - walk in: `ch10_finale`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### Dr. Gero's Lab: Hidden incubator (Age 788)  `17:25`
 - Down exit -> Dr. Gero's Lab: Bunker tank room (Age 788)
@@ -891,16 +922,22 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### West City ruins (Age 788)  `17:28`
 - walk in: `fs_trunks` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### West City ruins: Trunks  `17:29`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 - enemies: Future Trunks, Age 788
 
 ### West City ruins (after Trunks)  `17:30`
 - walk in: `fs_after` (when conditional)
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### Western Wilderness: Outside Gingertown (Age 763)  `17:31`
 - walk in: `fs_763` (when conditional)
 - walk in: `fs_burrow`
+
+### West City (epilogue)  `17:32`
+- walk in: `wc_east_rubble` (when flag 443 clear)
 
 ### Riverside (767)  `17:34`
 - Up exit -> West City (Age 767)
@@ -950,6 +987,8 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 
 ### Dr. Gero's Lab: Security Wing, Age 788  `17:41`
 - walk in: `fs_out`
+- walk in: `fs_door_sealed` (when flag 448 clear)
+- walk in: `fs_lower_caved` (when flag 449 clear)
 - enemies: Cyborg x4
 
 ### Orange Star City  `17:42`
@@ -1004,6 +1043,7 @@ Every area of Gero's Legacy: its exits, things to examine, people and enemies. "
 - Right exit -> West City: Crossroads in the rain (Age 780)
 - Up exit -> Resistance Shelter
 - walk in: `ch10_district` (when flag 490 clear)
+- walk in: `district_fire` (when flag 445 clear)
 - enemies: Resistance fighter x3, Laser turret, Gero's old heavy unit
 
 ### Resistance Shelter  `17:49`
