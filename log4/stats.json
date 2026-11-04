@@ -465,7 +465,7 @@
    "_balance": "new 2026-11-02: the warm-up before Super 13 (row 21, unchanged); full heal between phases. First pass 1000 HP / STR 19 beat the fightbot at level 64 (no points spent), so 700 / 16 / 15 / 18."
   },
   "43": {
-   "name": "The Quartermaster (chapter 3, Supply Depot boss; BF row 43 Grenadier, character 136; ai 236 = the Grenadier's own: the fighter behaviour 0x8A played animations this sprite lacks, the engine read past its frame list and wrote ~5.5 KB over OBJ VRAM - garbled shadows, 2026-11-03)",
+   "name": "The Quartermaster (chapter 3, Supply Depot boss; BF row 43 Grenadier, character 136; fighter ai 0x8A, which plays animations this sprite lacks: harmless since tools/framegrd.py, the cause of the garbled shadows found 2026-11-03)",
    "exp": 550,
    "hp": 380,
    "level": 58,
@@ -521,7 +521,7 @@
    "ki_taken": 128
   },
   "2": {
-   "name": "Resistance captain (chapter 10, the shelter; BF row 2 Assassin, character 25; ai 24 = the Assassin's own, not 0x8A: same OBJ VRAM overflow risk as the Quartermaster)",
+   "name": "Resistance captain (chapter 10, the shelter; BF row 2 Assassin, character 25; fighter ai 0x8A, a sprite/behaviour mismatch kept safe by tools/framegrd.py)",
    "exp": 1000,
    "hp": 1800,
    "level": 58,
