@@ -4,7 +4,7 @@ Animation = u32 frame_count, then frame_count x 4 frame pointers (dir 0 down, 1 
 Frame = u32 piece_count, pieces of 16 bytes: [s8 x, s8 y, u8 w, u8 h][same 4 bytes][u32 OAM attr0|attr1<<16][u32 tile ptr].
 Pieces are placed relative to the actor origin, which sits 8 px right of the piece's left edge for a 16-wide sprite and
 8 px above its bottom (x = 8 - w/2 for a centred piece, y = 8 - h). Dir 3 mirrors dir 2: x3 = 16 - w - x2, attr1 |= 0x1000.
-Tiles are stored uncompressed (WFZ type 0), 8bpp, 1D mapping order; colours are OBJ palette indices.
+Tiles are 8bpp, 1D mapping order, OBJ palette indices; stored (WFZ type 0), or WFZ type 1 with Inserter.COMPRESS.
 """
 import json, struct
 import numpy as np
@@ -24,18 +24,32 @@ def tiles_8bpp(idx):
 
 
 class Inserter:
-    def __init__(self, rom, at):
+    COMPRESS = False                                 # True: tile blocks as WFZ type 1 (as BF's own frames), deduplicated
+
+    def __init__(self, rom, at, compress=None):
         self.rom, self.cur = rom, at
+        self.compress = self.COMPRESS if compress is None else compress
+        self._tiles = {}
 
     def put(self, data):
         a = self.cur; self.rom[a:a + len(data)] = data; self.cur = (a + len(data) + 3) & ~3
         return BASE + a
 
+    def tiles(self, raw):
+        """A tile block (8bpp tiles) -> pointer. With compress: WFZ type 1 (the game's loader 0x0803D96E decodes
+        type 1 / 2 like BF's own frames), and identical blocks are stored once."""
+        raw = bytes(raw)
+        if not self.compress: return self.put(struct.pack('<II', 0, len(raw)) + raw)
+        if raw not in self._tiles:
+            import wfz
+            self._tiles[raw] = self.put(wfz.container(raw))
+        return self._tiles[raw]
+
     def piece(self, img, mirror=False, dx=0, dy=0):
         """img: h x w index array (an OBJ size). Returns the 16-byte piece."""
         h, w = img.shape
         sh, sz = SHAPE[(w, h)]
-        tile = self.put(struct.pack('<II', 0, w * h) + tiles_8bpp(img))
+        tile = self.tiles(tiles_8bpp(img))
         x = 8 - w // 2 + dx; y = 8 - h + dy
         a1 = (sz << 14)
         if mirror: x = 16 - w - x; a1 |= 0x1000
@@ -373,7 +387,7 @@ def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=No
                     bf, fbox = grow_box(bf, fbox, *grow); hh, ww = bf.shape
                 if FRAME_HOOK: FRAME_HOOK(('l2', k, d, f), bf)
                 data = bf.reshape(hh // 8, 8, ww // 8, 8).transpose(0, 2, 1, 3).reshape(-1).tobytes()
-                cache[key] = (ins.put(struct.pack('<II', 0, len(data)) + data), fbox)
+                cache[key] = (ins.tiles(data), fbox)
             tptr, fbox = cache[key]
             if scale: attr = (attr & 0x30000000) | 0x80002000        # one 32x32 8bpp piece, keep the flip bits
             if grow:                                             # the grown piece's own OBJ shape / size

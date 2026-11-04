@@ -188,6 +188,10 @@ SHA1 f1c4b07554d2a3b1ad2f325307051e775ce68087, 8 MB, code BG3E, last data 0x7B89
 - The actor list has two code references, literals at ROM 0x3C0 and 0x1715C (both = list+4). The build moves the list to
   0xC00000 and appends new actors (ids 298+, log4/art/actor_ids.json), cloning a template record and replacing animation slots.
 - New frames are stored uncompressed and packed into the smallest OBJ pieces covering the art (tools/sprites.py cover()).
+- WFZ encoder (tools/wfz.py compress / container, 2026-11-04): greedy LZ with one step of lookahead over the decoder's
+  codes; BF's own character frames re-encode to 0.30 of their raw size, round-trip exact. sprites.Inserter.COMPRESS = True
+  stores new frames as WFZ type 1 (like BF's) and stores identical tile blocks once: verified in the emulator (Black Star
+  Odyssey: Hercule City fight and the whole Chapter 1 route draw pixel-identical to the uncompressed build).
 - Character/NPC actors get about **1 KB of OBJ VRAM per frame** (no class 2/4 actor in BF exceeds 1024 bytes/frame). A 32x64
   Android 16 overwrote another new actor's graphics, while 32x32 frames work side by side. So character art must fit
   1024 bytes per frame (32x32 or equivalent); bosses (class 0x10) use up to 4096.
