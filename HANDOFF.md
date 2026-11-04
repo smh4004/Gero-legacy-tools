@@ -669,6 +669,14 @@ footage + the scene scripts, and renders any text with it.
     short of OBJ VRAM (door panels + NPCs + a big enemy, RE_NOTES) if Super 17 is used there.
   - Test list sw_17s (shoot.scene) = sw_17 + skill 20 + flag 441; Super 17 is the 4th skill (L x4, B).
 - Delivered v19 (release + debug).
+- Super 17's own (BF) bonus, measured 2026-11-03 (user: "check if it has a self contained damage boost"): form 15 is a copy of
+  BF's Super Saiyan Gohan form 16, whose form behaviour object (form record +8 = 0x03001B78, BF's Super Saiyan one) is
+  kept. Equal Strength (36 held), same level / END: punches 129-141 in the android form (n=16) vs 132-141 as Super 17
+  (n=5): no measurable attack boost beyond our x1.5 Strength. Damage TAKEN from Super 13 (HP / ki held, END 28 both):
+  29-33, mean 31.6 (n=40) vs 27-30, mean 28.8 (n=32): Super 17 takes about 9% less (likely BF's Super Saiyan defence).
+  Ki attacks not measured. Tools: fightbot env NOB (no B presses: B is the skill) and BOTPRE (harness lines before each
+  step, e.g. w8 to hold stats). Note for tests: listtest's injected A trigger starts an event on any A press near it,
+  and BF reverts transformations when an event starts, so test Super 17 away from that trigger.
 
 ## 2026-11-03 (night): garbled sprite shadows - root cause and the engine guard (user: trailer v8 at 0:20)
 - Symptom: garbage pixels in the shadow under every character (and in the HUD) once a fight got busy (Supply Depot,

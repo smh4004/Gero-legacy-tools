@@ -107,11 +107,13 @@ for k in range(steps):
     elif abs(ex) > 6 or abs(ey) > 6:
         if abs(ex) >= abs(ey): keys += ['%d %s' % (max(2, min(24, abs(ex))), 'RIGHT' if ex > 0 else 'LEFT')]
         else: keys += ['%d %s' % (max(2, min(24, abs(ey))), 'DOWN' if ey > 0 else 'UP')]
-        if abs(dx) > 40 and min(abs(ex), abs(ey)) < 12: keys += ['4 B', '8 -']
+        if abs(dx) > 40 and min(abs(ex), abs(ey)) < 12 and not os.environ.get('NOB'): keys += ['4 B', '8 -']   # NOB: B is a skill (Super 17 would revert)
     else:
         keys += ['2 ' + ('RIGHT' if dx > 0 else 'LEFT'), '4 A', '6 -', '4 A', '6 -', '4 A', '10 -']
-    run(['load _bot'] + keys + ['save _bot'] + (['shot _s%02d' % k] if os.environ.get('BOTSHOTS') else [])); ALL.extend(keys)
+    pre = [x for x in os.environ.get('BOTPRE', '').split('|') if x]   # harness lines before each step (tests: hold stats)
+    run(['load _bot'] + pre + keys + ['save _bot'] + (['shot _s%02d' % k] if os.environ.get('BOTSHOTS') else [])); ALL.extend(pre + keys)
 print('player hp / boss hp:', trace[::6] + [trace[-1]])
+open(os.path.join(D, 'keys.txt'), 'w').write('\n'.join(ALL))
 if ended: print('player hp / boss hp:', trace[::6] + trace[-1:]); print('RESULT ENDED (no actors left: the player died or a scene began) steps', len(trace), 'boss hp', bh); sys.exit(0)
 print('RESULT', 'WIN' if done else 'LOSS', 'steps', len(trace), 'player hp', php, 'boss hp', bh)
 open(os.path.join(D, 'keys.txt'), 'w').write('\n'.join(ALL))
