@@ -9,12 +9,39 @@
 	.thumb
 	.equ COUNTER, 0x0203FF04          @ EWRAM word, unused by BF (fadepal.s uses 0x0203FF00)
 	.equ S17DELTA, 0x03001101         @ Super 17's Strength bonus, saved with the game: the flag byte for flags 544-551
+	.equ FLASH, 0x0203FF08            @ (2026-11-03) Super 17 white flash: frames left (EWRAM word, unused by BF)
+	.equ FLASHLEN, 46                 @ frames (the flash_levels table below)
+	.equ FLASHCNT, 0x0203FF0C         @ BLDCNT as it was before the flash (restored at the end)
 	.global hook_regen
 	.align 2
 @ Super 17 (user 2026-11-03: Strength x1.5). While Seventeen (character 1) is in form 15, half his Strength is added on
 @ top and remembered in S17DELTA; when he leaves the form (B again, ki ran out, outfit change), the same amount comes
 @ off. Checked every frame for the active character only, so a change while 17 is benched is fixed when he's back.
 hook_regen:
+@ White flash (user 2026-11-03: "like the fusion dance", as Super 13 gets in his cutscene). Started below when Seventeen
+@ enters form 15; each frame BLDCNT = brighten BG0-3 + OBJ + backdrop and BLDY = flash_levels[frames left] (0-16),
+@ then BLDCNT goes back to the area's own value. BF fades with palettes, so BLDY is otherwise unused.
+	ldr r2, =FLASH
+	ldr r3, [r2]
+	cmp r3, #0
+	beq 19f
+	subs r3, #1
+	str r3, [r2]
+	ldr r1, =0x04000050
+	cmp r3, #0
+	bne 18f
+	ldr r0, =FLASHCNT
+	ldrh r0, [r0]
+	strh r0, [r1]                      @ BLDCNT back
+	movs r0, #0
+	strh r0, [r1, #4]                  @ BLDY 0
+	b 19f
+18:	ldr r0, =flash_levels
+	ldrb r0, [r0, r3]
+	strh r0, [r1, #4]
+	movs r0, #0xBF
+	strh r0, [r1]
+19:
 	ldr r1, =0x030015C8                @ character 1's record
 	cmp r5, r1
 	bne 28f
@@ -36,6 +63,16 @@ hook_regen:
 	movs r0, #255
 22:	strb r0, [r5, r1]
 	strb r3, [r2]
+	ldr r2, =FLASH                     @ he just transformed: start the white flash (not already running)
+	ldr r3, [r2]
+	cmp r3, #0
+	bne 28f
+	ldr r0, =0x04000050
+	ldrh r0, [r0]
+	ldr r1, =FLASHCNT
+	strh r0, [r1]
+	movs r3, #FLASHLEN
+	str r3, [r2]
 	b 28f
 25:	cmp r3, #0
 	beq 28f
@@ -93,3 +130,7 @@ hook_regen:
 7:	ldr r1, =0x0800E2F1
 	bx r1
 	.pool
+	.align 2
+flash_levels:                          @ BLDY by frames left (time order: a quick strobe, hold white, ~0.4 s fade)
+	.byte 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 12, 12, 13, 14, 14, 15, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 8, 0, 4, 10, 16, 16, 16, 16, 12, 6
+	.align 2

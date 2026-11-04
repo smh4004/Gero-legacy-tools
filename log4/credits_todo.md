@@ -39,3 +39,5 @@ Add a line here whenever a new asset, source, feature or character goes into the
   Gero's debug move set: Full Power Energy Wave replaces the Kamehameha.
 - 2026-11-03: Android 13 absorption sprites (6 frames, the cores of 14 and 15 flying into him; sheet supplied by the
   user) shown in the phase-2 cutscene on a new backdrop area 17:50.
+- 2026-11-03: Super 17 transformation: white flash (BLDY brighten, kiregen.s) and a slightly taller / bulkier Super 17
+  sprite (Seventeen's frames scaled x1.12 / x1.1, 2 KB OBJ VRAM).

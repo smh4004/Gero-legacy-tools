@@ -654,6 +654,21 @@ footage + the scene scripts, and renders any text with it.
   don't implement it).
 - Delivered v18 (release + debug): the absorption cutscene and white flash. clipcheck 275 / 115 areas 0 failing, GUIDE
   UP TO DATE.
+- Super 17 (user 2026-11-03 night: "add something like this [the white flash] to the Super 17 transformation ... slightly
+  taller and bulkier"; "if it's an outfit rather than a transformation then change that": it already is a
+  transformation, skill 20 with BF's Super Saiyan mechanics, separate from the Outfit skill; nothing to change there).
+  - Flash: log4/asm/kiregen.s starts it the frame Seventeen enters form 15 (where the Strength bonus is applied, so it
+    fires once per transformation, never on a save load): 46 frames of BLDCNT 0xBF (brighten BG0-3, OBJ, backdrop) with
+    BLDY from flash_levels (a quick strobe, hold white, fade), then the area's BLDCNT is put back (saved at the start in
+    EWRAM 0x0203FF0C; counter 0x0203FF08). BF fades with palettes, so BLDY is free. Verified (screen brightness per frame).
+  - Size: actors.json player_17_super "grow": [1.12, 1.1] (tools/sprites.py grow_cell / grow_box: nearest-neighbour about
+    the feet; wide poses grow less so every frame stays one 32-wide piece) and "reserve": 2048 (record u16 +2). Frames
+    are now one 32x64 piece; the engine allocates obj+0xE from the record (sub_0800EB60 -> sub_0801124C), and the form
+    change re-creates the player object: 0 guard rejects transforming, walking, attacking, ki blasts, reverting, and a
+    Super 13 fight as Super 17 (Super 13 4 KB + Super 17 2 KB). 17 is 31 -> 34 px tall. Watch rooms that are already
+    short of OBJ VRAM (door panels + NPCs + a big enemy, RE_NOTES) if Super 17 is used there.
+  - Test list sw_17s (shoot.scene) = sw_17 + skill 20 + flag 441; Super 17 is the 4th skill (L x4, B).
+- Delivered v19 (release + debug).
 
 ## 2026-11-03 (night): garbled sprite shadows - root cause and the engine guard (user: trailer v8 at 0:20)
 - Symptom: garbage pixels in the shadow under every character (and in the HUD) once a fight got busy (Supply Depot,

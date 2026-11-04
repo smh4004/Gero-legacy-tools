@@ -59,7 +59,7 @@ class Inserter:
         pieces = cover(x1 - x0, y1 - y0)
         # the engine draws ONE piece per character frame and reserves 1 KB of VRAM (32x32 8bpp) for it: anything
         # bigger is cut off or overwrites the next actor's tiles, so refuse it here instead of shipping a clipped sprite
-        assert pieces and len(pieces) == 1 and pieces[0][2] * pieces[0][3] <= 1024 and \
+        assert pieces and len(pieces) == 1 and pieces[0][2] * pieces[0][3] <= getattr(self, 'limit', 1024) and \
             pieces[0][2] >= x1 - x0 and pieces[0][3] >= y1 - y0, \
             'sprite frame %dx%d does not fit one 32x32 piece (art must be shrunk to fit, see artclean.place_in_cell)' \
             % (x1 - x0, y1 - y0)
@@ -106,6 +106,42 @@ def cover(w, h, multi=False):
                 else: continue
                 if best is None or cand[0] < best[0]: best = cand
     return best[1]
+
+
+def grow_cell(img, sx, sy):
+    """(2026-11-03, Super 17: "slightly taller and bulkier") scale a sheet cell (BF OBJ indices, 0 = clear) about its
+    bottom centre, the actor's origin, by sx / sy with nearest-neighbour sampling; the cell grows to fit."""
+    ch, cw = img.shape
+    xs_ = np.nonzero(img)[1]
+    if len(xs_):                                     # a wide pose grows less, so it stays one 32-wide piece
+        sx = min(sx, 31.5 / (2 * max(cw / 2 - xs_.min(), xs_.max() + 1 - cw / 2)))
+    H, W = int(np.ceil(ch * sy)), int(np.ceil(cw * sx)) + (int(np.ceil(cw * sx)) & 1)
+    ys = np.floor(ch - (H - np.arange(H) - 0.5) / sy).astype(int)
+    xs = np.floor(cw / 2 + (np.arange(W) + 0.5 - W / 2) / sx).astype(int)
+    out = np.zeros((H, W), img.dtype)
+    vy, vx = (ys >= 0) & (ys < ch), (xs >= 0) & (xs < cw)
+    out[np.ix_(vy, vx)] = img[np.ix_(ys[vy], xs[vx])]
+    return out
+
+
+def grow_box(img, fbox, sx, sy):
+    """The same for a LoG2 frame piece: img (h x w) drawn at box (x, y) from the object's anchor, whose feet point is
+    (8, 8) (BF's 16-wide / 8-below convention). Returns (image, (x, y, w, h)) of one OBJ shape covering the result."""
+    x, y = fbox[0], fbox[1]
+    ys_, xs_ = np.nonzero(img)
+    if not len(ys_): return img, fbox
+    X0, X1 = x + xs_.min(), x + xs_.max() + 1; Y0, Y1 = y + ys_.min(), y + ys_.max() + 1
+    sx = min(sx, 31.5 / (2 * max(8 - X0, X1 - 8, 1)))  # a wide pose grows less (one 32-wide piece)
+    nx0, nx1 = int(np.floor(8 + (X0 - 8) * sx)), int(np.ceil(8 + (X1 - 8) * sx))
+    ny0, ny1 = int(np.floor(8 + (Y0 - 8) * sy)), int(np.ceil(8 + (Y1 - 8) * sy))
+    (W, H), = [(p[2], p[3]) for p in cover(nx1 - nx0, ny1 - ny0)]
+    ox, oy = nx0 - (W - (nx1 - nx0)) // 2, ny1 - H              # keep the feet: pad above and on both sides
+    gy = np.floor(8 + (oy + np.arange(H) + 0.5 - 8) / sy).astype(int) - y
+    gx = np.floor(8 + (ox + np.arange(W) + 0.5 - 8) / sx).astype(int) - x
+    out = np.zeros((H, W), img.dtype)
+    vy, vx = (gy >= 0) & (gy < img.shape[0]), (gx >= 0) & (gx < img.shape[1])
+    out[np.ix_(vy, vx)] = img[np.ix_(gy[vy], gx[vx])]
+    return out, (ox, oy, W, H)
 
 
 def set_slot(rom, actor_id, slot, anim_ptr, actor_list=0x6B6BD8):
@@ -187,6 +223,9 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
                 tp = table[target if target is not None else a['template']] - BASE
             flags = struct.unpack_from('<I', rom, tp)[0]; n = flags & 0xFF
             rec = bytearray(rom[tp:tp + 0x54 + 4 * n])
+        ins.limit = a.get('reserve', 1024)                 # OBJ VRAM bytes per frame (record u16 +2; BF characters 1024)
+        if a.get('reserve'): struct.pack_into('<H', rec, 2, a['reserve'])
+        grow = a.get('grow')                               # [sx, sy]: draw this actor bigger (Super 17)
         if not a.get('halo'):                              # record +0x50 = per-slot halo/attachment table (Other World)
             struct.pack_into('<I', rec, 0x50, 0)
         recol = None; rkey = json.dumps(a.get('recolor'), sort_keys=True)
@@ -217,7 +256,7 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
                 if str(k).startswith('r'): src, k = str(k).split(':', 1)    # "r51:3@0:2" = LoG2 actor 51, anim 3
                 k, sl = (str(k).split('@') + [None])[:2]
                 sl = slice(*map(int, sl.split(':'))) if sl else None
-                ptr = log2_anim(ins, l2, log2_rec(l2, src), int(k), cmap, cache, want, sl, edit, a.get('log2_scale', {}).get(str(src)), recol)
+                ptr = log2_anim(ins, l2, log2_rec(l2, src), int(k), cmap, cache, want, sl, edit, a.get('log2_scale', {}).get(str(src)), recol, grow)
                 if ptr: struct.pack_into('<I', rec, 0x54 + 4 * int(slot), ptr)
         if 'raw_frames' in a:                              # frames given as arrays of BF OBJ indices (tools/doors.py:
             ins.oy = a.get('origin_dy', 0)                 # map door regions already draw with the BF OBJ palette)
@@ -232,10 +271,11 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
             old = struct.unpack_from('<I', rec, 0x54 + 4 * int(slot))[0]
             want = struct.unpack_from('<I', rom, old - BASE)[0] if (target is not None or a.get('stretch')) and old else 0
             want = a.get('frames', {}).get(str(slot), want)
-            key = (spec, want, rkey)
+            key = (spec, want, rkey, grow and tuple(grow))
             if key not in anims:
                 dirs = slot_frames(clean_dir, spec)
                 if dirs and recol: dirs = [[recol(f) for f in dd] for dd in dirs]
+                if dirs and grow: dirs = [[grow_cell(np.asarray(f), *grow) for f in dd] for dd in dirs]
                 if dirs and FRAME_HOOK:
                     for di, dd in enumerate(dirs):
                         for fi, f in enumerate(dd): FRAME_HOOK(('sheet', spec, di, fi), f)
@@ -254,6 +294,7 @@ def build_actors(rom, cfg, clean_dir, at, l2=None, colour_ctx=None, proto=None):
                 ap = ins.put(struct.pack('<I', m) + b''.join(struct.pack('<4I', *ptrs[4 * (i * k // m):4 * (i * k // m) + 4])
                                                             for i in range(m)))
             struct.pack_into('<I', rec, 0x54 + 4 * int(dst), ap)
+        ins.limit = 1024
         if target is not None:
             table[target] = ins.put(bytes(rec)); ids[name] = target
         else:
@@ -285,7 +326,7 @@ def log2_colour_map(l2, usable, pal_rgb):
     return m.astype(np.uint8)
 
 
-def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=None, recol=None):
+def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=None, recol=None, grow=None):
     """Convert LoG2 animation k of the actor record at slice offset `rec` into a BF animation. Returns ptr or 0.
     sl = frames a..b-1 only (a slice with a step, e.g. 3:-5:-1, plays them backwards); want = repeat frames evenly to
     that count (the replaced BF slot's own frame count). edit(k, d, pixels) -> (key, pixels): optional pixel edit of each
@@ -315,7 +356,7 @@ def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=No
             attr, tp = struct.unpack_from('<II', l2, r + 4)
             assert scale or w * h <= 1024, 'LoG2 frame %dx%d at %x is over the 1 KB one-piece budget' % (w, h, r)
             ek = edit(rec, k, d, None)[0] if edit else None
-            key = (tp, ek, scale, id(recol))
+            key = (tp, ek, scale, id(recol), grow and tuple(grow))
             if key not in cache:
                 o = tp - L2_BASE; t, size = struct.unpack_from('<II', l2, o)
                 data = l2[o + 8:o + 8 + size] if t == 0 else bytes(decompress_stream(l2, o + 8, size)[0])
@@ -328,11 +369,17 @@ def log2_anim(ins, l2, rec, k, cmap, cache, want=0, sl=None, edit=None, scale=No
                 hh, ww = img.shape
                 bf = cmap[img]                                   # BF OBJ indices
                 if recol: bf = recol(bf)
+                if grow:                                         # (2026-11-03) a bigger build of the same character
+                    bf, fbox = grow_box(bf, fbox, *grow); hh, ww = bf.shape
                 if FRAME_HOOK: FRAME_HOOK(('l2', k, d, f), bf)
                 data = bf.reshape(hh // 8, 8, ww // 8, 8).transpose(0, 2, 1, 3).reshape(-1).tobytes()
                 cache[key] = (ins.put(struct.pack('<II', 0, len(data)) + data), fbox)
             tptr, fbox = cache[key]
             if scale: attr = (attr & 0x30000000) | 0x80002000        # one 32x32 8bpp piece, keep the flip bits
+            if grow:                                             # the grown piece's own OBJ shape / size
+                sh, sz = SHAPE[(fbox[2], fbox[3])]
+                attr = (attr & 0x30000000) | (sz << 30) | (sh << 14) | 0x2000
+                assert fbox[2] * fbox[3] <= getattr(ins, 'limit', 1024), 'grown frame over the actor budget'
             box = struct.pack('<bbBB', *fbox)
             ptrs.append(ins.put(struct.pack('<I', 1) + box + box + struct.pack('<II', attr, tptr)))
     return ins.put(struct.pack('<I', len(idx)) + struct.pack('<%dI' % len(ptrs), *ptrs))
