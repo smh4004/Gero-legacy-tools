@@ -4,7 +4,7 @@
   - animation-slot requests past the end of the actor's slot list (the root cause: the engine then reads the next
     actor's data as an animation - garbage frames, or another character's valid frames).
 For each enemy row: the first spawn in log4/areas.json, the flags its spawn condition needs preset, the player dropped
-on walkable floor 24-56 px away with the party of that act (the drone / Lapis / Seventeen), then tools/fightbot.py fights it for 60 steps (walks at it, attacks when in reach),
+on walkable floor 48-96 px away with the party of that act (the drone / Lapis / Seventeen), then tools/fightbot.py fights it for 60 steps (walks at it, attacks when in reach),
 and the guard's reject counter is read from RAM. Needs a test ROM built with --shoot and LOG4_GUARD_COUNTER=0203FF80
 (release ROMs have no counter).
 usage: python3 tools/enemysweep.py <rom> <outdir> [row ...]      (named_lists.json beside the rom)"""
@@ -38,10 +38,13 @@ def cond_flags(c):
 
 def spot(w, a, x, y):
     m = R.walk_mask(R.map_of(w, a))
-    for d in range(24, 60, 4):
+    ex = [e['rect'] for e in R.exits(w, a)]          # (2026-11-03) not in or beside a doorway: an arrival there can
+                                                     # leave the player half-way into the warp (frozen, Prototype 12)
+    for d in range(48, 100, 4):         # (2026-11-03) not closer: a big boss (Prototype 12) overlaps a spot 24 px away
         for dx, dy in ((0, d), (0, -d), (d, 0), (-d, 0), (d, d), (-d, d), (d, -d), (-d, -d)):
             X, Y = x + dx, y + dy
             if X < 8 or Y < 8: continue
+            if any(r[0] - 24 <= X <= r[2] + 24 and r[1] - 24 <= Y <= r[3] + 24 for r in ex): continue
             if all(C.walkable(m, X + ox, Y + oy) for ox in (2, 14) for oy in (4, 14)): return X, Y
     return None
 
@@ -66,21 +69,31 @@ def go(item):
     p = spot(w, a, e['x'], e['y'])
     if not p: return name, w, a, 'no floor near the spawn', None
     flags = cond_flags(e.get('condition', 0))
-    env = dict(os.environ, SHOTS='0', TAIL='30 -', ONESHOT='1', BOOTFLAGS=os.path.join(OUT, '_boot.bin'))
+    env = dict(os.environ, RECT='96', SHOTS='0', TAIL='30 -', ONESHOT='1', BOOTFLAGS=os.path.join(OUT, '_boot.bin'))
     party, ch = party_for(w, a)
-    subprocess.run(['python3', os.path.join(HERE, 'listtest.py'), ROM, d, 's', '%d:%d:%d:%d' % (w, a, p[0], p[1]),
-                    party] + [str(f) for f in flags], env=dict(env, TAIL='4 A|40 -|4 A|40 -|4 A|60 -'), capture_output=True)
+    def setup(arrive):
+        subprocess.run(['python3', os.path.join(HERE, 'listtest.py'), ROM, d, 's', '%d:%d:%d:%d' % (w, a, p[0], p[1]),
+                        party] + [str(f) for f in flags], env=dict(env, ARRIVE=str(arrive), TAIL='4 A|40 -|4 A|40 -|4 A|60 -|dump _lead 3001068 4|dump _chars 3001560 680'), capture_output=True)
+        g, c = (open(os.path.join(d, n + '.bin'), 'rb').read() for n in ('_lead', '_chars'))
+        return g[0] != 0 and struct.unpack_from('<H', c, 0x68 * g[0] + 0x16)[0] > 0
+    # (2026-11-03) the party list runs on an A press after arrival; a boss whose intro starts at once (Super 13, the
+    # 1:116 and 17:49 bosses) takes that press and kills the default level-1 lead first: retry with an earlier press
+    for arrive in (200, 90, 40):
+        if setup(arrive): break
     if not os.path.exists(os.path.join(d, 's_end.ss')): return name, w, a, 'no state', None
     hp = STATS.get(str(row), {}).get('hp')
     if not hp: return name, w, a, 'no hp in stats.json', None
     r = subprocess.run(['python3', os.path.join(HERE, 'fightbot.py'), os.path.join(d, 'lt.gba'), d, 's_end', str(hp), '543', str(ch),
-                        str(STEPS), str(p[0]), str(p[1])], env=dict(os.environ, ANYMARK='1'), capture_output=True, text=True)
+                        str(STEPS), str(p[0]), str(p[1])], env=dict(os.environ), capture_output=True, text=True)   # (no ANYMARK: it accepts stray copies of the HP value)
     res = (r.stdout + r.stderr).strip().split('\n')[-1][:60]
-    open(os.path.join(d, '_c.txt'), 'w').write('1 -\nload _bot\ndump _cnt %x 4\n' % COUNTER)
+    open(os.path.join(d, '_c.txt'), 'w').write('1 -\nload s_end\ndump _cnt0 %x 4\nload _bot\ndump _cnt %x 4\n' % (COUNTER, COUNTER))
     subprocess.run([os.path.join(HERE, 'harness'), os.path.join(d, 'lt.gba'), os.path.join(d, '_c.txt'), d], capture_output=True)
     cp = os.path.join(d, '_cnt.bin')
     n = struct.unpack('<I', open(cp, 'rb').read())[0] if os.path.exists(cp) else None
-    return name, w, a, res, n
+    n0 = struct.unpack('<I', open(os.path.join(d, '_cnt0.bin'), 'rb').read())[0] if os.path.exists(os.path.join(d, '_cnt0.bin')) else None
+    # (2026-11-03) rejects before the fight come from the test setup: the party list's call 149 swaps the player's
+    # sprite mid-animation (the old frame number on the new actor: a few frames held, nothing written)
+    return name, w, a, res, 'setup %s fight %s' % (n0, None if n is None or n0 is None else n - n0)
 
 
 STEPS = 60

@@ -516,6 +516,11 @@ SHA1 f1c4b07554d2a3b1ad2f325307051e775ce68087, 8 MB, code BG3E, last data 0x7B89
 - An enemy death script can load the next area (call 29 flag; heal; call 120; call 119 ...): verified, the level-up
   pages show first, then the new area's arrival trigger runs.
 - Boss HP field = enemy object + 0x28C (value << 10); position = HP field - 0xEC ([0x02050810][x << 8][y << 8]).
+- (2026-11-03) Enemy objects start with the word 0x0804C484 (likely their class / vtable) and hold 0x03001BA4 at +0x18:
+  that finds every enemy, the big machines included (Prototype 12, the Security Unit, the Collector). The word before
+  the position (+0x19C) is a flags word, not a class: 0x02050810 on most, 0x050C1020 or 0x00001040 / 0x051C1040 on
+  others, so it can't identify enemies. The player's position record has 0x02050810 there and no 0x0804C484 header.
+  The played character's live HP is its character record's +0x16 for c = G[0] (0x03001068), not a fixed slot.
   tools/fightbot.py fights a boss closed-loop from a save state (finds both structs) for balance tests.
 - 'heal' in scenes/death scripts = call max_hp; set hp; call max_ki; set ki (the Senzu Bean's own code).
 

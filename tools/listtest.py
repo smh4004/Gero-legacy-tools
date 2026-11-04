@@ -15,7 +15,8 @@ FB, BASE = 0x30010BD, 0x08000000
 u = lambda o: struct.unpack_from('<I', T, o)[0]
 e = R.entry(W, A_)
 ex = T[e + 3]; old = T[u(e + 0x10) - BASE:u(e + 0x10) - BASE + 8 * ex]
-o = len(T); T += struct.pack('<IIHHHHI', 0x0800742D, 0x0800770D, max(x - 40, 0), max(y - 40, 0), x + 40, y + 40, named[lname])
+RW = int(os.environ.get('RECT', 40))   # trigger half-size; env RECT (enemysweep: 96, as an area can move the player 40-60 px on arrival)
+o = len(T); T += struct.pack('<IIHHHHI', 0x0800742D, 0x0800770D, max(x - RW, 0), max(y - RW, 0), x + RW, y + RW, named[lname])
 ONESHOT = 890        # env ONESHOT=1: the injected trigger only fires while flag 890 is clear; the harness sets it
                      # right after the first A press, so later A presses can't start the list again
 t = len(T); T += old + struct.pack('<II', (0x20000 + ONESHOT) if os.environ.get('ONESHOT') else 0, BASE + o)
@@ -36,7 +37,7 @@ if bytes_:
         if cache != os.path.join(S, '_bootflags.bin'): os.replace(os.path.join(S, '_bootflags.bin'), cache)
     bf_ = open(cache, 'rb').read()
     OPENING = {FB + i: bf_[i] for i in range(len(bf_))}
-l = C.BOOT + ['w8 %x %x' % (a, v | OPENING.get(a, 0)) for a, v in bytes_.items()] + ['3 DOWN', '200 -']
+l = C.BOOT + ['w8 %x %x' % (a, v | OPENING.get(a, 0)) for a, v in bytes_.items()] + ['3 DOWN', '%d -' % int(os.environ.get('ARRIVE', 200))]   # ARRIVE: frames before the A press
 l += [x for x in os.environ.get('PRE', '').split('|') if x]      # PRE = harness lines before the A press
 l += ['4 A', '30 -'] + (['w8 %x %x' % (FB + ONESHOT // 8, 1 << (ONESHOT % 8))] if os.environ.get('ONESHOT') else [])
 for i in range(int(os.environ.get("SHOTS", 16))): l += ['shot %s_%02d' % (name, i), '4 A', '50 -']

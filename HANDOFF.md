@@ -621,6 +621,31 @@ footage + the scene scripts, and renders any text with it.
   solid (AREA_PATCH). gen_more now also puts PATCH entries into its own new areas.
   Free flags now: 454, 458-459, 468-469, 475-479, 487-489, 507-509, 540-543.
 
+## 2026-11-03 (late night 2): fight bot robustness + second bug sweep (user: "Do 4 first, then run a bug sweep again")
+- tools/fightbot.py now finds every boss: enemy objects are found by their class word 0x0804C484 (+0x18 = 0x03001BA4),
+  HP at +0x28C, position +0x1A0 (the [0x02050810] word before the position is a flags word that varies: 0x00001040 on
+  Prototype 12 / the Security Unit / the Collector). Exact stats HP first, else the enemy with the most HP left.
+  It re-finds both records when a scripted fight start reallocates the actors (Android 13 -> Super 13), stops cleanly
+  when the actors are gone ("You have died!", the area left), counts boss HP 0 as a win, lines up beside the boss on
+  its row (swings from on top of it missed), and reads the played character's HP from G[0] (0x03001068) instead of a
+  fixed `ch`. BOTSHOTS=1 saves a screenshot per step.
+- tools/listtest.py: env RECT (trigger half-size, default 40) and ARRIVE (frames before the A press, default 200).
+  tools/enemysweep.py: spots 48-96 px from the spawn and never within 24 px of a doorway (a Prototype 12 spot inside the
+  1:74 warp rect froze the player half-way in), RECT 96 (arrivals move the player 40-60 px: the party list missed),
+  retries the party list with ARRIVE 90 / 40 when the lead starts dead (Super 13, 1:116, 17:49 bosses take the first
+  A press with their intro), and reports setup and fight rejects separately.
+- Sweep result (test ROM with the counter, all 50 enemy rows): boss and player found in every fight; 0 guard rejects in
+  every fight. Setup only: 4 rejects in 1:76 when the test party list's call 149 swaps the player's sprite mid-animation
+  (old frame number on the new actor: the guard holds the last frame for a few frames, nothing is written). Test-only.
+  Release build: clipcheck 0 failing (274 placements, 114 areas), GUIDE UP TO DATE, frameaudit 327 actors / 28,496
+  frames / 0 problems, enemyslots 10 OK, exitaudit 60 candidates (the same reviewed false alarms), reachaudit 173 of
+  173 reachable on the full ROM. The release ROM is
+  byte-identical to rel19: no game change, so no new patch.
+- Test artifacts, not bugs: 1:94 Act 1 Gero / drone lose to the pit mechanoid (weak test party); 16:1 the sweep's Lapis
+  levels up from 70 to 2,152 HP on a kill (party lists set skills, not EXP; BF recomputes stats from EXP on level-up).
+- Next (user, 2026-11-03): Android 13's absorption sprites (6 frames, 32x32, front view: cores of 14 (cyan) and 15 (gold)
+  fly into his chest) for the phase-2 cutscene ch9_thirteen2. No Spirit Bomb (user: don't implement it).
+
 ## 2026-11-03 (night): garbled sprite shadows - root cause and the engine guard (user: trailer v8 at 0:20)
 - Symptom: garbage pixels in the shadow under every character (and in the HUD) once a fight got busy (Supply Depot,
   drone vs the Quartermaster). Same family as the 2026-11-01 drone bug ("scrambled sprites when the drone fired").
