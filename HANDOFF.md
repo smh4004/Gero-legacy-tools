@@ -621,6 +621,41 @@ footage + the scene scripts, and renders any text with it.
   solid (AREA_PATCH). gen_more now also puts PATCH entries into its own new areas.
   Free flags now: 454, 458-459, 468-469, 475-479, 487-489, 507-509, 540-543.
 
+## 2026-11-03 (night 3): sprite memory audit + continuous playthrough (user: "Step 1 first ... when on step 2 run step 1's
+process during the whole check ... chapter by chapter and save progress ... to resume")
+- tools/vramcheck.py: one emulator moment (IWRAM, EWRAM 0x0202xxxx-0x0203xxxx, OBJ VRAM, OAM, OBJ palette). BF's OBJ
+  VRAM allocator (IWRAM 0x03001C4C, sub_0801124C) hands out all 1,024 tiles in 64-byte units (block table at +0x694,
+  10-byte entries: used, start, size, prev/next, next free; registered objects at +4 / +8); when full it evicts and
+  compacts (sub_08011732). Checks: A the block table covers OBJ VRAM exactly; B a visible priority-3 (character) sprite
+  drawing tiles outside every allocated block in two samples running (other sprites only if those pixels change: BF
+  lets a damage number keep drawing tiles it just freed); C a registered object whose tiles hold >= 8 pixels in colours
+  its frame (its own buffer obj+0x44) doesn't use, in two samples running with the same frame (another frame of the
+  same character during hit-stun / a queued upload is not garbage). Faded screens (OBJ palette < 8 colours) are skipped.
+  Validated on a throwaway test copy without the frame guard whose Seventeen plays Super 13's 4 KB frames: flagged in
+  every sample.
+- tools/vramaudit.py: every area, the act's party (sw_drone / sw_lapis / sw_17s, retried with other ARRIVE timings until
+  the lead / Super 17 form is right), ki, Super 17 in Act 3, walk + punch, enemies; a sample every ~15 frames.
+  KEEP=1 keeps dumps + screenshots. Peak use seen: ~30 KB of 32 KB in 17:43-17:47 and 17:4 (NPC-heavy Act 3 areas).
+- RESULT (step 1, all 115 areas, each with the act's party, Super 17 transformed in 49 Act 3 combat areas): 0 sprite
+  problems, 0 guard rejects. Highest OBJ VRAM in use: 30,272 of 32,768 bytes in 17:47 (smallest free block 1 KB), then
+  17:46 / 17:45 / 17:43 / 17:4 at 25-29 KB; the engine evicts and compacts when full, and nothing showed garbled there.
+  Areas whose own arrival takes the party list's A press get the party in room 1:1 and are teleported in (1:61's test
+  warp hook hides any trigger near the boot spot).
+- tools/listtest.py ONESHOT was broken: exit conditions are checked only at area load (RE_NOTES), so setting a flag
+  after the A press never switched the injected trigger off, and every later A press re-ran the test list (party lists
+  reset forms: "Super 17 reverts when punching" in tests was this). Now the trigger's EWRAM copy is found after the first
+  A press and its rect moved off the map (two harness passes). Its condition is a real script (flag 509 clear).
+- tools/playthrough.py: one game state carried through every story list in story order (storyrun's lists). Teleport =
+  an extra warp exit in every area of a test copy (ROM rect marker 5,3,6,4) whose EWRAM copy is widened, DOWN pressed, the
+  destination written into the ROM file first. Triggers: walk-in rects by arriving inside, NPC / examine spots from
+  reachaudit's verified points (walk up pressing A). Text: A until the list's flags (any of a multi-visit list's) are
+  set, then A only while the player can't move. Bosses: those a trigger needs, those in the area the list ends in, and
+  those a flag set loose (side jobs); tools/fightbot.py (RANGED for the drone, HP held; if it can't win, BOTWEAK puts
+  the boss at 1 HP so its death script still runs). Lists with a second visit (rewards) are revisited once their flags
+  can be set. VRAM checked every chunk and every bot step; guard rejects read after every list. Saves
+  states/NNN_<list>.ss + .png and progress.json after every list: re-running resumes, --from N restarts at list N.
+- tools/fightbot.py: env NOB, BOTPRE, BOTVRAM (json of VRAM problems per step), BOTWEAK; keys.txt also on ENDED.
+
 ## 2026-11-03 (late night 2): fight bot robustness + second bug sweep (user: "Do 4 first, then run a bug sweep again")
 - tools/fightbot.py now finds every boss: enemy objects are found by their class word 0x0804C484 (+0x18 = 0x03001BA4),
   HP at +0x28C, position +0x1A0 (the [0x02050810] word before the position is a flags word that varies: 0x00001040 on

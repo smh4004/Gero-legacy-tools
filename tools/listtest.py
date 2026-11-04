@@ -17,9 +17,15 @@ e = R.entry(W, A_)
 ex = T[e + 3]; old = T[u(e + 0x10) - BASE:u(e + 0x10) - BASE + 8 * ex]
 RW = int(os.environ.get('RECT', 40))   # trigger half-size; env RECT (enemysweep: 96, as an area can move the player 40-60 px on arrival)
 o = len(T); T += struct.pack('<IIHHHHI', 0x0800742D, 0x0800770D, max(x - RW, 0), max(y - RW, 0), x + RW, y + RW, named[lname])
-ONESHOT = 890        # env ONESHOT=1: the injected trigger only fires while flag 890 is clear; the harness sets it
+ONESHOT = 509        # env ONESHOT=1: the injected trigger only fires while flag 509 (free) is clear; the harness sets it
                      # right after the first A press, so later A presses can't start the list again
-t = len(T); T += old + struct.pack('<II', (0x20000 + ONESHOT) if os.environ.get('ONESHOT') else 0, BASE + o)
+cond = 0
+if os.environ.get('ONESHOT'):          # (2026-11-03) an exit's condition is a script pointer (0x2NNNN only works for
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'log4'))   # enemy records: the
+    from areagen import hexcond        # old 0x20000 + flag was a pointer to nowhere and the list ran on every A press)
+    cond = BASE + len(T); T += bytes.fromhex(hexcond(('clear', ONESHOT))[4:])
+    while len(T) % 4: T += b'\x00'
+t = len(T); T += old + struct.pack('<II', cond, BASE + o)
 T[e + 3] = ex + 1; struct.pack_into('<I', T, e + 0x10, BASE + t)
 struct.pack_into('<II', T, hook + 16, (1 << 4) | (W << 8) | (A_ << 16) | (1 << 24), (y << 16) | x)
 os.makedirs(S, exist_ok=True); open(S + '/lt.gba', 'wb').write(T)
@@ -39,8 +45,20 @@ if bytes_:
     OPENING = {FB + i: bf_[i] for i in range(len(bf_))}
 l = C.BOOT + ['w8 %x %x' % (a, v | OPENING.get(a, 0)) for a, v in bytes_.items()] + ['3 DOWN', '%d -' % int(os.environ.get('ARRIVE', 200))]   # ARRIVE: frames before the A press
 l += [x for x in os.environ.get('PRE', '').split('|') if x]      # PRE = harness lines before the A press
-l += ['4 A', '30 -'] + (['w8 %x %x' % (FB + ONESHOT // 8, 1 << (ONESHOT % 8))] if os.environ.get('ONESHOT') else [])
+l += ['4 A', '30 -']
+H_ = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'harness')
+if os.environ.get('ONESHOT'):
+    # (2026-11-03) the area's exits are instantiated in EWRAM when it loads (their conditions are checked then, not per
+    # press), so a flag set now can't switch the trigger off: run up to here, find the trigger's rect in its EWRAM copy
+    # and move it off the map, then go on from a saved state
+    C.run(H_, S + '/lt.gba', l + ['dump _ltew 2000000 40000', 'save _lt1'], S)
+    ew_ = open(os.path.join(S, '_ltew.bin'), 'rb').read()
+    pat = struct.pack('<HHHH', max(x - RW, 0), max(y - RW, 0), x + RW, y + RW)
+    hits = [i for i in range(0, len(ew_) - 8, 2) if ew_[i:i + 8] == pat]
+    l = ['1 -', 'load _lt1', 'w8 %x %x' % (FB + ONESHOT // 8, 1 << (ONESHOT % 8))]
+    for h in hits: l += ['w8 %x %x' % (0x2000000 + h + k, v) for k, v in enumerate(struct.pack('<4H', 0x7FF0, 0x7FF0, 0x7FF0, 0x7FF0))]   # far off the map
+    if not hits: print('listtest: trigger rect not found in EWRAM (ONESHOT can fire again)')
 for i in range(int(os.environ.get("SHOTS", 16))): l += ['shot %s_%02d' % (name, i), '4 A', '50 -']
 l += [x for x in os.environ.get('TAIL', '').split('|') if x] + ['save %s_end' % name, 'shot %s_end' % name, 'dump %s_flags %x 40' % (name, FB + 30)]
-C.run(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'harness'), S + '/lt.gba', l, S)
+C.run(H_, S + '/lt.gba', l, S)
 print(name, 'list', lname, hex(named[lname]))

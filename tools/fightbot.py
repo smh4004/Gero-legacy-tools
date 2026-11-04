@@ -96,22 +96,34 @@ for k in range(steps):
         if abs(dy + oy) > 6: keys += ['%d %s' % (min(20, abs(dy + oy)), 'DOWN' if dy + oy > 0 else 'UP')]
         elif abs(dx) > 120: keys += ['%d %s' % (min(24, abs(dx) - 100), 'RIGHT' if dx > 0 else 'LEFT')]
         else: keys += ['2 ' + ('RIGHT' if dx > 0 else 'LEFT'), '4 A', '10 -', '4 A', '10 -', '4 A', '16 -']
-        run(['load _bot'] + keys + ['save _bot']); ALL.extend(keys); continue
-    # (2026-11-03) line up beside the boss on its row and hit it horizontally: standing on top of it (dx, dy ~ 0)
-    # the swings miss (the bot used to stall there: Android 13, the pit rogue)
-    tx = bx - 18 if px <= bx else bx + 18
-    ex, ey = tx - px, by - py
-    if abs(dx) < 10 and abs(dy) < 10:               # on top of it (it follows the player): back off and swing at once
-        away, back = ('RIGHT', 'LEFT') if px >= bx else ('LEFT', 'RIGHT')
-        keys += ['10 ' + away, '2 ' + back, '4 A', '6 -', '4 A', '6 -', '4 A', '10 -']
-    elif abs(ex) > 6 or abs(ey) > 6:
-        if abs(ex) >= abs(ey): keys += ['%d %s' % (max(2, min(24, abs(ex))), 'RIGHT' if ex > 0 else 'LEFT')]
-        else: keys += ['%d %s' % (max(2, min(24, abs(ey))), 'DOWN' if ey > 0 else 'UP')]
-        if abs(dx) > 40 and min(abs(ex), abs(ey)) < 12 and not os.environ.get('NOB'): keys += ['4 B', '8 -']   # NOB: B is a skill (Super 17 would revert)
     else:
-        keys += ['2 ' + ('RIGHT' if dx > 0 else 'LEFT'), '4 A', '6 -', '4 A', '6 -', '4 A', '10 -']
+        # (2026-11-03) line up beside the boss on its row and hit it horizontally: standing on top of it (dx, dy ~ 0)
+        # the swings miss (the bot used to stall there: Android 13, the pit rogue)
+        tx = bx - 18 if px <= bx else bx + 18
+        ex, ey = tx - px, by - py
+        if abs(dx) < 10 and abs(dy) < 10:               # on top of it (it follows the player): back off and swing at once
+            away, back = ('RIGHT', 'LEFT') if px >= bx else ('LEFT', 'RIGHT')
+            keys += ['10 ' + away, '2 ' + back, '4 A', '6 -', '4 A', '6 -', '4 A', '10 -']
+        elif abs(ex) > 6 or abs(ey) > 6:
+            if abs(ex) >= abs(ey): keys += ['%d %s' % (max(2, min(24, abs(ex))), 'RIGHT' if ex > 0 else 'LEFT')]
+            else: keys += ['%d %s' % (max(2, min(24, abs(ey))), 'DOWN' if ey > 0 else 'UP')]
+            if abs(dx) > 40 and min(abs(ex), abs(ey)) < 12 and not os.environ.get('NOB'): keys += ['4 B', '8 -']   # NOB: B is a skill (Super 17 would revert)
+        else:
+            keys += ['2 ' + ('RIGHT' if dx > 0 else 'LEFT'), '4 A', '6 -', '4 A', '6 -', '4 A', '10 -']
     pre = [x for x in os.environ.get('BOTPRE', '').split('|') if x]   # harness lines before each step (tests: hold stats)
-    run(['load _bot'] + pre + keys + ['save _bot'] + (['shot _s%02d' % k] if os.environ.get('BOTSHOTS') else [])); ALL.extend(pre + keys)
+    if os.environ.get('BOTWEAK') and hpaddr:          # (tests) the boss at 1 HP: the next hit beats it, its death
+        pre += ['w8 %x %x' % (hpaddr + i, v) for i, v in enumerate(struct.pack('<I', 1 << 10))]   # script runs as normal
+    vr = os.environ.get('BOTVRAM')                    # (2026-11-03) a json file: OBJ VRAM check after every step
+    if vr: sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import vramcheck as V
+    run(['load _bot'] + pre + keys + ['save _bot'] + (['shot _s%02d' % k] if os.environ.get('BOTSHOTS') else [])
+        + (V.sample_lines('_bv') if vr else [])); ALL.extend(pre + keys)
+    if vr:
+        import json as _j
+        if '_vprev' not in globals(): _vprev = None; _rom = open(rom, 'rb').read()
+        p_, st_, _vprev = V.check(V.load(D, '_bv'), _rom, _vprev)
+        acc = _j.load(open(vr)) if os.path.exists(vr) else {'problems': [], 'peak_used': 0, 'samples': 0}
+        acc['problems'] += ['bot step %d: %s' % (k, q) for q in p_]; acc['samples'] += 1
+        acc['peak_used'] = max(acc['peak_used'], st_['used']); _j.dump(acc, open(vr, 'w'))
 print('player hp / boss hp:', trace[::6] + [trace[-1]])
 open(os.path.join(D, 'keys.txt'), 'w').write('\n'.join(ALL))
 if ended: print('player hp / boss hp:', trace[::6] + trace[-1:]); print('RESULT ENDED (no actors left: the player died or a scene began) steps', len(trace), 'boss hp', bh); sys.exit(0)
