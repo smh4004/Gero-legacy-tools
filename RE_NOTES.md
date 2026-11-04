@@ -370,7 +370,8 @@ SHA1 f1c4b07554d2a3b1ad2f325307051e775ce68087, 8 MB, code BG3E, last data 0x7B89
   120(1); 119(world, area, room, x, y) = load a FIELD area with the player placed at (x, y) (spawn coordinates);
   121(n) fade in over n frames. Then the event's dialogue plays over the field, and 47; 51(0) hand control back with HUD.
   (114/115 load SCENE areas: the camera only, no player - that's why script-loaded areas showed no player.)
-- 120(n) fade out over n frames, 121(n) fade in. 165(0, 20): part of the field return (meaning unknown).
+- 120(n) fade out over n frames, 121(n) fade in. 122(n) / 123(n) = the same to and from WHITE (classes 0x0804BBD4 /
+  0x0804C5B8; both wait until done; verified 2026-11-03: a white strobe = call 122 6; call 123 6). 165(0, 20): part of the field return (meaning unknown).
 - Event step type 4 = packed bytecode: the engine unpacks it into RAM (e.g. 0x02035420) and runs it. The opening's
   step 3 is the field load above plus NPC placement (93(idx, x, y)?) and camera (50, 74).
 - Flags: 27(n) push "flag n set", 28(n) push "flag n clear", 29(n) set flag n. BF uses ids up to 387 (gap 283-360).

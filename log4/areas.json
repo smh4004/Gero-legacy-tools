@@ -8561,6 +8561,29 @@
      "_note": "Gero's sentry (row 58): wakes when the safe opens (536) until destroyed (537)"
     }
    ]
+  },
+  {
+   "world": 17,
+   "area": 50,
+   "map_from": [
+    1,
+    76
+   ],
+   "template": [
+    1,
+    1
+   ],
+   "name": 531,
+   "palette_act": "act3",
+   "_note": "Backdrop for Android 13's absorption (ch9_thirteen2): the incubator room (17:14's map) with Android 13 absorbing 14 and 15 (actor android13_absorb). Loaded with native 115 only; no doors, no enemies.",
+   "spawns": [
+    {
+     "actor": "android13_absorb",
+     "x": 232,
+     "y": 256,
+     "face": "down"
+    }
+   ]
   }
  ]
 }

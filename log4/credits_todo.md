@@ -37,3 +37,5 @@ Add a line here whenever a new asset, source, feature or character goes into the
 - 2026-11-03: second length pass: side jobs Rogue Targets (ch1), The Squad Radio (ch2), Mrs. Oda (ch6); new area
   Gero's Quarters (ch7, BF Chi-Chi's room map) with Gero's sentry; new bosses the raider sniper and Gero's sentry.
   Gero's debug move set: Full Power Energy Wave replaces the Kamehameha.
+- 2026-11-03: Android 13 absorption sprites (6 frames, the cores of 14 and 15 flying into him; sheet supplied by the
+  user) shown in the phase-2 cutscene on a new backdrop area 17:50.

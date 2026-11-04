@@ -1597,5 +1597,20 @@
   },
   "id": "P2_android18_flyb",
   "file": "P2_android18_flyb.png"
+ },
+ {
+  "kind": "sprite",
+  "cell": [
+   32,
+   32
+  ],
+  "max_colors": 16,
+  "scale": 1,
+  "allow_new_colors": 0,
+  "id": "P14_android13_absorb",
+  "file": "P14_android13_absorb.png",
+  "frames": {
+   "cols": 6
+  }
  }
 ]

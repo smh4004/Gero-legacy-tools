@@ -643,8 +643,17 @@ footage + the scene scripts, and renders any text with it.
   byte-identical to rel19: no game change, so no new patch.
 - Test artifacts, not bugs: 1:94 Act 1 Gero / drone lose to the pit mechanoid (weak test party); 16:1 the sweep's Lapis
   levels up from 70 to 2,152 HP on a kill (party lists set skills, not EXP; BF recomputes stats from EXP on level-up).
-- Next (user, 2026-11-03): Android 13's absorption sprites (6 frames, 32x32, front view: cores of 14 (cyan) and 15 (gold)
-  fly into his chest) for the phase-2 cutscene ch9_thirteen2. No Spirit Bomb (user: don't implement it).
+- Android 13's absorption (user's 6-frame sheet, 8x scale -> 32x32, ground shadow stripped; art P14_android13_absorb,
+  cleaned with the existing colours only: no palette change) = actor android13_absorb (NPC template 152, slot 0/1 =
+  the absorption !front, loops as his idle). New backdrop area 17:50 (17:14's map, no doors / enemies, music BF 42)
+  holds him at (232,256). ch9_thirteen2: after the computer's line, fade -> native 115 17 50 (camera top-left 112,196,
+  him above the text box) -> "...Yes." and the capsules narration over the absorption -> the white flash (user: "like
+  the fusion dance"): natives 122 / 123 = fade to white / back from white (verified: 122 n ramps up, 123 n back; both
+  block): two quick strobes, hold white, 119 back to 17:14 with Super 13 there, fade out of the white, then his "Now I
+  am complete". Verified in the emulator (0 guard rejects; the fight starts after the journal). No Spirit Bomb (user:
+  don't implement it).
+- Delivered v18 (release + debug): the absorption cutscene and white flash. clipcheck 275 / 115 areas 0 failing, GUIDE
+  UP TO DATE.
 
 ## 2026-11-03 (night): garbled sprite shadows - root cause and the engine guard (user: trailer v8 at 0:20)
 - Symptom: garbage pixels in the shadow under every character (and in the HUD) once a fight got busy (Supply Depot,

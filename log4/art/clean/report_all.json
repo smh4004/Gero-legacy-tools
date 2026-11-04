@@ -4865,5 +4865,47 @@
   "new_palette_slots": 0,
   "warnings": [],
   "act": "menu"
+ },
+ {
+  "id": "P14_android13_absorb",
+  "detected_scale": [
+   1.0,
+   1.0
+  ],
+  "grid_offset": [
+   0.0,
+   0.0
+  ],
+  "grid_strength": 0.0,
+  "native_size": [
+   192,
+   32
+  ],
+  "mode": "pixel grid",
+  "frames": 7,
+  "colors": 16,
+  "palette_indices": [
+   1,
+   16,
+   24,
+   27,
+   47,
+   63,
+   70,
+   75,
+   78,
+   81,
+   120,
+   186,
+   212,
+   214,
+   243,
+   249
+  ],
+  "new_palette_slots": 0,
+  "warnings": [
+   "largest colour shift 18.0 dE (visible) - consider allow_new_colors"
+  ],
+  "act": null
  }
 ]

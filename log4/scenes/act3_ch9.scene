@@ -85,12 +85,19 @@ set_flag 439
 do heal
 narrate Thirteen goes down hard. Then the floor starts to hum.
 narrate Computer: Unit Thirteen, critical damage. Contingency. Integrating Units Fourteen and Fifteen.
+# (2026-11-03) the absorption on screen: the 17:50 backdrop (this room's map, Android 13 playing the user's 6-frame
+# absorption as his idle), loaded with native 115 (camera top-left 112,196: him above the text box); 119 below returns
+do call 120 20; call 115 17 50 1 112 196; call 121 20
 say #209 ...Yes.
 narrate Two capsules open in the wall. What's left of Fourteen and Fifteen flies to him, and he grows around it.
-narrate A white flash. Blue skin. A red mane. The parts of two other androids, grown into one.
+# (2026-11-03, user: "a white flash like the fusion dance") natives 122 / 123 = fade to white / back from white (BF's
+# fusion-style flash; likely, they mirror 120 / 121 with the white fade classes 0x0804BBD4 / 0x0804C5B8): two quick
+# strobes, hold white, reload with Super 13 there, come back out of the white
+do call 122 6; call 123 6; call 122 6; call 123 6; call 122 24
+do call 119 17 14 1 208 312; call 123 40
+narrate Blue skin. A red mane. The parts of two other androids, grown into one.
 say #209 Now I am complete.
 say android17 Great. Now he's bigger.
-do call 120 20; call 119 17 14 1 208 312; call 121 20
 journal Destroy Super 13
 do call 47; call 51 0
 list ch9_after13

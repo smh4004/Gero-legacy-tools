@@ -1558,5 +1558,14 @@
    "11": "0:4"
   },
   "_note": "2026-11-03 enemy sweep (tools/enemysweep.py + the frame guard): this sprite is used with a behaviour from another BF row, which asks for animation slots it doesn't have (an empty slot = animation pointer 0 = garbage frames). Vegeta (character 279) with BF's Majin Vegeta behaviour (row 70, native sprite 282): slot 11 <- idle."
+ },
+ "android13_absorb": {
+  "template": 152,
+  "act": "act3",
+  "slots": {
+   "0": "P14_android13_absorb!front",
+   "1": "P14_android13_absorb!front"
+  },
+  "_note": "Android 13 absorbing the cores of 14 (cyan) and 15 (gold): the user's 6-frame front-view sheet (2026-11-03), cutscene NPC in the 17:50 backdrop for ch9_thirteen2 (idle = the absorption, loops while the narration plays)."
  }
 }
