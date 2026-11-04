@@ -595,6 +595,28 @@ Footage: scratchpad t3/ (*.mkv recorded with harness `rec` from save states; rec
 there). Game font: tools/gamefont.py builds tools/gamefont_atlas.npz (51 glyphs) from fully typed dialogue pages in
 footage + the scene scripts, and renders any text with it.
 
+## 2026-11-03 (night): garbled sprite shadows - root cause and the engine guard (user: trailer v8 at 0:20)
+- Symptom: garbage pixels in the shadow under every character (and in the HUD) once a fight got busy (Supply Depot,
+  drone vs the Quartermaster). Same family as the 2026-11-01 drone bug ("scrambled sprites when the drone fired").
+- Cause (traced in the emulator): BF never checks an animation slot against the actor's slot count (sub_0800ECDA /
+  sub_0800ECF0) nor a frame number against the animation's frame count. The Quartermaster is BF's Grenadier sprite
+  (character 136) given the fighter behaviour 0x8A; that behaviour plays animations the Grenadier doesn't have, so the
+  frame decoder (sub_0800EF94, 0x0800F38C) got a garbage "frame" and uploaded 7,400 bytes (sub_0800F3F8: memcpy to
+  OBJ VRAM tile obj+0xC, size frame w*h, no check) into a 1,024-byte sprite slot: over the next sprites, the shared
+  shadow tile (894) and past the end of OBJ VRAM (wrapping to tile 0). The garbage pieces also go through the
+  object's EWRAM buffer (obj+0x40) and a stack buffer first, so this could corrupt RAM too.
+- Fix 1, run time (every ROM): tools/framegrd.py hooks 0x0800F38C. A frame is decoded only if it looks like every real
+  frame in the game: record in ROM and word-aligned, 1-32 pieces, every piece's tile block in ROM, word-aligned, type
+  0/1, size word = the piece's w*h, and frame / piece sizes within the object's reservation (obj+0xE = actor record
+  u16 at +2, in BYTES). Otherwise it is skipped like an unchanged frame (the sprite keeps its last good frame).
+  Verified: the depot fight (fighter AI kept) never writes past OBJ VRAM; the guard rejects frames only there; zero
+  rejects in Prototype 3, warden, sentry, resistance captain, the wave and outfit / Super 17 footage.
+- Fix 2, data (every build): tools/frameaudit.py walks every actor / slot / frame (327 actors, 28,244 frames) with the
+  same rules; build.py fails on any problem. LoG4 and clean BF: 0 problems (actor 0 is BF's dummy, skipped).
+- Rule for new enemies: give a row an 'ai' only from a row that natively uses the same character, or a fighter-template
+  actor (the guard keeps a mismatch harmless, but the sprite then freezes on those frames). The Quartermaster (43) and
+  the resistance captain (2) keep 0x8A (their fights are balanced on it; rejects are rare: 1 in a whole fight).
+
 ## 2026-11-03 (evening): second length pass, cleanups, Gero's moves (user: "Do step 3, then 4 ... then step 1")
 - The music pass is DONE (user, 2026-11-03: "We already did step 2"): log4/music.json is the user's plan. New areas take
   their neighbour's track (added 2026-11-03: 1:113 <- 1:71, 1:114 <- 1:108, 4:46 <- 4:45, 16:46/16:47 <- 16:1,

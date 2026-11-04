@@ -11,6 +11,9 @@ Read `HANDOFF.md` first, then `RE_NOTES.md` as needed. HANDOFF.md is the source 
 - Label uncertain IDs as "likely".
 - Every entrance and exit must be clearly visible. No hidden exits unless the player has a way to know they're there.
 - Before calling a map change done, run `tools/reachaudit.py`. Release builds already run `tools/clipcheck.py`.
+- Sprites: every build runs `tools/frameaudit.py` (every frame must fit its actor's OBJ VRAM) and installs
+  `tools/framegrd.py` (the engine skips garbage frames instead of writing them over VRAM). Give an enemy row an
+  `ai` only from a row that natively uses the same character; never remove the guard.
 - Palettes (user, 2026-11-02): never merge, consolidate or change existing colours, including near-duplicates. That
   covers the master palette (ROM 0x701B0, BG and OBJ), its RGB555 OBJ copy at 0x5652C, and the front-end palette.
   New colours go only into slots nothing in the game uses. Per-chapter (per-act / per-world) palettes stay, but each

@@ -154,6 +154,12 @@ def main(clean_path):
     end8 = kifx.apply(out, 0xF38000)
     assert end8 <= 0xF3C000, 'ki effects ran into the journal goals at 0xF3C000'
     print('-- ki effects: 17/18 blue blast copy + hook, green energy wave (%d bytes)' % (end8 - 0xF38000))
+    import framegrd, frameaudit                                   # sprite frame guard + audit (2026-11-03: garbled
+    endf, _ = framegrd.apply(out, 0xF3B800)                       # shadows when an enemy played a slot its sprite lacks)
+    assert end8 <= 0xF3B800 and endf <= 0xF3C000
+    na, nf, fprob = frameaudit.audit(out)
+    assert not fprob, 'sprite frames that do not fit their actor: %s (tools/frameaudit.py)' % fprob[:5]
+    print('-- sprite frame guard at 0x0800F38C (%d bytes); audit: %d actors, %d frames fit their OBJ VRAM' % (endf - 0xF3B800, na, nf))
     import kiregen                                                # ki recharge: drone and converted androids
     end7 = kiregen.apply(out, os.path.join(HERE, 'asm', 'kiregen.s'), 0xF7E800)
     print('-- ki recharge hook (%d bytes)' % (end7 - 0xF7E800))
