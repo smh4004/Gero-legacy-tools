@@ -584,6 +584,18 @@ memories, optional bosses, outfits, new boss fights, LoG2 maps / Buu's Fury engi
 signal tearing, "SPECIMEN STATUS: ALIVE". Ending: Gero's terminal types the project load and COMING SOON, then the
 CRT switches off. Crops skip the HUD and the area-name banner (start clips 3+ s in, or zoom off the bottom).
 
+### Trailer v9 (2026-11-05, user: "redo the most recent trailer with this song now starting from the 0:44 point until
+the end of the song ... fit as close as possible without cutting anything"; "remove the 'slip past the searchlights'
+portion and make sure the drone combat footage doesn't have the garbled sprites")
+GerosLegacy_trailer_v9.mp4 (42.1 s, 1080p30, + _mobile 720p) = tools/trailer9.py <song mp3> <out>: v8.1's shots, captions,
+look and terminal ending, retimed to "Android 20 Destroys City (Anime Version)" (user's MP3) from 0:44 to its end
+(~117.5 BPM; cuts every 4 beats from the first hit at 6.76 s; the incubator tease sits in the quiet bridge 20.8-27.2 s;
+outfits / bosses / LoG2 maps on the second hit 27.19 s; Gero's terminal over the fade-out). Searchlight shot and caption
+removed. Drone fights qm / p3 re-recorded from the current build (tools/trailer8_shoot.py into scratchpad t9/clips) and
+replayed with tools/vramcheck.py at every input step: 0 problems in qm, 1 flag in p3 = BF's red hit flash on the drone
+(not garbage), 0 guard rejects. Clips a16 / g66 / g80 / fly / fs25 re-recorded with tools/trailer7_shoot.py (the old t7
+folder was cleaned up).
+
 ### Teaser v3 (made 2026-11-01 on request: "remake the teaser with the new stuff, 45-50 s")
 log4/out/GerosLegacy_teaser_v3.mp4 (49.6 s) = tools/teaser.py <mp3> <out> <footage dir> (old script: tools/teaser_v2.py).
 Shots: main lab (Gero, Gevo, drone) -> animated door -> tank room -> West City day (Lapis out of Z-Mart) -> the park
