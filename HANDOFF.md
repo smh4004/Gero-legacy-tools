@@ -595,6 +595,9 @@ removed. Drone fights qm / p3 re-recorded from the current build (tools/trailer8
 replayed with tools/vramcheck.py at every input step: 0 problems in qm, 1 flag in p3 = BF's red hit flash on the drone
 (not garbage), 0 guard rejects. Clips a16 / g66 / g80 / fly / fs25 re-recorded with tools/trailer7_shoot.py (the old t7
 folder was cleaned up).
+v9.1 (same day, user: "change the full power energy wave text to just say new abilities and make sure the charging ball
+is green too"): caption NEW ABILITIES; the wave clip re-recorded on the current build (the v8 clip still had the old
+blue charging ball; now green, the blasts stay blue).
 
 ### Teaser v3 (made 2026-11-01 on request: "remake the teaser with the new stuff, 45-50 s")
 log4/out/GerosLegacy_teaser_v3.mp4 (49.6 s) = tools/teaser.py <mp3> <out> <footage dir> (old script: tools/teaser_v2.py).

@@ -60,7 +60,7 @@ CAPS = [
     (6.95, 8.6, "PILOT GERO'S COMBAT DRONE", 'low'),
     (8.95, 10.6, 'RED RIBBON PROTOTYPES', 'low'),
     (10.95, 12.6, "GERO'S LAB FIGHTS BACK", 'low'),
-    (12.95, 14.6, 'FULL POWER ENERGY WAVE', 'low'),
+    (12.95, 14.6, 'NEW ABILITIES', 'low'),
     (14.95, 16.6, 'FLY THE WORLD MAP', 'low'),
     (16.95, 18.6, 'SIDE JOBS. A MUSEUM HEIST.', 'low'),
     (18.95, 20.65, 'OPTIONAL BOSSES', 'low'),
