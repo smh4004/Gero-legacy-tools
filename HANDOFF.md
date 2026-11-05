@@ -598,6 +598,10 @@ folder was cleaned up).
 v9.1 (same day, user: "change the full power energy wave text to just say new abilities and make sure the charging ball
 is green too"): caption NEW ABILITIES; the wave clip re-recorded on the current build (the v8 clip still had the old
 blue charging ball; now green, the blasts stay blue).
+v9.2 (user: "on the all new boss fights section replace the clip with Android 13 transforming into Super 13 with the
+flash"): shot s13t = the real story moment, recorded from playthrough state pt3/states/177_ch9_pod16 (scratchpad
+t9/rec13.py: teleport into ch9_thirteen, Android 13 set to 1 HP, finish him, A through the scene with `rec`), cut from the
+absorption (sparkles) through the white strobe to Super 13 standing in the room; framed above the text boxes.
 
 ### Teaser v3 (made 2026-11-01 on request: "remake the teaser with the new stuff, 45-50 s")
 log4/out/GerosLegacy_teaser_v3.mp4 (49.6 s) = tools/teaser.py <mp3> <out> <footage dir> (old script: tools/teaser_v2.py).

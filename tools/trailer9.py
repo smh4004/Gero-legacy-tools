@@ -44,7 +44,7 @@ SHOTS = [
     (18.78, 20.83, 'sentry', 1.25, 0.4, 22, 1.15, 1.30, 0.5, 0.62, LIVE),  # Gero's sentry (slow motion, as in v8)
     (20.83, 27.0, 'fs25', 0.8, 0.6, 0, 1.00, 1.45, 0.3, 0.2, (0.6, 0.55, 1.15)),   # tease: the incubator, Age 788 (the bridge)
     (27.19, 29.58, 'outfit8', 1.6, 3.3, 22, 1.60, 1.75, 0.4, 0.42, LIVE),  # outfits -> Super 17
-    (29.58, 32.53, 'rcapt', 1.1, 1.0, 22, 1.05, 1.15, 0.5, 0.5, LIVE),     # the resistance captain
+    (29.58, 32.53, 's13t', 0.8, 1.4, 0, 1.55, 1.65, 0.52, 0.30, LIVE),    # Android 13 absorbs 14 and 15: the white flash, Super 13 (v9.2)
     (32.53, 33.32, 'archive', 0.4, 1.0, 22, 1.10, 1.15, 0.5, 0.45, LIVE),  # LoG2 maps: research archive,
     (33.32, 34.10, 'district', 0.4, 1.0, 22, 1.15, 1.20, 0.5, 0.5, LIVE),  #   the burning district,
     (34.10, 34.88, 'bio', 0.4, 1.0, 22, 1.05, 1.10, 0.5, 0.5, LIVE),       #   the bio wing
