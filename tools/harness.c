@@ -4,7 +4,7 @@
 // or "rec name n keys": like "<n> <keys>" but appends every frame (raw rgb24 240x160) to name.mkv (via ffmpeg; consecutive rec lines with the same name make one clip) and the sound
 // (s16 stereo 48000 Hz) to name.pcm, for video; "arec name n keys" records the sound only. Sound is drained every frame either way.
 // or "pshot name": the same frame as name_full.png (all layers), name_bg.png (backgrounds) and name_obj.png (sprites) + its OAM / OBJ VRAM
-// or "w8 addr value" (bus write, hex), or "lshot name mask": run one frame with only the layers in mask drawn (bit0-3 BG0-3, bit4 OBJ), save it, re-enable all
+// or "reset" (power cycle; the save data stays), "sdout name" (save data -> outdir/name.sav), "sdin path" (load raw save data), or "w8 addr value" (bus write, hex), or "lshot name mask": run one frame with only the layers in mask drawn (bit0-3 BG0-3, bit4 OBJ), save it, re-enable all
 #include <mgba/core/core.h>
 #include <mgba/core/serialize.h>
 #include <mgba/gba/core.h>
@@ -35,7 +35,9 @@ int main(int argc,char**argv){
  struct mCore*c=mCoreFind(argv[1]); if(!c)return 1; c->init(c);
  color_t*buf=calloc(256*256,sizeof(color_t)); c->setVideoBuffer(c,buf,256);
  mCoreInitConfig(c,0); c->opts.skipBios=true; mCoreConfigSetDefaultIntValue(&c->config,"volume",0x100); mCoreLoadConfig(c);
- mCoreLoadFile(c,argv[1]); c->reset(c);
+ mCoreLoadFile(c,argv[1]);
+ if(getenv("SAV")){struct VFile*sv=VFileOpen(getenv("SAV"),O_CREAT|O_RDWR);if(sv)c->loadSave(c,sv);}   /* env SAV: save data in a real .sav file (kept between runs and ROMs) */
+ c->reset(c);
  c->setAudioBufferSize(c,4096); blip_set_rates(c->getAudioChannel(c,0),c->frequency(c),48000); blip_set_rates(c->getAudioChannel(c,1),c->frequency(c),48000);
  FILE*s=fopen(argv[2],"r"); char line[512]; char path[600]; long frame=0;
  while(fgets(line,sizeof line,s)){
@@ -55,6 +57,9 @@ int main(int argc,char**argv){
    snprintf(path,600,"%s/%s_vram.bin",argv[3],a);o=fopen(path,"wb");for(unsigned k=0;k<0x8000;k++){uint8_t v=c->rawRead8(c,0x06010000+k,-1);fwrite(&v,1,1,o);}fclose(o);
    snprintf(path,600,"%s/%s_pal.bin",argv[3],a);o=fopen(path,"wb");for(unsigned k=0;k<0x400;k++){uint8_t v=c->rawRead8(c,0x05000000+k,-1);fwrite(&v,1,1,o);}fclose(o);
    continue;}
+  if(sscanf(line,"sdout %127s",a)==1){void*sd=0;size_t n=c->savedataClone(c,&sd);snprintf(path,600,"%s/%s.sav",argv[3],a);FILE*o=fopen(path,"wb");if(n)fwrite(sd,1,n,o);fclose(o);free(sd);printf("sdout %s %zu\n",a,n);continue;}
+  if(sscanf(line,"sdin %599s",path)==1){FILE*f=fopen(path,"rb");if(f){static char sd[0x20000];size_t n=fread(sd,1,sizeof sd,f);fclose(f);c->savedataRestore(c,sd,n,false);printf("sdin %zu\n",n);}continue;}
+  if(!strncmp(line,"reset",5)){c->reset(c);continue;}   /* power cycle: SRAM / flash save data stays, like a real cart */
   { unsigned wa,wv; if(sscanf(line,"w8 %x %x",&wa,&wv)==2){c->busWrite8(c,wa,wv);continue;} }
   if(sscanf(line,"shot %127s",a)==1){snprintf(path,600,"%s/%s.png",argv[3],a);shot(c,buf,path);printf("shot %s @%ld\n",a,frame);continue;}
   if(sscanf(line,"dump %127s %x %x",a,&addr,&len)==3){snprintf(path,600,"%s/%s.bin",argv[3],a);FILE*o=fopen(path,"wb");for(unsigned k=0;k<len;k++){uint8_t v=c->rawRead8(c,addr+k,-1);fwrite(&v,1,1,o);}fclose(o);continue;}

@@ -116,10 +116,13 @@ def legal_bitmap(rom, title=LEGAL_TITLE):
 def legal_apply(rom, at):
     a = legal_bitmap(rom)
     data = a.tobytes()
-    rom[at:at + 8 + len(data)] = struct.pack('<II', 0, len(data)) + data
+    # (2026-11-06) BF's legal-screen code also reads the word just BEFORE the bitmap (ldr =bitmap; subs #4; ldr: its
+    # IWRAM pointer 0x03003300, compiler-pooled there) and writes through it, so that word moves along with the bitmap
+    # (without it the code wrote through junk to 0xFFFEFDFD)
     assert struct.unpack_from('<I', rom, LEGAL_LITERAL)[0] == BASE + LEGAL_BITMAP
-    struct.pack_into('<I', rom, LEGAL_LITERAL, BASE + at)
-    return (at + 8 + len(data) + 3) & ~3
+    rom[at:at + 12 + len(data)] = bytes(rom[LEGAL_BITMAP - 4:LEGAL_BITMAP]) + struct.pack('<II', 0, len(data)) + data
+    struct.pack_into('<I', rom, LEGAL_LITERAL, BASE + at + 4)
+    return (at + 12 + len(data) + 3) & ~3
 
 
 if __name__ == '__main__':      # preview: python3 tools/title.py <rom> <art> <out.png>

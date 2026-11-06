@@ -561,3 +561,10 @@ SHA1 f1c4b07554d2a3b1ad2f325307051e775ce68087, 8 MB, code BG3E, last data 0x7B89
 - Porting a LoG2 song alone played nothing; keeping LoG2's layout bank B + song 0 + the song works (bank B is read past
   its 14 bytes). LoG2 song 7 = "Era of Darkness" (envelope match 0.97 vs the user's MP3). LoG4 puts it in slot 45 at
   0xF80000 (447,632 bytes incl. all LoG2 samples); 0xFED490-0x1000000 is free.
+
+## EWRAM heap (verified 2026-11-06)
+- Init sub_0803D4D0: head block at 0x02000800, size 0xFDFE words (literal 0x0803D738), so BF's heap originally ran to
+  0x0203FFF8: all of EWRAM above 0x02000800 belongs to it. Free-list head pointer IWRAM 0x03003488. Block header:
+  +2 u16 size (words), +8 u16 next (word offset from 0x02000000). Alloc sub_0803D5B8(bytes), split sub_0803D4E8,
+  largest free sub_0803D756. LoG4 shortens it by 0x40 words (tools/kiregen.reserve_ewram) to own 0x0203FF00-0x0203FFFF.
+- BF clears EWRAM at boot, so RAM starts zeroed on every emulator; the heap filling up is what reached LoG4's words.

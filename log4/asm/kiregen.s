@@ -12,6 +12,8 @@
 	.equ FLASH, 0x0203FF08            @ (2026-11-03) Super 17 white flash: frames left (EWRAM word, unused by BF)
 	.equ FLASHLEN, 46                 @ frames (the flash_levels table below)
 	.equ FLASHCNT, 0x0203FF0C         @ BLDCNT as it was before the flash (restored at the end)
+	.equ EWSIG, 0x0203FF10            @ (2026-11-06) 'LoG4' once 0x0203FF00-0x0203FF0F have been cleared (fadepal.s does
+	.equ SIG, 0x34476F4C              @ the same): EWRAM isn't zero at power-on in VBA-M (Delta etc.) or on hardware
 	.global hook_regen
 	.align 2
 @ Super 17 (user 2026-11-03: Strength x1.5). While Seventeen (character 1) is in form 15, half his Strength is added on
@@ -21,10 +23,28 @@ hook_regen:
 @ White flash (user 2026-11-03: "like the fusion dance", as Super 13 gets in his cutscene). Started below when Seventeen
 @ enters form 15; each frame BLDCNT = brighten BG0-3 + OBJ + backdrop and BLDY = flash_levels[frames left] (0-16),
 @ then BLDCNT goes back to the area's own value. BF fades with palettes, so BLDY is otherwise unused.
-	ldr r2, =FLASH
+	ldr r2, =EWSIG
+	ldr r3, [r2]
+	ldr r0, =SIG
+	cmp r3, r0
+	beq 17f
+	str r0, [r2]
+	movs r3, #0
+	subs r2, #16
+	str r3, [r2]
+	str r3, [r2, #4]
+	str r3, [r2, #8]
+	str r3, [r2, #12]
+17:	ldr r2, =FLASH
 	ldr r3, [r2]
 	cmp r3, #0
 	beq 19f
+	cmp r3, #FLASHLEN
+	bls 16f
+	movs r3, #0                        @ not a flash this hook started: drop it, leave BLDCNT alone
+	str r3, [r2]
+	b 19f
+16:
 	subs r3, #1
 	str r3, [r2]
 	ldr r1, =0x04000050

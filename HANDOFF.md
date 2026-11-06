@@ -918,6 +918,20 @@ process during the whole check ... chapter by chapter and save progress ... to r
     str r5,[r4,#0x54]); the code after reloads r0 from +0x4c. Enemy projectiles (literal 0x27DAC) untouched; every
     other character's Energy Blast keeps the yellow burst. Verified at the 17:48 enemies (shoot lists t9_hit17 /
     t9_hit18): blue / pink bursts on hits, vramcheck over 74 samples each: 0 problems, 0 guard rejects.
+- v21.3 (2026-11-06, user on iPhone: New Game crashed in one app; Delta showed the lab grey, then a white screen; fine
+  in mGBA). Cause: LoG4's RAM words at EWRAM 0x0203FF00-0x0203FF10 (fadepal last world, ki counter, Super 17 flash
+  counter / saved BLDCNT) sat INSIDE BF's heap (init 0x0803D4D0: blocks from 0x02000800, size literal 0x0803D738 =
+  0xFDFE words -> 0x0203FFF8; free-list head IWRAM 0x03003488; header [+2 u16 size in words][+8 u16 next, words from
+  0x02000000]). Under VBA-M's timing the heap reached them: BF data in the flash counter = white screen, then a junk
+  BLDCNT (the lab's BG0 light layer unblended = grey), and LoG4's per-frame writes corrupting BF blocks = crash.
+  Fix: tools/kiregen.reserve_ewram() shortens the heap by 0x40 words (ends 0x0203FEF8), so 0x0203FF00-0x0203FFFF is
+  LoG4's own. Also: both hooks clear 0x0203FF00-0F once (signature 'LoG4' at 0x0203FF10), the flash ignores a counter
+  above its length, fadepal ignores a world byte above 32 (fadepal.bin rebuilt, WORLDPAL_OFF 0xB4); the legal screen's
+  relocated bitmap now keeps BF's word in front of it (BF's code reads bitmap-4 = IWRAM pointer 0x03003300; LoG4 had
+  junk there, two writes to 0xFFFEFDFD at boot). Any new LoG4 RAM variable goes in 0x0203FF14-0x0203FF7F or
+  0x0203FF84-0x0203FFFF, never below 0x0203FF00. Verified: heap head 0x0203FEF4 after the opening (185 KB free),
+  tools/badstore (new: prints any write to unmapped memory with PC) reports none, clipcheck 275/115 0 failing, debug
+  boot to the room. Harness gained `reset`, `sdout`, `sdin` and env SAV=<file.sav> (real save file).
 - Charge-up ball (user 2026-11-03 night: "make the charge up ball ... green as well"): BF's ki charge ball (frame
   records 0x721164-0x721218, raw tiles 0x720864-0x721164) is shared by several beams (Kamehameha table 0x71DA68 etc.),
   so kifx.charge() writes a green copy of tiles + records after the blue blast copy and repoints only the wave's own

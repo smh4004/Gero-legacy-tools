@@ -10,7 +10,9 @@ log4/palettes.json: {"<world id>": {"obj": {"<slot>": [r, g, b], ...}, "bg": {..
 """
 import json, os, struct
 CODE = 0x9F0000
-WORLDPAL_OFF = 0x90          # address of WORLDPAL in fadepal.bin (arm-none-eabi-nm log4/asm/fadepal.elf)
+WORLDPAL_OFF = 0xB4          # address of WORLDPAL in fadepal.bin (arm-none-eabi-nm log4/asm/fadepal.elf); rebuild after
+                             # editing fadepal.s: cd log4/asm && arm-none-eabi-as -mthumb fadepal.s -o fadepal.o &&
+                             # arm-none-eabi-ld -Ttext=0x089F0000 fadepal.o -o fadepal.elf && arm-none-eabi-objcopy -O binary fadepal.elf fadepal.bin
 FADE = 0x7074
 MASTER = 0x701B0
 
@@ -18,6 +20,7 @@ MASTER = 0x701B0
 def apply(rom, asm_bin, pal_json, worldpal_off=WORLDPAL_OFF):
     """pal_json: path to a palettes.json, or an already-merged dict."""
     code = open(asm_bin, 'rb').read()
+    assert len(code) == worldpal_off + 128, 'fadepal.bin: WORLDPAL is not at worldpal_off (rebuilt? see WORLDPAL_OFF)'
     rom[CODE:CODE + len(code)] = code
     # veneer at the old entry: bx pc / nop / (ARM) ldr ip,[pc] / bx ip / .word fadepal|1
     rom[FADE:FADE + 16] = struct.pack('<HHIII', 0x4778, 0x46C0, 0xE59FC000, 0xE12FFF1C, 0x08000000 + CODE + 1)

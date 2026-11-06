@@ -5,6 +5,11 @@
 @ While the pointer isn't a field area (menus such as Switch Character put something else there) the last field
 @ world's palette is used, so act-specific sprite colours stay right on menu screens.
     .equ LASTWORLD, 0x0203FF00   @ EWRAM byte, unused by BF (0x0203FC00-0x0203FFF5 stay zero in every state tested)
+    .equ EWSIG, 0x0203FF10       @ (2026-11-06) LoG4's EWRAM words 0x0203FF00-0x0203FF0F are cleared once, the first time
+    .equ SIG, 0x34476F4C         @ either hook runs, and EWSIG = 'LoG4' marks it done. mGBA starts EWRAM zeroed, but
+                                 @ VBA-M (Delta, other phone apps) and real hardware don't: leftover values there set off
+                                 @ the Super 17 white flash and its BLDCNT restore at boot (white / grey screen) and sent
+                                 @ this hook to a random palette on menus (kiregen.s does the same check)
     .syntax unified
     .text
     .thumb
@@ -12,7 +17,19 @@
     .thumb_func
 fadepal:
     push {r4, r5, r6, r7, lr}
-    ldr  r6, =LASTWORLD          @ last valid field world + 1 (0 = none yet)
+    ldr  r4, =EWSIG
+    ldr  r5, [r4]
+    ldr  r6, =SIG
+    cmp  r5, r6
+    beq  8f
+    str  r6, [r4]
+    movs r5, #0
+    subs r4, #16
+    str  r5, [r4]
+    str  r5, [r4, #4]
+    str  r5, [r4, #8]
+    str  r5, [r4, #12]
+8:  ldr  r6, =LASTWORLD          @ last valid field world + 1 (0 = none yet)
     ldr  r4, =0x03001980
     ldr  r4, [r4]
     cmp  r4, #0
@@ -26,6 +43,8 @@ fadepal:
 6:  ldrb r4, [r6]                @ not in a field area: keep the last field world's palette
     cmp  r4, #0
     beq  1f
+    cmp  r4, #32
+    bhi  1f                      @ (never set by this hook: not a world)
     subs r4, #1
 7:  ldr  r5, =WORLDPAL
     lsls r4, r4, #2
