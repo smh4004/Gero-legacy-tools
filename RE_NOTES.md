@@ -497,6 +497,14 @@ SHA1 f1c4b07554d2a3b1ad2f325307051e775ce68087, 8 MB, code BG3E, last data 0x7B89
   [7, 20, 4, 11]: 20 = Super Saiyan, so ch5_start removes it from both twins.
 - Skill table 0x71DB04, 24-byte records [u16 name UI, u16 desc UI][fn usable][fn use][u32][icon ptr][icon ptr]; name UI =
   1312 + 2*(id-1). 18 = Saiyaman (use = 0x0801A464), 20 = Super Saiyan.
+- Skill table length: 23 records (ids 0-22). Record 23's first 16 bytes look like a skill (Ultra Volleyball Attack,
+  Gotenks's) but its last 8 bytes are a code literal pool (0x03001C4C, 0x03001068): never write it. Records 19 and 21
+  are unused stubs (19 = Saiyaman's UI, 21 = Super Saiyan's). LoG4 uses 21 / 22 for Infinity Bullet / Power Blitz.
+- Energy Blast (skill 7): use 0x08019F72 (EP max*0xCCD>>16, 12-byte action class 0x0804DC14, animation state 3).
+  Action update sub_0801AF3C: player obj +0x12 counter; fires at 16 (sub_0800FF44 + sub_08019858(buf, obj, 1)); from
+  40 refires on a new B press (action +4, set by sub_0801AFE2 from the input getter (obj vtable +0x84) +4 bit 1 =
+  newly pressed; +2 bit 1 = held, as the hold-B beams use). Ends through obj vtable +0x28 (obj, 0). Class tables hold
+  entries relative to the table (target + 1 - table).
 - Natives 164/165/166 (0xA4-0xA6) = add / remove / replace a skill (c, id[, new]). The "165 0 20" in BF's opening idiom
   removes Super Saiyan from character 0.
 - Saiyaman use: current form's +0x16 != 0xFF -> costume-in action (slot 19, finish sub_0801C5CE: form <- 14), else

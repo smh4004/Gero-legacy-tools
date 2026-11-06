@@ -204,6 +204,8 @@ do call 120 60
 # 1:79 is the same tank room with Lazuli's NPC as 18.
 # 165 with skill id 240 (0xF0) = android upgrade (tools/outfit.py hook_rm): STR/POW +22, END +18, SPD +12, HP +230, EP +70
 do call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4
+do call 164 1 22; call 164 3 21
+# (2026-11-05) the rapid-fire skill: Power Blitz (17, skill 22) / Infinity Bullet (18, skill 21), tools/powerblitz.py
 do call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 do call 119 1 79 1 150 228; call 121 60
 narrate The procedure took eleven days.
@@ -211,6 +213,7 @@ narrate When the twins opened their eyes, the world looked different. Sharper. S
 set_flag 306
 journal Lapis and Lazuli are gone
 narrate New skill: Outfit. Select it and press the B Button to switch between the android clothes and the old ones.
+narrate New skills: Power Blitz for Seventeen, Infinity Bullet for Eighteen. Hold the B Button to fire a rapid stream of energy blasts.
 run ch7_start
 list gero_lab_talk
 say gero Rest while you can. Your first tests begin tomorrow.

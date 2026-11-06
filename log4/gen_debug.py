@@ -38,7 +38,7 @@ TWINS = ['call 151 1; call 151 3; call 149 1; call 152 0; call 152 2',
          'call 165 1 20; call 165 3 20',
          'call 165 1 7; call 165 1 6; call 165 1 17; call 165 3 7; call 165 3 4; call 165 3 11',
          'call 164 1 8; call 164 3 8']
-ANDROIDS = TWINS + ['call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4',
+ANDROIDS = TWINS + ['call 164 1 7; call 164 1 6; call 164 3 7; call 164 3 6; call 164 3 4', 'call 164 1 22; call 164 3 21',
                     'call 164 1 18; call 164 3 18; call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240']
 TITLE = {1: 'Red Ribbon Science', 2: 'An Enemy Bullet', 3: 'The Boy Called Goku', 4: 'The First Androids',
          5: 'Siblings', 6: 'Taken', 7: 'Activation', 8: 'The Massacre', 9: 'Years of Terror', 10: 'The Last Stand'}

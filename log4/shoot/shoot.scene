@@ -588,3 +588,28 @@ do call 164 1 20
 set_flag 441
 do heal
 stop
+list sw_pb17
+# (2026-11-05) Power Blitz test: Android 17 leads, skills [Power Blitz 22, Energy Blast 7, Full Power Energy Wave 6]
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 1 7; call 165 1 6; call 165 1 17
+do call 164 1 22; call 164 1 7; call 164 1 6
+do call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal
+stop
+list sw_pb18
+# (2026-11-05) Infinity Bullet test: Android 18 leads, skills [Infinity Bullet 21, Energy Blast 7, Full Power Energy Wave 6]
+do call 151 1; call 151 3; call 149 3; call 152 0; call 152 2
+do call 165 3 20; call 165 3 7; call 165 3 4; call 165 3 11
+do call 164 3 21; call 164 3 7; call 164 3 6
+do call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal
+stop
+list sw_pb17s
+# (2026-11-05) Power Blitz as Super 17: sw_pb17 plus Super 17 (skill 20, flag 441); skills [22, 20, 7, 6]
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 1 7; call 165 1 6; call 165 1 17
+do call 164 1 22; call 164 1 20; call 164 1 7; call 164 1 6
+do call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+set_flag 441
+do heal
+stop

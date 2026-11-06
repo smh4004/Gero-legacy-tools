@@ -139,7 +139,7 @@ Two sets of collectibles tell the story behind the story. Each page is an examin
    - **Side job "Mrs. Oda":** the twins' old neighbour sleeps under the bridge on the Riverside (**Riverside (night)**: Milk x2, Senzu Bean x1). Her bag is snagged on the white fence by the dome house at the Docks (**Docks (night)** (examine)). Bring it back for a memory of their mother.
 5. The Old Warehouse: "Destroy the machine in the warehouse".
 6. **Boss: The Collector (HP 520, level 56)**.
-7. The ambush follows. The twins wake in Gero's lab: "Lapis and Lazuli are gone". New skills for both twins: **Energy Blast** (their blasts are blue), **Full Power Energy Wave** (a long green beam) and **Outfit** (select it and press B to switch between the android outfit and the old clothes). Eighteen also gets **Stun Shot**.
+7. The ambush follows. The twins wake in Gero's lab: "Lapis and Lazuli are gone". New skills for both twins: **Energy Blast** (Seventeen's blasts are blue, Eighteen's pink), a rapid-fire blast (hold B to keep firing; each blast costs a little energy) called **Power Blitz** for Seventeen and **Infinity Bullet** for Eighteen, **Full Power Energy Wave** (a long yellow-orange beam) and **Outfit** (select it and press B to switch between the android outfit and the old clothes). Eighteen also gets **Stun Shot**.
 
 ---
 

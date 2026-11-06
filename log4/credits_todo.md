@@ -41,3 +41,6 @@ Add a line here whenever a new asset, source, feature or character goes into the
   user) shown in the phase-2 cutscene on a new backdrop area 17:50.
 - 2026-11-03: Super 17 transformation: white flash (BLDY brighten, kiregen.s) and a slightly taller / bulkier Super 17
   sprite (Seventeen's frames scaled x1.12 / x1.1, 2 KB OBJ VRAM).
+- 2026-11-05: new skill Power Blitz (Seventeen, blue) / Infinity Bullet (Eighteen, pink): hold B for rapid-fire ki
+  blasts (tools/powerblitz.py, BF skill slots 22 / 21). Eighteen's Energy Blast is now pink; the Full Power Energy Wave
+  and its charge ball now use Final Flash colours (yellow, orange rim) for both twins. Mention on the features card.

@@ -149,11 +149,11 @@ def main(clean_path):
     end_g = goals.apply(out, os.path.join(HERE, 'goals.json'), 0xF3C000)
     print('-- journal goals: %d (%d bytes)' % (len(json.load(open(os.path.join(HERE, 'goals.json')))['goals']), end_g - 0xF3C000))
     assert end_g <= 0xF40000
-    import kifx                                                   # blue ki blasts / green energy wave for 17 and 18
+    import kifx                                                   # 17 blue / 18 pink ki blasts, Final Flash wave, Power Blitz
     assert end3 < 0xF38000, 'scenes ran into the ki effect copy at 0xF38000'
     end8 = kifx.apply(out, 0xF38000)
     assert end8 <= 0xF3C000, 'ki effects ran into the journal goals at 0xF3C000'
-    print('-- ki effects: 17/18 blue blast copy + hook, green energy wave (%d bytes)' % (end8 - 0xF38000))
+    print('-- ki effects: 17 blue / 18 pink blast copies + hook, Final Flash coloured energy wave, Power Blitz / Infinity Bullet (%d bytes)' % (end8 - 0xF38000))
     import framegrd, frameaudit                                   # sprite frame guard + audit (2026-11-03: garbled
     endf, _ = framegrd.apply(out, 0xF3B800, int(os.environ['LOG4_GUARD_COUNTER'], 16) if shoot and os.environ.get('LOG4_GUARD_COUNTER') else None)                       # shadows when an enemy played a slot its sprite lacks)
     assert end8 <= 0xF3B800 and endf <= 0xF3C000

@@ -14,7 +14,15 @@ tiles are recoloured in place, green. Its charge-up ball is shared with other be
 (charge() below).
 Colours: each pixel's colour gets the target hue (same saturation and brightness) and is mapped to the nearest colour
 that already exists in the OBJ palette, using only slots whose colour is still BF's (LoG4 put new colours in some
-unused slots; slot 255 shows pink in game). The palette itself is not touched."""
+unused slots; slot 255 shows pink in game). The palette itself is not touched.
+
+2026-11-05 (user: "I want 18 to have a pink version and 17 a blue version ... Full power energy wave ... yellow/orange
+basically the final flash colors just maintain the shape. Make sure the charging ball has the right color too. ...
+change Android 18's regular ki blasts to be pink, leave 17's blue"; "call Android 18's power blitz Infinity Bullet"):
+- Energy Blast: blue copy for 17 (character 1), pink copy for 18 (character 3); the hook picks by G[0].
+- Full Power Energy Wave and its charge ball: Final Flash colours (yellow core fading to orange; whites stay white).
+- Power Blitz (17, skill 22) / Infinity Bullet (18, skill 21): new rapid-fire skill (tools/powerblitz.py). Its blasts go
+  through the same projectile constructor, so they are blue / pink like each twin's Energy Blast."""
 import colorsys, json, os, struct, sys
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -25,10 +33,13 @@ BLAST_TABLE, BLAST_RECS = 0x71370C, 16
 BEAM_TILES = (0x721218, 0x722318)       # horizontal pieces, vertical pieces (0x721A18-), sparkles (0x722218-)
 SITE = 0x197F2
 ORIG = bytes.fromhex('207cbc4a41000918090189182165')     # ldrb r0,[r4,#0x10]; ldr r2,=0x0871370C; ... str r1,[r4,#0x50]
-BLUE, GREEN = 215 / 360, 125 / 360
+BLUE, PINK = 215 / 360, 330 / 360
 # OBJ slots whose in-game colour (PRAM dumped in Act 3 fights, 17:38 and 17:34, 2026-11-03) is not BF's: LoG4's portraits
 # and new sprites live there. Never map effect pixels onto them (slot 53 showed pink, 229 dark grey).
-IN_GAME_CHANGED = {8, 9, 14, 53, 102, 103, 151, 193, 194, 217, 218, 219, 223, 224, 225, 226, 229, 236, 254, 255}
+IN_GAME_CHANGED = {8, 9, 14, 53, 102, 103, 151, 193, 194, 217, 218, 219, 223, 224, 225, 226, 229, 236, 254, 255,
+                   # (2026-11-05) and in Gero's lab in Act Three (its act palette; PRAM of every playthrough state from the
+                   # conversion on, fades left out): the blue blast had used 163 / 164 / 175 there, now avoided
+                   61, 128, 131, 140, 141, 142, 143, 144, 152, 156, 162, 163, 164, 165, 166, 175, 221, 222}
 
 HOOK = r'''
 	.syntax unified
@@ -41,10 +52,11 @@ hook_blast:                        @ from 0x080197F2: r4 = new projectile, r0-r3
 	ldr r1, =0x03001068            @ G[0] = current character
 	ldrb r1, [r1]
 	cmp r1, #1
-	beq 1f
-	cmp r1, #3
+	bne 1f
+	ldr r2, =blue_table
+1:	cmp r1, #3
 	bne 2f
-1:	ldr r2, =blue_table
+	ldr r2, =pink_table
 2:	lsls r1, r0, #1
 	adds r1, r1, r0
 	lsls r1, r1, #4
@@ -55,6 +67,8 @@ hook_blast:                        @ from 0x080197F2: r4 = new projectile, r0-r3
 	.pool
 	.align 2
 blue_table:
+	.space %d
+pink_table:
 	.space %d
 '''
 
@@ -68,15 +82,22 @@ def rom_objpal(rom):
     return np.array([[(c & 31) << 3, ((c >> 5) & 31) << 3, ((c >> 10) & 31) << 3] for c in v], np.int32)
 
 
+def final_flash(s, v):
+    """Final Flash's colours: the beam's body yellow, its pale inner glow light yellow, its deep-coloured rim orange
+    (hue by the BF pixel's saturation: the Electric Kamehameha is pale cyan inside, deep blue at the rim)."""
+    return (30 if s >= 0.8 else 48 if s >= 0.5 else 56) / 360
+
+
 def remap(pal, hue, ok=None):
-    """Palette index -> index of the nearest existing colour with the target hue (0 stays 0). ok: allowed targets."""
+    """Palette index -> index of the nearest existing colour with the target hue (0 stays 0). ok: allowed targets.
+    hue: a number, or a function of the pixel's (saturation, brightness)."""
     hsv = [colorsys.rgb_to_hsv(*(c / 255.0)) for c in pal]
     ok = np.array([i for i in range(1, 255) if ok is None or i in ok])
     out = np.arange(256)
     for i in range(1, 256):
         h, s, v = hsv[i]
         if s < 0.12: continue                        # whites and greys stay (the hot core of the blast)
-        r, g, b = colorsys.hsv_to_rgb(hue, s, v)
+        r, g, b = colorsys.hsv_to_rgb(hue(s, v) if callable(hue) else hue, s, v)
         want = np.array([r, g, b]) * 255
         d = ((pal[ok] - want) ** 2).sum(1)
         out[i] = int(ok[int(np.argmin(d))])
@@ -86,31 +107,36 @@ def remap(pal, hue, ok=None):
 def apply(rom, at):
     pal = palette(); cur = rom_objpal(rom)
     same = {i for i in range(256) if tuple(cur[i]) == tuple(pal[i])} - IN_GAME_CHANGED
-    blue, green = remap(pal, BLUE, same), remap(pal, GREEN, same)
+    blue, pink, flash = remap(pal, BLUE, same), remap(pal, PINK, same), remap(pal, final_flash, same)
     # beam: in place
     a, b = BEAM_TILES
-    rom[a:b] = bytes(green[np.frombuffer(bytes(rom[a:b]), np.uint8)].astype(np.uint8))
-    # blast: hook + table copy (assembled first to learn where blue_table lands), then the recoloured tiles after it
+    rom[a:b] = bytes(flash[np.frombuffer(bytes(rom[a:b]), np.uint8)].astype(np.uint8))
+    # blast: hook + two table copies (assembled first to learn where they land), then the recoloured tiles after it
     src = os.path.join(HERE, '..', 'log4', 'out', '_kifx.s')
-    open(src, 'w').write(HOOK % (12 * BLAST_RECS))
+    open(src, 'w').write(HOOK % (12 * BLAST_RECS, 12 * BLAST_RECS))
     code, sym = outfit.assemble(src, 0x08000000 + at)
-    assert set(rom[at:at + len(code) + (BLAST_TILES[1] - BLAST_TILES[0])]) <= {0xFF, 0x00}, 'kifx space not free'
-    tiles_at = (at + len(code) + 3) & ~3
     t0, t1 = BLAST_TILES
-    rom[tiles_at:tiles_at + (t1 - t0)] = bytes(blue[np.frombuffer(bytes(rom[t0:t1]), np.uint8)].astype(np.uint8))
-    tab = bytearray(rom[BLAST_TABLE:BLAST_TABLE + 12 * BLAST_RECS])
-    for k in range(BLAST_RECS):
-        p = struct.unpack_from('<I', tab, 12 * k + 8)[0] - 0x08000000
-        assert t0 <= p < t1, hex(p)
-        struct.pack_into('<I', tab, 12 * k + 8, 0x08000000 + tiles_at + (p - t0))
+    assert set(rom[at:at + len(code) + 2 * (t1 - t0)]) <= {0xFF, 0x00}, 'kifx space not free'
     code = bytearray(code)
-    bt = sym['blue_table'] - 0x08000000 - at
-    code[bt:bt + len(tab)] = tab
+    tiles_at = (at + len(code) + 3) & ~3
+    for name, cmap in (('blue_table', blue), ('pink_table', pink)):
+        rom[tiles_at:tiles_at + (t1 - t0)] = bytes(cmap[np.frombuffer(bytes(rom[t0:t1]), np.uint8)].astype(np.uint8))
+        tab = bytearray(rom[BLAST_TABLE:BLAST_TABLE + 12 * BLAST_RECS])
+        for k in range(BLAST_RECS):
+            p = struct.unpack_from('<I', tab, 12 * k + 8)[0] - 0x08000000
+            assert t0 <= p < t1, hex(p)
+            struct.pack_into('<I', tab, 12 * k + 8, 0x08000000 + tiles_at + (p - t0))
+        bt = sym[name] - 0x08000000 - at
+        code[bt:bt + len(tab)] = tab
+        tiles_at += t1 - t0
+    tiles_at -= 2 * (t1 - t0)
     rom[at:at + len(code)] = code
     assert bytes(rom[SITE:SITE + 14]) == ORIG, 'projectile constructor changed'
     # ldr r1,[pc,#4]; bx r1; nop; .word hook|1; nop; nop  (0x080197F2 .. 0x080197FF)
     rom[SITE:SITE + 14] = bytes.fromhex('01490847c046') + struct.pack('<I', sym['hook_blast'] | 1) + bytes.fromhex('c046c046')
-    return charge(rom, tiles_at + (t1 - t0), green)
+    end = charge(rom, tiles_at + 2 * (t1 - t0), flash)
+    import powerblitz                                    # the rapid-fire skill (2026-11-05)
+    return powerblitz.apply(rom, end)
 
 
 # The charge-up ball (user 2026-11-03: "make the charge up ball for the full power energy wave green as well"). BF's
@@ -124,7 +150,7 @@ CHARGE_RECS = (0x721164, 0x721218)
 WAVE_TABLE, WAVE_ENTRIES = 0x725018, (0x725020, 0x725030, 0x725040)
 
 
-def charge(rom, at, green):
+def charge(rom, at, green):           # green: the colour map (Final Flash since 2026-11-05)
     at = (at + 3) & ~3
     t0, t1 = CHARGE_TILES; r0, r1 = CHARGE_RECS
     assert struct.unpack_from('<I', rom, 0x1AE1C)[0] == 0x08000000 + WAVE_TABLE, 'wave table literal moved'

@@ -886,6 +886,25 @@ process during the whole check ... chapter by chapter and save progress ... to r
   map onto existing OBJ colours only; kifx.IN_GAME_CHANGED lists the 20 OBJ slots whose in-game colour isn't BF's
   (measured from PRAM in Act 3) - never targets. Verified in the emulator: blue blast, green wave for both, all
   directions.
+- Ki effects v2 (user 2026-11-05: "a rapid fire ki blast attack, I want 18 to have a pink version and 17 to have a
+  blue version. Full power energy wave ... yellow/orange basically the final flash colors ... the charging ball has the
+  right color too ... change Android 18's regular ki blasts to be pink, leave 17's blue"; "call Android 18's power blitz
+  Infinity Bullet ... nothing different from 17's version aside from color and name"):
+  - tools/kifx.py: two Energy Blast copies, blue (character 1) and pink (character 3, hue 330); the Full Power Energy
+    Wave tiles and its charge-ball copy recoloured Final Flash (hue by the BF pixel's saturation: rim orange 30, body
+    yellow 48, inner glow pale yellow 56; whites stay). IN_GAME_CHANGED now also lists the Act Three lab's act-palette
+    slots (61, 128, 131, 140-144, 152, 156, 162-166, 175, 221, 222: measured from every playthrough state after the
+    conversion, fades left out). The old blue blast had used 163 / 164 / 175, which show other colours in the lab.
+  - tools/powerblitz.py (called from kifx): new skill = Energy Blast's use with its own action class (a copy of
+    0x0804DC14 with the update replaced): first blast at frame 16 as usual, then one every 6 frames while B is held
+    (input +2 bit 1), each costing max EP * 0x666 >> 16 (2.5 %), alternating hands; ends on release or no EP. Skill 22
+    (BF Super Saiyan 3) = Power Blitz (UI 1350/1351), skill 21 (unused) = Infinity Bullet (UI 1352/1353, BF's
+    Volleyball strings). NOT skill 23: the skill table ends inside record 23 (its last 8 bytes are a literal pool);
+    writing it broke the energy wave in testing. Given at the conversion (act2_siblings.scene) and in the debug lists.
+  - Verified in the emulator (shoot lists sw_pb17 / sw_pb18 / sw_pb17s) in Gero's lab 1:1 and Act 3 West City 17:1:
+    rapid fire blue / pink, Energy Blast blue / pink, the wave and its ball yellow with an orange rim for both twins,
+    Power Blitz as Super 17 too; tools/vramcheck.py during rapid fire: 0 problems, 0 guard rejects, peak 11 KB.
+  - Walkthrough (chapter 6 skills line) and credits_todo updated. Delivered v21.
 - Charge-up ball (user 2026-11-03 night: "make the charge up ball ... green as well"): BF's ki charge ball (frame
   records 0x721164-0x721218, raw tiles 0x720864-0x721164) is shared by several beams (Kamehameha table 0x71DA68 etc.),
   so kifx.charge() writes a green copy of tiles + records after the blue blast copy and repoints only the wave's own
