@@ -22,7 +22,8 @@ import outfit
 SKILLS = 0x71DB04                       # 24-byte records: [u16 name UI, u16 desc UI][usable][use][u32][icon][icon]
 BLAST_ID, IDS = 7, {22: (1350, 1351), 21: (1352, 1353)}     # id: (name UI, description UI)
 VTABLE, VT_N = 0x4DC14, 9               # Energy Blast's action class (relative entries: target + 1 - table)
-GAP = 6                                 # frames between blasts while B is held
+GAP = 8                                 # frames between blasts while B is held (6 was too close: the next blast met the
+                                        # previous one at the hand and both burst, a yellow impact flash; 7+ is clean)
 COST = 0x666                            # EP per blast: max EP * COST >> 16 (2.5 %; Energy Blast: 0xCCD = 5 %)
 
 ASM = r'''

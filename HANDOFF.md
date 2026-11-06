@@ -905,6 +905,11 @@ process during the whole check ... chapter by chapter and save progress ... to r
     rapid fire blue / pink, Energy Blast blue / pink, the wave and its ball yellow with an orange rim for both twins,
     Power Blitz as Super 17 too; tools/vramcheck.py during rapid fire: 0 problems, 0 guard rejects, peak 11 KB.
   - Walkthrough (chapter 6 skills line) and credits_todo updated. Delivered v21.
+  - v21.1 (user: "its shooting a yellow blast along with the properly colored ki blasts"): at 6 frames apart the next
+    blast met the previous one at the hand and both burst (BF's yellow impact flash, every few frames). GAP is now 8
+    (7.5 blasts a second); 7 was already clean. Verified facing all four ways for 17, 18 and Super 17 in 17:1: clean
+    blue / pink streams, no yellow bursts in open space (impacts on enemies / objects stay BF's yellow, as for every
+    Energy Blast since v18).
 - Charge-up ball (user 2026-11-03 night: "make the charge up ball ... green as well"): BF's ki charge ball (frame
   records 0x721164-0x721218, raw tiles 0x720864-0x721164) is shared by several beams (Kamehameha table 0x71DA68 etc.),
   so kifx.charge() writes a green copy of tiles + records after the blue blast copy and repoints only the wave's own
