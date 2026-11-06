@@ -613,3 +613,19 @@ do call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
 set_flag 441
 do heal
 stop
+list t9_hit18
+# (2026-11-05) hit-burst test: t8_wave's spot in 17:48 (enemies close by) with Eighteen leading, Infinity Bullet first
+do call 151 1; call 151 3; call 149 3; call 152 0; call 152 2
+do call 165 3 20; call 165 3 7; call 165 3 4; call 165 3 11
+do call 164 3 21; call 164 3 7; call 164 3 6
+do call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 48 1 60 210; call 121 30
+stop
+list t9_hit17
+# (2026-11-05) the same with Seventeen, Power Blitz first
+do call 151 1; call 151 3; call 149 1; call 152 0; call 152 2
+do call 165 1 20; call 165 1 7; call 165 1 6; call 165 1 17
+do call 164 1 22; call 164 1 7; call 164 1 6
+do call 157 1 111; call 157 3 271; call 165 1 240; call 165 3 240
+do heal; call 120 1; call 119 17 48 1 60 210; call 121 30
+stop

@@ -7,7 +7,9 @@ The same frames are used by every character's blast and by enemy projectiles (su
 a blue copy (tiles + table) is written here, and the player projectile's constructor sub_080197B4 is hooked at
 0x080197F2 (ldrb r0,[r4,#0x10]; ldr r2,=table ... str r1,[r4,#0x50]) to use the copy when the current character
 (G[0] = IWRAM 0x03001068) is 1 or 3 (Lapis / 17, Lazuli / 18; they only get the blast at the conversion). The impact
-burst (record 0x087137CC, shared and loaded from a literal) keeps BF's colours.
+burst (record 0x087137CC) gets a blue / pink copy too (user 2026-11-05, "only for them"): hook_burst replaces its setter
+sub_0801984E and picks the copy only when the projectile's frame table (+0x50) is the blue / pink one; the projectile
+update's own copy of the setter (0x080198E4) calls it. Enemy projectiles (literal 0x27DAC) keep BF's burst.
 Electric Kamehameha (skill 6, now "Full Power Energy Wave"): its pieces (0x721218-0x722318: horizontal, vertical,
 sparkles) are referenced only by its own frame tables (0x724714-0x7248A0 vertical, 0x724898-0x724A18 horizontal), and in LoG4 only 17 and 18 have the skill, so the
 tiles are recoloured in place, green. Its charge-up ball is shared with other beams, so it gets a green copy
@@ -32,6 +34,7 @@ BLAST_TILES = (0x71300C, 0x71370C)
 BLAST_TABLE, BLAST_RECS = 0x71370C, 16
 BEAM_TILES = (0x721218, 0x722318)       # horizontal pieces, vertical pieces (0x721A18-), sparkles (0x722218-)
 SITE = 0x197F2
+BURST, BURST_A, BURST_B = 0x7137CC, 0x1984E, 0x198E4      # impact burst frame record; its setter; the update's copy
 ORIG = bytes.fromhex('207cbc4a41000918090189182165')     # ldrb r0,[r4,#0x10]; ldr r2,=0x0871370C; ... str r1,[r4,#0x50]
 BLUE, PINK = 215 / 360, 330 / 360
 # OBJ slots whose in-game colour (PRAM dumped in Act 3 fights, 17:38 and 17:34, 2026-11-03) is not BF's: LoG4's portraits
@@ -70,6 +73,34 @@ blue_table:
 	.space %d
 pink_table:
 	.space %d
+
+	.global hook_burst
+	.align 2
+hook_burst:                        @ replaces sub_0801984E (r0 = player projectile): its impact burst, in the twin's
+	movs r1, #0x10                 @ colour when the projectile uses the blue / pink frame table (+0x50)
+	str r1, [r0, #0x4c]
+	ldr r1, [r0, #0x50]
+	ldr r2, =blue_table
+	subs r3, r1, r2
+	cmp r3, #192
+	bhs 1f
+	ldr r1, =blue_burst
+	b 3f
+1:	ldr r2, =pink_table
+	subs r3, r1, r2
+	cmp r3, #192
+	bhs 2f
+	ldr r1, =pink_burst
+	b 3f
+2:	ldr r1, =0x087137CC
+3:	str r1, [r0, #0x18]
+	bx lr
+	.pool
+	.align 2
+blue_burst:
+	.space 12
+pink_burst:
+	.space 12
 '''
 
 
@@ -128,9 +159,25 @@ def apply(rom, at):
             struct.pack_into('<I', tab, 12 * k + 8, 0x08000000 + tiles_at + (p - t0))
         bt = sym[name] - 0x08000000 - at
         code[bt:bt + len(tab)] = tab
+        burst = bytearray(rom[BURST:BURST + 12])                 # the impact burst's frame: tiles in the same block
+        p = struct.unpack_from('<I', burst, 8)[0] - 0x08000000
+        assert t0 <= p < t1, hex(p)
+        struct.pack_into('<I', burst, 8, 0x08000000 + tiles_at + (p - t0))
+        bb = sym[name.replace('table', 'burst')] - 0x08000000 - at
+        code[bb:bb + 12] = burst
         tiles_at += t1 - t0
     tiles_at -= 2 * (t1 - t0)
     rom[at:at + len(code)] = code
+    # (2026-11-05, user: "make their blast starburst hit effects pink and blue but only for them") the impact burst:
+    # sub_0801984E (movs r1,#16; str r1,[r0,#0x4c]; ldr r1,=0x087137CC; str r1,[r0,#0x18]; bx lr) becomes a jump to
+    # hook_burst, and the projectile update's own copy of it at 0x080198E4 (movs r0,#16; str r0,[r4,#0x4c];
+    # str r5,[r4,#0x54]; str r7,[r4,#0x18], r7 = 0x087137CC) calls it instead: adds r0,r4,#0; bl 0x0801984E; str r5,[r4,#0x54]
+    assert bytes(rom[BURST_A:BURST_A + 10]) == bytes.fromhex('1021c164a94981617047'), 'burst setter changed'
+    assert bytes(rom[BURST_B:BURST_B + 8]) == bytes.fromhex('1020e0646565a761'), 'burst site in the update changed'
+    rom[BURST_A:BURST_A + 10] = bytes.fromhex('01490847c046') + struct.pack('<I', sym['hook_burst'] | 1)
+    off = (BURST_A - (BURST_B + 2 + 4)) >> 1
+    bl = struct.pack('<HH', 0xF000 | ((off >> 11) & 0x7FF), 0xF800 | (off & 0x7FF))
+    rom[BURST_B:BURST_B + 8] = bytes.fromhex('2000') + bl + bytes.fromhex('6565')
     assert bytes(rom[SITE:SITE + 14]) == ORIG, 'projectile constructor changed'
     # ldr r1,[pc,#4]; bx r1; nop; .word hook|1; nop; nop  (0x080197F2 .. 0x080197FF)
     rom[SITE:SITE + 14] = bytes.fromhex('01490847c046') + struct.pack('<I', sym['hook_blast'] | 1) + bytes.fromhex('c046c046')

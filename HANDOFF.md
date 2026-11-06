@@ -910,6 +910,14 @@ process during the whole check ... chapter by chapter and save progress ... to r
     (7.5 blasts a second); 7 was already clean. Verified facing all four ways for 17, 18 and Super 17 in 17:1: clean
     blue / pink streams, no yellow bursts in open space (impacts on enemies / objects stay BF's yellow, as for every
     Energy Blast since v18).
+  - v21.2 (user: "make their blast starburst hit effects pink and blue but only for them"): the impact burst (frame
+    record 0x087137CC, its tiles inside the blast tile block) is set by sub_0801984E (+0x4c = 16, +0x18 = record) and by
+    a second copy inside the projectile update at 0x080198E4. kifx copies the burst record per colour (tile pointer
+    moved into that colour's tile copy); hook_burst replaces sub_0801984E: if the projectile's frame table (+0x50) lies
+    in the blue or pink blast table it uses that colour's burst, else BF's. 0x080198E4 now calls it (movs r0,r4; bl;
+    str r5,[r4,#0x54]); the code after reloads r0 from +0x4c. Enemy projectiles (literal 0x27DAC) untouched; every
+    other character's Energy Blast keeps the yellow burst. Verified at the 17:48 enemies (shoot lists t9_hit17 /
+    t9_hit18): blue / pink bursts on hits, vramcheck over 74 samples each: 0 problems, 0 guard rejects.
 - Charge-up ball (user 2026-11-03 night: "make the charge up ball ... green as well"): BF's ki charge ball (frame
   records 0x721164-0x721218, raw tiles 0x720864-0x721164) is shared by several beams (Kamehameha table 0x71DA68 etc.),
   so kifx.charge() writes a green copy of tiles + records after the blue blast copy and repoints only the wave's own

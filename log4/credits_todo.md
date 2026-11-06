@@ -44,3 +44,4 @@ Add a line here whenever a new asset, source, feature or character goes into the
 - 2026-11-05: new skill Power Blitz (Seventeen, blue) / Infinity Bullet (Eighteen, pink): hold B for rapid-fire ki
   blasts (tools/powerblitz.py, BF skill slots 22 / 21). Eighteen's Energy Blast is now pink; the Full Power Energy Wave
   and its charge ball now use Final Flash colours (yellow, orange rim) for both twins. Mention on the features card.
+  Their ki blasts' impact bursts are blue (Seventeen) / pink (Eighteen) too (v21.2).
