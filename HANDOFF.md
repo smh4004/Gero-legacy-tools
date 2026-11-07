@@ -918,6 +918,19 @@ process during the whole check ... chapter by chapter and save progress ... to r
     str r5,[r4,#0x54]); the code after reloads r0 from +0x4c. Enemy projectiles (literal 0x27DAC) untouched; every
     other character's Energy Blast keeps the yellow burst. Verified at the 17:48 enemies (shoot lists t9_hit17 /
     t9_hit18): blue / pink bursts on hits, vramcheck over 74 samples each: 0 problems, 0 guard rejects.
+- BUG CHECK + PLAYTHROUGH on v21.3 (2026-11-07, user: "Run a bug check and play through"; scratchpad bc21):
+  enemyslots 10 OK, guide UP TO DATE, clipcheck 275/115 0 failing, reachaudit 172 of 173 (fly_hub_jet: the known
+  first-visit-scene false alarm), exitaudit 58 candidates = v20's reviewed set + 17:50 (Super 13's absorption backdrop,
+  cutscene only), vramaudit 115 areas 0 problems / 0 rejects (peak 30,272 B in 17:47). Playthrough: all 252 lists, one
+  carried state, 27,353 VRAM samples, 0 guard rejects, 0 writes to unmapped memory (playthrough.py now counts
+  "Bad memory Store" per list: BAD STORES). Open items all match v20's hand-checked set (rewards 500 / 533, the other
+  branch 387 / 388, surv_b 501 / 505, fs_wake 391, the 17:41 teleport for fs_out / fs_lower_caved; bot-unwinnable
+  fights set by hand: rows 3, 5, 127, 128, 46, 63, 95, 42, 131). diablo_ball finished one list later (the ninja captain
+  first); the 4:44 / 4:45 failures are revisits of zmart_clerk / museum_curator from another act's world (dropped by
+  design). One VRAM flag, Prototype 12's fight (bot step 77): OAM 3, 32x8, priority 1 = BF's floating damage number
+  drawing tiles it had just freed while new pixels landed there (BF behaviour noted in the 11-03 audit; a frame at
+  most); a per-input replay of the same fight shows nothing. BF heap at every saved state: at least 174 KB free
+  (ch6_home), so v21.3's 256-byte reservation costs nothing. No game changes needed: v21.3 stands.
 - v21.3 (2026-11-06, user on iPhone: New Game crashed in one app; Delta showed the lab grey, then a white screen; fine
   in mGBA). Cause: LoG4's RAM words at EWRAM 0x0203FF00-0x0203FF10 (fadepal last world, ki counter, Super 17 flash
   counter / saved BLDCNT) sat INSIDE BF's heap (init 0x0803D4D0: blocks from 0x02000800, size literal 0x0803D738 =

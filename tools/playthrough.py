@@ -82,7 +82,11 @@ class Run:
 
     def h(self, lines):
         p = os.path.join(self.w, '_s.txt'); open(p, 'w').write('\n'.join(lines) + '\n')
-        subprocess.run([H, self.rom, p, self.w], capture_output=True, timeout=600)
+        r = subprocess.run([H, self.rom, p, self.w], capture_output=True, timeout=600, text=True, errors='replace')
+        bad = [l for l in (r.stdout + r.stderr).split('\n') if 'Bad memory Store' in l]   # writes to unmapped memory
+        self.badstores = getattr(self, 'badstores', 0) + len(bad)                            # (2026-11-06: VBA-M bug)
+        if bad and len(getattr(self, 'badseen', set())) < 50:
+            self.badseen = getattr(self, 'badseen', set()) | set(bad[:5])
 
     def rd(self, n): return open(os.path.join(self.w, n + '.bin'), 'rb').read()
 
@@ -569,7 +573,9 @@ def main():
         prog['results'].append(res); prog['next'] = i + 1
         json.dump(prog, open(prog_p, 'w'), indent=1)
         json.dump(R.vram, open(os.path.join(out, 'vram.json'), 'w'), indent=1)
-        R.say('%3d %-24s %-16s end %-6s rejects %d  %s' % (i, e['list'], e['file'], res['end_area'], res['rejects'], res['result']))
+        res['badstores'] = getattr(R, 'badstores', 0); R.badstores = 0
+        R.say('%3d %-24s %-16s end %-6s rejects %d  %s%s' % (i, e['list'], e['file'], res['end_area'], res['rejects'], res['result'],
+                                                          '  BAD STORES %d' % res['badstores'] if res['badstores'] else ''))
     R.say('end: %d VRAM samples, %d problems, peak OBJ VRAM %d bytes (%s)' %
           (R.vram['samples'], len(R.vram['problems']), R.vram['peak_used'], R.vram['peak_area']))
 
